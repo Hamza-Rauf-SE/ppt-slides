@@ -1,0 +1,336 @@
+# Extracted PPT Content
+
+## Slide 1
+- HAMZA RAUF
+- Prospective Graduate researcher.
+- Efficient AI
+- LLMs + QLoRA
+- Real-world Deployment
+- hamzarauf.se@gmail.com
+- |
+- Google Scholar
+- |
+- LinkedIn
+
+## Slide 2
+- Who I Am
+- Hamza Rauf
+- - Senior Software Engineer (AI) & Research Assistant
+- 5 years
+- of professional industry-level experience and  2 years of research experience
+- B.S. Computer Science, Sukkur IBA University
+- CGPA – 3.31 (85%) –
+- top 5% of class.
+- GRE 331/340, IELTS 7.0
+- Professional Skills & Competencies:
+- Python, C++,
+- Matlab
+- ,
+- React.js
+- , Node.js, Flask,
+- FastAPI
+- ,
+- Langraph
+- ,
+- Langchain
+- , REST APIs, Latex, etc.
+- DevOps experience with
+- AWS, Azure
+- , Docker, Linux, CI/CD, etc.
+- Research skills
+- PyTorch
+- , TensorFlow,
+- unsloth
+- ,
+- Axotol
+- ,
+- QLoRA
+- /PEFT, Multimodal LLMs, Generative AI professional.
+- Fine-tuning
+- LLMs
+- with
+- LoRA
+- /
+- QLoRA
+- on tasks like spam detection, medical imaging, reasoning, RAG, agents, etc
+- 331/340
+- GRE score
+- 7.0
+- IELTS
+- 5 yrs
+- AI/software experience
+- Top 5%
+- CS class standing
+- What I bring to a lab
+- Research discipline
+- Engineering reliability
+- Hands-on model training
+- Clear writing and mentoring
+
+## Slide 3
+- EVIDENCE OF READINESS
+- Academic and Research Achievements
+- Fully-funded
+- merit scholarship
+- as one of
+- the top 100 students nationwide
+- Distinction in
+- 23 courses
+- ; strong base in Data structures,
+- Human Computer Interaction
+- , and
+- Enterprise App Development
+- Courses,
+- etc.
+- Secure a professional job offer prior to graduation.
+- Worked as a Research Assistant with Dr Umair Khan, a
+- Stanford World’s Top 2% Scientist.
+- Published 3 papers
+- as a
+- First author
+- , including a
+- Q1 journal
+- with
+- an impact
+- factor
+- of
+- 5.1.
+- Employee of the Year for two consecutive years (2023, 2024) at Coding Crafts.
+- Section leader at
+- Stanford Code in place
+- 2024.
+- Winner Team at the NETSOL AI Hackathon.
+- Experience with:
+- Systematic literature reviews & Surveys
+- Experimental design, evaluation metrics
+- Scientific writing (Latex,
+- Atlas.ti
+- , SPSS )
+- Q1
+- first-author journal
+- 3+
+- research papers
+- 90%
+- best LLM spam accuracy
+- 2 yrs
+- Employee of the Year
+- These achievements matter because they show I can move from idea → experiment → manuscript → working system.
+
+## Slide 4
+- PUBLISHED WORK
+- Research Experience: Efficient and Deployable AI
+- Q1 PAPER · MULTILINGUAL SPAM DETECTION
+- Built a balanced 21-language dataset using synthetic translation to address multilingual data scarcity.
+- Fine-tuned small LLMs , Gemma 3, Qwen 3, and Llama 3.2 , using 4-bit QLoRA.
+- Best model achieved 90% accuracy and 0.88 F1-score, with lower VRAM requirements.
+- Main lesson for robotics: AI must be adapted for limited compute, latency, and privacy-sensitive environments.
+- Q1 PAPER · ML SURROGATES FOR COMPLEX SYSTEMS
+- Applied ML surrogate modeling to complex nanofluid behavior where numerical solvers are expensive.
+- Compared ANN-LM and Gaussian Process Regression, including uncertainty-aware prediction.
+- Showed near-perfect predictive performance for engineering quantities such as Nusselt number.
+- Main lesson for robotics: Trained models can support fast prediction, control, and decision-making under uncertainty.
+- Sentiment Analysis of Twitter for Electoral Process: A Systematic Literature Review.
+- Using Generative AI for Simulating cyber Security attacks and
+- Defence
+- Mechanisms: A new approach to AI-Driven cyber Threat Modeling.
+- In Review :
+- Comparative Analysis of Advanced Machine Learning Models for Non-Newtonian (Micropolar) Hybrid Nanofluids with Buoyancy Forces. WNN with
+- Morlet
+- and
+- Mexhat
+- , ANN with ADAM and LM.
+
+## Slide 5
+- BRIDGING LANGUAGE AND EMBODIMENT
+- Current Research: Embodied Emotion Classification
+- Research question: Which prompting and
+- QLoRA
+- strategy best enables small LLMs for embodied emotion classification?
+- Focuses on emotions expressed through bodily cues, such as trembling hands, tightened throat, or clenched jaw.
+- Benchmarks zero-shot, few-shot, chain-of-thought, and chain-of-verification prompting.
+- Uses 4-bit
+- QLoRA
+- to test whether small models can become robust without expensive training.
+- This strengthens my interest in embodied intelligence: how AI interprets indirect, context-rich signals from human or physical behavior.
+- bodily cue
+- context
+- emotion
+- Why it matters for AgBodied Lab
+- It allows me to study embodied signals, contextual reasoning, and efficient adaptation.
+- The same mindset can extend to robot perception: plants, actions, sensor cues, and uncertain scenes.
+
+## Slide 6
+- PROFESSIONAL EXPERIENCE
+- Industry & Teaching Experience (5 Years)
+- Senior Software Engineer – Coding Crafts (2022–Present)
+- Autonomous
+- AI agent
+- for web automation.
+- Implemented new AI features like
+- RAG
+- and
+- LoRA
+- -tuned Llama 3 OCR for sensitive documents.
+- Mentored
+- 3 junior engineers
+- , focusing on architecture and code quality.
+- Software Engineer – Valyrian System (2020–2022)
+- Migrated a monolith to
+- microservices,
+- cutting API latency by 60%.
+- Implementation of a real-time network filtering platform at 100GBps using
+- EBpf
+- on the kernel level.
+- Built and configured an on-site high availability database cluster.
+- Teaching & Mentoring
+- Guide juniors and teammates on new technologies in AI.
+- Taught Python at
+- Sandford
+- Code in Place program.
+- Taught DevOps practices and mentored students on cloud projects at Cloud College.
+
+## Slide 7
+- HANDS-ON EVIDENCE
+- Selected Projects with Research Value
+- HELLOGOV AI
+- AI platform combining OCR, LLM extraction, validation, and agentic portal automation.
+- Scaled to large real-users.
+- MEDICAL IMAGE VLM
+- Fine-tuned Llama 3 Vision 11B using PEFT, LoRA, and 4-bit quantization.
+- Relevant to multimodal perception and specialized visual understanding.
+- GRAPH + HYBRID RAG
+- Built context-aware recommendation pipelines using vector search, graph structure, and LLM reasoning.
+- Relevant to knowledge-grounded decision support and digital agriculture systems.
+- QWEN3 REASONING ALIGNMENT
+- Implemented GRPO-style alignment with structured reasoning and custom rewards.
+- Useful for decision-making, planning, and policy learning under constraints.
+- TRANSFORMER FROM SCRATCH
+- Built a GPT-style 60M parameter model in PyTorch from first principles.
+- Gave me deeper understanding of attention mechanism, training loops, and model behavior.
+- EMBEDDED FACE MASK DETECTOR
+- Built lightweight real-time vision pipeline for constrained devices.
+- Connects well with edge perception needs in robotics and field systems.
+
+## Slide 8
+- RESEARCH-RELEVANT SKILLS
+- Technical Toolkit I Can Bring to the Lab
+- FOUNDATION MODELS
+- LLMs and VLMs
+- LoRA / QLoRA / PEFT
+- 4-bit and 8-bit quantization
+- Prompting and reasoning evaluation
+- VISION + MULTIMODAL AI
+- PyTorch, TensorFlow, OpenCV
+- YOLO / segmentation workflows
+- Medical image VLM fine-tuning
+- Interest in RGB + depth + LiDAR fusion
+- SYSTEMS + DEPLOYMENT
+- FastAPI, Flask, Node.js
+- AWS, Azure, GCP
+- Docker, Kubernetes, Linux
+- CI/CD, observability, APIs
+- RESEARCH PRACTICE
+- Literature reviews
+- Experiment design
+- Evaluation metrics
+- Scientific writing and LaTeX
+- DATA + AI PIPELINES
+- Synthetic data generation
+- Distillation pipelines
+- Vector databases and RAG
+- Perception based Agentic Systems
+- PySpark and ETL foundations
+- MENTORING + TEAMWORK
+- Mentored junior engineers
+- Taught Python and DevOps
+- Comfortable in interdisciplinary teams
+- Clear technical communication
+
+## Slide 9
+- DIRECT ALIGNMENT
+- Fit with
+- AgBodied
+- Lab
+- LAB DIRECTION
+- Embodied AI and autonomous robotic systems
+- Robotic perception and multimodal sensing
+- Learning-based manipulation and decision-making
+- AI-driven agricultural systems and digital twins
+- MY EXPERIENCE
+- Efficient LLM/VLM adaptation with LoRA and QLoRA
+- Computer vision, segmentation, OCR, and multimodal workflows
+- Production AI systems with reliability and deployment constraints
+- Research writing, benchmarking, and empirical evaluation
+- WHERE I CAN CONTRIBUTE
+- Efficient perception models for field or greenhouse robots
+- Sensor-aware AI pipelines for RGB, depth, LiDAR, and spectral data
+- Data-efficient learning, synthetic data, and distillation pipelines
+- Robust model evaluation under lighting, occlusion, and domain shift
+- I see a strong match because
+- AgBodied
+- lab builds intelligent, embodied systems for agriculture, while my strong interests are efficient AI, multimodal learning, and building systems that survive real-world constraints.
+- Paper Title:
+- Performance-Optimized Alzheimer’s Detection Using Machine Learning with SMOTE and Randomized Hyperparameter Tuning
+- The paper focuses on
+- machine-learning-based early Alzheimer’s detection
+- , using data balancing, feature selection, model tuning, and a web-based prediction tool to make AI more practical and accessible.
+
+## Slide 10
+- INITIAL IDEAS TO DISCUSS
+- Proposed Research Direction
+- IDEA 1 · EFFICIENT MULTIMODAL PERCEPTION
+- Adapt small vision-language models for crop, fruit, disease, or field-scene understanding.
+- Use PEFT/QLoRA-style training to reduce compute while preserving accuracy for edge devices.
+- Evaluate under lighting variation, occlusion, limited data, and changing field conditions.
+- IDEA 2 · VLA + WORLD MODELS FOR ROBOTICS
+- Explore Vision-Language-Action (VLA) models that turn visual/sensor input + language instructions into robot actions.
+- Use
+- OpenVLA
+- and RT-X/RT-2 as practical baselines; review Pi-0, GR00T, and
+- PaLM
+- -E for broader embodied AI direction.
+- Fine-tune or domain-adapt these models for agricultural scenes: crops, tools, occlusion, lighting, greenhouse/field constraints.
+- Add world-model learning to predict next states before acting, improving safer navigation, inspection, harvesting, and manipulation.
+- MY STARTING CONTRIBUTION
+- • Begin with literature review and reproducible baselines for VLA/world models in agricultural robotics.
+- • Build a domain-adaptation pipeline: datasets, action labels, evaluation metrics, and robot-task benchmarks.
+- • Aim: publish a field-relevant method for reliable, efficient embodied AI in AgBodied Lab systems.
+
+## Slide 11
+- WHAT I CAN CONTRIBUTE
+- Why Me
+- I can bridge research and engineering: I know how to design experiments, but also how to deploy working AI systems.
+- I am comfortable with constraints: limited compute, limited data, latency requirements, and reliability concerns.
+- I have already worked with efficient fine-tuning, small LLMs, synthetic data, multimodal models, and AI agents.
+- I can support the lab through coding, model training, dataset preparation, evaluation, writing and validating as well.
+- Most importantly, I am motivated to grow into a careful researcher who asks clear questions and builds useful systems.
+- research
+- papers and writing
+- systems
+- deployment mindset
+- models
+- LLM/VLM training
+- impact
+- agriculture robotics goal
+- I want to be useful from day one and still remain coachable enough to grow deeply in agricultural robotics.
+
+## Slide 12
+- RESEARCH TRAJECTORY
+- Short-Term and Long-Term Goals
+- FIRST 6–12 MONTHS
+- Understand active AgBodied Lab projects.
+- Reproduce baselines and build strong evaluation pipelines.
+- Contribute to perception or multimodal sensing experiments.
+- Prepare a publishable research direction with Dr. Yaqoob.
+- DURING GRADUATE STUDY
+- Develop efficient AI methods for robotic perception and decision-making.
+- Publish in strong AI, robotics, agriculture, or applied ML venues.
+- Build systems that can be tested beyond clean datasets.
+- Collaborate across CS, engineering, robotics, and plant science.
+- LONG TERM
+- Become a researcher who builds trustworthy, efficient, and field-ready AI systems for real-world automation and human-centered impact.
+
+## Slide 13
+- Thank You
+- I would be grateful for the opportunity to contribute to AgBodied Lab and learn under your guidance.
+- Questions and Feedback.

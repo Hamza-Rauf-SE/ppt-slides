@@ -1,0 +1,282 @@
+Journal of Biomedical Informatics 123 (2021) 103922
+Contents lists available at ScienceDirect
+Journal of Biomedical Informatics
+journal homepage: www.elsevier.com/locate/yjbin
+Original Research
+Predicting potential palliative care beneficiaries for health plans: A generalized machine learning pipeline
+Hengwei Zhang a, Yan Li b,*, William McConnell c
+a University of Tampa, Sykes College of Business, 401 W Kennedy Blvd, Tampa, FL 33606 USA b Claremont Graduate University , Center for Information Systems and Technology, 130 E. 9th Street - ABC 217, Claremont, CA 91711, USA c Claremont Graduate University , School of Community and Global Health, 130 E. 9th Street, Claremont, CA 91711, USA
+
+ARTICLE INFO
+Keyword: Machine Learning Pipeline Palliative Care Administrative Claims Mortality Risk Prediction Risk-stratified care management Population Health
+
+ABSTRACT
+Recognizing that palliative care improves the care quality and reduces the healthcare costs for individuals in their end of life, health plan providers strive to better enroll the appropriate target population for palliative care. Current research has not adequately addressed challenges related to proactively select potential palliative care beneficiaries from a population health perspective. This study presents a Generalized Machine Learning Pipeline (GMLP) to predict palliative needs in patients using administrative claims data. The GMLP has five steps: data cohort creation, feature engineering, predictive modeling, scoring beneficiaries, and model maintenance. It encapsulates principles of population health management, business domain knowledge, and machine learning (ML) process knowledge with an innovative data pull strategy. The GMLP was applied in a regional health plan using a data cohort of 17,197 patients. Multiple ML models were turned and evaluated against a custom performance metric based on the business requirement. The best model was an AdaBoost model with a precision of 71.43% and a recall of 67.98%. The post-implementation evaluation of the GMLP showed that it increased the recall of high mortality risk patients, improved their quality of life, and reduced the overall cost. The GMLP is a novel approach that can be applied agnostically to the data and specific ML algorithms. To the best of our knowledge, it is the first attempt to continuously score palliative care beneficiaries using administrative data. The GMLP and its use case example presented in the paper can serve as a methodological guide for different health plans and healthcare policymakers to apply ML in solving real-world clinical challenges, such as palliative care management and other similar risk-stratified care management workflows.
+
+1. Background and significance
+It is estimated that the end of life spending accounts for approximately 13% of the United States (US) healthcare costs and 25% of the overall Medicare expenditures.[1] End-of-life care has been cited as an area of potential intervention to lower healthcare costs in the US. Palliative care is proven to be effective in improving care quality and reducing the costs of care for individuals at their end of life.[2] Other benefits of palliative care include increased patient and provider satisfaction, equal or better symptom control, better quality of life, better alignment of individual preferences near the end of life, and less patient and caregiver distress.[1,3]
+Recognizing the aforementioned benefits, the CA States policy (SB 1004), effective on January 1, 2018, requires the Department of Health Care Services (DHCS) to implement the Medi-Cal palliative care
+
+program through managed care and fee-for-service providers.[4] While some managed care health plans (payers) already incorporated palliative care strategies into their overall population health management models, SB 1004 posited new challenges for these health plans. One major challenge is how to enroll the appropriate target population for palliative care that would maximize its value (i.e., increasing the quality of care while reducing costs).
+One popular approach is using electronic health record (EHR) data to predict the patients' admissibility of palliative care. For example, June et al.[5] showed that applying predictive modeling to EHR can accurately predict the need for palliative care. Several prognostic palliative care scores and indexes for palliative care[6,7] have been developed and validated to predict the survival probability of patients using EHR data such as their vitals and diagnostics. With the assumption that predicting mortality is a reasonable approximation to predicting the palliative care
+
+* Corresponding author. E-mail addresses: hzhang@ut.edu (H. Zhang), Yan.Li@cgu.edu (Y. Li), William.Mcconnell@cgu.edu (W. McConnell).
+https://doi.org/10.1016/j.jbi.2021.103922 Received 23 June 2021; Received in revised form 25 September 2021; Accepted 29 September 2021 Available online 2 October 2021 1532-0464/© 2021 Elsevier Inc. This article is made available under the Elsevier license (http://www.elsevier.com/open-access/userlicense/1.0/).
+
+H. Zhang et al.
+
+Journal of Biomedical Informatics 123 (2021) 103922
+
+needs[8], other studies attempt to improve the motility risk prediction by including additional data sources, such as surveys (e.g., national health interview)[9] or patient interviews[10]. These data sources are generally not available for payers, such as health plans and the Center for Medicare & Medicaid Services (CMS), most of whom only have access to administrate claims data.
+The data availability issue leads to research towards mortality risk prediction using administrative claims data. For example, various implementations of Charlson Comorbidity Index (CCI) [11], a clinic comorbidity index, are designed for using administrative claims data to predict mortality risk for patients with specific comorbid conditions [12-15]. These studies translate the CCI components into International Classification of Disease (ICD) diagnosis codes to calculate an index for mortality risk. However, the CCI would be most useful for patients enrolled in longitudinal studies[11] with known dates for the first diagnosis of the comorbid conditions. Such a date is usually not accurately captured in claims data. Nevertheless, it is an important indicator for predicting both short and long-term mortality risks. Other studies attempted to build predictive models for mortality risk using additional features such as patients' demographics and healthcare utilization [16-18]. Limitations in these studies are twofold. First, they mostly use retrospective cohort data and cannot be adopted within the business process of health plans for identifying palliative care beneficiaries. Second, many studies focus on patient-centered outcomes from the clinic perspective (e.g., those with a specific health condition) instead of the population health perspective[19] for the overall population (e.g., members of a health plan). The latter is essential in addressing the population dimension of the Triple Aim[20] in improving the US healthcare system. Bringing the population health to palliative care can also improve the quality of care and reducing costs, two other dimensions of the Triple Aim. A population health approach for palliative care management requires risk stratification[21] - that is, dividing the population into tiers or stata that correspond to their likelihood of needing end-of-life care. The process involves first defining the included population and then systematically assigning risk levels through predictive modeling or other algorithms. It thus posits two unique challenges. First, what would be the criteria for defining the included population? Second, how to deal with the imbalanced input data for risk stratification, where the potential palliative care beneficiaries (i.e., those with high-risk scores) are a small percentage of the included population?
+Based on the discussions above, many challenges remain unsolved for predicting population-based palliative care needs using administrative claim data. They include: 1) how to continuously score the high-risk population that is required by the organization's business process, 2) how to determine the included population from the population health perspective instead of patient-centered clinic outcomes, 3) how can CCI be better integrated with other useful features to address its limitations, and 4) how to improve the modeling performance with an imbalanced dataset. This paper attempts to address these challenges by proposing a Generalized Machine Learning Pipeline (GMLP) that proactively identifies potential palliative care beneficiaries for population health management. The GMLP hypothesizes, based on existing literature, that mortality risk is a reasonable approximation to the need for palliative care. It includes five main steps and multiple tasks within each step, many of which have not been used or identified before in the literature or practice. The GLMP was applied in a case study for a real-world nonprofit Regional Health Care Plan (RHCP: a pseudonym), a Medi-Cal and Medicare health plan provider with more than 1.3 million active members. The case study demonstrates that the GLMP is useful in helping the health plan improve its palliative care management. The GMLP can be easily adapted by other health plans and policymakers to predict high motility risk patients who would most likely need palliative care. It may also be adapted for other risk-stratified care management workflows.
+
+2. Method
+The Generalized Machine Learning Pipeline (GMLP) for palliative care prediction is depicted in Fig. 1. It includes five steps: data cohort creation, feature engineering, predictive modeling, scoring beneficiaries, and model maintenance. Each step consists of a set of tasks that are generic for all similar machine learning (ML) situations. Each task has its unique consideration in addressing challenges of continuous scoring palliative care beneficiaries from the population health perspective. We describe the details of each step and its related tasks in this section, using RHCP's case as an example.
+2.1. Step 1: Data cohort creation
+The first step creates a data cohort that is a subset of the overall population. First, a data pull strategy is needed to enable continuous scoring. The data pull strategy needs a predetermined prediction length (i.e., whether a patient will survive within 30 days, six months, or one year) and a baseline time window. The baseline window should include patients that are alive during that time. Then, a follow-up time window is needed to create the target class based on the survival status. Such a data pull strategy enables the organization to use a sliding window to score palliative care beneficiaries on a rolling basis. Second, because only a very small percentage of the overall population would potentially need palliative care, clearly defined inclusion and exclusion criteria are needed to increase the percentage of the target event samples (i.e., those who may need palliative care) for predictive modeling. These criteria can be synthesized from the existing literature on palliative care referral criteria, such as advanced cancer, cardiovascular diseases, chronic respiratory diseases, or older adults with multiple coexisting conditions and frailty.[22] They can also be modified based on the characteristics of the population and should be reviewed by medical experts. Lastly, predicting mortality risk requires a target variable, which can be defined as whether a patient is survived or deceased within the prediction length after the baseline time window. Below we demonstrate how each task is performed in the RHCP's case. All data were pulled from RHCP's data warehouse with administrative claims data from 2014.
+2.1.1. Data pull strategy The length of the prediction was determined as one year, the most
+common length for mortality risk prediction among existing studies[8]. We established the baseline year between January 1, 2017 and December 31, 2017, and the follow-up year between January 1, 2018 and December 31, 2018 (see Fig. 2). We used data from each member's virtual past (the baseline year) to predictive the possibility of their future survival in the following year. This approach enables us to deploy the final model using a monthly sliding window and score potential palliative care beneficiaries every month.
+2.1.2. Inclusion/Exclusion criteria We first determined 12 conditions in which palliative care may be
+needed based on existing literature[18,22,23] and the characteristics of the RHCP's member population. They include COPD with oxygen dependence, congestive heart failure (CHF), end-stage liver disease (ESLD), pancreas cancer, brain and nervous system cancer, lung cancer, ovarian cancer, breast cancer, lymphoma and leukemia, and dementia and Alzheimer's. These conditions were reviewed and finalized by the medical director of the palliative care program at RHCP. Then, we created a set of ICD-10 codes related to these conditions (see Appendix D1 Table A1). We included all individuals who had at least one claim containing one or more ICD-10 codes from the ICT-10 code set we created. We excluded individuals whose enrollments with RHCP were less than six months during the baseline year and those who enrolled in hospice services or other advanced care programs. We also excluded individuals who did not have RHCP as the first payer (e.g., those who had CMS as the first payer). Our final data cohort included 17,197
+
+2
+
+H. Zhang et al.
+
+Journal of Biomedical Informatics 123 (2021) 103922
+
+Fig. 1. Generalized Machine Learning Pipeline (GMLP) for palliative care prediction.
+
+Fig. 2. Data pull strategy.
+patients. The characteristics of the data cohort are presented in Table A2 of Appendix Appendix D1.
+2.1.3. Define target We defined a binary target variable called Deceased. If a patient had a
+recorded date of death during 2018, the patient was assigned with a target variable value of 1 (i.e., a positive case). All other patients were negative cases (i.e., Deceased = 0). The positive event (i.e., Deceased = 1) was approximately 2.57% of the whole dataset.
+2.2. Step 2: Feature engineering
+Feature engineering is one of the critical steps and creative parts of ML. It allows predictive models to incorporate domain and business knowledge in the modeling process. Based on existing literature, four categories of features (i.e., diagnosis codes, utilization costs, utilization pattern, and demographics) are relevant in predicting potential palliative care beneficiaries. The feature set is the first attempt to include a comorbidity-adjusted risk score based on CCI plus utilization patterns to improve mortality risk prediction. This is based on the hypothesis that the limitations of CCI can be improved by using utilization-based
+
+features as an estimator of the disease severity or progression. Below, we first describe each feature category and then explain how to create them.
+2.2.1. Diagnosis codes Diagnosis codes (i.e., ICD codes) are important because they repre­
+sent the medical conditions of the patients. The ICD codes can be simply transformed using the total number of comorbid diseases for each individual or a weighted index approach, such as the Charlson Comorbidity Index (CCI) [11] and its variants[12-15]. CCI is particularly useful in summarizing the comorbidity in the data cohort, reducing high dimensionalities in data, and allowing for adjustment of confounding baseline conditions[24].
+We extracted diagnosis codes of each patient in the data cohort from claims data. We then used an existing ICD-10 coding algorithm[25] for defining CCI conditions. Each distinct comorbidity was coded first as a binary feature, and then a total number of comorbidities for each patient was created. Additionally, we calculated a comorbidity-adjusted risk score for each patient based on an updated Charlson Comorbidity index algorithm[26].
+2.2.2. Utilization cost Diagnosis codes from administrative data are not suitable for infer­
+ring the actual disease severity because they have many known data quality issues, such as unbundling codes and upcoding[27]. Literature shows that the healthcare utilization cost is highly correlated to disease severity[28,29]. The utilization cost is the total amount paid by the payer for the insured parties' health services. We first calculated the total claims cost as the sum of physician visits, inpatient services, outpatient services, and pharmacy costs in the baseline year. We then divided the total claims cost by the total number of eligible months as the average utilization cost.
+2.2.3. Utilization pattern Existing studies have demonstrated that healthcare utilization pat­
+terns can be used to predict mortality risk[18]. We created several
+
+3
+
+H. Zhang et al.
+
+Journal of Biomedical Informatics 123 (2021) 103922
+
+features for utilization patterns. They included a binary indicator for any hospitalization, number of days in a hospital, a binary indicator for any prescription drug, number of unique prescription drugs, as well as patterns related to diagnostics, outpatient visits, emergency room visits, and physician office visits.
+2.2.4. Demographics Patient demographics are known factors that influence healthcare
+utilization and health outcomes[30,31]. We included demographic information from the claims data, such as age (at the baseline year), gender, race, ethnicity, and language spoken. Two transformation activities were performed. First, minority classes (i.e., categorical class values with a small percentage of observations) were combined. For example, ethnicity has 16 classes, many of which were below 1% of the total observations. These minority classes were combined to create a new class called Other. The transformed ethnicity feature had four classes as White, Black, Hispanic, and Other. Second, age was transformed into four groups based on previous studies: 18-30, 31-40, 41-64, and 65 + .
+2.3. Step 3: Predictive modeling
+As discussed previously, the majority of studies in mortality risk prediction use logistic regression[16,24], while recent studies have started experimenting with different ML techniques[8,18,32] such as decision trees, neural networks, and ensembles. However, they do not present the extensive process knowledge that is required in ML.[33] The GMLP underscores six essential ML tasks (see Fig. 1) that are important for mortality risk prediction. A specific ML model for a particular health plan cannot be generalized because of the different contextual factors (e. g., population characteristics, data availability). However, these ML tasks are generalizable. Within these generalized tasks, two are unique within the context of continuously scoring palliative care beneficiaries. First, existing studies mostly use a balanced dataset for training without considering resampling. Yet, the training data in the real world is imbalanced, as shown in step 2. Thus, a resampling strategy must be considered for better model performance. Second, different organizations may have different business objectives, where a custom metric may be needed to evaluate the model performance. Below, we describe each task and demonstrate how it was carried in RHCP's case.
+2.3.1. Continuous variable discretization Discretizing continuous input variables into categorical ones can
+improve the classification performance and efficiency of ML algorithms. Other than variables with known transformation rules such as age, all other continuous input variables were discretized using the equal frequency binning method. For utilization cost, we created 20 bines or quantiles. For other continuous variables, we created four bins.
+2.3.2. Data partitioning and resampling Dataset for mortality risk classification is known to be imbalanced,
+where the number of positive cases (i.e., Deceased) is much lower than negative cases (i.e., Survived). Standard classifiers tend to be weighed down by the majority classes and ignore the minority ones. Resampling is a widely adopted approach for imbalanced data. Resampling techniques can be classified into two categories: under-sampling (i.e., removing samples from the majority class) and over-sampling (i.e., adding more examples from the minority class). We experimented with both under-sampling and over-sampling (e.g., SMOTE[34]) techniques. The under-sampling using cost-based stratification was selected because it had the best predictive performance.
+Data partitioning is essential to reduce generalization error or avoid model overfitting. Input data can be partitioned into three parts: a training dataset to fit the data, a validation dataset to evaluate the goodness of fit and tuning the model parameters, and a test dataset to evaluate the goodness of prediction. When the sample size is small, training and validation datasets may be combined, and thus k-fold cross-
+
+validation can be used for parameter tuning. For under-sampling, we first created a balanced dataset using a case-control strategy, where cases were randomly selected from the majority class (survived) to match the gender, age group, comorbidity-adjusted risk score, and cost quantile of cases in the minority class (deceased). We then used stratified partitioning and divided the under-sampled dataset into proportionately allocated two subgroups (80% for training and 20% for testing). We then randomly added unseen cases from the majority class to the test dataset which were used in the final model selection.
+2.3.3. Feature selection Feature selection is an important task in ML to increase classification
+accuracy and reduce the number of features.[35] Earlier, we created 164 competing features that would require feature selection. We first experimented with a single feature ranking method[36] based on correlation measures, where features with a significant correlation with the target variable were retained for further analysis. Because single feature ranking does not consider feature interactions, we further experimented with multivariate feature selection methods such as the sparse logistic regression method[37] and the permutation feature importance method [38]. After comparing the results of different feature selection methods, our final dataset included 45 features for modeling. These features are described in Appendix D1(see Table A3).
+2.3.4. Modeling with hyperparameter tuning This task involves building various ML classifiers and selecting
+candidate models with the best performance. F-score is a popular metric for performance evaluation because it provides a balance between precision and recall. However, because the identified palliative care beneficiaries would go through a final approval stage in conjunction with the physician referrals, business users at RHCP preferred a model with higher recall than precision. Thus, we created a custom performance metric that equals 2/3 of recall plus 1/3 of precision. This metric was used for hyperparameter tuning of different classifiers. We trained Decision Tree (DT), Random Forest (RF), AdaBoost (AB), Support Vector Machine (SVM), Logistic Regression (LR), and Artificial Neural Network (ANN) classifiers plus an ensemble voting model. We tuned the hyperparameters by maximizing the custom metric via 10-fold crossvalidation. Table 1 lists the overall performance of the best model for each classifier. We also included the performance of a baseline model in Table 1 based on an updated algorithm for CCI as a single predictor [26]. The AdaBoost model has the highest precision and recall, and the best overall performance based on the custom metric.
+2.3.5. Model selection Each candidate model needs to be evaluated using the test dataset
+against not only the selected performance metrics but also the business requirements. The involvement of business users is vital in selecting the final model for deployment. Note that while the training dataset is balanced after resampling, the test dataset needs to be adjusted to reflect the actual class distributions in the overall dataset. In our case, we applied the same performance metric for hyperparameter tuning to score the best models in table 1 using the test dataset. We discuss the modeling results and implications in the Result section.
+2.4. Step 4: Scoring beneficiaries
+The step involves deploying the final model in the business process, i. e., continuously scoring palliative care beneficiaries. In addition to the deployed model, data extraction and transformation rules need to be automated through an Extraction, Transform, and Loading (ETL) process. Depending on the modeling techniques, the new data can be scored through simple queries (e.g., implementing decision tree rules or logistic regression coefficients) or custom codes (e.g., deep learning and ensemble models). RHCP wanted a monthly update of palliative care beneficiaries. Thus, each month, all claims' data are pulled based on the
+
+4
+
+H. Zhang et al.
+
+Table 1 The Overall Performance of Various Classifiers on the Training Dataset (10-Fold).
+
+CCI
+
+DT
+
+RF
+
+Accuracy Precision Recall F-Score 1/3 × Precision+ 2/3 × Recall
+
+62.36% 73.73% 38.16% 50.29% 50.01%
+
+66.30% 67.62% 62.28% 64.84% 64.06%
+
+65.65% 67.32% 60.53% 63.74% 62.79%
+
+AB
+70.46% 71.43% 67.98% 69.66% 69.13%
+
+Journal of Biomedical Informatics 123 (2021) 103922
+
+SVM
+68.93% 75.00% 56.58% 64.50% 62.72%
+
+LR
+68.34% 71.09% 65.79% 68.34% 67.56%
+
+ANN
+66.52% 67.61% 63.16% 65.31% 64.64%
+
+Ensemble
+71.33% 74.62% 64.47% 69.17% 67.85%
+
+inclusion and exclusion criteria, and an ETL process is implemented to create a dataset with features needed for scoring. The final model is then scored by executing the python codes for model prediction.
+2.5. Step 5: Model maintenance
+This step involves monitors the model usage, retirement, and replacement. Model changes may be necessitated when there is performance deterioration or changes in the data or business environment. These changes need to be explicitly captured. For RHCP, we created a model maintenance plan that covers how to monitor the model performance based on the custom performance metric (i.e., 1/3 × precision + 2/3 × recall). If the model performance is below 60%, it will trigger a recalibration of the previously trained models. Because all tasks in data cohort creation, feature engineering, and predictive modeling steps are implemented as reusable codes, the model recalibration process requires minimal manual interventions.
+3. Results
+Overall, all ML models in Table 1 have AUC values comparable to the published literature for palliative care prediction using administrative data.[17,24] Fig. 3 presents the receiver operating characteristic curve on the test set for three selected classifiers: AdaBoost (the best model), DT, and ANN.
+The current error rates are expected because the claims data do not accurately capture patients' medical conditions. For example, functional status and severity of illness are reported as the most important predictors for mortality risks[9], but these are not available in the administrative claims data. Instead, we used diagnosis codes, utilization patterns, and utilization cost as proxies for these conditions.
+
+Additionally, our models have a balanced precision and recall. Some studies may have a higher precision but a lower recall. For example, Avati, Jung, Harman, et al. [8] presented a deep learning model for palliative care prediction with a precision of 0.90, but the recall was only 0.32. Thus, their model's F-score was much lower than ours. More importantly, the main objective of our model is to identify as many target patients as possible who would most likely need palliative care and then go through RHCP's internal approval process (e.g., physician approvals, physician referrals, patient approvals). Thus, RHCP was satisfied with the results and selected the AdaBoost model as the final model for deployment. We further evaluated the outcomes of the deployed model on the palliative care program enrollment in two areas: cost reduction and care quality improvement, as discussed below.
+3.1. Cost reduction
+For the cost reduction, the evaluation group included 138 patients scored by our model who were enrolled in the palliative care program between March and August 2019. The control group included patients scored by our model who passed away (i.e., true positives) in 2019 but were not enrolled in the palliative care program. We calculated the preand post- average utilization cost per eligible month for each group, as shown in Table 2.
+We then calculated the average cost change for the evaluation group per month and the control group. An independent two-sample Welch's ttest was conducted to compare the average cost change for the evaluation group and the control group. The result (see Table 3) showed a significant difference in the average cost change for the evaluation group (M=$1291.5, SD=$9181) and the control group (M=$4845.9, SD=$12148.4); t (df = 349.66), p = 0.0014. The result suggests that the increased cost for the evaluation group is statistically lower than the control group.
+
+3.2. Care quality evaluation
+A program satisfaction survey was distributed to those who enrolled in the palliative care program to evaluate the participants' experience with the palliative care program. The survey measures the participants' views of non-clinic and clinical staff, their experience with the care manager, their quality-of-life improvement, and their overall experience with the palliative care program. Appendix D2 includes the survey questions.
+
+Fig. 3. Receiver Operating Characteristic (ROC) of the model performance.
+
+Table 2 Pre and post average utilization cost for the evaluation group and the control group.
+
+Average Utilization cost per month
+
+Pre
+
+Post
+
+Evaluation Cohort(N = 138)
+Control Group (N = 236)
+
+For 12-month prior to the enrollment date.
+For 12-month prior to the date being scored as the palliative care beneficiaries.
+
+For 12-month after the enrollment date if alive or for the months between the enrollment date and deceased date. For the months between the enrollment date and deceased date.
+
+5
+
+H. Zhang et al.
+
+Table 3 Independent Two-samples Test Result.
+
+Equality of variance
+
+Variance
+
+F
+
+Sig.
+
+Equal Unequal
+
+1.75
+
+0.0003
+
+T-test for Equality of Means
+
+t
+
+df
+
+Sig. (2-tailed)
+
+2.99
+
+382
+
+0.0030
+
+3.23
+
+349.66
+
+0.0014
+
+Mean Difference
+3554.4 3554.4
+
+Journal of Biomedical Informatics 123 (2021) 103922
+
+Std. Error Difference
+1188.5 1100.3
+
+95% CL of the Difference
+
+Lower
+
+Upper
+
+1217.5 1390.3
+
+5891.3 5718.5
+
+Administrated by a third-party certified survey vendor, the survey was administered through the mail and phone calls from October 2019 to December 2019. 263 palliative care beneficiaries were randomly selected to participate, and 77 completed the survey with a response rate of 29%. For care quality improvement, we calculated summary rates of positive responses (i.e., yes, strongly agree, and agree) for the following questions: (1) 74.6% of the participants believed that their quality of life got better because of the palliative care; (2) 89.6% of the participants would recommend the palliative care program to others; and (3) 82.1% of the participants rated their overall experience with the program as positive. The survey results confirmed the increased care quality for the palliative care beneficiaries.
+4. Discussion
+Existing literature has investigated how to predict the need for palliative care or mortality risks using a variety of data sources, focusing on improving the performance of statistic learning or machine learning (ML) models. Yet, challenges related to proactively select potential palliative care beneficiaries from a population health management perspective have not been adequately addressed. The proposed GMLP is a generalizable process for health plan providers and policymakers to better identify palliative care needs within their managed population, which in turn, improve the care quality and reduce the costs for these at the end of life. The research contributions of our study include a novel data pull strategy, the continuously scoring palliative care beneficiaries using administrative data only, and the GMLP itself.
+First, the proposed "data pull strategy" uses the patient's virtual past (the baseline window) to predict the probability of future survival. This enables the organization to use a sliding window to score palliative care beneficiaries on a rolling basis. This is innovative because existing studies related to palliative care and mortality risk prediction mostly use retrospective datasets that do not consider continuously scoring required by the health plans. Additionally, our data pull strategy included inclusion/exclusion criteria that are based on not only published literature but also the characteristics of the population. For example, the exclusion/inclusion criteria described in the case study (i. e., the 12 chronic conditions) were finalized by the medical director at the health plan. This is different from published research that focused on the exclusion/inclusion criteria for a subset of the population (e.g., those with a specific disease). Other health plans may adopt a similar approach but change the inclusion/exclusion criteria based on their member characteristics.
+Second, as discussed previously, published research in mortality risk and palliative care predictions mostly uses retrospective cohort data. To the best of our knowledge, no research has supported the continuous scoring of palliative care beneficiaries that can be adopted within the business process of health plans. The continuous scoring requires the associate data for scoring to be directly pulled and transformed from the data source. It is enabled through the careful design of data cohort creation and feature engineering tasks. Further, model maintenance and recalibration are often necessitated because of the changes in the data or business environment. The continuous scoring requires minimal manual interventions in the model recalibration process. It is achieved through the automated tasks in data cohort creation, feature engineering, and predictive modeling steps.
+
+Last but not least, the GMLP itself is a novel approach that can be applied agnostically to the data and specific ML algorithms. It embeds best practices for ML in a practical architecture for advising practitioners on how to deploy ML models for clinical purposes. For example, the feature engineering step includes the common feature categories that are used in risk stratification for population health management. Additionally, we show that utilization patterns, as an estimator of the disease severity or progression, can be used to improve comorbidity-adjusted risk scores. The best practices also include a resampling strategy for imbalanced real-world training data, a custom metric that reflects the different business objectives of various organizations, experimenting with different feature selection methods, and modeling with hyperparameter tuning. While ML experts are well trained with these best practices, the GMLP and its use case example can serve as a methodological guide for practitioners to apply ML in solving real-world clinical challenges.
+Our study also has several practical contributions for palliative care management specifically and population health management in general.
+First, while the need for palliative care in the US has grown exponentially,[39] current research shows that the palliative care enrollment stays low comparing to the actual needs.[40] For example, although palliative care is a covered benefit, many RHCP members are not aware that they can receive this benefit. RHCP integrated the study results into their outreach efforts to assist in identifying those members who would most benefit from the palliative care program. The GMLP enabled RHCP to better identify potentially eligible members, where the members may request a physician referral to trigger the RHCP's internal approval process. Other health plans and policymakers could also use the GMLP to enhance their outreach for potential palliative care beneficiaries.
+Second, although the case study was a pilot program to understand the feasibility and reliability of using the GLMP to identify those in the end-of-life stages, the results showed that members with similar mortality risk scores who enrolled in the palliative care had lower overall healthcare costs and better quality of life than those who were not. The findings not only support the benefits of palliative care identified in the literature, but also are important in supporting ongoing evaluation of care management programs provided by the health plans (payers).
+Lastly, the GMLP can be easily adapted by payers for other datadriven risk-stratified care management workflows, which have been proven to be essential in improving population health outcomes, reducing costs, and increasing care quality.[41] Risk-stratified care management generally involves defining the population at risk, then systematically assigning risk levels, and subsequently employing a population-based care management approach to mitigate the risk. Such a process faces similar challenges we highlighted in the introduction for palliative care prediction. For example, complex-care management programs are a promising model to better care for high-need, high-cost patients.[42] A health plan can follow the same steps as outlined in Fig. 1 to identify members for complex-care management, but change the inclusion/exclusion criteria (e.g., a different set of chronic conditions or ICD-10 codes), the length of prediction, and the target (e.g., top 5% high costs members as positive cases) to pull the data, and use other comorbidity-adjusted risk indexes (e.g., Rx-Risk comorbidity index[43]) in feature engineering.
+
+6
+
+H. Zhang et al.
+5. Conclusion
+This paper presents a Generalized Machine Learning Pipeline (GMLP) to identify palliative care beneficiaries using administrative claims data. The GMLP encapsulates not only the domain knowledge of population health management and mortality risk prediction, but also the process knowledge (e.g., feature engineering, imbalanced dataset, and feature selection) of ML. The real-world data from a regional health plan showed that the GMLP could flag and take proactive action to enroll end-of-life care populations for palliative care. It also demonstrated that the GMLP helps improve the care quality while reducing the cost. To the best of our knowledge, our study is the first attempt to embed a generalized ML process within the business process of identifying potential palliative care beneficiaries. It can be easily adapted by payers and healthcare policymakers. Additionally, the GMLP may be adapted for other data-driven risk-stratified care management workflows that have similar needs for continuously scoring data pull strategy, expert-driven inclusion/exclusion criteria for defining the included population, feature engineering based on utilization patterns and comorbidity, and resampling for minority classes.
+The study has several limitations. First, a closer look at error cases (false positives and false negatives) revealed a high false-positive rate, where these false-positive cases were mostly in top utilization cost quantiles. This is a limitation when attempting to use a one-year utilization cost as an indicator for mortality risk. It is known that for many high-utilization and high-cost users, the need is temporary, and they would regress to lower utilization over time[44]. Our model could not distinguish between those with only transient high utilization costs and those with high utilization costs because of high mortality risks. Future research may experiment with a new feature for Persistent High Utilization Cost (PHUC), defined as patients with high utilization cost for two consecutive years[45]. Another limitation of our study is that RHCP members are regional Medi-Cal and Medicare recipients who are not representative of the general population in the US. Because RHCP is the payer for members who are eligible for both Medi-Cal and Medicare, a separate sub-group analysis of the variabilities in palliative care risk between Medi-Cal and Medicare populations is not possible. Future research may apply the GMLP in other national profit and non-profit health plan providers or use Medicaid and Medicare billing records for cross-institution analyses.
+Funding
+This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+CRediT authorship contribution statement
+Hengwei Zhang: Conceptualization, Data curation, Formal analysis, Writing - review & editing. Yan Li: Conceptualization, Methodology, Validation, Supervision, Visualization, Writing - original draft, Writing - review & editing. William McConnell: Resources, Writing - review & editing.
+Declaration of Competing Interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Appendix A. Supplementary material
+Supplementary data to this article can be found online at https://doi. org/10.1016/j.jbi.2021.103922.
+
+Journal of Biomedical Informatics 123 (2021) 103922
+References
+[1] P.A. Pizzo, D.M. Walker, P.A. Bomba, et al., Dying in America: Improving quality and honoring individual preferences near the end of life, National Academies Press, Washington, DC, 2015.
+[2] M.T. Hughes, T.J. Smith, The growth of palliative care in the United States, Annu. Rev. Public Health 35 (1) (2014) 459-475.
+[3] C.D. Woodrell, L. Hansen, T.D. Schiano, et al., Palliative care for people with hepatocellular carcinoma, and specific benefits for older adults, Clin. Ther. 40 (4) (2018) 512-525.
+[4] Herna´ndez EP. State of California Senate Bill No. 1004, Chapter 574. 2014. [5] K. Jung, S.E.K. Sudat, N. Kwon, et al., Predicting need for advanced illness or
+palliative care in a primary care population using electronic health record data, J. Biomed. Inform. 92 (2019) 103115, https://doi.org/10.1016/j.jbi.2019.103115. [6] T. Morita, J. Tsunoda, S. Inoue, et al., The Palliative Prognostic Index: a scoring system for survival prediction of terminally ill cancer patients, Support. Care Cancer 7 (3) (1999) 128-133. [7] Gwilliam B, Keeley V, Todd C, et al. Development of prognosis in palliative care study (PiPS) predictor models to improve prognostication in advanced cancer: prospective cohort study. Bmj. 2011;343:d4920. https://doi.org/10.1136/bmj. d4920. [8] A. Avati, K. Jung, S. Harman, et al., Improving palliative care with deep learning, BMC Med. Inf. Decis. Making 18 (S4) (2018), https://doi.org/10.1186/s12911018-0677-8. [9] Mazzaglia G, Roti L, Corsini G, et al. Screening of older community-dwelling people at risk for death and hospitalization: The Assistenza Socio-Sanitaria in Italia project. J. Am. Geriatrics Soc. 2007;55(12):1955-1960. https://doi.org/10.1111/j. 1532-5415.2007.01446.x. [10] Dram´e M, Novella J, Lang P, et al. Derivation and validation of a mortality-risk index from a cohort of frail elderly patients hospitalised in medical wards via emergencies: the SAFES study. Eur. J. Epidemiol. 2008;23(12):783-791. htt ps://doi.org/10.1007/s10654-008-9290-y. [11] M.E. Charlson, P. Pompei, K.L. Ales, et al., A new method of classifying prognostic comorbidity in longitudinal studies: development and validation, J. Chronic Dis. 40 (5) (1987) 373-383. [12] W.A. Ghali, R.E. Hall, A.K. Rosen, et al., Searching for an improved clinical comorbidity index for use with ICD-9-CM administrative data, J. Clin. Epidemiol. 49 (3) (1996) 273-278. [13] R.A. Deyo, D.C. Cherkin, M.A. Ciol, Adapting a clinical comorbidity index for use with ICD-9-CM administrative databases, J. Clin. Epidemiol. 45 (6) (1992) 613-619. [14] P.S. Romano, L.L. Roos, J.G. Jollis, Presentation adapting a clinical comorbidity index for use with ICD-9-CM administrative data: differing perspectives, J. Clin. Epidemiol. 46 (10) (1993) 1075-1079. [15] W. D'Hoore, C. Sicotte, C. Tilquin, Risk adjustment in outcome assessment: the Charlson comorbidity index, Methods Inf. Med. 32 (05) (1993) 382-387. [16] Louis DZ, Robeson M, McAna J, et al. Predicting risk of hospitalisation or death: a retrospective population-based analysis. BMJ open. 2014;4(9):e005223.https:// doi.org/10.1136/bmjopen-2014-005223. [17] M.D. Bari, D. Balzi, A.T. Roberts, et al., Prognostic stratification of older persons based on simple administrative data: development and validation of the "Silver Code", to be used in emergency department triage, J. Gerontol. Ser. A: Biomed. Sci. Med. Sci. 65A (2) (2010) 159-164. [18] M. Makar, M. Ghassemi, D.M. Cutler, et al., Short-term mortality prediction for elderly patients using Medicare claims data, Int. J. Mach. Learn. Comput. 5 (3) (2015) 192-197. [19] L.S.F. de Carvalho, S. Gioppato, M.D. Fernandez, et al., Machine Learning Improves the Identification of Individuals With Higher Morbidity and Avoidable Health Costs After Acute Coronary Syndromes, Value in Health. 23 (12) (2020) 1570-1579. [20] D.M. Berwick, T.W. Nolan, J. Whittington, The triple aim: care, health, and cost, Health Aff. 27 (3) (2008) 759-769. [21] S.J. Crane, E.E. Tung, G.J. Hanson, et al., Use of an electronic administrative database to identify older community dwelling adults at high-risk for hospitalization or emergency department visits: the elders risk assessment index, BMC Health Serv. Res. 10 (1) (2010), https://doi.org/10.1186/1472-6963-10-338. [22] E.W. Campion, A.S. Kelley, R.S. Morrison, Palliative care for the seriously ill, N. Engl. J. Med. 373 (8) (2015) 747-755. [23] Organization WH. Strengthening of palliative care as a component of integrated treatment throughout the life course. J. Pain Palliative Care Pharmacotherapy. 2014;28(2):130-134. https://doi.org/10.3109/15360288.2014.911801. [24] J.J. Gagne, R.J. Glynn, J. Avorn, R. Levin, S. Schneeweiss, A combined comorbidity score predicted mortality in elderly patients better than existing scores, J. Clin. Epidemiol. 64 (7) (2011) 749-759. [25] H. Quan, V. Sundararajan, P. Halfon, et al., Coding algorithms for defining comorbidities in ICD-9-CM and ICD-10 administrative data, Med. Care 43 (11) (2005) 1130-1139. [26] H. Quan, B. Li, C.M. Couris, et al., Updating and validating the Charlson comorbidity index and score for risk adjustment in hospital discharge abstracts using data from 6 countries, Am. J. Epidemiol. 173 (6) (2011) 676-682. [27] K.J. O'Malley, K.F. Cook, M.D. Price, et al., Measuring diagnoses: ICD code accuracy, Health Serv Res. 40 (5p2) (2005) 1620-1639. [28] A´. Flo´rez-Tanus, D. Parra, J. Zakzuk, et al., Health care costs and resource utilization for different asthma severity stages in Colombia: a claims data analysis, World Allergy Organ. J. 11 (2018) 26, https://doi.org/10.1186/s40413-018-02054.
+
+7
+
+H. Zhang et al.
+[29] C.D. Poole, M. Lebmeier, R. Ara, et al., Estimation of health care costs as a function of disease severity in people with psoriatic arthritis in the UK, Rheumatology 49 (10) (2010) 1949-1956.
+[30] Y. Li, A. Vo, M. Randhawa, et al., Designing utilization-based spatial healthcare accessibility decision support systems: A case of a regional health plan, Decis. Support Syst. 99 (2017) 51-63.
+[31] Jiang Y, Hesser JE. Associations between health-related quality of life and demographics and health risks. Results from Rhode Island's 2002 behavioral risk factor survey. Health and quality of life Outcomes. 2006;4(1):14. https://doi. org/10.1186/1477-7525-4-14.
+[32] Niepert M, Gyssens M, Sayrafi B, et al. On the conditional independence implication problem: A lattice-theoretic approach. Artificial Intelligence. 2013; 202:29-51. https://doi.org/10.1016/j.artint.2013.06.005.
+[33] Y. Li, M.A. Thomas, K.-M. Osei-Bryson, A snail shell process model for knowledge discovery via data analytics, Decis. Support Syst. 91 (2016) 1-12.
+[34] N.V. Chawla, K.W. Bowyer, L.O. Hall, et al., SMOTE: synthetic minority oversampling technique, Journal of artificial intelligence research. 16 (2002) 321-357.
+[35] B. Xue, M. Zhang, W.N. Browne, et al., A survey on evolutionary computation approaches to feature selection, IEEE Trans. Evol. Comput. 20 (4) (2016) 606-626.
+[36] H. Liu, Z. Zhao, in: Computational Complexity, Springer New York, New York, NY, 2012, pp. 1790-1800, https://doi.org/10.1007/978-1-4614-1800-9_115.
+[37] M. Tan, I.W. Tsang, L. Wang, Minimax sparse logistic regression for very highdimensional feature selection, IEEE Trans. Neural Networks Learn. Syst. 24 (10) (2013) 1609-1622.
+
+Journal of Biomedical Informatics 123 (2021) 103922
+[38] Taylor P, Griffiths N, Bhalerao A. Redundant feature selection using permutation methods. Paper presented at: Automatic machine learning workshop2015.
+[39] B.A. Bowman, J.S. Twohig, D.E. Meier, Overcoming barriers to growth in homebased palliative care, J. Palliative Med. 22 (4) (2019) 408-412.
+[40] M.D. Aldridge, J. Hasselaar, E. Garralda, et al., Education, implementation, and policy barriers to greater integration of palliative care: a literature review, Palliat. Med. 30 (3) (2016) 224-239.
+[41] D. Cherkin, B. Balderson, R. Wellman, et al., Effect of low back pain riskstratification strategy on patient outcomes and care processes: the MATCH randomized trial in primary care, J. Gen. Intern. Med. 33 (8) (2018) 1324-1336.
+[42] D. Blumenthal, M.K. Abrams, Tailoring complex care management for high-need, high-cost patients, JAMA 316 (16) (2016) 1657-1658.
+[43] N.L. Pratt, M. Kerr, J.D. Barratt, et al., The validity of the Rx-Risk comorbidity index using medicines mapped to the anatomical therapeutic chemical (ATC) classification system, BMJ open. 8 (4) (2018) e021122, https://doi.org/10.1136/ bmjopen-2017-021122.
+[44] T.L. Johnson, D.J. Rinehart, J. Durfee, et al., For many patients who use large amounts of health care services, the need is intense yet temporary, Health Aff. 34 (8) (2015) 1312-1319.
+[45] S. Tamang, A. Milstein, H.T. Sørensen, et al., Predicting patient `cost blooms' in Denmark: a longitudinal population-based study, BMJ open. 7 (1) (2017) e011580, https://doi.org/10.1136/bmjopen-2016-011580.
+
+8
+
+

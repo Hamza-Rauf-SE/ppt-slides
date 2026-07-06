@@ -1,0 +1,2463 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Rauf | Research Meeting with Dr. Hengwei Zhang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* === THEME: SOFT EDITORIAL === */
+        :root {
+            --stage-bg: #1a1a1a;
+            --slide-bg: #F2EEDF;
+            --paper: #F2EEDF;
+            --paper-2: #ECE6D2;
+            --ink: #2A241B;
+            --ink-soft: #5C5345;
+            --pink: #E1A4C2;
+            --lemon: #D6DD63;
+            --blush: #E8C9B6;
+            --sage: #B7C7A8;
+            --lilac: #C9BEDC;
+            --card-fill: rgba(255, 255, 255, 0.55);
+            --rule-soft: rgba(42, 36, 27, 0.18);
+            --rule-medium: rgba(42, 36, 27, 0.35);
+            --font-display: "Cormorant Garamond", Garamond, serif;
+            --font-body: "Work Sans", sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.72s;
+        }
+
+        /* === BASE RESET === */
+        * {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        ol,
+        blockquote {
+            margin: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--ink);
+        }
+
+        /* ===========================================
+           FIXED 16:9 STAGE: MANDATORY BASE STYLES
+           Include this ENTIRE file in every presentation.
+           Slides are authored at 1920x1080 and scaled as a whole.
+           =========================================== */
+
+        /* 1. Lock the browser viewport */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: var(--stage-bg, #000);
+        }
+
+        /* 2. Full-window deck viewport */
+        .deck-viewport {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            background: var(--stage-bg, #000);
+        }
+
+        /* 3. Fixed 16:9 design canvas.
+           JavaScript sets transform: translate(...) scale(...). */
+        .deck-stage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            transform-origin: 0 0;
+            background: var(--slide-bg, #fff);
+        }
+
+        /* 4. Slides stack inside the fixed stage.
+           Content must be laid out at 1920x1080, not reflowed per device. */
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            background: var(--slide-bg, #fff);
+        }
+
+        .slide.active,
+        .slide.visible {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+        }
+
+        /* 5. Keep media inside authored slide bounds */
+        img,
+        video,
+        canvas,
+        svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* 6. Presentation chrome stays outside the slide design system */
+        .deck-controls {
+            position: fixed;
+            left: 50%;
+            bottom: 22px;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        /* 7. Print one fixed-size slide per page */
+        @media print {
+            html,
+            body {
+                width: 1920px;
+                height: auto;
+                overflow: visible;
+                background: #fff;
+            }
+
+            .deck-viewport {
+                position: static;
+                overflow: visible;
+                background: #fff;
+            }
+
+            .deck-stage {
+                position: static;
+                width: auto;
+                height: auto;
+                transform: none !important;
+                background: none;
+            }
+
+            .slide {
+                position: relative;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                width: 1920px;
+                height: 1080px;
+                break-after: page;
+                page-break-after: always;
+            }
+
+            .slide:last-child {
+                break-after: auto;
+                page-break-after: auto;
+            }
+
+            .deck-controls {
+                display: none !important;
+            }
+        }
+
+        /* 8. Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+
+        /* === TYPOGRAPHY === */
+        .serif {
+            font-family: var(--font-display);
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .serif em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .kicker,
+        .marker,
+        .pagedot,
+        .footer {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .body-copy,
+        .card p,
+        .pill,
+        li {
+            font-family: var(--font-body);
+        }
+
+        /* === SHARED SLIDE CHROME === */
+        .eyebrow {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+            font-family: var(--font-body);
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 0;
+            color: var(--ink);
+        }
+
+        .pagedot {
+            position: absolute;
+            top: 60px;
+            right: 80px;
+            font-size: 26px;
+            color: var(--ink-soft);
+        }
+
+        .footer {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 26px;
+            color: var(--ink-soft);
+        }
+
+        .slide-title {
+            position: absolute;
+            left: 80px;
+            top: 130px;
+            width: 1050px;
+            font-family: var(--font-display);
+            font-size: 88px;
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .slide-title em {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .slide-sub {
+            position: absolute;
+            right: 80px;
+            top: 148px;
+            width: 520px;
+            font-family: var(--font-display);
+            font-size: 28px;
+            line-height: 1.25;
+            font-style: italic;
+            color: var(--ink-soft);
+            text-align: right;
+        }
+
+        /* === ANIMATIONS === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.visible .delay-1 { transition-delay: 0.08s; }
+        .slide.visible .delay-2 { transition-delay: 0.16s; }
+        .slide.visible .delay-3 { transition-delay: 0.24s; }
+        .slide.visible .delay-4 { transition-delay: 0.32s; }
+        .slide.visible .delay-5 { transition-delay: 0.40s; }
+
+        /* === SOFT EDITORIAL COMPONENTS === */
+        .card {
+            border-radius: 28px;
+            background: var(--card-fill);
+            padding: 34px 36px;
+        }
+
+        .card.color-pink { background: var(--pink); }
+        .card.color-lemon { background: var(--lemon); }
+        .card.color-blush { background: var(--blush); }
+        .card.color-sage { background: var(--sage); }
+        .card.color-lilac { background: var(--lilac); }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 46px;
+            line-height: 1.04;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin-bottom: 16px;
+        }
+
+        .card h3 em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .card p,
+        .card li {
+            font-size: 24px;
+            line-height: 1.42;
+            color: var(--ink-soft);
+        }
+
+        .card ul {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .card strong,
+        .card.color-pink p,
+        .card.color-lemon p,
+        .card.color-blush p,
+        .card.color-sage p,
+        .card.color-lilac p {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: 7px 16px;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--rule-soft);
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .soft-rule {
+            border-top: 1px dashed var(--rule-soft);
+            padding-top: 18px;
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 72px;
+            line-height: 0.9;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .swatches {
+            position: absolute;
+            top: 80px;
+            right: 80px;
+            display: flex;
+            gap: 14px;
+        }
+
+        .swatches i {
+            width: 56px;
+            height: 56px;
+            display: block;
+            border-radius: 50%;
+        }
+
+        /* === COVER SLIDE === */
+        .s-cover .stack {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+        }
+
+        .s-cover .kicker {
+            font-size: 38px;
+            color: var(--ink-soft);
+        }
+
+        .s-cover h1 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 205px;
+            line-height: 0.93;
+            letter-spacing: 0;
+            max-width: 1410px;
+        }
+
+        .s-cover h1 em {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .s-cover .lede {
+            max-width: 1050px;
+            font-family: var(--font-body);
+            font-size: 30px;
+            line-height: 1.42;
+            color: var(--ink-soft);
+        }
+
+        .s-cover .contact-strip {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        /* === FOREWORD SLIDE === */
+        .s-foreword .left {
+            position: absolute;
+            left: 80px;
+            top: 176px;
+            width: 780px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .s-foreword .opener {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 50px;
+            line-height: 1.08;
+            color: var(--ink);
+        }
+
+        .s-foreword .opener::first-letter {
+            float: left;
+            font-size: 120px;
+            line-height: 0.85;
+            padding: 8px 14px 0 0;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .s-foreword .right {
+            position: absolute;
+            right: 80px;
+            top: 184px;
+            width: 780px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .s-foreword .credential-wall {
+            display: grid;
+            gap: 12px;
+        }
+
+        .s-foreword .proof-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .s-foreword .profile-proof {
+            position: relative;
+            border-radius: 28px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            box-shadow: 0 18px 34px rgba(42, 36, 27, 0.08);
+            overflow: visible;
+            transform-origin: center center;
+            transition: transform 220ms var(--ease-out-expo),
+                        box-shadow 220ms ease,
+                        background 220ms ease;
+        }
+
+        .s-foreword .profile-proof:hover,
+        .s-foreword .profile-proof:focus-within {
+            z-index: 30;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 26px 52px rgba(42, 36, 27, 0.18);
+        }
+
+        .s-foreword .proof-thumb {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            background: rgba(255, 255, 255, 0.92);
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .s-foreword .profile-proof .proof-thumb {
+            height: 132px;
+        }
+
+        .s-foreword .proof-thumb img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            transition: transform 220ms var(--ease-out-expo);
+        }
+
+        .s-foreword .profile-proof .proof-thumb img {
+            object-fit: contain;
+            object-position: center top;
+            background: #fff;
+        }
+
+        .s-foreword .proof-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .s-foreword .proof-title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            line-height: 1;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .s-foreword .proof-note {
+            font-size: 12px;
+            line-height: 1.3;
+            color: var(--ink-soft);
+            text-align: right;
+        }
+
+        .s-foreword .profile-proof .proof-meta {
+            margin-top: 8px;
+            justify-content: center;
+            text-align: center;
+            min-height: 42px;
+        }
+
+        .s-foreword .linkedin-proof {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: minmax(0, 2.7fr) minmax(190px, 0.95fr);
+            gap: 18px;
+            align-items: center;
+            padding: 14px 16px;
+        }
+
+        .s-foreword .linkedin-proof .proof-thumb {
+            height: 138px;
+        }
+
+        .s-foreword .linkedin-proof .proof-thumb img {
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .s-foreword .linkedin-proof .proof-meta {
+            min-height: 0;
+            margin-top: 0;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            text-align: left;
+            gap: 8px;
+        }
+
+        .s-foreword .linkedin-proof .proof-title {
+            font-size: 24px;
+            line-height: 0.95;
+        }
+
+        .s-foreword .linkedin-proof .proof-note {
+            font-size: 15px;
+            line-height: 1.35;
+            text-align: left;
+            max-width: 220px;
+        }
+
+        .credential-lightbox {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 44px 48px;
+            background: rgba(42, 36, 27, 0.18);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 180ms ease;
+            pointer-events: none;
+            z-index: 180;
+        }
+
+        .credential-lightbox.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .credential-lightbox-frame {
+            width: 920px;
+            height: min(900px, calc(100vh - 88px));
+            padding: 18px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(42, 36, 27, 0.16);
+            box-shadow: 0 32px 90px rgba(42, 36, 27, 0.28);
+            overflow: hidden;
+            transform: scale(0.96);
+            transition: transform 220ms var(--ease-out-expo);
+        }
+
+        .credential-lightbox.is-open .credential-lightbox-frame {
+            transform: scale(1);
+        }
+
+        .credential-lightbox.is-landscape .credential-lightbox-frame {
+            width: 1120px;
+            height: min(700px, calc(100vh - 88px));
+        }
+
+        .credential-lightbox.is-portrait .credential-lightbox-frame {
+            width: 700px;
+            height: min(920px, calc(100vh - 88px));
+        }
+
+        .credential-lightbox.is-scroll .credential-lightbox-frame {
+            width: 760px;
+            height: min(920px, calc(100vh - 88px));
+            overflow-y: auto;
+            scrollbar-gutter: stable;
+        }
+
+        .credential-lightbox-media {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .credential-lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center top;
+            display: block;
+            background: #fff;
+        }
+
+        .credential-lightbox.is-scroll .credential-lightbox-media {
+            height: auto;
+            overflow: visible;
+        }
+
+        .credential-lightbox.is-scroll img {
+            width: 100%;
+            height: auto;
+            object-fit: unset;
+            object-position: center top;
+        }
+
+        .s-foreword .profile-proof:hover,
+        .s-foreword .profile-proof:focus-within {
+            transform: none;
+        }
+
+        .s-foreword .profile-proof:hover .proof-thumb img,
+        .s-foreword .profile-proof:focus-within .proof-thumb img {
+            transform: scale(1.02);
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 100px;
+            line-height: 0.95;
+            font-weight: 500;
+            letter-spacing: 0;
+            color: var(--ink);
+        }
+
+        .stat-label {
+            margin-top: 12px;
+            font-size: 23px;
+            line-height: 1.35;
+            color: var(--ink);
+        }
+
+        /* === GRID LAYOUTS === */
+        .three-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 300px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .readiness-slide .three-grid {
+            top: 242px;
+            bottom: 88px;
+        }
+
+        .readiness-slide .slide-title {
+            top: 120px;
+            width: 1320px;
+            font-size: 80px;
+            line-height: 0.95;
+        }
+
+        .readiness-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 30px 30px 26px;
+        }
+
+        .readiness-card h3 {
+            margin-bottom: 0;
+            font-size: 40px;
+            line-height: 1.02;
+        }
+
+        .readiness-card ul {
+            padding-left: 22px;
+        }
+
+        .readiness-card li {
+            font-size: 21px;
+            line-height: 1.34;
+            margin-bottom: 8px;
+        }
+
+        .readiness-card .evidence-strip {
+            margin-top: auto;
+            display: grid;
+            gap: 8px;
+        }
+
+        .readiness-card .evidence-strip.single {
+            grid-template-columns: 1fr;
+        }
+
+        .readiness-card .evidence-strip.double {
+            grid-template-columns: 1fr;
+        }
+
+        .readiness-card .evidence-strip.double .evidence-thumb {
+            height: 152px;
+        }
+
+        .readiness-card .evidence-thumb {
+            height: 220px;
+            border-radius: 18px;
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 14px 28px rgba(42, 36, 27, 0.08);
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .readiness-card .evidence-thumb img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+            background: #fff;
+            transition: transform 220ms var(--ease-out-expo);
+        }
+
+        .readiness-card .evidence-thumb:hover img,
+        .readiness-card .evidence-thumb:focus img {
+            transform: scale(1.02);
+        }
+
+        .two-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 285px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+        }
+
+        .four-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 300px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        .paper-showcase {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 292px;
+            bottom: 126px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .paper-tile {
+            position: relative;
+            border-radius: 30px;
+            padding: 22px 22px 24px;
+            background: var(--card-fill);
+            display: grid;
+            grid-template-rows: 292px auto;
+            gap: 20px;
+            overflow: visible;
+        }
+
+        .paper-tile:hover,
+        .paper-tile:focus-within {
+            z-index: 30;
+        }
+
+        .paper-tile.color-pink {
+            background: var(--pink);
+        }
+
+        .paper-tile.color-lemon {
+            background: var(--lemon);
+        }
+
+        .paper-tile.color-sage {
+            background: var(--sage);
+        }
+
+        .paper-shot {
+            width: 100%;
+            height: 292px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.62);
+            overflow: hidden;
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            cursor: zoom-in;
+        }
+
+        .paper-shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .paper-full-preview {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 650px;
+            height: 865px;
+            padding: 18px;
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(42, 36, 27, 0.16);
+            box-shadow: 0 30px 80px rgba(42, 36, 27, 0.33);
+            opacity: 0;
+            transform: translate(-50%, -49%) scale(0.94);
+            transition: opacity 180ms ease, transform 240ms var(--ease-out-expo);
+            pointer-events: none;
+            z-index: 80;
+        }
+
+        .paper-full-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top center;
+            border-radius: 16px;
+            background: #fff;
+            display: block;
+        }
+
+        .paper-shot:hover + .paper-full-preview,
+        .paper-shot:focus + .paper-full-preview {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .published-papers .eyebrow,
+        .published-papers .pagedot {
+            top: 42px;
+        }
+
+        .published-papers .slide-title {
+            top: 96px;
+            width: 990px;
+            font-size: 78px;
+            line-height: 0.96;
+        }
+
+        .published-papers .slide-sub {
+            top: 128px;
+            font-size: 26px;
+        }
+
+        .published-papers .paper-showcase {
+            top: 266px;
+            bottom: 110px;
+        }
+
+        .published-papers .paper-tile {
+            grid-template-rows: 328px auto;
+            gap: 18px;
+        }
+
+        .published-papers .paper-shot {
+            height: 328px;
+        }
+
+        .paper-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .paper-meta h3 {
+            font-family: var(--font-display);
+            font-size: 38px;
+            line-height: 1.02;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .paper-meta p {
+            font-size: 20px;
+            line-height: 1.32;
+            color: var(--ink);
+        }
+
+        .paper-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .paper-facts .pill {
+            font-size: 17px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.58);
+        }
+
+        .five-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 310px;
+            bottom: 250px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
+        .stack-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .mini-label {
+            font-family: var(--font-display);
+            font-size: 27px;
+            font-style: italic;
+            color: var(--ink-soft);
+            margin-bottom: 14px;
+        }
+
+        /* === CURRENT RESEARCH SLIDE === */
+        .current-research .slide-title {
+            top: 112px;
+            width: 1120px;
+            font-size: 76px;
+            line-height: 0.96;
+        }
+
+        .current-research .slide-sub {
+            top: 128px;
+            width: 560px;
+            font-size: 26px;
+        }
+
+        .current-research-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 300px;
+            bottom: 126px;
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            gap: 30px;
+        }
+
+        .emotion-panel {
+            border-radius: 34px;
+            padding: 26px;
+            background: var(--lilac);
+            display: grid;
+            grid-template-rows: 402px auto;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .emotion-figure {
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .emotion-figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        .paper-title-block {
+            border-radius: 24px;
+            padding: 22px 24px;
+            background: rgba(255, 255, 255, 0.64);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+        }
+
+        .paper-title-block .mini-label {
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .paper-title-block h3 {
+            font-family: var(--font-display);
+            font-size: 40px;
+            line-height: 1.03;
+            font-weight: 500;
+        }
+
+        .research-card-stack {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .current-research .card {
+            padding: 26px 30px;
+        }
+
+        .current-research .card h3 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .current-research .card li,
+        .current-research .card p {
+            font-size: 19px;
+            line-height: 1.27;
+        }
+
+        .current-research .card li {
+            margin-bottom: 5px;
+        }
+
+        .current-research .soft-rule {
+            padding-top: 10px;
+        }
+
+        /* === PAPER SLIDE === */
+        .s-paper .paper-card {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 320px;
+            bottom: 135px;
+            display: grid;
+            grid-template-columns: 0.95fr 1.15fr;
+            gap: 36px;
+        }
+
+        .s-paper .slide-title {
+            font-size: 72px;
+            width: 1260px;
+        }
+
+        .s-paper .quote-card {
+            border-radius: 36px;
+            background: var(--lemon);
+            padding: 56px 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .s-paper blockquote {
+            font-family: var(--font-display);
+            font-size: 58px;
+            line-height: 1.05;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .s-paper blockquote em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .s-paper .evidence {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .s-paper .card {
+            padding: 24px 26px;
+        }
+
+        .s-paper .card h3 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .s-paper .card p {
+            font-size: 21px;
+            line-height: 1.34;
+        }
+
+        .s-paper .step-num {
+            font-size: 62px;
+        }
+
+        /* === ALIGNMENT MATRIX === */
+        .alignment-table {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 315px;
+            bottom: 130px;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr 1fr;
+            grid-template-rows: 74px repeat(4, 1fr);
+            background: var(--card-fill);
+            border-radius: 28px;
+            padding: 8px;
+            overflow: hidden;
+        }
+
+        .alignment-table .cell {
+            padding: 20px 22px;
+            border-right: 1px dashed var(--rule-soft);
+            border-bottom: 1px dashed var(--rule-soft);
+            font-size: 22px;
+            line-height: 1.34;
+            color: var(--ink-soft);
+        }
+
+        .alignment-table .cell:nth-child(3n) {
+            border-right: 0;
+        }
+
+        .alignment-table .head-row {
+            font-family: var(--font-display);
+            font-size: 30px;
+            color: var(--ink);
+            border-bottom: 1.5px solid var(--rule-medium);
+        }
+
+        .alignment-table .row-label {
+            font-family: var(--font-display);
+            font-size: 34px;
+            line-height: 1.02;
+            color: var(--ink);
+        }
+
+        .alignment-table .last {
+            border-bottom: 0;
+        }
+
+        /* === RESEARCH IDEA SLIDES === */
+        .idea-hero {
+            position: absolute;
+            left: 80px;
+            top: 235px;
+            width: 620px;
+            bottom: 150px;
+            border-radius: 36px;
+            padding: 54px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--pink);
+        }
+
+        .idea-hero h2 {
+            font-family: var(--font-display);
+            font-size: 112px;
+            line-height: 0.96;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .idea-hero h2 em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .idea-panel {
+            position: absolute;
+            left: 740px;
+            right: 80px;
+            top: 235px;
+            bottom: 150px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .slide[data-label="Research Idea 1"] .idea-hero {
+            top: 182px;
+            bottom: 104px;
+        }
+
+        .slide[data-label="Research Idea 1"] .idea-panel {
+            top: 182px;
+            bottom: 104px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-hero {
+            top: 182px;
+            bottom: 104px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel {
+            top: 182px;
+            bottom: 104px;
+            gap: 24px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-card-icon {
+            width: 82px;
+            height: 82px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            box-shadow: 0 14px 26px rgba(42, 36, 27, 0.08);
+            flex: 0 0 auto;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card.color-pink .idea-card-icon {
+            background: rgba(247, 226, 236, 0.92);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card:not(.color-pink):not(.color-lilac):not(.color-lemon) .idea-card-icon {
+            background: rgba(198, 219, 186, 0.9);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card.color-lilac .idea-card-icon {
+            background: rgba(213, 202, 234, 0.92);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card.color-lemon .idea-card-icon {
+            background: rgba(230, 240, 183, 0.92);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-card-icon svg {
+            width: 42px;
+            height: 42px;
+            stroke: var(--ink);
+            stroke-width: 1.9;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card h3 {
+            font-size: 34px;
+            margin-bottom: 0;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card p,
+        .slide[data-label="Research Idea 2"] .idea-panel .card li {
+            font-size: 20px;
+            line-height: 1.28;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card li {
+            margin-bottom: 6px;
+        }
+
+        .kidney-figure {
+            margin-top: 14px;
+            height: 118px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .kidney-figure img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .pipeline-strip {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            bottom: 140px;
+            height: 74px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 18px;
+            background: var(--card-fill);
+            padding: 0 30px;
+            font-family: var(--font-display);
+            font-size: 25px;
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        /* === CHART STYLE === */
+        .chart-wrap {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 280px;
+            bottom: 145px;
+            display: grid;
+            grid-template-columns: 560px 1fr;
+            gap: 36px;
+        }
+
+        .roadmap {
+            background: var(--card-fill);
+            border-radius: 28px;
+            padding: 42px 46px;
+            position: relative;
+        }
+
+        .roadmap-line {
+            position: absolute;
+            left: 74px;
+            top: 88px;
+            bottom: 80px;
+            border-left: 2px dashed var(--rule-medium);
+        }
+
+        .roadmap-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 24px;
+            margin-bottom: 34px;
+        }
+
+        .roadmap-dot {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--lemon);
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 28px;
+            z-index: 2;
+        }
+
+        .roadmap-item h3 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 500;
+            line-height: 1.04;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-item p {
+            font-size: 23px;
+            line-height: 1.4;
+            color: var(--ink-soft);
+        }
+
+        /* === QUESTION SLIDE === */
+        .question-slide {
+            background: var(--pink);
+        }
+
+        .question-slide .eyebrow,
+        .question-slide .pagedot {
+            color: var(--ink);
+        }
+
+        .question-slide .slide-title {
+            top: 108px;
+            width: 1380px;
+        }
+
+        .questions {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 198px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .question-card {
+            border-radius: 36px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 50px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 24px;
+        }
+
+        .question-icon {
+            width: 92px;
+            height: 92px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            box-shadow: 0 16px 28px rgba(42, 36, 27, 0.08);
+        }
+
+        .question-card:nth-child(1) .question-icon {
+            background: rgba(230, 240, 183, 0.9);
+        }
+
+        .question-card:nth-child(2) .question-icon {
+            background: rgba(198, 219, 186, 0.9);
+        }
+
+        .question-card:nth-child(3) .question-icon {
+            background: rgba(213, 202, 234, 0.9);
+        }
+
+        .question-icon svg {
+            width: 46px;
+            height: 46px;
+            stroke: var(--ink);
+            stroke-width: 1.9;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .question-card h3 {
+            font-family: var(--font-display);
+            font-size: 62px;
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin: 0;
+        }
+
+        .question-card p {
+            font-size: 25px;
+            line-height: 1.45;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        /* === CLOSER === */
+        .s-closer {
+            background: var(--lemon);
+        }
+
+        .s-closer .center {
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            width: 1420px;
+            text-align: center;
+        }
+
+        .s-closer .marker {
+            font-size: 34px;
+            color: var(--ink);
+            margin-bottom: 18px;
+        }
+
+        .s-closer h2 {
+            font-family: var(--font-display);
+            font-size: 128px;
+            line-height: 0.94;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin-bottom: 22px;
+        }
+
+        .s-closer h2 em {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .s-closer p {
+            font-size: 25px;
+            line-height: 1.36;
+            color: var(--ink);
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .s-closer .thanks-note {
+            margin-bottom: 14px;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        /* === DECK UI === */
+        .deck-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(42, 36, 27, 0.72);
+            color: #F2EEDF;
+            font-family: var(--font-body);
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+            opacity: 0.28;
+            transition: opacity 0.25s ease;
+        }
+
+        .deck-controls:hover,
+        .deck-controls:focus-within {
+            opacity: 0.95;
+        }
+
+        .deck-controls button,
+        .edit-toggle {
+            appearance: none;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(242, 238, 223, 0.16);
+            color: #F2EEDF;
+            min-width: 34px;
+            height: 34px;
+            font-family: var(--font-body);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .progress-track {
+            width: 170px;
+            height: 5px;
+            border-radius: 999px;
+            background: rgba(242, 238, 223, 0.22);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: var(--lemon);
+            border-radius: inherit;
+        }
+
+        .edit-hotzone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            z-index: 10000;
+            cursor: pointer;
+        }
+
+        .edit-toggle {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(42, 36, 27, 0.78);
+            color: var(--paper);
+            transition: opacity 0.3s ease;
+        }
+
+        .edit-toggle.show,
+        .edit-toggle.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        [contenteditable="true"] {
+            outline: 2px dashed rgba(42, 36, 27, 0.45);
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-viewport">
+        <main class="deck-stage" id="deckStage">
+            <!-- Slide 1: Cover, adapted from the original PPT opening slide -->
+            <section class="slide s-cover active" data-label="Opening">
+                <div class="swatches reveal delay-1" aria-hidden="true">
+                    <i style="background: var(--pink)"></i>
+                    <i style="background: var(--lemon)"></i>
+                    <i style="background: var(--sage)"></i>
+                </div>
+                <div class="stack">
+                    <p class="kicker reveal delay-1" data-editable>Hamza Rauf - Prospective Graduate Researcher</p>
+                    <h1 class="reveal delay-2 serif" data-editable>Efficient AI, <em>LLMs + QLoRA</em>, and real-world deployment</h1>
+                    <p class="lede reveal delay-3" data-editable>Meeting with Dr. Hengwei Zhang about how my AI platform, RAG, compact LLM, and medical AI experience can support health informatics research.</p>
+                    <div class="contact-strip reveal delay-4">
+                        <a class="pill" href="mailto:hamzarauf.se@gmail.com" data-editable>hamzarauf.se@gmail.com</a>
+                        <a class="pill" href="https://scholar.google.com/citations?user=c-yjPVMAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" data-editable>Google Scholar</a>
+                        <a class="pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noreferrer" data-editable>LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Who I Am, adapted from the original PPT profile slide -->
+            <section class="slide s-foreword" data-label="Profile">
+                <div class="eyebrow">Who I Am</div>
+                <div class="pagedot">ii.</div>
+                <div class="left reveal delay-1">
+                    <p class="opener" data-editable>Hamza Rauf - Senior Software Engineer and Research Assistant with industry and research experience, and a strong interest in AI systems that work under real deployment constraints.</p>
+                    <div class="credential-wall reveal delay-2">
+                        <div class="proof-strip">
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" data-preview-alt="GRE certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="Hamza Rauf GRE certificate">
+                                    <img src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" alt="GRE certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>GRE 331</p>
+                                    <p class="proof-note" data-editable>Q165 / V166</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Ielts_Certificate.jpg" data-preview-alt="IELTS certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="IELTS certificate">
+                                    <img src="images/hamza_GRE_Certificate/Ielts_Certificate.jpg" alt="IELTS certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>IELTS 7.0</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Percentage-Certificate.jpg" data-preview-alt="Sukkur IBA percentage certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="Sukkur IBA percentage certificate">
+                                    <img src="images/hamza_GRE_Certificate/Percentage-Certificate.jpg" alt="Percentage certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>85% certificate</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Duolingo%20English%20Test.jpg" data-preview-alt="Duolingo English Test certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="Duolingo English Test certificate">
+                                    <img src="images/hamza_GRE_Certificate/Duolingo%20English%20Test.jpg" alt="Duolingo English Test certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>Duolingo English</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof linkedin-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza%20linkedin%20profile.png" data-preview-alt="Hamza Rauf LinkedIn profile screenshot" data-preview-mode="scroll">
+                                <div class="proof-thumb" tabindex="0" aria-label="Hamza Rauf LinkedIn profile screenshot">
+                                    <img src="images/hamza_GRE_Certificate/hamza%20linkedin%20profile.png" alt="Hamza Rauf LinkedIn profile screenshot">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>LinkedIn profile</p>
+                                    <p class="proof-note" data-editable>roles, tech stack, activity, and public profile</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card color-lemon reveal delay-2">
+                        <div class="stat-value" data-editable>331</div>
+                        <p class="stat-label" data-editable>GRE score, with IELTS 7.0 and a B.S. in Computer Science from Sukkur IBA University.</p>
+                    </div>
+                    <div class="card color-pink reveal delay-3">
+                        <div class="stat-value" data-editable>Top 5%</div>
+                        <p class="stat-label" data-editable>Top 5% of my class, with CGPA 3.31 / 85% and a strong base in data structures, HCI, and enterprise systems.</p>
+                    </div>
+                    <div class="card color-sage reveal delay-4">
+                        <div class="stat-value" data-editable>6+</div>
+                        <p class="stat-label" data-editable>Years of AI and software experience across backend, frontend, cloud, automation, and production systems.</p>
+                    </div>
+                    <div class="card color-lilac reveal delay-5">
+                        <div class="stat-value" data-editable>Lab fit</div>
+                        <p class="stat-label" data-editable>Research discipline, reliable engineering, hands-on model training, clear writing, and mentoring.</p>
+                    </div>
+                </div>
+                <div class="footer"><span></span><span>Prospective PhD conversation</span></div>
+            </section>
+
+            <!-- Slide 3: Academic and research achievements from the original PPT -->
+            <section class="slide readiness-slide" data-label="Readiness">
+                <div class="eyebrow">Evidence of readiness</div>
+                <div class="pagedot">iii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Academic and research <em>achievements</em></h2>
+                <div class="three-grid">
+                    <article class="card color-blush readiness-card reveal delay-1">
+                        <h3 data-editable>Academic proof</h3>
+                        <ul data-editable>
+                            <li>Won a fully funded merit scholarship as one of the top 100 students in the country.</li>
+                            <li>Earned distinction in 24 courses, including data structures, HCI, and enterprise app development.</li>
+                            <li>Received a professional job offer before graduation.</li>
+                        </ul>
+                        <div class="evidence-strip single">
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Hamza-scholarship-certificate.jpg" data-preview-alt="Hamza scholarship certificate" data-preview-mode="landscape" aria-label="Preview Hamza scholarship certificate">
+                                <img src="images/hamza_GRE_Certificate/Hamza-scholarship-certificate.jpg" alt="Hamza scholarship certificate">
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card color-sage readiness-card reveal delay-2">
+                        <h3 data-editable>Research proof</h3>
+                        <ul data-editable>
+                            <li>Worked as a Research Assistant with Dr. Umair Khan, a Stanford top 2% scientist.</li>
+                            <li>Published multiple papers, including first-author Q1 work in Complex &amp; Intelligent Systems and co-authored Q1 work in Engineering Applications of Artificial Intelligence.</li>
+                            <li>Worked with systematic reviews, surveys, evaluation metrics, LaTeX, Atlas.ti, and SPSS.</li>
+                        </ul>
+                        <div class="evidence-strip double">
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/umair%20google%20schoalr%20profile.png" data-preview-alt="Dr Umair Khan Google Scholar profile" data-preview-mode="scroll" aria-label="Preview Dr Umair Khan Google Scholar profile">
+                                <img src="images/hamza_GRE_Certificate/umair%20google%20schoalr%20profile.png" alt="Dr Umair Khan Google Scholar profile">
+                            </div>
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza%20google%20schoalr%20profile.png" data-preview-alt="Hamza Rauf Google Scholar profile" data-preview-mode="scroll" aria-label="Preview Hamza Rauf Google Scholar profile">
+                                <img src="images/hamza_GRE_Certificate/hamza%20google%20schoalr%20profile.png" alt="Hamza Rauf Google Scholar profile">
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card color-lilac readiness-card reveal delay-3">
+                        <h3 data-editable>Recognition</h3>
+                        <ul data-editable>
+                            <li>Employee of the Year in both 2023 and 2024.</li>
+                            <li>Section leader at Stanford Code in Place 2024.</li>
+                            <li>Part of the winning team at the NETSOL AI Hackathon.</li>
+                        </ul>
+                        <div class="evidence-strip double">
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/standford.jpg" data-preview-alt="Stanford certificate" data-preview-mode="landscape" aria-label="Preview Stanford certificate">
+                                <img src="images/certificates/standford.jpg" alt="Stanford certificate">
+                            </div>
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/harvard.jpg" data-preview-alt="Harvard certificate" data-preview-mode="landscape" aria-label="Preview Harvard certificate">
+                                <img src="images/certificates/harvard.jpg" alt="Harvard certificate">
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Research readiness</span><span>scholarship - publication - leadership</span></div>
+            </section>
+
+            <!-- Slide 4: Published work from the original PPT, reframed for health informatics -->
+            <section class="slide published-papers" data-label="AI Foundation">
+                <div class="eyebrow">Published work</div>
+                <div class="pagedot">iv.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Research experience: efficient and <em>deployable AI</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>These papers show how I move from model design to experiments, publication, and real deployment limits.</p>
+                <div class="paper-showcase">
+                    <article class="paper-tile color-pink reveal delay-1">
+                        <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Efficient multilingual spam detection paper">
+                            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="First page of Efficient multilingual spam detection paper">
+                        </div>
+                        <div class="paper-full-preview" aria-hidden="true">
+                            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="">
+                        </div>
+                        <div class="paper-meta">
+                            <h3 data-editable>Efficient multilingual spam detection on resource-constrained devices</h3>
+                            <div class="paper-facts" data-editable>
+                                <span class="pill">Complex &amp; Intelligent Systems</span>
+                                <span class="pill">Impact factor: 5</span>
+                                <span class="pill">Q1 journal</span>
+                            </div>
+                            <p data-editable>Built a 21-language dataset and fine-tuned Gemma 3, Qwen 3, and Llama 3.2 with 4-bit QLoRA. The best result reached about 90% accuracy and 0.88 F1.</p>
+                        </div>
+                    </article>
+                    <article class="paper-tile color-lemon reveal delay-2">
+                        <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Comparative analysis paper">
+                            <img src="images/papers/Comparative%20analysis%20of%20advanced%20machine%20learning%20models.jpg" alt="First page of Comparative analysis of advanced machine learning models paper">
+                        </div>
+                        <div class="paper-full-preview" aria-hidden="true">
+                            <img src="images/papers/Comparative%20analysis%20of%20advanced%20machine%20learning%20models.jpg" alt="">
+                        </div>
+                        <div class="paper-meta">
+                            <h3 data-editable>Comparative analysis of advanced machine learning models for second-grade liquid</h3>
+                            <div class="paper-facts" data-editable>
+                                <span class="pill">Engineering Applications of Artificial Intelligence</span>
+                                <span class="pill">Impact factor: 8.0</span>
+                                <span class="pill">Q1</span>
+                            </div>
+                            <p data-editable>Compared ANN-LM and Gaussian Process Regression as fast surrogate models for expensive numerical simulations, including uncertainty-aware prediction.</p>
+                        </div>
+                    </article>
+                    <article class="paper-tile color-sage reveal delay-3">
+                        <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Generative AI cyber security paper">
+                            <img src="images/papers/using%20En-ai%20fro%20security.jpg" alt="First page of Generative AI cyber security paper">
+                        </div>
+                        <div class="paper-full-preview" aria-hidden="true">
+                            <img src="images/papers/using%20En-ai%20fro%20security.jpg" alt="">
+                        </div>
+                        <div class="paper-meta">
+                            <h3 data-editable>Using Generative AI for simulating cyber security attacks and defense mechanisms</h3>
+                            <div class="paper-facts" data-editable>
+                                <span class="pill">Spectrum of Engineering Sciences</span>
+                                <span class="pill">Impact factor: N/A</span>
+                                <span class="pill">2025</span>
+                            </div>
+                            <p data-editable>Used generative AI for cyber threat modeling, attack simulation, and defense evaluation.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Research experience</span><span>efficient models - synthetic data - evaluation</span></div>
+            </section>
+
+            <!-- Slide 5: Current research from the original PPT, adapted to this meeting context -->
+            <section class="slide current-research" data-label="Professor Zhang">
+                <div class="eyebrow">Current research</div>
+                <div class="pagedot">v.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Bridging language, signals, and <em>context-rich classification</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>I can apply this same approach to patient narratives, survey responses, clinical notes, and early screening signals.</p>
+                <div class="current-research-grid">
+                    <article class="emotion-panel reveal delay-1">
+                        <div class="emotion-figure">
+                            <img src="images/embodied%20emotion%20classification.png" alt="Embodied emotion classification example showing text cues mapped to joy, anger, fear, surprise, sadness, and disgust">
+                        </div>
+                        <div class="paper-title-block">
+                            <p class="mini-label" data-editable>Current paper from my CV</p>
+                            <h3 data-editable>Embodied Emotion Classification via Small LLMs Using Prompting Strategies</h3>
+                        </div>
+                    </article>
+                    <div class="research-card-stack">
+                        <article class="card reveal delay-2">
+                            <h3 data-editable>Current question</h3>
+                            <ul data-editable>
+                                <li>Which prompting strategy works best for small LLMs on fine-grained embodied emotion classification?</li>
+                                <li>Compares zero-shot, k-shot, chain-of-thought, and chain-of-verification prompting.</li>
+                                <li>Measures macro and per-class F1 across Ekman's six emotions under limited compute.</li>
+                            </ul>
+                            <p class="soft-rule" data-editable>The deeper skill here is modeling indirect human signals under uncertainty, not only solving one embodied-AI task.</p>
+                        </article>
+                        <article class="card color-blush reveal delay-3">
+                            <h3 data-editable>How I connect it to health informatics</h3>
+                            <ul data-editable>
+                                <li>NLP can help structure patient language, survey responses, and care-management notes.</li>
+                                <li>Compact LLMs can support privacy-sensitive, lower-cost medical AI prototypes.</li>
+                                <li>Prompting, verification, and evaluation fit trustworthy health decision support.</li>
+                                <li>The same mindset can support early Alzheimer's screening and social determinants of health research.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Current research</span><span>small LLMs - prompting - evaluation - human signals</span></div>
+            </section>
+
+            <!-- Slide 6: Professional and teaching experience from the original PPT -->
+            <section class="slide s-paper" data-label="GMLP Paper">
+                <div class="eyebrow">Professional experience</div>
+                <div class="pagedot">vi.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Industry and teaching experience <em>with real AI systems</em></h2>
+                <div class="paper-card">
+                    <article class="quote-card reveal delay-1">
+                        <blockquote data-editable>My work has mostly been about turning AI ideas into reliable software that real users can use.</blockquote>
+                        <p class="marker" data-editable>Devsinc - CodingCrafts - Valyrian - mentoring</p>
+                    </article>
+                    <div class="evidence">
+                        <article class="card color-sage reveal delay-2">
+                            <h3 data-editable>Devsinc</h3>
+                            <p data-editable>Own services end to end, improve security and compliance workflows, and build RAG- and LLM-powered product features that are reliable in production.</p>
+                        </article>
+                        <article class="card color-lilac reveal delay-3">
+                            <h3 data-editable>CodingCrafts</h3>
+                            <p data-editable>Built full-stack AI products from 2022 to 2025, including agentic workflows, OCR, RAG, tool calling, and SaaS automation features.</p>
+                        </article>
+                        <article class="card color-pink reveal delay-4">
+                            <h3 data-editable>Valyrian Systems</h3>
+                            <p data-editable>Moved monoliths to FastAPI microservices, improved latency, built async workflows, and made backend systems more reliable.</p>
+                        </article>
+                        <article class="card color-lemon reveal delay-5">
+                            <h3 data-editable>Teaching and mentoring</h3>
+                            <p data-editable>Mentored junior engineers, taught Python through Stanford Code in Place, and guided students on DevOps and cloud projects.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Professional experience</span><span>AI engineering - mentoring - deployment</span></div>
+            </section>
+
+            <!-- Slide 7: Hands-on evidence from the original PPT -->
+            <section class="slide" data-label="GMLP Process">
+                <div class="eyebrow">Hands-on evidence</div>
+                <div class="pagedot">vii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Selected projects with <em>research value</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>These projects show the kind of practical work I can contribute from day one.</p>
+                <div class="five-grid">
+                    <article class="card color-pink reveal delay-1">
+                        <h3 data-editable>HelloGov AI</h3>
+                        <p data-editable>Built OCR, LLM extraction, validation, and agentic portal automation for real user workflows.</p>
+                    </article>
+                    <article class="card color-blush reveal delay-2">
+                        <h3 data-editable>Medical image VLM</h3>
+                        <p data-editable>Fine-tuned Llama 3 Vision 11B with PEFT, LoRA, and 4-bit quantization.</p>
+                    </article>
+                    <article class="card color-lemon reveal delay-3">
+                        <h3 data-editable>Graph + hybrid RAG</h3>
+                        <p data-editable>Built context-aware retrieval with vector search, graph context, reranking, and LLM reasoning.</p>
+                    </article>
+                    <article class="card color-sage reveal delay-4">
+                        <h3 data-editable>Qwen3 reasoning</h3>
+                        <p data-editable>Built reward-guided reasoning alignment with structured outputs and custom evaluation.</p>
+                    </article>
+                    <article class="card color-lilac reveal delay-5">
+                        <h3 data-editable>MaYa AI platform</h3>
+                        <p data-editable>Built a multi-agent conversational platform with retrieval, reranking, frustration detection, and workflow-aware next-step guidance for merchants, funders, and sales teams.</p>
+                    </article>
+                </div>
+                <div class="pipeline-strip reveal delay-5" data-editable>
+                    my fit: medical AI, RAG, evaluation, workflow automation, deployable decision support
+                </div>
+                <div class="footer"><span>Selected projects</span><span>OCR - VLM - RAG - reasoning - multi-agent workflows</span></div>
+            </section>
+
+            <!-- Slide 8: Research-relevant skills from the original PPT -->
+            <section class="slide" data-label="Alignment">
+                <div class="eyebrow">Research-relevant skills</div>
+                <div class="pagedot">viii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Technical toolkit I can bring to <em>the lab</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Organized around the research direction I want to support: NLP, data management, visualization, machine learning, and health informatics.</p>
+                <div class="alignment-table reveal delay-3">
+                    <div class="cell head-row">Skill area</div>
+                    <div class="cell head-row">Tools and experience</div>
+                    <div class="cell head-row">How I would apply it</div>
+                    <div class="cell row-label">Foundation models</div>
+                    <div class="cell">LLMs, VLMs, LoRA, QLoRA, PEFT, quantization, prompting, reasoning evaluation.</div>
+                    <div class="cell">Use compact models for medical AI prototypes and lower-cost clinical decision support.</div>
+                    <div class="cell row-label">Data and AI pipelines</div>
+                    <div class="cell">Synthetic data, embeddings, vector DBs, hybrid search, reranking, PySpark and ETL foundations.</div>
+                    <div class="cell">Build population health data pipelines, continuous scoring, and RAG over policies and care criteria.</div>
+                    <div class="cell row-label">Systems and deployment</div>
+                    <div class="cell">FastAPI, Flask, Node.js, AWS, Azure, Docker, Kubernetes, CI/CD, observability, APIs.</div>
+                    <div class="cell">Turn research models into monitored, secure, workflow-ready health informatics tools.</div>
+                    <div class="cell row-label last">Research practice</div>
+                    <div class="cell last">Literature reviews, experiment design, evaluation metrics, scientific writing, mentoring.</div>
+                    <div class="cell last">Support publishable studies with reproducible baselines and clear evaluation.</div>
+                </div>
+                <div class="footer"><span>Technical toolkit</span><span>models - pipelines - systems - research practice</span></div>
+            </section>
+
+            <!-- Slide 9: Direct alignment, adapted to this research agenda -->
+            <section class="slide" data-label="Research Idea 1">
+                <div class="eyebrow">Direct alignment</div>
+                <div class="pagedot">ix.</div>
+                <div class="idea-hero reveal delay-1">
+                    <p class="marker" data-editable>My fit with this research agenda</p>
+                    <h2 data-editable>Health informatics needs <em>AI that fits real workflows</em></h2>
+                    <p class="body-copy" data-editable>The research direction I want to support brings together NLP, data systems, visualization, machine learning, population health, and digital health tools.</p>
+                </div>
+                <div class="idea-panel">
+                    <article class="card color-lemon reveal delay-2">
+                        <h3 data-editable>Research direction I want to support</h3>
+                        <p data-editable>Build prediction pipelines for population health, palliative care, social determinants of health, and early Alzheimer's screening.</p>
+                    </article>
+                    <article class="card reveal delay-3">
+                        <h3 data-editable>My experience</h3>
+                        <ul data-editable>
+                            <li>Fine-tuning small LLMs and VLMs with LoRA and QLoRA</li>
+                            <li>Building RAG pipelines, data workflows, agent systems, and evaluation setups</li>
+                            <li>Shipping AI systems with APIs, monitoring, reliability, and deployment limits</li>
+                        </ul>
+                    </article>
+                    <article class="card color-sage reveal delay-4">
+                        <h3 data-editable>Paper I read</h3>
+                        <p data-editable>The JBI paper uses a practical ML pipeline to predict who may benefit from palliative care, using claims data, rolling scoring, feature engineering, resampling, and model maintenance.</p>
+                    </article>
+                    <article class="card color-blush reveal delay-5">
+                        <h3 data-editable>Where I can contribute</h3>
+                        <p data-editable>I can contribute to RAG-based decision support, smaller medical AI models, reproducible ML pipelines, and prototypes that can move toward real use.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Direct alignment</span><span>health informatics - deployable AI - research fit</span></div>
+            </section>
+
+            <!-- Slide 10: Initial ideas to discuss, adapted from the original proposed direction slide -->
+            <section class="slide" data-label="Research Idea 2">
+                <div class="eyebrow">Initial ideas to discuss</div>
+                <div class="pagedot">x.</div>
+                <div class="idea-hero reveal delay-1" style="background: var(--sage);">
+                    <p class="marker" data-editable>Proposed research direction</p>
+                    <h2 data-editable>AI pipelines for <em>medical decision support</em></h2>
+                    <p class="body-copy" data-editable>I want to focus on care workflows, early Alzheimer's screening, and medical AI that is efficient, clear, and useful in practice.</p>
+                </div>
+                <div class="idea-panel">
+                    <article class="card color-pink reveal delay-2">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M11 16h26"></path>
+                                <path d="M11 24h18"></path>
+                                <path d="M11 32h14"></path>
+                                <path d="m31 29 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 1 - RAG for care management</h3>
+                        <p data-editable>Use RAG to explain risk scores using policy rules, care criteria, and model evidence.</p>
+                    </article>
+                    <article class="card reveal delay-3">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="10" y="11" width="28" height="20" rx="6"></rect>
+                                <path d="M18 37h12"></path>
+                                <path d="M24 31v6"></path>
+                                <path d="m18 21 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 2 - compact medical AI</h3>
+                        <ul data-editable>
+                            <li>Use PEFT and QLoRA to train smaller models with less compute.</li>
+                            <li>Test compact LLMs, VLMs, or hybrid ML models for early Alzheimer's and related screening tasks.</li>
+                            <li>Measure calibration, fairness, explainability, and deployment cost.</li>
+                        </ul>
+                    </article>
+                    <article class="card color-lilac reveal delay-4">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M11 25c5-8 11-12 18-12 6.5 0 8.5 4.5 8.5 8.5S35 31 29 31c-4.5 0-7.5-2.5-9.5-5.5"></path>
+                                <path d="M9 34c4-2 7-2 10 0"></path>
+                                <path d="M24 21h.01"></path>
+                                <path d="M30 21h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 3 - kidney tissue segmentation</h3>
+                        <p data-editable>Benchmark Meta Segment Anything 3 for kidney tissue segmentation with grounding prompts, then test whether fine-tuning can improve accuracy.</p>
+                        <div class="kidney-figure">
+                            <img src="images/glomerulus.jpg" alt="Glomerulus kidney tissue example">
+                        </div>
+                    </article>
+                    <article class="card color-lemon reveal delay-5">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M14 12h20"></path>
+                                <path d="M14 24h20"></path>
+                                <path d="M14 36h13"></path>
+                                <path d="m30 34 4 4 7-9"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>My starting contribution</h3>
+                        <p data-editable>Start with papers, a clear baseline, evaluation metrics, and a small prototype that can grow into a publishable study.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Proposed directions</span><span>RAG - compact models - segmentation - deployable ML</span></div>
+            </section>
+
+            <!-- Slide 11: Why me, adapted from the original contribution slide -->
+            <section class="slide" data-label="Execution Plan">
+                <div class="eyebrow">What I can contribute</div>
+                <div class="pagedot">xi.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Why <em>me</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>I can contribute on both the research side and the engineering side.</p>
+                <div class="chart-wrap">
+                    <article class="card color-blush reveal delay-1">
+                        <h3 data-editable>I can bridge research and engineering</h3>
+                        <p data-editable>I know how to design experiments and also how to deploy working AI systems. That matters in health informatics because even a strong model is only useful if it fits real workflows.</p>
+                        <p class="soft-rule" data-editable>I am comfortable working with constraints like limited compute, limited data, latency, privacy, reliability, and evaluation pressure.</p>
+                    </article>
+                    <article class="roadmap reveal delay-2">
+                        <div class="roadmap-line"></div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-dot">i.</div>
+                            <div>
+                                <h3 data-editable>Research</h3>
+                                <p data-editable>Published papers, systematic literature reviews, experiment design, scientific writing, and evaluation metrics.</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-dot" style="background: var(--pink);">ii.</div>
+                            <div>
+                                <h3 data-editable>Systems</h3>
+                                <p data-editable>AI platforms, backend services, cloud workflows, observability, CI/CD, and reliable deployment habits.</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-dot" style="background: var(--sage);">iii.</div>
+                            <div>
+                                <h3 data-editable>Models and impact</h3>
+                                <p data-editable>Small LLMs, VLMs, RAG, synthetic data, agents, and a clear goal of building useful medical AI systems.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Why me</span><span>research - systems - models - impact</span></div>
+            </section>
+
+            <!-- Slide 12: Research trajectory from the original PPT -->
+            <section class="slide question-slide" data-label="Discussion">
+                <div class="eyebrow">Research trajectory</div>
+                <div class="pagedot">xii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Short-term and long-term goals</h2>
+                <div class="questions">
+                    <article class="question-card reveal delay-1">
+                        <div class="question-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M12 36h24"></path>
+                                <path d="M16 30V15l8-5 8 5v15"></path>
+                                <path d="M20 22h8"></path>
+                                <path d="M24 18v8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>First 6-12 months</h3>
+                        <p data-editable>Learn the group's current projects, read the key papers, reproduce a baseline, and help build one focused health informatics prototype or pipeline.</p>
+                    </article>
+                    <article class="question-card reveal delay-2">
+                        <div class="question-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M13 34h22"></path>
+                                <path d="M17 28l5-5 4 4 9-10"></path>
+                                <path d="M31 17h4v4"></path>
+                                <rect x="10" y="10" width="28" height="28" rx="6"></rect>
+                            </svg>
+                        </div>
+                        <h3 data-editable>During graduate study</h3>
+                        <p data-editable>Build efficient AI methods for healthcare workflows, publish useful results, and create systems that work beyond clean benchmark datasets.</p>
+                    </article>
+                    <article class="question-card reveal delay-3">
+                        <div class="question-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M24 37c7-4 12-9.5 12-17V12l-12-4-12 4v8c0 7.5 5 13 12 17Z"></path>
+                                <path d="m19 24 4 4 7-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Long term</h3>
+                        <p data-editable>Become a researcher who builds efficient and trustworthy AI systems for real medical and human-centered settings.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Trajectory</span><span>baselines - useful research - real health impact</span></div>
+            </section>
+
+            <!-- Slide 13: Closing, adapted from the original thank-you slide -->
+            <section class="slide s-closer" data-label="Closing">
+                <div class="center">
+                    <p class="marker reveal delay-1" data-editable>Thank you</p>
+                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>health informatics research with real-world impact</em>.</h2>
+                    <p class="thanks-note reveal delay-3" data-editable>Thank you for your time and consideration.</p>
+                    <p class="reveal delay-4" data-editable>Questions and feedback are very welcome. I am especially interested in where my background in AI platforms, RAG pipelines, compact LLMs, and applied medical AI could be most useful.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="deck-controls" aria-label="Presentation controls">
+        <button id="prevSlide" title="Previous slide" aria-label="Previous slide">‹</button>
+        <span id="slideCounter">1 / 13</span>
+        <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+        <button id="nextSlide" title="Next slide" aria-label="Next slide">›</button>
+    </div>
+
+    <div class="edit-hotzone" title="Edit mode"></div>
+    <button class="edit-toggle" id="editToggle" title="Edit mode (E)" aria-label="Edit mode">E</button>
+    <div class="credential-lightbox" id="credentialLightbox" aria-hidden="true">
+        <div class="credential-lightbox-frame">
+            <div class="credential-lightbox-media">
+                <img id="credentialLightboxImage" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* === SLIDE PRESENTATION CONTROLLER === */
+        class SlidePresentation {
+            constructor() {
+                this.slides = Array.from(document.querySelectorAll(".slide"));
+                this.currentSlide = 0;
+                this.stage = document.getElementById("deckStage");
+                this.counter = document.getElementById("slideCounter");
+                this.progressFill = document.getElementById("progressFill");
+                this.setupStageScale();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupButtons();
+                const requestedSlide = Number(new URLSearchParams(window.location.search).get("slide"));
+                this.showSlide(Number.isFinite(requestedSlide) && requestedSlide > 0 ? requestedSlide - 1 : 0);
+            }
+
+            setupStageScale() {
+                const scale = () => {
+                    const viewport = window.visualViewport || document.documentElement;
+                    const viewportWidth = viewport.width || window.innerWidth;
+                    const viewportHeight = viewport.height || window.innerHeight;
+                    const factor = Math.min(viewportWidth / 1920, viewportHeight / 1080);
+                    const x = (viewportWidth - 1920 * factor) / 2;
+                    const y = (viewportHeight - 1080 * factor) / 2;
+                    this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+                };
+                scale();
+                window.addEventListener("resize", scale);
+                window.visualViewport?.addEventListener("resize", scale);
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener("keydown", (event) => {
+                    if (event.target && event.target.getAttribute("contenteditable") === "true") return;
+                    if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+                        event.preventDefault();
+                        this.next();
+                    }
+                    if (["ArrowLeft", "PageUp"].includes(event.key)) {
+                        event.preventDefault();
+                        this.prev();
+                    }
+                    if (event.key === "Home") this.showSlide(0);
+                    if (event.key === "End") this.showSlide(this.slides.length - 1);
+                });
+            }
+
+            setupTouchNav() {
+                let startX = 0;
+                let startY = 0;
+                this.stage.addEventListener("touchstart", (event) => {
+                    startX = event.changedTouches[0].clientX;
+                    startY = event.changedTouches[0].clientY;
+                }, { passive: true });
+                this.stage.addEventListener("touchend", (event) => {
+                    const dx = event.changedTouches[0].clientX - startX;
+                    const dy = event.changedTouches[0].clientY - startY;
+                    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+                        dx < 0 ? this.next() : this.prev();
+                    }
+                }, { passive: true });
+            }
+
+            setupWheelNav() {
+                let wheelLock = false;
+                window.addEventListener("wheel", (event) => {
+                    if (event.target && event.target.closest(".credential-lightbox.is-open")) return;
+                    if (wheelLock || Math.abs(event.deltaY) < 35) return;
+                    wheelLock = true;
+                    event.deltaY > 0 ? this.next() : this.prev();
+                    setTimeout(() => { wheelLock = false; }, 520);
+                }, { passive: true });
+            }
+
+            setupButtons() {
+                document.getElementById("prevSlide").addEventListener("click", () => this.prev());
+                document.getElementById("nextSlide").addEventListener("click", () => this.next());
+            }
+
+            showSlide(index) {
+                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+                this.slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle("active", slideIndex === this.currentSlide);
+                    slide.classList.toggle("visible", slideIndex === this.currentSlide);
+                });
+                this.counter.textContent = `${this.currentSlide + 1} / ${this.slides.length}`;
+                const pct = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressFill.style.width = `${pct}%`;
+            }
+
+            next() {
+                this.showSlide(this.currentSlide + 1);
+            }
+
+            prev() {
+                this.showSlide(this.currentSlide - 1);
+            }
+        }
+
+        /* === INLINE EDITING === */
+        class InlineEditor {
+            constructor() {
+                this.isActive = false;
+                this.storageKey = "hengwei-zhang-meeting-deck-edits-v4";
+                this.editables = Array.from(document.querySelectorAll("[data-editable]"));
+                this.load();
+            }
+
+            toggleEditMode() {
+                this.isActive = !this.isActive;
+                document.getElementById("editToggle").classList.toggle("active", this.isActive);
+                this.editables.forEach((element) => {
+                    element.setAttribute("contenteditable", this.isActive ? "true" : "false");
+                });
+                if (!this.isActive) this.save();
+            }
+
+            save() {
+                const values = this.editables.map((element) => element.innerHTML);
+                localStorage.setItem(this.storageKey, JSON.stringify(values));
+            }
+
+            load() {
+                const raw = localStorage.getItem(this.storageKey);
+                if (!raw) return;
+                try {
+                    const values = JSON.parse(raw);
+                    values.forEach((value, index) => {
+                        if (this.editables[index]) this.editables[index].innerHTML = value;
+                    });
+                } catch (error) {
+                    console.warn("Could not load saved edits", error);
+                }
+            }
+        }
+
+        /* === PROFILE CREDENTIAL PREVIEW === */
+        class CredentialPreview {
+            constructor() {
+                this.cards = Array.from(document.querySelectorAll("[data-preview-src]"));
+                this.overlay = document.getElementById("credentialLightbox");
+                this.image = document.getElementById("credentialLightboxImage");
+                this.hideTimer = null;
+                if (!this.cards.length || !this.overlay || !this.image) return;
+                this.bind();
+            }
+
+            bind() {
+                this.cards.forEach((trigger) => {
+                    const open = () => this.show(trigger);
+                    trigger.addEventListener("mouseenter", open);
+                    trigger.addEventListener("focusin", open);
+
+                    trigger.addEventListener("mouseleave", () => this.scheduleHide());
+                    trigger.addEventListener("focusout", (event) => {
+                        if (!trigger.contains(event.relatedTarget)) this.scheduleHide();
+                    });
+                });
+
+                this.overlay.addEventListener("mouseenter", () => this.cancelHide());
+                this.overlay.addEventListener("mouseleave", () => this.hide());
+                this.overlay.addEventListener("click", () => this.hide());
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") this.hide();
+                });
+            }
+
+            show(card) {
+                this.cancelHide();
+                const mode = card.dataset.previewMode || "portrait";
+                this.overlay.className = `credential-lightbox is-open is-${mode}`;
+                this.overlay.setAttribute("aria-hidden", "false");
+                this.image.src = card.dataset.previewSrc || "";
+                this.image.alt = card.dataset.previewAlt || "";
+            }
+
+            scheduleHide() {
+                this.cancelHide();
+                this.hideTimer = setTimeout(() => this.hide(), 320);
+            }
+
+            cancelHide() {
+                if (this.hideTimer) {
+                    clearTimeout(this.hideTimer);
+                    this.hideTimer = null;
+                }
+            }
+
+            hide() {
+                this.cancelHide();
+                this.overlay.className = "credential-lightbox";
+                this.overlay.setAttribute("aria-hidden", "true");
+                this.image.removeAttribute("src");
+                this.image.alt = "";
+            }
+        }
+
+        const deck = new SlidePresentation();
+        const editor = new InlineEditor();
+        const credentialPreview = new CredentialPreview();
+
+        /* === EDIT HOTZONE INTERACTIONS === */
+        const hotzone = document.querySelector(".edit-hotzone");
+        const editToggle = document.getElementById("editToggle");
+        let hideTimeout = null;
+
+        hotzone.addEventListener("mouseenter", () => {
+            clearTimeout(hideTimeout);
+            editToggle.classList.add("show");
+        });
+
+        hotzone.addEventListener("mouseleave", () => {
+            hideTimeout = setTimeout(() => {
+                if (!editor.isActive) editToggle.classList.remove("show");
+            }, 400);
+        });
+
+        editToggle.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+        editToggle.addEventListener("mouseleave", () => {
+            hideTimeout = setTimeout(() => {
+                if (!editor.isActive) editToggle.classList.remove("show");
+            }, 400);
+        });
+
+        hotzone.addEventListener("click", () => editor.toggleEditMode());
+        editToggle.addEventListener("click", () => editor.toggleEditMode());
+
+        document.addEventListener("keydown", (event) => {
+            if ((event.key === "e" || event.key === "E") && event.target.getAttribute("contenteditable") !== "true") {
+                editor.toggleEditMode();
+            }
+            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") {
+                event.preventDefault();
+                editor.save();
+            }
+        });
+
+        document.addEventListener("input", (event) => {
+            if (event.target && event.target.getAttribute("contenteditable") === "true") {
+                editor.save();
+            }
+        });
+
+        window.__deck = deck;
+    </script>
+</body>
+</html>
