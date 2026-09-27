@@ -1,0 +1,246 @@
+University of Colorado Colorado Springs
+Report It
+Give Today
+Apply Now
+Dr. Yanyan Zhuang
+College of Engineering and Applied Science
+
+Search UCCS
+Photo of Dr. Yanyan Zhuang
+Yanyan Zhuang, Ph.D.
+Associate Professor
+Email: yzhuang@uccs.edu
+
+Phone: 719-255-3062
+
+Address:  UCCS Cybersecurity Building, 3650 N Nevada Ave, Colorado Springs, CO 80907
+
+Office: Cybersecurity Building, A-120I
+
+About Dr. Yanyan Zhuang
+Welcome to my page. I am currently an Associate Professor at the Department of Computer Science at the University of Colorado, Colorado Springs (UCCS). I joined UCCS in 2016.
+
+I have been selected as the Networking Networking Women (N2Women) Advocate for advancing anti-harassment policy set by the ACM.
+
+I am a TPC member of Tridentcom’15.
+
+Find me on Google Scholar Citations or DBLP.
+
+“Either write something worth reading or do something worth writing.”
+and here conference paper is
+Poster Abstract: Operational Similarity in IoT Malware
+Development Life Cycle
+Minhajul Alam Rahat
+University of Colorado Colorado Springs, CO, USA
+mrahat@uccs.edu
+Vijay Banerjee
+University of Colorado Colorado Springs, CO, USA
+vbanerje@uccs.edu
+Gedare Bloom
+University of Colorado Colorado Springs, CO, USA
+gbloom@uccs.edu
+Yanyan Zhuang
+University of Colorado Colorado Springs, CO, USA
+yzhuang@uccs.edu
+ABSTRACT
+Due to hardware limitations and low cost, manufacturers often
+overlook security in widely deployed IoT devices, making them
+susceptible to attacks. Malware is one such attack that can cause
+extensive damage. In this work, we analyze a large corpus of IoT
+malware to extract features that emerge from the shared develop-
+ment and logistics in the malware development life cycle (MDLC),
+which we name operational features. We use these features to for-
+mulate a novel operational similarity concept for malware families
+and variants that complements existing code and behavior analysis.
+ACM Reference Format:
+Minhajul Alam Rahat, Vijay Banerjee, Gedare Bloom, and Yanyan Zhuang.
+2025. Poster Abstract: Operational Similarity in IoT Malware Development
+Life Cycle. In The 23rd ACM Conference on Embedded Networked Sensor
+Systems (SenSys ’25), May 6–9, 2025, Irvine, CA, USA. ACM, New York, NY,
+USA, 2 pages. https://doi.org/10.1145/3715014.3724036
+1 INTRODUCTION
+Over the past decade, IoT malware has rapidly evolved in sophisti-
+cation, leading to the emergence of a plethora of malware families
+and variants. The evolving IoT malware landscape makes malware
+analysis challenging. Prior work on malware analysis is based on
+two kinds of similarity analysis: code [ 4 ] and behavior [ 7 ]. Code
+similarity [ 4] operates on the binary images of (suspected) mal-
+ware samples to detect similarity in code structure [ 6 ]. Behavioral
+similarity [ 7 ] observes the execution or malware remnants to find
+patterns in malware behavior, such as network traffic or system
+calls. However, IoT malware families often reuse existing functions
+such as code that scans a network to discover vulnerable devices.
+Prominent families like Mirai also have variants whose code and
+behavior differ, e.g., by using different exploits to infect a device.
+Consequently, distinct malware families may exhibit high code or
+behavior similarity, and variants of the same family may appear
+and behave differently. Using only code or behavior similarity for
+malware analysis ignores such an underlying process.
+Anecdotal evidence suggests that a shared operation—provided
+by a digital quartermaster (DQ)—supports malware development
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+SenSys ’25, May 6–9, 2025, Irvine, CA, USA
+© 2025 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-1479-5/25/05.
+https://doi.org/10.1145/3715014.3724036
+Set
+Requirements
+Design Implement
+Configure
+BuildPackage
+P1
+P2 P3
+P4
+P6 P5
+Malware
+Author
+Digital
+Quartermaster
+Figure 1: The malware development life cycle (MDLC).
+and logistics for several advanced persistent threats (APTs) [ 5 ].
+Such a quartermaster may be considered a cyber arms dealer who
+supplies malware operators (e.g., APTs) with tools and weapons. In
+this work, we found evidence that such a shared operation lends it-
+self to a third type of similarity based on the operational features.
+Such features exist due to the shared services that support develop-
+ment and logistics operations across multiple campaigns and APTs.
+We systematically analyze over 26,000 IoT malware binaries [ 3],
+58.94 GB of malware traffic [ 2], and the source code [ 1] of 116
+variants of three IoT malware families: Mirai, Gafgyt, and Tsunami.
+Our analysis reveals shared communication infrastructure, exploits,
+evasion tactics, and other operational features.
+2 OVERVIEW
+The malware development life cycle (MDLC) consists of six major
+phases, as shown in Figure 1. The requirements phase (P1) outlines
+the malware’s goals and tactics, such as launching a DDoS attack.
+The design phase (P2) specifies the modules needed to fulfill these
+requirements. The implementation phase (P3) transforms the design
+into functional components. This is followed by the configuration
+phase (P4), where parameters are set to modify the behavior of
+implemented modules, e.g., the type of DDoS attack the malware
+executes and the packet structure used during attacks. The build
+phase (P5) compiles the malware into an executable format, and
+the package phase (P6) prepares it for deployment.
+The MDLC involves two entities. A malware author implements
+the malware from P1 to P3. The last three stages, P4, P5, and P6,
+are handled by a digital quartermaster (DQ) [ 5], who is responsible
+for distributing malware to malware operators, i.e., threat actors
+capable of establishing footholds within targeted devices and car-
+rying out attacks. Operational similarity emerges as a byproduct of
+these three stages. Malware implemented in the first three stages
+of MDLC is a baseline that allows the DQ to configure, build, and
+29
+SenSys ’25, May 6–9, 2025, Irvine, CA, USA Minhajul Alam Rahat, Vijay Banerjee, Gedare Bloom, and Yanyan Zhuang
+Table 1: Operational features extracted from datasets.
+MDLC Phase Operational Feature Feature Value(s) Description
+Configure
+Environment analysis Enumerated processes, e.g., /proc/$pid/exe,
+/proc/$pid/cmdline
+Extracts information about a victim device, such as process
+enumeration.
+Environment
+modification
+Modified configuration, e.g., /etc/rc.d/rc.
+local
+Modifies device configuration such as the run control (rc) files
+to achieve persistence.
+Command execution, e.g., iptables, kill Executes shell commands to modify the routing table or kill a
+rival malware process.
+Infection Default credentials, exploit code Uses default credentials or exploit code to infect a target device.
+C&C communication Protocols, traffic patterns Uses similar protocols and traffic patterns to communicate with
+a C&C server.
+Build Encryption Encryption keys Uses similar encryption method but different keys to encrypt
+plain-text strings in malware.
+Package ELF header manipula-
+tion Manipulated ELF header fields Manipulates ELF header field such as section header table (SHT)
+information to avoid detection.
+Environment
+Analysis
+Environment
+Modification
+Discover
+and Infect
+C&C
+Communication
+Bots
+DDoS
+Attack
+Figure 2: Malware execution. Rectangles represent steps, ovals indi-
+cate entities that the malware interact with, and dashed arrows are
+network communication.
+package malware, which is then distributed to the malware opera-
+tors. This process generates artifacts, which we term operational
+features, that may exist in malware source code, binaries, or I/O,
+such as network traffic. Such features can be shared among different
+families or configured differently in variants of the same family.
+3 OPERATIONAL FEATURE ANALYSIS
+To analyze operational features, we dissect a malware instance’s
+execution and observe the features that may emerge during a DQ’s
+configure, build, and package phases. A typical sequence of malware
+execution is shown in Figure 2. After the malware has established a
+foothold on a device, it begins (1) environment analysis in a victim
+device, (2) environment modification to achieve persistence, (3)
+discovery and infection of more victim devices and turn them into
+bots, (4) setup an underlying network infrastructure to control these
+bots remotely, such as through a C&C, and (5) carry out a DDoS
+attack. Table 1 shows the operational features we observed. In the
+following, we highlight some examples.
+Configure. Environment analysis and modification are stages
+where the malware explores the information about a victim device,
+such as the existence of a rival malware instance, and modifies the
+conditions unfavorable to its survival and functioning. The DQ of-
+ten configures these stages in a similar way. For example, Mirai and
+Gafgyt enumerate the virtual file system (/proc) to obtain runtime
+information, and modify files in special directories (/etc) or exe-
+cute commands to terminate a rival process. Miori, a Mirai variant,
+reads /proc/$pid/cmdline, whereas another Mirai variant Sora
+extracts executable names from /proc/$pid/exe. Both Miori and
+Sora then match the executables with known malware names, and
+kill such a process when a rival is found.
+Once a victim device is turned into a bot, the C&C communi-
+cation sets up an underlying network to control the bot. The DQ
+configures the C&C communication in a similar way, such as the
+protocols and traffic patterns used. For example, both Mirai and
+Gafgyt bots communicate with a C&C server using TCP. Mirai’s
+TCP communication uses a specific traffic pattern, where repeated
+PSH ACK packets are exchanged between the Mirai bot and server.
+Different Mirai variants are also configured with similar binary
+strings as commands that are exchanged with the C&C server.
+Build. Malware binary images may contain human-readable
+strings that could reveal the behavior that the malware wants to
+hide, such as IP addresses and file names. The DQ may setup neces-
+sary encryption keys and link cryptography libraries to the binary
+when malware source code is transformed into binary objects. Our
+analysis found that Mirai variants use the same XOR encryption,
+but different built-in keys. For example, the Katrina variant uses
+the key 0xDEEDFBAF.
+Package. After a malware binary is built, it will be prepared
+for distribution through packaging, where evasion tactics may be
+used. For example, some variants of Mirai, Gafgyt, and Tsunami are
+packaged with corrupt ELF headers, where specific fields such as
+the Section Header Table (SHT) are manipulated. The SHT contains
+information of different sections in a binary. Manipulation of the
+offset address and section size can throw off static analysis.
+Acknowledgment
+This work is supported in part by NSF grant OAC-2325369 and
+Colorado State Bill 18-086.
+REFERENCES
+[1] 2019. TL-BOTS Dataset. https://github.com/threatland/TL-BOTS.
+[2] 2020. Sebastian Garcia, Agustin Parmisano, Maria Jose Erquiaga. IoT-23: A labeled
+dataset with malicious and benign IoT network traffic (Version 1.0.0) [Data set].
+[3] 2021. Cube-Maliot-2021 Dataset. https://github.com/CrySyS/cube-maliot-2021.
+[4] Irfan Ul Haq and Juan Caballero. 2021. A survey of binary code similarity. ACM
+Computing Surveys (CSUR) 54, 3 (2021), 1–38.
+[5] Ned Moran and James Bennett. 2021. Supply chain analysis: From quartermaster
+to Sunshop, FireEye Labs White Paper.
+[6] Minhajul Rahat, Vijay Banerjee, Gedare Bloom, and Yanyan Zhuang. 2024. Cimalir:
+Cross-Platform IoT Malware Clustering using Intermediate Representation. In IEEE
+14th Annual Computing and Communication Workshop and Conference (CCWC).
+[7] Konrad Rieck, Thorsten Holz, Carsten Willems, Patrick Düssel, and Pavel Laskov.
+2008. Learning and classification of malware behavior. In International Conference
+on Detection of Intrusions and Malware, and Vulnerability Assessment. Springer.
+30

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Rauf | Research Meeting with Dr. Hengwei Zhang</title>
+    <title>Hamza Rauf | Research Meeting with Dr. Ahyoung Lee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -304,6 +304,15 @@
         .card.color-blush { background: var(--blush); }
         .card.color-sage { background: var(--sage); }
         .card.color-lilac { background: var(--lilac); }
+
+        [data-project-url] {
+            cursor: pointer;
+        }
+
+        [data-project-url]:focus-visible {
+            outline: 3px solid rgba(42, 36, 27, 0.45);
+            outline-offset: 6px;
+        }
 
         .card h3 {
             font-family: var(--font-display);
@@ -1816,27 +1825,36 @@
         .slide[data-label="Research Idea 2"] .idea-panel .card li {
             font-size: 18px;
             line-height: 1.22;
+            font-weight: 400;
+            color: var(--ink-soft);
         }
 
         .slide[data-label="Research Idea 2"] .idea-panel .card li {
             margin-bottom: 4px;
         }
 
-        .kidney-figure {
+        .network-flow-mini {
             margin-top: 6px;
             height: 78px;
             border-radius: 18px;
-            overflow: hidden;
             border: 1px solid rgba(42, 36, 27, 0.12);
             background: rgba(255, 255, 255, 0.75);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 10px;
         }
 
-        .kidney-figure img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            object-position: center;
+        .network-flow-mini span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(42, 36, 27, 0.08);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
 
         .pipeline-strip {
@@ -2159,7 +2177,7 @@
                         <div class="cover-points reveal delay-2">
                             <div class="cover-point">
                                 <span class="cover-dot" aria-hidden="true"></span>
-                                <p data-editable>6+ years of industry-level AI and software experience.</p>
+                                <p data-editable>6+ years building AI, cloud, and high-reliability software systems.</p>
                             </div>
                             <div class="cover-point">
                                 <span class="cover-dot" aria-hidden="true"></span>
@@ -2167,15 +2185,15 @@
                             </div>
                             <div class="cover-point">
                                 <span class="cover-dot" aria-hidden="true"></span>
-                                <p data-editable>2+ years of research experience with Dr. Umair Khan, a Stanford top 2% scientist.</p>
+                                <p data-editable>2+ years of research experience on efficient AI and ML-based modeling.</p>
                             </div>
                             <div class="cover-point">
                                 <span class="cover-dot" aria-hidden="true"></span>
-                                <p data-editable>Published in Q1 journals with impact factors 8.0 and 5.0.</p>
+                                <p data-editable>Published Q1 work on deployable AI for constrained and scientific environments.</p>
                             </div>
                             <div class="cover-point">
                                 <span class="cover-dot" aria-hidden="true"></span>
-                                <p data-editable>Section leader at Stanford Code in Place and Harvard CS50x Puzzle Day participant.</p>
+                                <p data-editable>Interested in green IoT networks, LoRaWAN, SDN, edge intelligence, and self-healing systems.</p>
                             </div>
                         </div>
                         <div class="contact-strip reveal delay-4">
@@ -2184,7 +2202,7 @@
                             <a class="pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noreferrer" data-editable><span class="pill-icon linkedin" aria-hidden="true">in</span>LinkedIn</a>
                             <a class="pill" href="https://www.youtube.com/@hamzarauf99" target="_blank" rel="noreferrer" data-editable><span class="pill-icon youtube" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.6 7.1a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9 2 12 2 12s0 3 .4 4.9A3 3 0 0 0 4.5 19c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12s0-3-.4-4.9ZM10 15.3V8.7l5.8 3.3-5.8 3.3Z"></path></svg></span>YouTube</a>
                         </div>
-                        <p class="lede reveal delay-5" data-editable>Meeting with Dr. Hengwei Zhang about how my AI platform, RAG, compact LLM, and medical AI experience can support health informatics research.</p>
+                        <p class="lede reveal delay-5" data-editable>Meeting with Dr. Ahyoung Lee about how my AI, systems, agent, and network-security background can support green communications, LoRaWAN, SDN, and edge/fog networking research.</p>
                         <div class="cover-logo-strip reveal delay-3" aria-label="Affiliations and platforms">
                             <div class="cover-logo"><img src="images/icons/standford_icon.webp" alt="Stanford icon"></div>
                             <div class="cover-logo"><img src="images/icons/harvard_icon.webp" alt="Harvard icon"></div>
@@ -2209,7 +2227,7 @@
                 <div class="eyebrow">Who I Am</div>
                 <div class="pagedot">ii.</div>
                 <div class="left reveal delay-1">
-                    <p class="opener" data-editable>Hamza Rauf - Senior Software Engineer and AI Researcher with industry and research experience, and a strong interest in AI systems that work under real deployment constraints.</p>
+                    <p class="opener" data-editable>Hamza Rauf - Senior Software Engineer and AI Researcher focused on efficient AI, reliable systems, and network-aware intelligence that can operate under real deployment constraints.</p>
                     <div class="credential-wall reveal delay-2">
                         <div class="proof-strip">
                             <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" data-preview-alt="GRE certificate" data-preview-mode="portrait">
@@ -2264,15 +2282,15 @@
                     </div>
                     <div class="card color-pink reveal delay-3">
                         <div class="stat-value" data-editable>Top 5%</div>
-                        <p class="stat-label" data-editable>Top 5% of my class, with CGPA 3.31 / 85% and a strong base in data structures, Algorithms, and enterprise systems.</p>
+                        <p class="stat-label" data-editable>Top 5% of my class, with CGPA 3.31 / 85% and a strong base in algorithms, AI, networks, and enterprise systems.</p>
                     </div>
                     <div class="card color-sage reveal delay-4">
                         <div class="stat-value" data-editable>6+</div>
-                        <p class="stat-label" data-editable>Years of AI and software experience across backend, frontend, cloud, automation, and production systems.</p>
+                        <p class="stat-label" data-editable>Years of AI and software experience across backend systems, cloud, automation, observability, and production deployment.</p>
                     </div>
                     <div class="card color-lilac reveal delay-5">
-                        <div class="stat-value" data-editable>Lab fit</div>
-                        <p class="stat-label" data-editable>Research discipline, reliable engineering, hands-on model training, clear writing, and mentoring.</p>
+                        <div class="stat-value" data-editable>L3BN fit</div>
+                        <p class="stat-label" data-editable>Research discipline, practical engineering, efficient model training, network-security experience, and mentoring.</p>
                     </div>
                 </div>
                 <div class="footer"><span></span><span>Prospective PhD conversation</span></div>
@@ -2282,13 +2300,13 @@
             <section class="slide readiness-slide" data-label="Readiness">
                 <div class="eyebrow">Evidence of readiness</div>
                 <div class="pagedot">iii.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Academic and research <em>achievements</em></h2>
+                <h2 class="slide-title reveal delay-1" data-editable>Academic and research <em>readiness</em></h2>
                 <div class="three-grid">
                     <article class="card color-blush readiness-card reveal delay-1">
                         <h3 data-editable>Academic proof</h3>
                         <ul data-editable>
                             <li>Won a fully funded merit scholarship as one of the top 100 students in the country.</li>
-                            <li>Earned distinction in 24 courses, including data structures, Algorithms, and enterprise app development.</li>
+                            <li>Earned distinction in 24 courses, including algorithms, AI, data structures, and enterprise application development.</li>
                             <li>Received a professional job offer before graduation.</li>
                         </ul>
                         <div class="evidence-strip single">
@@ -2301,8 +2319,8 @@
                         <h3 data-editable>Research proof</h3>
                         <ul data-editable>
                             <li>Worked as a Research Assistant with Dr. Umair Khan, a Stanford top 2% scientist.</li>
-                            <li>Published multiple papers, including first-author Q1 work in Complex &amp; Intelligent Systems and co-authored Q1 work in Engineering Applications of Artificial Intelligence.</li>
-                            <li>Worked with systematic reviews, surveys, evaluation metrics, LaTeX, Atlas.ti, and SPSS.</li>
+                            <li>Published first-author Q1 work on resource-constrained AI and co-authored Q1 work on ML surrogate modeling.</li>
+                            <li>Comfortable with literature review, experiment design, evaluation metrics, LaTeX, Atlas.ti, SPSS, and reproducible reporting.</li>
                         </ul>
                         <div class="evidence-strip double">
                             <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/umair%20google%20schoalr%20profile.png" data-preview-alt="Dr Umair Khan Google Scholar profile" data-preview-mode="scroll" aria-label="Preview Dr Umair Khan Google Scholar profile">
@@ -2382,15 +2400,15 @@
                         </div>
                     </article>
                 </div>
-                <div class="footer"><span>Research readiness</span><span>scholarship - publication - leadership</span></div>
+                <div class="footer"><span>Research readiness</span><span>scholarship - efficient AI - systems leadership</span></div>
             </section>
 
-            <!-- Slide 4: Published work from the original PPT, reframed for health informatics -->
+            <!-- Slide 4: Published work from the original PPT, reframed for green IoT networking fit -->
             <section class="slide published-papers" data-label="AI Foundation">
                 <div class="eyebrow">Published work</div>
                 <div class="pagedot">iv.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Research experience: efficient and <em>deployable AI</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>These papers show how I move from model design to experiments, publication, and real deployment limits.</p>
+                <h2 class="slide-title reveal delay-1" data-editable>Research experience in <em>efficient AI systems</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Professor Lee's work centers on networks with energy, latency, and scalability constraints. My research background fits that constraint-first mindset.</p>
                 <div class="paper-showcase">
                     <article class="paper-tile color-pink reveal delay-1">
                         <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Efficient multilingual spam detection paper">
@@ -2406,7 +2424,7 @@
                                 <span class="pill">Impact factor: 5</span>
                                 <span class="pill">Q1 journal</span>
                             </div>
-                            <p data-editable>Built a 21-language dataset and fine-tuned Gemma 3, Qwen 3, and Llama 3.2 with 4-bit QLoRA. The best result reached about 90% accuracy and 0.88 F1.</p>
+                            <p data-editable>Built a 21-language dataset and fine-tuned compact LLMs with 4-bit QLoRA. This maps naturally to intelligence near IoT gateways, edge devices, and constrained compute environments.</p>
                         </div>
                     </article>
                     <article class="paper-tile color-lemon reveal delay-2">
@@ -2423,7 +2441,7 @@
                                 <span class="pill">Impact factor: 8.0</span>
                                 <span class="pill">Q1</span>
                             </div>
-                            <p data-editable>Compared ANN-LM and Gaussian Process Regression as fast surrogate models for expensive numerical simulations, including uncertainty-aware prediction.</p>
+                            <p data-editable>Compared ANN-LM and Gaussian Process Regression as fast surrogate models for expensive simulations, a useful pattern for LoRaWAN scheduling, simulator acceleration, and network digital twins.</p>
                         </div>
                     </article>
                     <article class="paper-tile color-sage reveal delay-3">
@@ -2439,19 +2457,19 @@
                                 <span class="pill">Spectrum of Engineering Sciences</span>
                                 <span class="pill">2025</span>
                             </div>
-                            <p data-editable>Used generative AI for cyber threat modeling, attack simulation, and defense evaluation.</p>
+                            <p data-editable>Used generative AI for cyber threat modeling, attack simulation, and defense evaluation. This supports resilient IoT, cloud, fog, and edge infrastructure research.</p>
                         </div>
                     </article>
                 </div>
-                <div class="footer"><span>Research experience</span><span>efficient models - synthetic data - evaluation</span></div>
+                <div class="footer"><span>Research experience</span><span>efficient models - simulation - resilient infrastructure</span></div>
             </section>
 
-            <!-- Slide 5: Current research from the original PPT, adapted to this meeting context -->
-            <section class="slide current-research" data-label="Professor Zhang">
+            <!-- Slide 5: Current research from the original PPT, adapted to Professor Lee's context -->
+            <section class="slide current-research" data-label="Professor Lee">
                 <div class="eyebrow">Current research</div>
                 <div class="pagedot">v.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Bridging language, signals, and <em>context-rich classification</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>I can apply this same approach to patient narratives, survey responses, clinical notes, and early screening signals.</p>
+                <h2 class="slide-title reveal delay-1" data-editable>From small LLMs to <em>edge network intelligence</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>My current work studies how compact models behave under limited compute. That direction can extend toward IoT gateways, LoRaWAN events, and edge/cloud network management.</p>
                 <div class="current-research-grid">
                     <article class="emotion-panel reveal delay-1">
                         <div class="emotion-figure">
@@ -2466,31 +2484,31 @@
                         <article class="card reveal delay-2">
                             <h3 data-editable>Current question</h3>
                             <ul data-editable>
-                                <li>Which prompting strategy works best for small LLMs on fine-grained embodied emotion classification?</li>
+                                <li>Which prompting strategy works best for small LLMs when data is noisy, indirect, and resource-limited?</li>
                                 <li>Compares zero-shot, k-shot, chain-of-thought, and chain-of-verification prompting.</li>
-                                <li>Measures macro and per-class F1 across Ekman's six emotions under limited compute.</li>
+                                <li>Measures macro and per-class F1 under limited compute rather than assuming large-model availability.</li>
                             </ul>
-                            <p class="soft-rule" data-editable>The deeper skill here is modeling indirect human signals under uncertainty, not only solving one embodied-AI task.</p>
+                            <p class="soft-rule" data-editable>The deeper skill is evaluating compact intelligence under uncertainty, which is relevant to smart gateways, sensor logs, and edge decision support.</p>
                         </article>
                         <article class="card color-blush reveal delay-3">
-                            <h3 data-editable>How I connect it to health informatics</h3>
+                            <h3 data-editable>How I connect it to Professor Lee's research</h3>
                             <ul data-editable>
-                                <li>NLP can help structure patient language, survey responses, and care-management notes.</li>
-                                <li>Compact LLMs can support privacy-sensitive, lower-cost medical AI prototypes.</li>
-                                <li>Prompting, verification, and evaluation fit trustworthy health decision support.</li>
-                                <li>The same mindset can support early Alzheimer's screening and social determinants of health research.</li>
+                                <li>Compact AI can support edge/fog gateways where power, latency, and bandwidth matter.</li>
+                                <li>Prompting and evaluation can structure sensor logs, network events, and fault descriptions.</li>
+                                <li>Verification-first agents can avoid unsafe autonomous remediation in network systems.</li>
+                                <li>The same mindset can support RL-enhanced scheduling and self-healing IoT network management.</li>
                             </ul>
                         </article>
                     </div>
                 </div>
-                <div class="footer"><span>Current research</span><span>small LLMs - prompting - evaluation - human signals</span></div>
+                <div class="footer"><span>Current research</span><span>small LLMs - edge intelligence - evaluation - constrained systems</span></div>
             </section>
 
             <!-- Slide 6: Professional and teaching experience from the original PPT -->
-            <section class="slide s-paper" data-label="GMLP Paper">
+            <section class="slide s-paper" data-label="Network Systems">
                 <div class="eyebrow">Professional experience</div>
                 <div class="pagedot">vi.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Industry and teaching experience <em>with real AI systems</em></h2>
+                <h2 class="slide-title reveal delay-1" data-editable>Industry experience with <em>real AI and network systems</em></h2>
                 <div class="paper-card">
                     <article class="quote-card reveal delay-1">
                         <div class="project-slider" aria-label="Selected project visuals">
@@ -2546,28 +2564,28 @@
                             </section>
                             <section class="project-panel">
                                 <div class="project-topline">
-                                    <h3 data-editable>Yoga Joint</h3>
-                                    <span class="project-badge">Modernization</span>
+                                    <h3 data-editable>Valyrian border gateway</h3>
+                                    <span class="project-badge">Kernel network inspection</span>
                                 </div>
                                 <div class="project-visual">
                                     <div class="project-window">
                                         <div class="project-window-bar"><i></i><i></i><i></i></div>
                                         <div class="project-screen">
-                                            <div class="project-row"><strong>Legacy app</strong><span>migration</span></div>
-                                            <div class="project-row"><strong>SSR frontend</strong><span>Next.js</span></div>
-                                            <div class="project-row"><strong>Services</strong><span>Nest.js</span></div>
-                                            <div class="project-row"><strong>Perf gain</strong><span>40%</span></div>
+                                            <div class="project-row"><strong>Traffic path</strong><span>border gateway</span></div>
+                                            <div class="project-row"><strong>Inspection</strong><span>eBPF / XDP</span></div>
+                                            <div class="project-row"><strong>Target</strong><span>100 Gbps</span></div>
+                                            <div class="project-row"><strong>Detection</strong><span>anomaly signals</span></div>
                                         </div>
                                     </div>
                                     <div class="project-flow">
-                                        <div class="flow-node accent-lilac">Reusable React components</div>
-                                        <div class="flow-node accent-sage">Node/Nest backend flows</div>
-                                        <div class="flow-node accent-lemon">PostgreSQL data layer</div>
-                                        <div class="flow-node accent-pink">Grafana production visibility</div>
+                                        <div class="flow-node accent-lilac">Kernel-level packet metadata</div>
+                                        <div class="flow-node accent-sage">Low-overhead flow inspection</div>
+                                        <div class="flow-node accent-lemon">Streaming detection pipeline</div>
+                                        <div class="flow-node accent-pink">Fast response at the edge</div>
                                     </div>
                                 </div>
-                                <p class="project-caption" data-editable>Legacy platform modernization focused on performance, maintainability, release automation, and a better user experience.</p>
-                                <div class="project-stack"><span>Next.js</span><span>Nest.js</span><span>PostgreSQL</span><span>Jenkins</span><span>Docker</span><span>Grafana</span></div>
+                                <p class="project-caption" data-editable>At Valyrian Systems, worked on high-throughput network inspection concepts for border-gateway traffic, connecting kernel-level visibility with anomaly detection and operational response.</p>
+                                <div class="project-stack"><span>eBPF</span><span>XDP</span><span>Linux</span><span>100 Gbps</span><span>Anomaly Detection</span><span>Edge Security</span></div>
                             </section>
                             <section class="project-panel">
                                 <div class="project-topline">
@@ -2719,30 +2737,30 @@
                                 <p class="project-caption" data-editable>Infrastructure-as-code workflow for reproducible environments, automated provisioning, and cloud cost optimization.</p>
                                 <div class="project-stack"><span>Terraform</span><span>AWS</span><span>CI/CD</span><span>Automation</span><span>DevOps</span></div>
                             </section>
-                            <section class="project-panel">
+                            <section class="project-panel" data-project-url="https://github.com/Hamza-Rauf-SE/re-agent/blob/main/README.md" aria-label="Open re-agent README">
                                 <div class="project-topline">
-                                    <h3 data-editable>NextAuth AstraDB</h3>
-                                    <span class="project-badge">Open source auth</span>
+                                    <h3 data-editable>re-agent</h3>
+                                    <span class="project-badge">Verification-first agent</span>
                                 </div>
                                 <div class="project-visual">
                                     <div class="project-window">
                                         <div class="project-window-bar"><i></i><i></i><i></i></div>
                                         <div class="project-screen">
-                                            <div class="project-row"><strong>NextAuth.js</strong><span>adapter</span></div>
-                                            <div class="project-row"><strong>AstraDB</strong><span>sessions</span></div>
-                                            <div class="project-row"><strong>Serverless</strong><span>identity</span></div>
-                                            <div class="project-row"><strong>Docs</strong><span>community</span></div>
+                                            <div class="project-row"><strong>Agent task</strong><span>binary RE</span></div>
+                                            <div class="project-row"><strong>Evidence</strong><span>ledger</span></div>
+                                            <div class="project-row"><strong>Oracle</strong><span>Z3 + real run</span></div>
+                                            <div class="project-row"><strong>Output</strong><span>proven vs conjectured</span></div>
                                         </div>
                                     </div>
                                     <div class="project-flow">
-                                        <div class="flow-node accent-sage">User signs in</div>
-                                        <div class="flow-node accent-lemon">NextAuth adapter maps tokens</div>
-                                        <div class="flow-node accent-pink">AstraDB stores users and sessions</div>
-                                        <div class="flow-node accent-lilac">Reusable open-source integration</div>
+                                        <div class="flow-node accent-sage">Disassemble and observe</div>
+                                        <div class="flow-node accent-lemon">Propose a claim</div>
+                                        <div class="flow-node accent-pink">Verify with non-LLM tools</div>
+                                        <div class="flow-node accent-lilac">Report only what is proven</div>
                                     </div>
                                 </div>
-                                <p class="project-caption" data-editable>Open-source contribution connecting NextAuth.js with AstraDB for scalable, cloud-native authentication in Next.js apps.</p>
-                                <div class="project-stack"><span>NextAuth.js</span><span>AstraDB</span><span>Next.js</span><span>Auth</span><span>Open Source</span></div>
+                                <p class="project-caption" data-editable>A verification-first LLM agent for reverse engineering where conclusions must be checked by an SMT solver or real execution before being marked proven.</p>
+                                <div class="project-stack"><span>Agents</span><span>angr</span><span>Z3</span><span>MCP</span><span>Verification</span><span>Security</span></div>
                             </section>
                             <button class="project-nav prev" type="button" aria-label="Previous project">‹</button>
                             <button class="project-nav next" type="button" aria-label="Next project">›</button>
@@ -2760,7 +2778,7 @@
                         </article>
                         <article class="card color-pink reveal delay-4">
                             <h3 data-editable>Valyrian Systems</h3>
-                            <p data-editable>Moved monoliths to FastAPI microservices, improved latency, built async workflows, and made backend systems more reliable.</p>
+                            <p data-editable>Built distributed backend systems and anomaly-detection workflows, including kernel-level network-inspection direction for high-throughput border-gateway traffic.</p>
                         </article>
                         <article class="card color-lemon reveal delay-5">
                             <h3 data-editable>Teaching and mentoring</h3>
@@ -2768,41 +2786,41 @@
                         </article>
                     </div>
                 </div>
-                <div class="footer"><span>Professional experience</span><span>AI engineering - mentoring - deployment</span></div>
+                <div class="footer"><span>Professional experience</span><span>agents - eBPF - cloud systems - deployment</span></div>
             </section>
 
             <!-- Slide 7: Hands-on evidence from the original PPT -->
-            <section class="slide" data-label="GMLP Process">
+            <section class="slide" data-label="Hands-on Systems">
                 <div class="eyebrow">Hands-on evidence</div>
                 <div class="pagedot">vii.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Selected projects with <em>research value</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>These projects show the kind of practical work I can contribute from day one.</p>
+                <h2 class="slide-title reveal delay-1" data-editable>Selected projects with <em>network research value</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>These projects show how I can contribute to efficient, observable, and autonomous network systems from day one.</p>
                 <div class="five-grid">
                     <article class="card color-pink reveal delay-1">
-                        <h3 data-editable>HelloGov AI</h3>
-                        <p data-editable>Built OCR, LLM extraction, validation, and agentic portal automation for real user workflows.</p>
+                        <h3 data-editable>Kernel network inspection</h3>
+                        <p data-editable>Worked toward eBPF/XDP-style packet-path visibility for 100 Gbps-class border-gateway traffic at Valyrian Systems.</p>
                     </article>
-                    <article class="card color-blush reveal delay-2">
-                        <h3 data-editable>Medical image VLM</h3>
-                        <p data-editable>Fine-tuned Llama 3 Vision 11B with PEFT, LoRA, and 4-bit quantization.</p>
+                    <article class="card color-blush reveal delay-2" data-project-url="https://github.com/Hamza-Rauf-SE/re-agent/blob/main/README.md" aria-label="Open re-agent README">
+                        <h3 data-editable>re-agent</h3>
+                        <p data-editable>Built a verification-first LLM agent for binary reverse engineering with claims checked by Z3 or real execution.</p>
                     </article>
                     <article class="card color-lemon reveal delay-3">
-                        <h3 data-editable>Graph + hybrid RAG</h3>
-                        <p data-editable>Built context-aware retrieval with vector search, graph context, reranking, and LLM reasoning.</p>
+                        <h3 data-editable>Resource-constrained AI</h3>
+                        <p data-editable>Fine-tuned compact LLMs with QLoRA for multilingual spam detection on limited compute.</p>
                     </article>
-                    <article class="card color-sage reveal delay-4">
-                        <h3 data-editable>Qwen3 reasoning</h3>
-                        <p data-editable>Built reward-guided reasoning alignment with structured outputs and custom evaluation.</p>
+                    <article class="card color-sage reveal delay-4" data-project-url="https://colab.research.google.com/drive/14SlTBwyqHXZtnwuwt2Rbb1xXKBiDnI71?usp=sharing" aria-label="Open Qwen3 GRPO Colab">
+                        <h3 data-editable>RL and reasoning alignment</h3>
+                        <p data-editable>Built GRPO-based Qwen3 reasoning alignment with custom rewards, useful for policy-learning and autonomous decision loops.</p>
                     </article>
                     <article class="card color-lilac reveal delay-5">
-                        <h3 data-editable>MaYa AI platform</h3>
-                        <p data-editable>Built a multi-agent conversational platform with retrieval, reranking, frustration detection, and workflow-aware next-step guidance for merchants, funders, and sales teams.</p>
+                        <h3 data-editable>Agentic self-healing workflows</h3>
+                        <p data-editable>Built multi-step agents that classify state, retrieve context, choose next actions, escalate risk, and preserve workflow memory.</p>
                     </article>
                 </div>
                 <div class="pipeline-strip reveal delay-5" data-editable>
-                    my fit: medical AI, RAG, evaluation, workflow automation, deployable decision support
+                    my fit: green IoT networking, RL scheduling, eBPF observability, verification-first agents, deployable edge AI
                 </div>
-                <div class="footer"><span>Selected projects</span><span>OCR - VLM - RAG - reasoning - multi-agent workflows</span></div>
+                <div class="footer"><span>Selected projects</span><span>eBPF - re-agent - QLoRA - RL - self-healing workflows</span></div>
             </section>
 
             <!-- Slide 8: Research-relevant skills from the original PPT -->
@@ -2810,59 +2828,59 @@
                 <div class="eyebrow">Research-relevant skills</div>
                 <div class="pagedot">viii.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Technical toolkit I can bring to <em>the lab</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>Organized around the research direction I want to support: NLP, data management, visualization, machine learning, and health informatics.</p>
+                <p class="slide-sub reveal delay-2" data-editable>Organized around the research direction I want to support: LoRaWAN/LPWAN, SDN, edge/fog/cloud systems, RL scheduling, and green network management.</p>
                 <div class="alignment-table reveal delay-3">
                     <div class="cell head-row">Skill area</div>
                     <div class="cell head-row">Tools and experience</div>
                     <div class="cell head-row">How I would apply it</div>
-                    <div class="cell row-label">Foundation models</div>
-                    <div class="cell">LLMs, VLMs, LoRA, QLoRA, PEFT, quantization, prompting, reasoning evaluation.</div>
-                    <div class="cell">Use compact models for medical AI prototypes and lower-cost clinical decision support.</div>
-                    <div class="cell row-label">Data and AI pipelines</div>
-                    <div class="cell">Synthetic data, embeddings, vector DBs, hybrid search, reranking, PySpark and ETL foundations.</div>
-                    <div class="cell">Build population health data pipelines, continuous scoring, and RAG over policies and care criteria.</div>
-                    <div class="cell row-label">Systems and deployment</div>
-                    <div class="cell">FastAPI, Flask, Node.js, AWS, Azure, Docker, Kubernetes, CI/CD, observability, APIs.</div>
-                    <div class="cell">Turn research models into monitored, secure, workflow-ready health informatics tools.</div>
+                    <div class="cell row-label">Efficient AI and RL</div>
+                    <div class="cell">LLMs, VLMs, LoRA, QLoRA, PEFT, quantization, prompting, GRPO, reward design, and evaluation.</div>
+                    <div class="cell">Support low-compute intelligence for IoT gateways, RL-based scheduling, and autonomous network-control policies.</div>
+                    <div class="cell row-label">Network systems</div>
+                    <div class="cell">Linux, eBPF/XDP direction, anomaly detection, microservices, Kafka, RabbitMQ, SQS, observability, and APIs.</div>
+                    <div class="cell">Build high-throughput telemetry and border-gateway inspection pipelines for resilient edge and IoT networks.</div>
+                    <div class="cell row-label">Edge/fog/cloud deployment</div>
+                    <div class="cell">FastAPI, Flask, Node.js, AWS, Azure, Docker, Kubernetes, CI/CD, Grafana, Prometheus, and secure architecture.</div>
+                    <div class="cell">Turn network research prototypes into monitored, reproducible, and scalable systems.</div>
                     <div class="cell row-label last">Research practice</div>
                     <div class="cell last">Literature reviews, experiment design, evaluation metrics, scientific writing, mentoring.</div>
-                    <div class="cell last">Support publishable studies with reproducible baselines and clear evaluation.</div>
+                    <div class="cell last">Support publishable studies with reproducible baselines, simulation protocols, and clear performance evaluation.</div>
                 </div>
-                <div class="footer"><span>Technical toolkit</span><span>models - pipelines - systems - research practice</span></div>
+                <div class="footer"><span>Technical toolkit</span><span>RL - LoRaWAN - edge systems - verification</span></div>
             </section>
 
-            <!-- Slide 9: Direct alignment, adapted to this research agenda -->
+            <!-- Slide 9: Direct alignment, adapted to Professor Lee's research agenda -->
             <section class="slide" data-label="Research Idea 1">
                 <div class="eyebrow">Direct alignment</div>
                 <div class="pagedot">ix.</div>
                 <div class="idea-hero reveal delay-1">
-                    <p class="marker" data-editable>My fit with this research agenda</p>
-                    <h2 data-editable>Health informatics needs <em>AI that fits real workflows</em></h2>
-                    <p class="body-copy" data-editable>The research direction I want to support brings together NLP, data systems, visualization, machine learning, population health, and digital health tools.</p>
+                    <p class="marker" data-editable>Direct alignment</p>
+                    <h2 data-editable>My bridge to <em>L3BN</em></h2>
+                    <p class="body-copy" data-editable>Her work studies how low-power networks stay reliable as devices scale, channels collide, and gateways carry more load. My fit is the AI and systems layer around that problem.</p>
                 </div>
                 <div class="idea-panel">
                     <article class="card color-lemon reveal delay-2">
-                        <h3 data-editable>Research direction I want to support</h3>
-                        <p data-editable>Build prediction pipelines for population health, palliative care, social determinants of health, and early Alzheimer's screening.</p>
+                        <h3 data-editable>Her research direction</h3>
+                        <p data-editable>LoRaWAN, SDN, green communications, edge/fog/cloud networking, and low-power broadband systems for real deployment constraints.</p>
                     </article>
                     <article class="card reveal delay-3">
-                        <h3 data-editable>My experience</h3>
+                        <h3 data-editable>My strongest overlap</h3>
                         <ul data-editable>
-                            <li>Fine-tuning small LLMs and VLMs with LoRA and QLoRA</li>
-                            <li>Building RAG pipelines, data workflows, agent systems, and evaluation setups</li>
-                            <li>Shipping AI systems with APIs, monitoring, reliability, and deployment limits</li>
+                            <li>Efficient AI for limited compute</li>
+                            <li>Agent systems and anomaly detection</li>
+                            <li>Cloud-native systems with observability</li>
                         </ul>
                     </article>
                     <article class="card color-sage reveal delay-4">
-                        <h3 data-editable>Paper I read</h3>
-                        <p data-editable>The JBI paper uses a practical ML pipeline to predict who may benefit from palliative care, using claims data, rolling scoring, feature engineering, resampling, and model maintenance.</p>
+                        <h3 data-editable>Paper connection</h3>
+                        <p data-editable>DDPG CAD and LoRaCAD connect directly to RL scheduling, channel sensing, gateway-load handling, energy efficiency, latency, and PDR.</p>
                     </article>
                     <article class="card color-blush reveal delay-5">
-                        <h3 data-editable>Where I can contribute</h3>
-                        <p data-editable>I can contribute to RAG-based decision support, smaller medical AI models, reproducible ML pipelines, and prototypes that can move toward real use.</p>
+                        <h3 data-editable>Where I can help</h3>
+                        <p data-editable>Build baselines, test RL policies, prototype self-healing agents, add network telemetry, and package experiments for reproducible papers.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Direct alignment</span><span>health informatics - deployable AI - research fit</span></div>
+                <div class="footer"><span>Direct alignment</span><span>LoRaWAN - SDN - green networking - edge intelligence</span></div>
             </section>
 
             <!-- Slide 10: Initial ideas to discuss, adapted from the original proposed direction slide -->
@@ -2871,8 +2889,8 @@
                 <div class="pagedot">x.</div>
                 <div class="idea-hero reveal delay-1" style="background: var(--sage);">
                     <p class="marker" data-editable>Proposed research direction</p>
-                    <h2 data-editable>AI pipelines for <em>medical decision support</em></h2>
-                    <p class="body-copy" data-editable>I want to focus on care workflows, early Alzheimer's screening, and medical AI that is efficient, clear, and useful in practice.</p>
+                    <h2 data-editable>Adaptive control for <em>LoRaWAN networks</em></h2>
+                    <p class="body-copy" data-editable>A focused direction: use RL, lightweight agents, and network telemetry to reduce collisions, protect energy, and improve reliability.</p>
                 </div>
                 <div class="idea-panel">
                     <article class="card color-pink reveal delay-2">
@@ -2884,8 +2902,8 @@
                                 <path d="m31 29 4 4 8-8"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 1 - RAG for care management</h3>
-                        <p data-editable>Use RAG to explain risk scores using policy rules, care criteria, and model evidence.</p>
+                        <h3 data-editable>RL scheduling</h3>
+                        <p data-editable>Start from LoRaCAD/DDPG CAD and compare policy choices for spreading factor, channel access, CAD retries, and gateway load.</p>
                     </article>
                     <article class="card reveal delay-3">
                         <div class="idea-card-icon" aria-hidden="true">
@@ -2896,11 +2914,11 @@
                                 <path d="m18 21 4 4 8-8"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 2 - compact medical AI</h3>
+                        <h3 data-editable>Self-healing agent</h3>
                         <ul data-editable>
-                            <li>Use PEFT and QLoRA to train smaller models with less compute.</li>
-                            <li>Test compact LLMs, VLMs, or hybrid ML models for early Alzheimer's and related screening tasks.</li>
-                            <li>Measure calibration, fairness, explainability, and deployment cost.</li>
+                            <li>Detect congestion or gateway overload.</li>
+                            <li>Suggest parameter changes or escalation.</li>
+                            <li>Check actions in simulation first.</li>
                         </ul>
                     </article>
                     <article class="card color-lilac reveal delay-4">
@@ -2912,10 +2930,13 @@
                                 <path d="M30 21h.01"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 3 - kidney tissue segmentation</h3>
-                        <p data-editable>Benchmark Meta Segment Anything 3 for kidney tissue segmentation with grounding prompts, then test whether fine-tuning can improve accuracy.</p>
-                        <div class="kidney-figure">
-                            <img src="images/glomerulus.jpg" alt="Glomerulus kidney tissue example">
+                        <h3 data-editable>eBPF observability</h3>
+                        <p data-editable>Use kernel-level eBPF/XDP telemetry from border gateways to feed anomaly detection and RL-control loops.</p>
+                        <div class="network-flow-mini" aria-label="Network self-healing flow">
+                            <span>observe</span>
+                            <span>detect</span>
+                            <span>decide</span>
+                            <span>heal</span>
                         </div>
                     </article>
                     <article class="card color-lemon reveal delay-5">
@@ -2927,11 +2948,11 @@
                                 <path d="m30 34 4 4 7-9"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>My starting contribution</h3>
-                        <p data-editable>Start with papers, a clear baseline, evaluation metrics, and a small prototype that can grow into a publishable study.</p>
+                        <h3 data-editable>Starting point</h3>
+                        <p data-editable>Reproduce one scheduling baseline, define energy/PDR/latency metrics, then add a small controller that can grow into a publishable prototype.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Proposed directions</span><span>RAG - compact models - segmentation - deployable ML</span></div>
+                <div class="footer"><span>Proposed directions</span><span>RL scheduling - telemetry - self-healing control</span></div>
             </section>
 
             <!-- Slide 11: Why me, adapted from the original contribution slide -->
@@ -2939,12 +2960,12 @@
                 <div class="eyebrow">What I can contribute</div>
                 <div class="pagedot">xi.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Why <em>me</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>I can contribute on both the research side and the engineering side.</p>
+                <p class="slide-sub reveal delay-2" data-editable>I can contribute on the research side, the systems side, and the verification side.</p>
                 <div class="chart-wrap">
                     <article class="card color-blush reveal delay-1">
-                        <h3 data-editable>I can bridge research and engineering</h3>
-                        <p data-editable>I know how to design experiments and also how to deploy working AI systems. That matters in health informatics because even a strong model is only useful if it fits real workflows.</p>
-                        <p class="soft-rule" data-editable>I am comfortable working with constraints like limited compute, limited data, latency, privacy, reliability, and evaluation pressure.</p>
+                        <h3 data-editable>I can bridge green-network research and engineering</h3>
+                        <p data-editable>I know how to design experiments and also how to deploy working AI and backend systems. That matters for LoRaWAN and edge/fog networks because good algorithms must survive real latency, energy, load, and reliability constraints.</p>
+                        <p class="soft-rule" data-editable>I am comfortable with limited compute, limited data, latency budgets, observability, security pressure, and reproducible evaluation.</p>
                     </article>
                     <article class="roadmap reveal delay-2">
                         <div class="roadmap-line"></div>
@@ -2952,26 +2973,26 @@
                             <div class="roadmap-dot">i.</div>
                             <div>
                                 <h3 data-editable>Research</h3>
-                                <p data-editable>Published papers, systematic literature reviews, experiment design, scientific writing, and evaluation metrics.</p>
+                                <p data-editable>Published papers, literature reviews, experiment design, scientific writing, and performance metrics.</p>
                             </div>
                         </div>
                         <div class="roadmap-item">
                             <div class="roadmap-dot" style="background: var(--pink);">ii.</div>
                             <div>
-                                <h3 data-editable>Systems</h3>
-                                <p data-editable>AI platforms, backend services, cloud workflows, observability, CI/CD, and reliable deployment habits.</p>
+                                <h3 data-editable>Networked systems</h3>
+                                <p data-editable>Cloud services, microservices, event-driven workflows, observability, eBPF direction, and high-throughput inspection experience.</p>
                             </div>
                         </div>
                         <div class="roadmap-item">
                             <div class="roadmap-dot" style="background: var(--sage);">iii.</div>
                             <div>
-                                <h3 data-editable>Models and impact</h3>
-                                <p data-editable>Small LLMs, VLMs, RAG, synthetic data, agents, and a clear goal of building useful medical AI systems.</p>
+                                <h3 data-editable>Models and agents</h3>
+                                <p data-editable>Compact LLMs, RL/reward design, RAG, self-healing agents, verification-first re-agent work, and a goal of building useful green-network AI systems.</p>
                             </div>
                         </div>
                     </article>
                 </div>
-                <div class="footer"><span>Why me</span><span>research - systems - models - impact</span></div>
+                <div class="footer"><span>Why me</span><span>research - systems - verification - network impact</span></div>
             </section>
 
             <!-- Slide 12: Research trajectory from the original PPT -->
@@ -2990,7 +3011,7 @@
                             </svg>
                         </div>
                         <h3 data-editable>First 6-12 months</h3>
-                        <p data-editable>Learn the group's current projects, read the key papers, reproduce a baseline, and help build one focused health informatics prototype or pipeline.</p>
+                        <p data-editable>Learn the group's LoRaWAN, SDN, and green-networking projects, read the key papers, reproduce one scheduling baseline, and support LoRaCAD-style simulation work.</p>
                     </article>
                     <article class="question-card reveal delay-2">
                         <div class="question-icon" aria-hidden="true">
@@ -3002,7 +3023,7 @@
                             </svg>
                         </div>
                         <h3 data-editable>During graduate study</h3>
-                        <p data-editable>Build efficient AI methods for healthcare workflows, publish useful results, and create systems that work beyond clean benchmark datasets.</p>
+                        <p data-editable>Build RL and agent-based methods for energy-aware scheduling, gateway-load handling, self-healing network control, and edge/fog deployment.</p>
                     </article>
                     <article class="question-card reveal delay-3">
                         <div class="question-icon" aria-hidden="true">
@@ -3012,19 +3033,19 @@
                             </svg>
                         </div>
                         <h3 data-editable>Long term</h3>
-                        <p data-editable>Become a researcher who builds efficient and trustworthy AI systems for real medical and human-centered settings.</p>
+                        <p data-editable>Become a researcher who builds efficient, trustworthy, and sustainable AI systems for IoT, edge networks, and resilient communication infrastructure.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Trajectory</span><span>baselines - useful research - real health impact</span></div>
+                <div class="footer"><span>Trajectory</span><span>baselines - LoRaWAN - self-healing networks - sustainable impact</span></div>
             </section>
 
             <!-- Slide 13: Closing, adapted from the original thank-you slide -->
             <section class="slide s-closer" data-label="Closing">
                 <div class="center">
                     <p class="marker reveal delay-1" data-editable>Thank you</p>
-                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>health informatics research with real-world impact</em>.</h2>
+                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>green IoT networking, LoRaWAN, and self-healing edge intelligence research</em>.</h2>
                     <p class="thanks-note reveal delay-3" data-editable>Thank you for your time and consideration.</p>
-                    <p class="reveal delay-4" data-editable>Questions and feedback are very welcome. I am especially interested in where my background in AI platforms, RAG pipelines, compact LLMs, and applied medical AI could be most useful.</p>
+                    <p class="reveal delay-4" data-editable>Questions and feedback are very welcome. I am especially interested in where my background in efficient AI, RL-style agents, eBPF network inspection, and production systems could be most useful in the L3BN research direction.</p>
                 </div>
             </section>
         </main>
@@ -3152,7 +3173,7 @@
         class InlineEditor {
             constructor() {
                 this.isActive = false;
-                this.storageKey = "hengwei-zhang-meeting-deck-edits-v5";
+                this.storageKey = "ahyoung-lee-meeting-deck-edits-v1";
                 this.editables = Array.from(document.querySelectorAll("[data-editable]"));
                 this.load();
             }
@@ -3375,11 +3396,41 @@
             }
         }
 
+        /* === EXTERNAL PROJECT LINKS === */
+        class ExternalProjectLinks {
+            constructor(editor) {
+                this.editor = editor;
+                this.items = Array.from(document.querySelectorAll("[data-project-url]"));
+                this.items.forEach((item) => this.bind(item));
+            }
+
+            bind(item) {
+                item.setAttribute("role", "link");
+                if (!item.hasAttribute("tabindex")) item.setAttribute("tabindex", "0");
+
+                item.addEventListener("click", (event) => this.open(item, event));
+                item.addEventListener("keydown", (event) => {
+                    if (event.key !== "Enter" && event.key !== " ") return;
+                    event.preventDefault();
+                    this.open(item, event);
+                });
+            }
+
+            open(item, event) {
+                if (this.editor?.isActive) return;
+                if (event.target?.closest("button, a, [contenteditable='true']")) return;
+                const url = item.dataset.projectUrl;
+                if (!url) return;
+                window.open(url, "_blank", "noopener,noreferrer");
+            }
+        }
+
         const deck = new SlidePresentation();
         const editor = new InlineEditor();
         const credentialPreview = new CredentialPreview();
         const projectCarousel = new ProjectCarousel();
         const certificateCarousel = new CertificateCarousel();
+        const externalProjectLinks = new ExternalProjectLinks(editor);
 
         /* === EDIT HOTZONE INTERACTIONS === */
         const hotzone = document.querySelector(".edit-hotzone");

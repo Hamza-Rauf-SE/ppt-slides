@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Rauf | Research Meeting with Dr. Hengwei Zhang</title>
+    <title>Hamza Rauf | Research Meeting with Dr. Yanyan Zhuang</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1822,21 +1822,28 @@
             margin-bottom: 4px;
         }
 
-        .kidney-figure {
+        .malware-flow-mini {
             margin-top: 6px;
             height: 78px;
             border-radius: 18px;
-            overflow: hidden;
             border: 1px solid rgba(42, 36, 27, 0.12);
             background: rgba(255, 255, 255, 0.75);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 10px;
         }
 
-        .kidney-figure img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            object-position: center;
+        .malware-flow-mini span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(42, 36, 27, 0.08);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
 
         .pipeline-strip {
@@ -2184,7 +2191,7 @@
                             <a class="pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noreferrer" data-editable><span class="pill-icon linkedin" aria-hidden="true">in</span>LinkedIn</a>
                             <a class="pill" href="https://www.youtube.com/@hamzarauf99" target="_blank" rel="noreferrer" data-editable><span class="pill-icon youtube" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.6 7.1a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9 2 12 2 12s0 3 .4 4.9A3 3 0 0 0 4.5 19c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12s0-3-.4-4.9ZM10 15.3V8.7l5.8 3.3-5.8 3.3Z"></path></svg></span>YouTube</a>
                         </div>
-                        <p class="lede reveal delay-5" data-editable>Meeting with Dr. Hengwei Zhang about how my AI platform, RAG, compact LLM, and medical AI experience can support health informatics research.</p>
+                        <p class="lede reveal delay-5" data-editable>Meeting with Dr. Yanyan Zhuang about how my AI platform, RAG, compact LLM, and cybersecurity AI experience can support IoT malware and security research.</p>
                         <div class="cover-logo-strip reveal delay-3" aria-label="Affiliations and platforms">
                             <div class="cover-logo"><img src="images/icons/standford_icon.webp" alt="Stanford icon"></div>
                             <div class="cover-logo"><img src="images/icons/harvard_icon.webp" alt="Harvard icon"></div>
@@ -2385,7 +2392,7 @@
                 <div class="footer"><span>Research readiness</span><span>scholarship - publication - leadership</span></div>
             </section>
 
-            <!-- Slide 4: Published work from the original PPT, reframed for health informatics -->
+            <!-- Slide 4: Published work from the original PPT, reframed for cybersecurity fit -->
             <section class="slide published-papers" data-label="AI Foundation">
                 <div class="eyebrow">Published work</div>
                 <div class="pagedot">iv.</div>
@@ -2447,11 +2454,11 @@
             </section>
 
             <!-- Slide 5: Current research from the original PPT, adapted to this meeting context -->
-            <section class="slide current-research" data-label="Professor Zhang">
+            <section class="slide current-research" data-label="Professor Zhuang">
                 <div class="eyebrow">Current research</div>
                 <div class="pagedot">v.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Bridging language, signals, and <em>context-rich classification</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>I can apply this same approach to patient narratives, survey responses, clinical notes, and early screening signals.</p>
+                <p class="slide-sub reveal delay-2" data-editable>I can apply this same approach to malware reports, threat intelligence text, device logs, and noisy security signals.</p>
                 <div class="current-research-grid">
                     <article class="emotion-panel reveal delay-1">
                         <div class="emotion-figure">
@@ -2473,12 +2480,12 @@
                             <p class="soft-rule" data-editable>The deeper skill here is modeling indirect human signals under uncertainty, not only solving one embodied-AI task.</p>
                         </article>
                         <article class="card color-blush reveal delay-3">
-                            <h3 data-editable>How I connect it to health informatics</h3>
+                            <h3 data-editable>How I connect it to cybersecurity research</h3>
                             <ul data-editable>
-                                <li>NLP can help structure patient language, survey responses, and care-management notes.</li>
-                                <li>Compact LLMs can support privacy-sensitive, lower-cost medical AI prototypes.</li>
-                                <li>Prompting, verification, and evaluation fit trustworthy health decision support.</li>
-                                <li>The same mindset can support early Alzheimer's screening and social determinants of health research.</li>
+                                <li>NLP can help structure threat reports, malware descriptions, and analyst notes.</li>
+                                <li>Compact LLMs can support lower-cost security tools that run closer to constrained environments.</li>
+                                <li>Prompting, verification, and evaluation fit trustworthy malware analysis workflows.</li>
+                                <li>The same mindset can support IoT malware family analysis and operational similarity research.</li>
                             </ul>
                         </article>
                     </div>
@@ -2800,7 +2807,7 @@
                     </article>
                 </div>
                 <div class="pipeline-strip reveal delay-5" data-editable>
-                    my fit: medical AI, RAG, evaluation, workflow automation, deployable decision support
+                    my fit: cyber-AI, RAG, evaluation, workflow automation, deployable security tools
                 </div>
                 <div class="footer"><span>Selected projects</span><span>OCR - VLM - RAG - reasoning - multi-agent workflows</span></div>
             </section>
@@ -2810,20 +2817,20 @@
                 <div class="eyebrow">Research-relevant skills</div>
                 <div class="pagedot">viii.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Technical toolkit I can bring to <em>the lab</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>Organized around the research direction I want to support: NLP, data management, visualization, machine learning, and health informatics.</p>
+                <p class="slide-sub reveal delay-2" data-editable>Organized around the research direction I want to support: NLP, malware analysis, data systems, visualization, machine learning, and IoT security.</p>
                 <div class="alignment-table reveal delay-3">
                     <div class="cell head-row">Skill area</div>
                     <div class="cell head-row">Tools and experience</div>
                     <div class="cell head-row">How I would apply it</div>
                     <div class="cell row-label">Foundation models</div>
                     <div class="cell">LLMs, VLMs, LoRA, QLoRA, PEFT, quantization, prompting, reasoning evaluation.</div>
-                    <div class="cell">Use compact models for medical AI prototypes and lower-cost clinical decision support.</div>
+                    <div class="cell">Use compact models for malware triage, threat-report understanding, and lower-cost security assistants.</div>
                     <div class="cell row-label">Data and AI pipelines</div>
                     <div class="cell">Synthetic data, embeddings, vector DBs, hybrid search, reranking, PySpark and ETL foundations.</div>
-                    <div class="cell">Build population health data pipelines, continuous scoring, and RAG over policies and care criteria.</div>
+                    <div class="cell">Build malware feature pipelines, operational similarity analysis, and RAG over papers, rules, and threat intelligence.</div>
                     <div class="cell row-label">Systems and deployment</div>
                     <div class="cell">FastAPI, Flask, Node.js, AWS, Azure, Docker, Kubernetes, CI/CD, observability, APIs.</div>
-                    <div class="cell">Turn research models into monitored, secure, workflow-ready health informatics tools.</div>
+                    <div class="cell">Turn research models into monitored, secure, workflow-ready cybersecurity tools.</div>
                     <div class="cell row-label last">Research practice</div>
                     <div class="cell last">Literature reviews, experiment design, evaluation metrics, scientific writing, mentoring.</div>
                     <div class="cell last">Support publishable studies with reproducible baselines and clear evaluation.</div>
@@ -2837,13 +2844,13 @@
                 <div class="pagedot">ix.</div>
                 <div class="idea-hero reveal delay-1">
                     <p class="marker" data-editable>My fit with this research agenda</p>
-                    <h2 data-editable>Health informatics needs <em>AI that fits real workflows</em></h2>
-                    <p class="body-copy" data-editable>The research direction I want to support brings together NLP, data systems, visualization, machine learning, population health, and digital health tools.</p>
+                    <h2 data-editable>IoT security needs <em>AI that fits real analysis workflows</em></h2>
+                    <p class="body-copy" data-editable>The research direction I want to support brings together malware analysis, NLP, data systems, visualization, machine learning, and practical security tools.</p>
                 </div>
                 <div class="idea-panel">
                     <article class="card color-lemon reveal delay-2">
                         <h3 data-editable>Research direction I want to support</h3>
-                        <p data-editable>Build prediction pipelines for population health, palliative care, social determinants of health, and early Alzheimer's screening.</p>
+                        <p data-editable>Study IoT malware families and variants using operational features, malware development lifecycle signals, and large-scale security data.</p>
                     </article>
                     <article class="card reveal delay-3">
                         <h3 data-editable>My experience</h3>
@@ -2855,14 +2862,14 @@
                     </article>
                     <article class="card color-sage reveal delay-4">
                         <h3 data-editable>Paper I read</h3>
-                        <p data-editable>The JBI paper uses a practical ML pipeline to predict who may benefit from palliative care, using claims data, rolling scoring, feature engineering, resampling, and model maintenance.</p>
+                        <p data-editable>The SenSys 2025 poster introduces operational similarity for IoT malware by analyzing binaries, traffic, source code, and malware development lifecycle features.</p>
                     </article>
                     <article class="card color-blush reveal delay-5">
                         <h3 data-editable>Where I can contribute</h3>
-                        <p data-editable>I can contribute to RAG-based decision support, smaller medical AI models, reproducible ML pipelines, and prototypes that can move toward real use.</p>
+                        <p data-editable>I can contribute to RAG-based malware analysis assistants, compact cyber-AI models, reproducible feature pipelines, and prototypes that help analysts compare families and variants.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Direct alignment</span><span>health informatics - deployable AI - research fit</span></div>
+                <div class="footer"><span>Direct alignment</span><span>IoT security - deployable AI - research fit</span></div>
             </section>
 
             <!-- Slide 10: Initial ideas to discuss, adapted from the original proposed direction slide -->
@@ -2871,8 +2878,8 @@
                 <div class="pagedot">x.</div>
                 <div class="idea-hero reveal delay-1" style="background: var(--sage);">
                     <p class="marker" data-editable>Proposed research direction</p>
-                    <h2 data-editable>AI pipelines for <em>medical decision support</em></h2>
-                    <p class="body-copy" data-editable>I want to focus on care workflows, early Alzheimer's screening, and medical AI that is efficient, clear, and useful in practice.</p>
+                    <h2 data-editable>AI pipelines for <em>IoT malware analysis</em></h2>
+                    <p class="body-copy" data-editable>I want to focus on malware analysis workflows, operational similarity, and cyber-AI that is efficient, clear, and useful in practice.</p>
                 </div>
                 <div class="idea-panel">
                     <article class="card color-pink reveal delay-2">
@@ -2884,8 +2891,8 @@
                                 <path d="m31 29 4 4 8-8"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 1 - RAG for care management</h3>
-                        <p data-editable>Use RAG to explain risk scores using policy rules, care criteria, and model evidence.</p>
+                        <h3 data-editable>Idea 1 - RAG for malware analysis</h3>
+                        <p data-editable>Use RAG to explain malware family and variant links using papers, feature definitions, threat reports, and model evidence.</p>
                     </article>
                     <article class="card reveal delay-3">
                         <div class="idea-card-icon" aria-hidden="true">
@@ -2896,11 +2903,11 @@
                                 <path d="m18 21 4 4 8-8"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 2 - compact medical AI</h3>
+                        <h3 data-editable>Idea 2 - compact cyber-AI</h3>
                         <ul data-editable>
                             <li>Use PEFT and QLoRA to train smaller models with less compute.</li>
-                            <li>Test compact LLMs, VLMs, or hybrid ML models for early Alzheimer's and related screening tasks.</li>
-                            <li>Measure calibration, fairness, explainability, and deployment cost.</li>
+                            <li>Test compact LLMs or hybrid ML models for malware description, feature extraction, and triage.</li>
+                            <li>Measure robustness, explainability, false positives, and deployment cost.</li>
                         </ul>
                     </article>
                     <article class="card color-lilac reveal delay-4">
@@ -2912,10 +2919,13 @@
                                 <path d="M30 21h.01"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 3 - kidney tissue segmentation</h3>
-                        <p data-editable>Benchmark Meta Segment Anything 3 for kidney tissue segmentation with grounding prompts, then test whether fine-tuning can improve accuracy.</p>
-                        <div class="kidney-figure">
-                            <img src="images/glomerulus.jpg" alt="Glomerulus kidney tissue example">
+                        <h3 data-editable>Idea 3 - operational similarity</h3>
+                        <p data-editable>Build a pipeline that extracts operational features from binaries, logs, traffic, and source-code clues, then compares malware families and variants.</p>
+                        <div class="malware-flow-mini" aria-label="Malware development lifecycle flow">
+                            <span>configure</span>
+                            <span>build</span>
+                            <span>package</span>
+                            <span>analyze</span>
                         </div>
                     </article>
                     <article class="card color-lemon reveal delay-5">
@@ -2928,10 +2938,10 @@
                             </svg>
                         </div>
                         <h3 data-editable>My starting contribution</h3>
-                        <p data-editable>Start with papers, a clear baseline, evaluation metrics, and a small prototype that can grow into a publishable study.</p>
+                        <p data-editable>Start with the paper, a clear baseline, feature definitions, evaluation metrics, and a small prototype that can grow into a publishable study.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Proposed directions</span><span>RAG - compact models - segmentation - deployable ML</span></div>
+                <div class="footer"><span>Proposed directions</span><span>RAG - compact models - operational similarity - deployable ML</span></div>
             </section>
 
             <!-- Slide 11: Why me, adapted from the original contribution slide -->
@@ -2943,7 +2953,7 @@
                 <div class="chart-wrap">
                     <article class="card color-blush reveal delay-1">
                         <h3 data-editable>I can bridge research and engineering</h3>
-                        <p data-editable>I know how to design experiments and also how to deploy working AI systems. That matters in health informatics because even a strong model is only useful if it fits real workflows.</p>
+                        <p data-editable>I know how to design experiments and also how to deploy working AI systems. That matters in cybersecurity because even a strong model is only useful if it fits real analyst workflows.</p>
                         <p class="soft-rule" data-editable>I am comfortable working with constraints like limited compute, limited data, latency, privacy, reliability, and evaluation pressure.</p>
                     </article>
                     <article class="roadmap reveal delay-2">
@@ -2966,7 +2976,7 @@
                             <div class="roadmap-dot" style="background: var(--sage);">iii.</div>
                             <div>
                                 <h3 data-editable>Models and impact</h3>
-                                <p data-editable>Small LLMs, VLMs, RAG, synthetic data, agents, and a clear goal of building useful medical AI systems.</p>
+                                <p data-editable>Small LLMs, VLMs, RAG, synthetic data, agents, and a clear goal of building useful cybersecurity AI systems.</p>
                             </div>
                         </div>
                     </article>
@@ -2990,7 +3000,7 @@
                             </svg>
                         </div>
                         <h3 data-editable>First 6-12 months</h3>
-                        <p data-editable>Learn the group's current projects, read the key papers, reproduce a baseline, and help build one focused health informatics prototype or pipeline.</p>
+                        <p data-editable>Learn the group's current projects, read the key papers, reproduce a baseline, and help build one focused IoT security prototype or pipeline.</p>
                     </article>
                     <article class="question-card reveal delay-2">
                         <div class="question-icon" aria-hidden="true">
@@ -3002,7 +3012,7 @@
                             </svg>
                         </div>
                         <h3 data-editable>During graduate study</h3>
-                        <p data-editable>Build efficient AI methods for healthcare workflows, publish useful results, and create systems that work beyond clean benchmark datasets.</p>
+                        <p data-editable>Build efficient AI methods for cybersecurity workflows, publish useful results, and create systems that work beyond clean benchmark datasets.</p>
                     </article>
                     <article class="question-card reveal delay-3">
                         <div class="question-icon" aria-hidden="true">
@@ -3012,19 +3022,19 @@
                             </svg>
                         </div>
                         <h3 data-editable>Long term</h3>
-                        <p data-editable>Become a researcher who builds efficient and trustworthy AI systems for real medical and human-centered settings.</p>
+                        <p data-editable>Become a researcher who builds efficient and trustworthy AI systems for real cybersecurity and human-centered settings.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Trajectory</span><span>baselines - useful research - real health impact</span></div>
+                <div class="footer"><span>Trajectory</span><span>baselines - useful research - real cyber impact</span></div>
             </section>
 
             <!-- Slide 13: Closing, adapted from the original thank-you slide -->
             <section class="slide s-closer" data-label="Closing">
                 <div class="center">
                     <p class="marker reveal delay-1" data-editable>Thank you</p>
-                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>health informatics research with real-world impact</em>.</h2>
+                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>IoT security and cyber-AI research with real-world impact</em>.</h2>
                     <p class="thanks-note reveal delay-3" data-editable>Thank you for your time and consideration.</p>
-                    <p class="reveal delay-4" data-editable>Questions and feedback are very welcome. I am especially interested in where my background in AI platforms, RAG pipelines, compact LLMs, and applied medical AI could be most useful.</p>
+                    <p class="reveal delay-4" data-editable>Questions and feedback are very welcome. I am especially interested in where my background in AI platforms, RAG pipelines, compact LLMs, and applied cybersecurity AI could be most useful.</p>
                 </div>
             </section>
         </main>

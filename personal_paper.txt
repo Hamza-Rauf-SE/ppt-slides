@@ -1,0 +1,901 @@
+Skip to main content
+Advertisement
+
+Springer Nature Link
+Log in
+Find a journal
+Publish with us
+Track your research
+Search
+ Saved research
+ Cart
+Home  Complex & Intelligent Systems  Article
+Efficient multilingual spam detection on resource-constrained devices: a comparative analysis of QLoRA fine-tuning of Gemma 3, Qwen 3, and Llama 3.2 models
+Original Article
+Open access
+Published: 24 February 2026
+Volume 12, article number 119 (2026)
+Cite this article
+You have full access to this
+open access
+article
+
+Download PDF
+Save article
+
+Complex & Intelligent Systems
+Aims and scope
+Submit manuscript
+Hamza Rauf, Umair Khan, Jomana A. Bashatah & Aurang Zaib 
+2180 Accesses
+
+Explore all metrics 
+
+Abstract
+Modern spam is worldwide and multilingual, making advanced detection difficult for resource-constrained devices to balance with user privacy and efficiency. The lack of multilingual training data and the high computing cost of Large Language Models hinder traditional solutions. A secure, privacy-preserving framework for multilingual spam classifier development is presented and tested in this research. First, we synthetically generate a balanced, 21-language dataset by high-fidelity translating the English Enron corpus using the Aya-101 model to handle data scarcity. Next, we use Quantized Low-Rank Adaptation to effectively fine-tune the 4-bit quantized versions of leading compact LLMs Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B in a thorough comparison. QLoRA-tuned models improve significantly, with the Gemma 3-4B model performing best with 90% accuracy and 0.88 F1-score. A stunning 22-percentage-point increase above its 16-bit baseline. The fine-tuned models also reduced VRAM footprint significantly, proving their on-device feasibility. QLoRA and synthetic data pipelines provide a compelling, practical blueprint for implementing cutting-edge AI in privacy-sensitive, resource-constrained situations, according to this research.
+
+Similar content being viewed by others
+
+Evaluating Performance of LLaMA2 Large Language Model Enhanced by QLoRA Fine-Tuning for English Grammatical Error Correction
+Chapter © 2024
+
+Fine-Tuning Tiny Language Models for Legal Question Answering: A Comparative Study of Gemma 2, Qwen 2.5 and Llama 3.2
+Chapter © 2026
+
+Toward Bias-Aware and Efficient Offensive Language Detection Using QLoRA-Optimized LLaMA and GPT Models
+Chapter © 2026
+Explore related subjects
+Discover the latest articles, books and news in related subjects, suggested using machine learning.
+Languages
+Lead Optimization
+Machine Translation
+Minority Languages
+Technical Languages
+Machine Learning
+Machine Learning Applications in Phishing Detection
+Introduction
+In spite of the existence of spam and phishing attempts in allowed proportions, email is still of considerable importance in modern business and personal communication [5]. Meanwhile, smart phishing attempts extract sensitive data and funds by means of fraudulent social engineering attempts [2]. The growth of communication by means of online communication has made the problem worse. Spam has become an international, multilingual, and complicated problem. Traditional filtering methods, usually rule-based or simple content-based methods, are becoming ineffective in the face of these threats. Both missed threats (false negatives) together with the legitimate signs wrongly blocked (false positives) are the outcome of the failure to adjust quickly to new hostile tactics [4].
+
+The accuracy of spam detection has dramatically improved due to the advances of deep learning models (e.g., convolutional neural networks, recurrent neural networks) [10]. Although effective, they often fail to capture the subtle semantic and contextual characteristics of current spam (even when spoofed). Recently, a conceptual shift towards better proactive and smart cybersecurity solutions and novel benchmarks for categorization tasks has been enabled through Large Language Models such as GPT series and BERT, interestedly yielding supremacy in natural language understanding [35, 50]. But using these powerful models directly on a device is often not feasible. Their high memory and processing needs make it hard to make effective, real-time spam filters on devices with limited resources, like smartphones and IoT devices [22].
+
+Model compression is a potential strategy to narrow this gap. Quantization reduces model memory by employing lower-precision weight data types. Parameter-efficient fine-tuning approaches like low-rank adaptation allow model changes without retraining [31]. These approaches alleviate the deployment issue, but spam detection lacks big, high-quality, tagged multilingual datasets. Public corpora are mostly English. Thus, creating balanced and diversified multilingual datasets is resource-intensive and frequently impossible [30]. Data scarcity hinders multilingual model training and testing.
+
+This paper tackles these interrelated issues by examining synthetic data generation as a solution for data scarcity. We examine the efficacy of a substantial multilingual dataset, generated by translating a recognized English corpus, in training a high-performance classifier. This method brings up important questions. The beneficial effect of synthetic data training for current compact LLMs such as Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B requires a comprehensive comparison. Furthermore, it is crucial to fully understand the connection between strong quantization and the following fine-tuning in this setting [7].
+
+This paper introduces a novel privacy-preserving framework for building and testing a multilingual spam detection model that is optimized for devices with low resources. We employ quantized low-rank adaptation on a synthetic multilingual dataset with 21 languages to improve the top-performing compact LLMs [41]. Finding an acceptable balance between model performance and affordability is now a thing of the past. Numerous VRAMs are required by the majority of modern LLMs. A 4B parameter model with 16-bit precision, for instance, might need around 9 GB of VRAM, rendering it unusable in applications lacking sufficient resources. While reducing the size of the model by quantization might be helpful, it also has the potential to degrade performance. Therefore, it is important to understand this trade-off clearly and attempt to recover the performance lost. Addressing this issue head-on is the focus of this study. First, we evaluate the performance of the top multilingual models using 5-shot prompting in both their natural 16-bit precision and a quantized 4-bit format. These models are Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B. The quantized models are then fine-tuned using QLoRA to systematically determine the amount of performance that can be recovered or even enhanced.
+
+This work makes several important contributions to the field in that regard:
+
+To address the issue of insufficient multilingual data, we present and evaluate a new synthetic data pipeline that effectively generates privacy-preserving training data via high-fidelity translation.
+
+Our rigorous comparative benchmark measures the performance loss due to quantization and its subsequent recovery by QLoRA fine-tuning. We compare and contrast three leading lightweight multilingual LLMs, namely Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B, in a direct, multi-stage way.
+
+We provide empirical evidence that multilingual LLMs may be employed accurately in low-resource contexts where privacy is crucial by merging 4-bit quantization with QLoRA. This allows for on-device viability demonstrations.
+
+To direct our inquiry, this study will examine the subsequent research questions:
+
+RQ1: Which modern and compact multilingual LLM architecture Gemma-3-4B, Qwen 3-4B, or Llama-3.2-3B demonstrates superior performance in multilingual spam detection when adapted with a consistent QLoRA fine-tuning methodology?
+
+RQ2: How much does the combination of 4-bit quantization and QLoRA fine-tuning change the performance of compact LLMs, going beyond just addressing quantization loss to create new state-of-the-art capabilities?
+
+RQ3: Does using 4-bit quantization cut VRAM enough to make powerful models like Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B usable on edge devices with strict memory limits (e.g., ≤ 4 GB VRAM)?
+
+RQ4: Is a synthetic data generation pipeline, predicated on high-fidelity translation, a resilient and privacy-preserving solution to mitigate the multilingual data scarcity constraint for training efficient spam classifiers?
+
+In order to achieve these aims, we first place our research in the context of the existing literature by conducting a thorough review that identifies the particular gaps that our study will fill in Sect. "Literature Review". Our methodology for creating synthetic data, selecting a model, and optimizing the QLoRA process is described in further depth in Sect. "Methodology". A comparison of model performance measures and an analysis of the model’s effectiveness are part of our comprehensive study, which is detailed in Sect. "Results". The results of the research are evaluated in Sect. "Research Findings and Discussion" by analyzing their consequences for AI that preserves privacy in resource-constrained situations and the research that should be conducted in the future.
+
+The extensive fine-tuning and evaluation process performed after the creation of the dataset, which was the initial part of our extensive multi-step approach to addressing these issues systematically, is dealt with in Sect. "Methodology".
+
+Literature review
+Digital communication has never before connected so many individuals, but it has also resulted in greater exposure to a variety of cyber threats, among which are spam emails that are unsolicited and malicious. Effective and powerful spam filtering is an essential component of modern computer security against various malicious and undesired communications [1]. Spam emails, which are usually linked to planned attacks or phishing attacks, are not only a nuisance and time-wasting, but they can also lead to a major failure of security, causing a serious security breach and national or worldwide financial theft. Such attacks are increasing in number and cunning and are more than the means of eliminating them provided by traditional filtering systems, for all the various means of bypassing the systems are being discovered by malicious actors. Hence, this highlights the need for more sophisticated and adaptable means of countering these evolving dangers.
+
+The foundations: traditional approaches to spam filtering
+Older filtering methods, such as rule-based algorithms, matched e-mail against patterns [6, 7]. They worked well for simple spam but were limited by their static characteristic and inherent errors. Bayesian filtering and other dynamic statistical methods were able to predict spam from word features, but could not survive sophisticated attacks that mimicked human interactions [8]. Content filtering, which looked at the grammar and structure of the e-mail messages, may miss the obfuscation of the words and dangers that could also be present [9].
+
+All these conventional techniques ultimately face the same foundation problem. They have difficulty in distinguishing ambiguous spam from genuine communication, they have a tendency to produce high false positive rates, and are therefore virtually susceptible to the modern evasion tactics [6]. These tactics have not been very effective since the existing bad techniques have hindered progress. This made it necessary that state-of-the-art security systems be equipped with tools of NLP and machine learning.
+
+Next wave: the evolution of machine learning in spam filtering
+The arrival of machine-learning techniques marked a turning point, for spam detection. Early systems extended frameworks by hand-crafting features extracted from email headers and message content [7]. A major change occurred with the rise of support vector machines and deep learning [10, 11]. These newer models overturned the paradigm, automatically uncovering the important cues straight from raw text. That breakthrough let the system start spotting tangled patterns and subtle context signals that older methods simply couldn’t see, which in turn sharpened both the accuracy and flexibility of detection frameworks. It signals a pivot away from rule-based filters, toward agile data-driven models that can keep up with spammers ever-changing tricks and give users a much stronger layer of protection.
+
+Review of previous studies in spam detection
+The need for continual enhancements in detection and mitigation methods for the persistent and ever-growing spam in modern electronic communications is mentioned in this paper, which combines the results of ongoing research on the evolution of spam, not only in the field of electronic mail, but also in other communications methods, such as SMS. A common theme stressed in various papers is that a number of diverse methods must in practice, be used in conjunction with one another to be effective in combating the spread of spam and the security problems which result from it. These methods involve all sorts of machine learning, including classical methods and novel deep learning applications. To offer a structured and transparent view, we classify such studies in several methodological families to facilitate an extensive comprehension of the evolution of the field.
+
+Machine learning techniques in spam detection
+Early machine learning studies applied spam filtering mostly focused on fine-tuning and tailoring classic classifiers to this certain field. For instance, Sahin et al. [12] carried out a well-known study on the K-nearest neighbor algorithm and the role of the hyperparameter k in filtering performance. Based on extensive experimentation on several datasets, their approach proved that the best performance was obtained when taking k set to 1 which emphasizes the effect of careful parameter tuning in the effectiveness of machine learning based detection systems.
+
+Other studies have concentrated on the hybridization of traditional models to enhance their predictive performances. Manita et al. [17] proposed an efficient filtering approach referred to as OAOS-LR stands for enhancing a normal logistic regression model by hybridizing it with an enhanced atomic orbital search optimization algorithm. Results found that this integration improved detection more than just using the LR model alone; hence, performance was better compared to individualistic traditional methods. The results from this experiment absolutely validate the effectiveness of the OAOS-LR model since it obtained high F1-scores over several datasets.
+
+As the focus of spam grew outside just email, researchers took newer advanced models to other domains. Work by Chandan et al. [14] addressed the vulnerability growing at large regarding mobile SMS as spam, where messages look much like communications from financial institutions. In this paper, a comparative study between the state-of-the-art transformer model, BERT, and some traditional machine learning algorithms consisting of logistic regression, multinomial Naive Bayes, SVM, and random forest has been discussed. Some labeled Kaggle datasets that have spam and non-spam messages were used for experiments, which provide early evidence regarding the superiority for an architecture based on transformers with BERT, achieving testing accuracy up to 98% beating all classic ML classifiers by a big margin. This brought out a highlight on the potential in more advanced language models relevant to nuanced contexts within modern-day spamming.
+
+Novel techniques in spam detection
+As the drawbacks of traditional rule-based approaches became increasingly obvious, researchers began to pioneer new methodologies in addressing challenges that were posed by informal text structures and limited datasets. For example, Gaurav et al. [15] introduced a novel item discovery approach based on document labeling. A number of algorithms, such as the Naive Bayes approach, the decision tree, and the random forest, were utilized for classification. The results of the experiment indicated that random forest was more efficient than all others in classifying spam from ham. Hence, it became an improved method of solving precautionary problems in relation to spam.
+
+Other literature has addressed the entire pipeline of the spam detection process, from data preparation for creating the model, until the model itself being selected. Mehrotra et al. [16] have analysed the whole process of detection from various points of view and pointed to the necessity of tuned parameters, proper partitioning of the dataset, and an evaluation of the algorithm. Their paper demonstrated quite convincingly that by correctly applying the various processes involved in the pre-processing as well as feature extraction steps, effective spam detection can be achieved, which in turn, gives better protection to users against malicious email. This implies that correct classification can, as a result of various methodological steps, prove to be significant in terms of reducing the risk of security problems.
+
+Rapacz et al. [13] recognized that complex models would place excessive demands on computation and underlined the importance of selection procedures due to this fact. To this end, they constructed an algorithmic scheme, devised to speed up the process of selection from the multitude of machine learning models applicable to the task of spam detection. Here again, we see the central position that textual analysis takes in any classification process. In their work, they carried out an evaluation of several popular classifiers such as k-Nearest Neighbours, Support Vector Machines, and Naive Bayes, and indicated that in fact, it is Naive Bayes that has its superiority to any of those alternatives in spam detection. This then demonstrates how substantially filtering performance can be enhanced through a systematic approach toward classifier selection when applied to large datasets.
+
+The safety of the models has also become an imperative area. Kuchipudi et al. [18] brought forth the vulnerability of machine learning-based systems for detecting spam to adversarial attacks. They successfully demonstrated that various adversarial techniques, including strategic substitution of words with synonyms as well as changing the spacing of words, can be successfully trick spam filters. There is, therefore, an urgent requirement for the development of robust defenses that are capable of withstanding adversarial manipulations in security systems based on machine learning.
+
+Deep learning has lately been a great field of innovation. Gomaa [20] studied the use of deep learning in solving the problem of spam SMS messages, since SMS is still greatly used as a medium for marketing, hence a lot of unsolicited messages. The study managed to come up with highly accurate results in detecting capabilities through a comparison between several deep neural network models and traditional machine learning algorithms. This practically proves that deep learning methods are highly effective in dealing with the increasingly advanced dangers of contemporary attempts at spamming.
+
+Natural language processing frameworks and their emerging security challenges
+Specialized NLP systems have greatly improved spam detection. Garg et al. [3] noted with appropriate emphasis that a great variety of NLP techniques can be used in the management of spam, which has always been one of the greatest barriers to the proper working of email services. They used elementary NLP techniques such as tokenizing, stemming, part-of-speech tagging, and chunking to develop effective systems for the detection and elimination of spam content. This work exemplifies once again the fruitful way in which NLP systems, specifically built on AI lines, can be employed perilously in overcoming the complex problems involved in advanced spam detection.
+
+As detection models improve, people also find new ways to get around them. So, another key focus is making these systems stronger and safer. Zhang et al. presented in [19] the effects of a label flipping attack on the Naive Bayes algorithm as applied in spam filtering systems. Their study aimed to determine how well the NB classifier resists label noise in a real-world scenario for testing that mechanism. By developing and implementing another novel label flipping attack against several datasets, they found evidence demonstrating that Naive Bayes does have significant weaknesses regarding classification performance in such scenarios. Later, an analysis by them evaluated how well different machine learning models and deep learning models could prevent this sort of attack, yielding information on building more resilient spam filtering systems.
+
+Zhaoquan et al. [11] also analyzed the vulnerability of the spam filters to attack, particularly on margin attacks meant to break Naive Bayesian classifiers. Their approach included a systematic way of generating adversarial examples by inserting sensitive words into otherwise legible text. The authors have proved that indeed this approach can largely reduce accuracy for the targeted filter. They further proved that these adversarial examples could be applied against different filtering algorithm-that is, they were highly transferable. This finding indicates that such attacks can have a larger and worse effect since they might impact a wide variety of detection systems for spam.
+
+Cao et al. [21] took up the novel challenge of bilingual and multi-format spam since spam is increasingly international. They proposed a new detection architecture based on M-BERT, which itself is an instantiation of the BERT architecture in multilingual terms. Implementing their method over a purpose-built dataset of bilingual, multi-format spam, including optical character recognition to read text from images, yielded an impressive accuracy figure amounting to 0.9648. What is equally important, besides all these findings, however, is that the model proved to be very efficient as well, taking only 0.3168 s per training iteration and hence powerful as well as usable for finding advanced spam in complex multilingual environments.
+
+Advanced and hybrid techniques in spam filtering
+Researchers have progressed to more Advanced and, in many cases, hybrid solutions, given the complexities of spam. For example, Baaqeel et al. [22] pointed to the tide of SMS spam and suggested a sophisticated filtering solution. Uniquely, their approach merges supervised with unsupervised machine learning techniques, focusing on the differing strengths of these two approaches. The resultant hybrid system was designed to greatly enhance the accuracy of spam detection and its f-measurements. It lends itself to a more powerful and comprehensive response to the specific threats that SMS spam represents. An important conclusion from their findings is that machine learning algorithms are extremely adaptable and easily adjustable to meet the different needs of different communication channels.
+
+Other researchers have focused their attention on the development of integrated models, which will incorporate various types of malicious content. Magdy et al. [10] developed a deep learning model that aimed not only at common junk messages but at a specific hazard to be met with, namely, phishing emails. The work dealt with the rather complex problem which is involved in the generation of unsolicited messages by the use of content-based features. They achieved a high validation accuracy, but at a small computational cost. This model anticipated an earlier model in showing that it should be possible for the email filter systems to be made much more efficient with respect to various dangers by taking advantage of modern deep learning systems.
+
+A novel approach to spam detection has been suggested by Bhattacharya et al. [29], employing various genetic algorithms in order to overcome the usual problem of lack of data, this being an adaptive approach which works quite well on small data sets. In fact, what it can do is adjust the weights in such a way that the word counts are properly weighted and can then classify the email contents accurately. This again points to the fact that we need adaptive techniques which will perform best in the usual real-life environments in which we find ourselves when there are large quantities of perfectly labelled data not available.
+
+Much effort and tweaking of the basic machine learning algorithms have also been brought to bear in this task. Hnini et al. [24] present a fulsome spam classification framework predicated on an ensemble of nearest neighbor algorithms—KNN, WKNN, and the K-d tree. It is based on a strong preprocessing pipeline comprising NLP techniques and feature extraction methods such as Bag-of-Words and TF-IDF, which they fused into these algorithms separately. The study elegantly validates the potency of the KNN approach through experiments that return very high performance on the celebrated Enron and LingSpam datasets, and thus goes a long way toward validating it as an effective method for spam classification.
+
+Advanced models and novel approaches
+Kihal et al. [25] conducted a study revealing that spam is not limited to text anymore. They developed an effective multimedia spam detection framework, VTA-CNN-RF. This model can detect spam in text, image, audio, and video components. Utilizing convolutional neural networks for feature extraction and a random forest classifier, their proposed framework outperformed previous methods. This paper has its own importance in how the integration of modalities helps in improving the accuracy of the detection, and also proves the model on different multimedia datasets.
+
+In an extensive comparative analysis, Shaik et al. [26] addressed the rising concern of email spam with different machine learning and deep learning algorithms, which have recently come into existence. Methodologies tested under this research work include Naive Bayes, random forest, artificial neural network, support vector machine, long short-term memory, as well as Bidirectional long short-term memory. This study has tried to bring out that model that is most effective in differentiating between ham and spam, and also highlights the continuous need for adaptive methodologies against newly emerging techniques in spamming.
+
+Ghiassi et al. [27] evolved a new text classification methodology based on the enhancement of the existing typical classification approach by integrating yet another clustering algorithm with transferable cross-domain feature engineering. It was this amalgamated framework that they implemented in such applications as sentiment analysis of Twitter and YouTube comment spam filtering, which outperformed normal clustering methods. There is an easy method, applicable to a wide range of areas, and cheaper, thus marking quite some progress within the area of text classification.
+
+In view of the computational cost of some robust classifiers, Wang et al. [28] proposed a manifold learning-based email spam filtering approach to mitigate the high time complexity of support vector machine models. By means of the Laplace feature map algorithm, it became possible for them to identify and extract those features that are most relevant from collections of email text. This speeds up spam detection, maintaining accuracy at high levels. It shows that using geometry with text makes filtering easier and better.
+
+Comparative analysis and performance enhancement
+Numerous studies have explicitly analyzed different machine learning methods comparatively, as those whose performance can be improved. A study by Kontsewaya et al. [23] exhaustively discussed different algorithms for machine learning in spam detection and emphasized the need for strong filtering techniques in order to protect users from spam-related threats. It noted simple algorithms such as Naive Bayes, K-nearest neighbors, SVM, logistic regression, decision trees, and random forests. Results of the study show that techniques based on NLP work well with logistic regression and Naive Bayes being the two best models used. These techniques yielded accuracies of up to 99% which provide a very sound basis for the development of further intelligent spam detectors.
+
+Similarly, Ahmed et al. [30] performed a thorough review of all machine learning techniques currently in use for spam filtering in conventional email systems and in the current IoT platforms. They presented different methods for tackling this problem by rationally classifying the techniques in appropriate groups and conducted an in-depth assessment on the basis of the main performance indicators, such as accuracy, precision, and recall. The study acknowledged the role of email filtering but emphasized the rising volume of spam as well as an immediate requirement for quick and scalable means of detecting it.
+
+Other studies attempted enhancements of certain foundational filtering mechanisms. Xia [7] discussed the major problem of sustaining high processing rates in rule-based spam detection systems, a problem often exacerbated by the fast growth of disguised words used by spammers. The solution proposed by Xia is an innovative algorithm utilizing a Hash Forest, an unusual data structure, having a time complexity in practice always constant for the operations required in this context. Therefore, this new algorithmic solution to ensure a steady processing rate irrespective of the size of the rule set or vocabulary involved directly increases filtering speed and scalability of rule-based systems.
+
+In the study by Shobana et al. [8], validation of fundamental models was brought into the limelight by designing a Naive Bayesian classifier-based model for spam detection. Their study reiterates the fact that with increased spam, conversation quality is deteriorating. After undertaking a detailed review of different techniques in spam filtering, the authors advocate the need to use machine learning techniques over traditional, obsolete less flexible techniques. The model that they have discussed succeeded remarkably in distinguishing between real and spam messages. This would help identify and reduce to some extent the problem and security risk associated with spam.
+
+To further push forward the comparative evaluation of modern models, Roumeliotis et al. [47] performed a direct efficacy test of fine-tuned large language models and natural language processing models against a typical convolutional neural network. They fine-tuned GPT-4, BERT, and RoBERTa for spam classification, then compared how well they did against a CNN created specifically for that purpose. The results showed that the transformer-based architectures were clearly better. BERT, RoBERTa, and GPT-4 all had accuracy rates of over 99%, which was much better than the CNN. BERT was the best of the advanced models, but GPT-4 and RoBERTa were not far behind. A significant aspect of the work was the evaluation of generalization by comparison to other datasets. In this setup, the fine-tuned GPT-4 showed far more robustness with similar measures of accuracy when tested on the other dataset. The BERT and RoBERTa models did not measure up to this. This proves that indeed fine-tuning may lead to specialization of the highest order, but also that the pre-training of some models, such as the GPT-4 model, may confer on them a capacity to generalize, in an important factor that contributes to an increase in practical performance.
+
+The advent of transfer learning and fine-tuning
+Transfer learning and fine-tuning have, of necessity, given rise to the generation of sophisticated spam filtering systems at a later date. Kim et al. [9] introduced a new method called a privacy-preserving content-based spam filter as a solution to the very important problem of data privacy, which is inherent in the traditional filtering techniques. More specifically, this system was designed to keep secret the content of the email and the rules associated with its analysis so that the opportunity of third-party exposure or attempts at decryption attacks would be reduced. The important point about the PCSF is that it provides pre-validation procedures that allow the delivery terminals to reject spam at an earlier stage of the process of its arrival. This is a passive means of defense against possible threats.
+
+Bhopale et al. [31] answered the urgent call for better email classification using a transfer learning approach that leverages the power of large, already well-established models. Their methodology revolves around modifying a pre-trained BERT model to be applicable for spam detection. They were able to demonstrate significant gains in accuracy of classification when tested on two datasets: the Enron spam dataset and the Kaggle SMS spam collection. After fine-tuning properly, their BERT model defeated several conventional methodologies, including logistic regression, SVM, Naive Bayes, random forest, and LSTM. This just emphasizes how powerful transfer learning is towards building highly accurate context-aware spam filters.
+
+The urgent need for better classification of emails is answered by Bhopale et al. [31] with a new method of transfer learning, exploiting the potential of large already existing models. Their method is based on the modification of an already trained BERT model to facilitate spam detection. The increase in the accuracy of classification methods could be noted with two datasets, namely the Enron spam dataset and the Kaggle SMS spam collection data. Upon fine-tuning their BERT model, the authors were able to outperform many conventional methods like logistic regression, SVM, Naive Bayes, random forest, and LSTM. This demonstrates how transfer learning can significantly improve the accuracy of context-aware spam filters.
+
+Addressing unique challenges and proposing novel solutions
+The special solutions that have been developed by the researchers against the various types of spam that have existed in certain types of media. The particular case of short messaging services was discussed by Ojugo et al. [32]. They used a genetic algorithm combined with a trained Bayesian network in order to approach those specific problems that are inherent with SMS spam, such as limitations on the number of characters and oddities of language. Their approach attempts to eliminate the irregular properties that often exist in SMS messages and thus to improve the accuracy of classification by means of more accurate semantic evaluation. This illustrates the fact that general principles require at least a measure of specialisation according to the specific media of communication that are employed.
+
+Nam et al. [38] introduced a methodology that is based on the combination of visual and textual content for the enhancement of the filtering efficiency due to an increasing trend of non-textual spam. The combination of a hybrid feature extraction structure has been proposed in this approach in order to tackle the limitations of the classical text-based filters against the threats of spam in the form of images. The model would collect data from the spam images by using the optical character recognition, the latent Dirichlet allocation as a method to look for topics, and word2vec for the purpose of extracting word embeddings. This integration exhibits a significant effect in the classification methods, where an accuracy of 0.9814 is achieved, and Macro-F1 is 0.9813. However, the researchers noted that challenges do exist, particularly through adversarial techniques such as OCR evasion, hence indicating that identification strategies for image-based spam ought to be further developed.
+
+To tackle the problems of scalability and efficiency in large-scale systems, Ji et al. [34] studied using distributed computing models. They made use of the parallel processing capabilities of Hadoop MapReduce to handle the growing demand for quick email filtering. They employed a Naive Bayes model in their study to detect bad emails in the distributed system. Compared with the common, single-machine based Python implementation, at baseline we obtained more than 1.11 times the accuracy and substantially decreased the (prediction error) rates by 14.13 times in prediction using this method of Hadoop MapReduce. This study demonstrates the high efficiency of a distributed system for large-scale spam detection.
+
+Finally, Rifat et al. [35] considered the issue of SMS phishing by addressing the highly specialized menace of social engineering. They used machine learning algorithms to make a system that can tell when spam is coming in. By proposing a generalized approach to spam detection using a pre-trained BERT, they were able to achieve an overall accuracy of 99% and an F1 score of 0.97 overall support (2183 support samples). Their results strongly indicate that smaller, transformer-based models like BERT “are really good at combating subtle and obfuscating language in contemporary spam and phishing messages.”
+
+The emergence of large language models in NLP
+The arrival of large language models brought about an unprecedented transformation in the field of natural language processing, revealing capacities that were unmatched in their ability to understand, produce, and logically manipulate language, akin to human communication. At the centre of the revolution lie the families of architectures represented by GPT and BERT, and each has had its own major and specific impact on the field in its own right [36].
+
+The GPT series from OpenAI began with GPT-2, which was then followed by GPT-3 and afterward the very powerful GPT-4. These models use the Transformer architecture to process sequence data efficiently and discover long-range relationships in text [37]. GPT models learn a great deal about grammar, meaning, and context through unsupervised learning on massive quantities of various texts that can be found on the web. This massive knowledge enables the models to produce text that is coherent and appropriate with respect to the preceding and following text, thereby raising the bar for the field in general [33]. GPT-3 just happens to be a very large model with 175 billion parameters. It has demonstrated great strength through an extremely wide variety of different NLP tasks, from text completion to summarization to answering complex questions.
+
+Another important contribution towards the advances in NLP research was brought about by BERT. The main improvement brought in was bidirectional context modeling, which enables the model to take into consideration previous and succeeding words surrounding a token to be predicted. The result is that the Bidirectional approach enables a better and more nuanced understanding of semantic relations within a sentence [39]. Pre-trained in two steps on very large text datasets and later fine-tuned for one specific task, BERT reached state-of-the-art results in downstream tasks like sentence classification, named entity recognition, as well as sentiment analysis [35]. The breakthrough achieved by BERT opened doors for the development of an even more improved set of bidirectional models like RoBERTa and ALBERT [40].
+
+Next-generation and multilingual LLMs
+A new generation of Large Language Models has emerged, which is designed to address more specialised, complex, and often practical problems than the original BERT and GPT models. Increasingly, it is novel architectural innovations, different training steps, and specific capabilities that distinguish these new models from one another rather than their size.
+
+A good example of this is the Qwen series, which has constantly driven the boundaries for multilinguality as well as advanced reasoning. The latest version, Qwen 3, comes with a state-of-the-art hybrid design where it can toggle an internal “thinking mode” meant to sustain several steps towards solution development of arduous problems and, alternatively, perform quick responses based on context retrieval without activating the said mode. Trained on a colossal dataset containing 36 trillion tokens across 119 languages and dialects, these are high-powered, natively multilingual models that find applications across geographies [43].
+
+Meanwhile, projects such as the Aya model have strived to open up high-performance LLMs by specifically addressing low-resource languages. The Aya project addresses the prevailing issue of data scarcity and linguistic inequity in NLP by assembling a 101-language dataset for instructions [46].
+
+Likewise, large open-source initiatives have evolved models that are extremely efficient and instruction-tuned to fulfill general as well as particular tasks. A good illustration of it would be Meta’s Llama series, ending with the recent release of Llama 3.2. These models were basically the result of the development concept based on three main principles: high-quality data, massive scale training on up to 15 T tokens, and management of complexity via stable architectures [48]. The Llama family has formed a kind of blueprint for high-performance multilingual, tool-using, conversational open-source models. There are also quantized versions available for use in resource-constrained environments [44].
+
+The bidirectional encoder paradigm has undergone significant advances of late, together with these powerful decoder-only, generative models. ModernBERT and models of this kind have revived the BERT-style model with advances in: rotary positional embeddings plus improved attention mechanisms to allow for up to 8192 tokens, which are processed in a native long context from a massive 2 trillion tokens of English and code corpus. ModernBERT was designed to excel where nuanced comprehension over extended contexts is required for tasks such as retrieval and classification [45].
+
+Last, one more key line has been the making of light, strong models that can work on tools. The Gemma 3 group, for instance, brings vision skills and long-context ability to small models with 1B to 27B parts. It does this by using knowledge distillation from larger teacher models to keep performance high. The Gemma 3 models are a focused effort to make cutting-edge AI available on consumer-grade hardware. They use architectural innovations to reduce the KV-cache memory footprint.
+
+Efficient fine-tuning with QLoRA: a paradigm shift
+In the past, fine-tuning multi-billion-parameter LLMs has been a very resource-intensive process that required a lot of memory, which most researchers and developers don’t have access to. For example, a standard 16-bit fine-tuning of a 65-billion parameter model needs more than 780 GB of GPU memory, which is way more than even the best enterprise hardware can handle. This lack of resources made it hard for LLMs to be widely used and specialized.
+
+Dettmers et al. [41] presented a revolutionary solution to this challenge in their paper introducing quantized low-rank adaptation. QLoRA is a very effective fine-tuning method that uses two important new ideas to greatly cut down on memory usage. First, it quantizes the pre-trained base model to a very high 4-bit precision using a new data type called 4-bit NormalFloat. This is the best way to represent the normal distribution of neural network weights in terms of information theory. Second, it freezes these quantized weights and sends gradients back to a small, separate set of trainable parameters called low-rank adapters.
+
+This method only updates the small LoRA adapter weights during training, which make up a very small part of the total model parameters. The QLoRA paper showed that this method could fine-tune a huge 65B model on just one 48 GB GPU without losing any of the 16-bit task performance. By adding more memory-saving methods like double quantization and paged optimizers, QLoRA made it possible for anyone to fine-tune state-of-the-art LLMs. This technological breakthrough is the basis of our study. It lets us adapt powerful models like Gemma 3, Qwen 3, and Llama 3.2 to our specific task of detecting multilingual spam on hardware that is easy to get to and has limited resources. This adds to the “efficiency frontier” and the methodological approach we are taking in the research.
+
+The parallel development between the two, on the one hand, is the situation of large, powerful, multilingual open-sourced LLMs such as Gemma 3, Qwen 3, and Llama 3.2. On the other hand, the advent of parameter-efficient fine-tuning methods, such as QLoRA that has created new spaces for the creation of specialist AI solutions. There still exist monumental research inadequacies.
+
+First, although individual models are frequently assessed on general tasks, to our knowledge, there is no extensive, direct comparative study that evaluates these specific next-generation architectures against one another under the dual challenges of 4-bit quantization and QLoRA fine-tuning for the security-critical task of multilingual spam detection. Second, the constraints of prior studies frequently restrict them to English-centric datasets or less sophisticated models, rendering the practical feasibility of employing synthetically generated multilingual data for the fine-tuning of these newer models an unresolved and unverified inquiry.
+
+This creates a big gap in our understanding of the real-world trade-offs between model architecture, performance recovery after quantization, and resource efficiency. This study seeks to fill this gap by systematically assessing these cutting-edge models, establishing the inaugural direct benchmark of its kind, and addressing the practical challenge of developing high-efficacy, privacy-preserving spam filters for resource-limited settings.
+
+Methodology
+This study adopts a methodological approach in organization, controlling the research questions in the synthesis made earlier. The objective is to move logically from basic data creation toward an in-depth model comparison by going through certain steps. It uses the new pipeline that was adopted in developing our synthetic, multilingual spam corpus protected by privacy, and thus is directly related to testing a hypothesis under RQ4 concerning data scarcity. This will then provide an explanation of model selection between Gemma 3, Qwen 3, and Llama 3.2, plus details regarding the QLoRA fine-tuning protocol. This practical design is meant to give actual responses to RQ1, RQ2, and RQ3 through comparison of model performance, determination of the way in which our efficiency techniques impact it, and validation on-device. These results are strictly actual and directly relevant to the objectives of the study by applying an approach that is reproducible and falls in line with current rules for evaluation of AI models [49].
+
+A novel multilingual and privacy-preserving spam corpus
+A major and recognized impediment to advancement in multilingual NLP has been the dearth of massive, quality, balanced labeled datasets for particular tasks such as spam detection [30]. To circumvent this grand issue, we created an entire synthetic multilingual spam corpus. The renowned English Enron email corpus happens to be a fundamental source of real spam as well as ham messages, which were employed towards making this dataset.
+
+Synthetic multilingual data generation: a principled approach
+A systematic and iterative translation pipeline lies at the core of our data creation process. For this task, we prudently selected the Aya-101 model by Cohere [46]. Numerous important features differentiate this selection from several general-purpose multilingual systems. Aya 101 has been instruction finetuned using a large human-curated multilingual training corpus comprising 101 languages, emphasizing the underrepresented languages. In contrast to models learning multilingualism from pure text pretraining, the large number of labeled samples, providing substantial training to the model instructions, results in higher-quality translation [46]. In addition, it sustains pragmatic nuance and semantic equivalency, which distinguishes the most plausible or misleading spam signals from true communication. It being open access and covering a wide range of languages goes hand in hand with our study’s goal of something that can be applied anywhere and is easy to reproduce.
+
+We followed this clear plan for generating content:
+
+1. Language and data scaffolding: 21 target languages were picked, which would provide a large linguistic typology and geographical spread. Among these languages are Hindi, German, French, Spanish, Chinese, Arabic, Bengali, Russian, Portuguese, Japanese, Indonesian, Urdu, Punjabi, Javanese, Turkish, Korean, Marathi, Ukrainian, Swedish, and Norwegian. About balanced set of 1000 spam and 1000 ham messages from the Enron corpus was selected as source material.
+
+The selection of these 21 languages was deliberate and based on three major objectives. We selected major world languages such as Chinese, Spanish, English, and Hindi spoken by billions of people to ensure the applicability of our study to a large, diverse audience across the globe who are impacted by spam. Secondly, we have taken languages from various families that possess diverse grammatical structures. e.g., German (from the Indo-European family), Turkish (from the Turkic family), and Javanese (from the Austronesian family). This type ensures the models are examined on more than one version of language. In the end, these languages use distinct alphabets and characters. For instance, English applies the Latin script, Russian uses Cyrillic, and Korean employs Hangul. This offers every model an entire check of how well they can read and comprehend text in so many diverse ways, which makes this evaluation a solid and reasonable comparison.
+
+2. Iterative and segmented translation: A segmented translation approach was adopted to maximize diversity in the final dataset and avoid repeating translation patterns. There were 1,000 spam and 1,000 ham messages per language for each of the 21 target languages. That particular set does not match any other set. The first block of 1000 spam messages has been translated into Hindi. The next block is into German, and so on up to all languages. Similarly, the ham messages were also split such that each language in the final corpora would get a balanced and unique subset of source data.
+
+3. Final dataset composition: following this process, it is found that there is a large variety of final dataset, and that there are 42,000 records altogether. As to balance, it is perfect, and there are 2000 records for each of the 21 languages (Fig. 1). The language subsets are also balanced, there being 1000 spam and 1000 ham records.
+
+Fig. 1
+Fig. 1
+Full size image
+Dataset composition
+
+Rigorous verification of translation fidelity
+It was crucial to ensure that the translated data preserves its semantic and pragmatic integrity since artifacts or errors in translation could introduce much noise, thus impeding the model from learning true linguistic patterns of spam and ham. The quality of any multilingual AI pipeline is as good as the data it uses a fact that recent research in AI-driven translation quality assessment has brought back into focus [52]. To honor this principle, the GPT-4o API was used to implement rigor in programmatic quality checking. A stratified random sample of thirty spam and thirty ham messages for each of the twenty-one languages was evaluated in detail. Evaluation criteria included semantic equivalence and appropriateness of the pragmatic register in this case, particularly with respect to formality and tone-but most importantly, whether the nuanced contextual clues that determine whether a message is convincingly or deceptively spam rather than genuine have been preserved.
+
+It was necessary to make sure that the semantic and pragmatic structure of the translated data were preserved, as failures of translation might introduce considerable noise to the model, which would confound its learning of the genuine linguistic patterns of spam and ham. The quality of whatever multilingual AI pipeline is only as good as the data it employs, a fact which recent studies in AI-centric translation quality assessment have once more thrown into relief [52]. In order to implement this principle, the GPT4o API was used to programmatically impose rigor in regard to quality control. A stratified random sample of thirty spam and thirty ham messages for each of the twenty-one languages employed was subjected to a detailed evaluation. The evaluation looked at whether the messages had the same meaning, used the right tone and formality, and most importantly, kept the clues that show if a message is convincingly fake or truly spam.
+
+The prompt we have used for the translation validation is:
+
+You are a professional translator and linguistic analyst. You will be given:
+
+1. Source language text:
+
+ < SOURCE_TEXT > 
+
+2. Its translation into the target language text:
+
+ < TRANSLATED_TEXT > 
+
+You must carefully assess the translation’s accuracy in:
+
+Semantic equivalence: Does the translated text have the exact meaning of the text?
+
+Pragmatic register: Is the tone, formality, and politeness appropriate for the translated text?
+
+Cultural and idiomatic fidelity: Are idioms, proverbs, and cultural references properly maintained during translation?
+
+Context of spam vs. ham: Since this is an email, does the translation show any signs that it could be spam, or does it clearly seem like a real and genuine email?
+
+Instructions
+
+1. Review the criteria above.
+
+2. Assess overall translation accuracy.
+
+3. Only say Yes (if it fits all conditions) or No (if there is a major mistranslation).
+
+4. Avoid any further explanations and reply with just one word.
+
+Your response:
+
+The automated tests showed the translations were excellent and ready for fine-tuning and evaluation (Fig. 2).
+
+Fig. 2
+Fig. 2
+Full size image
+Dataset translation and verification
+
+Structured dataset preprocessing and partitioning
+We used systematic preprocessing and splitting techniques, so that the corpus was prepared for the model training and validation to ensure the maximum possible accuracy, regularity, and thoroughness in the running of the model itself. The first measures taken were to ensure that the normal standardized text normalization was in force. These consisted of the systematic removal of unnecessary spacing and special characters.
+
+We split the data for each of the 21 language groups into training and validation sets in an 80:20 ratio to keep language and class balance. This gives 33,600 training and 8400 validation samples for the model.
+
+Model selection and rationale
+This study is designed as an experimental assessment of modern and efficient large language models under constrained resources. Model selection is the product of a multifaceted approach aimed at providing the most comprehensive and practical comparison possible. We have selected three highly divergent state-of-the-art models representing different architectural philosophies and strengths to thoroughly assess not only their multilingual spam detection performance but also the advantages and disadvantages of generative versus encoder-based approaches.
+
+This study is presented as an experimental evaluation of modern and efficient large Language Models constrained by resource availability. Model selection is the end product of a diverse approach attempting to provide the most thorough and practical comparison possible. We selected three advanced models, each with unique strengths, to thoroughly evaluate their spam detection in multiple languages. We will also compare the benefits and drawbacks of generative and encoder-based methods.
+
+Gemma 3-4B: The Gemma 3-4B is our go-to model for testing and fine-tuning tasks. We chose this model on purpose because its cutting-edge architecture is specifically made to strike a balance between high performance and efficiency for applications that run on the device. It is part of the Gemma 3 family and has a complex design that includes a mix of local and global attention layers to handle long contexts efficiently while keeping the KV-cache’s memory footprint as small as possible [42]. Also, its training uses knowledge distillation from bigger, stronger teacher models, which is a method that is known to greatly improve the performance of smaller models. With 4 billion parameters, it is a great candidate for testing the limits of quantized, fine-tuned models that can be used on devices with limited VRAM and other resources. The Gemma 3-4B built-in multilingual features, which come from a better data mix and a more balanced tokenizer, make it a very good starting point for our research into how to classify multilingual spam.
+
+Qwen 3-4B: We chose the Qwen 3-4B model because it gave us a direct and very relevant point of comparison. This model is part of the Qwen 3 series and is known for its strong, natively multilingual architecture. It was pre-trained on a huge corpus of 36 trillion tokens in 119 languages. It has a similar number of parameters to our main Gemma 3 model, which makes it easy to compare the differences in architecture and training. A key feature of the Qwen family is its unique hybrid “thinking” and “non-thinking” modes, which highlight its design for versatile and efficient deployment. We can compare our main model to another state-of-the-art generative architecture that is also a strong candidate for efficient, multilingual tasks [43] by looking at both the 5-shot and fine-tuned performance of Qwen 3-4B.
+
+Llama 3.2-3B: We also included the Llama 3.2-3B model from Meta, which is a well-known model in the Llama series. The Llama 3 family of models has been heavily optimized for tasks that involve conversation and following instructions. It has also been pre-trained on a vast multilingual corpus comprising 15 trillion tokens, thus ranking it among the best open-source models [48]. Its inclusion is crucial to understand how different scaling laws and post-training alignment strategies impact performance on our specific task, not withstanding the fact that it is somewhat smaller than our primary model. By evaluating the Llama 3.2-3B model in both 5-shot and fine-tuned modes, we are enabled to contextualize our results against other extremely capable publicly available LLMs [44].
+
+Framework for model fine-tuning and evaluation
+The main aim of our experiment was a deep understanding of the performance and efficiency of current large language models at the multilingual spam classification task under a low-resource environment. To do this, we designed a multi-step protocol that would measure out-of-the-box capabilities of the models we had chosen, the performance trade-off when quantizing them, and then the recovery and improvement via parameter-efficient finetuning.
+
+A multi-stage protocol for comparative evaluation
+Three different stages were studied to see how each model works in different situations:
+
+Stage 1: 5-shot performance evaluation. We start this stage with a “drop in drop out” comparison of Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B models in their original precisions, which is 16-bit floating point, to show a baseline of the performance. That first step already gives us a reasonable understanding of the multilingualism and classification capabilities of each model, on our custom validation set. This gold standard baseline is set before starting any work.
+
+Stage 2: Quantization impact evaluation. The second stage employed the bitsandbytes library, which is a normal, common quantization framework to turn all three models into 4-bit integer forms. It was done so that one could measure directly the trade-off between model efficiency and performance. Then, their 5-shot performance was checked again. In this way, we were able to measure accurately the “quantization cost” or performance drop induced by such aggressive model compression. This data indicated how well each architecture has the potential to tolerate precision loss [41].
+
+Stage 3: Fine-tuning QLoRA for performance recovery. In the final step, which is also the major step, we apply Quantized Low-Rank Adaptation to fine-tune all three models’ 4-bit quantized versions on our made-up multi-lingual training dataset. The main aim of this phase is to answer an important research question: to what extent can a parameter-efficient fine-tuning method not only recover the performance drop due to quantization but also surpass the original 16-bit baseline?
+
+In all three stages, a wide range of metrics, such as accuracy, precision, recall, and F1-score, were used to evaluate model performance consistently. This ensured that their abilities are measured directly, fairly, and comprehensively.
+
+Efficient fine-tuning with quantized low-rank adaptation
+The fine-tuning methodology applicable to this study rests on the technique known as quantized low-rank adaptation, by reason of its remarkable equilibrium between performance and computational efficiency. QLoRA merges two very powerful concepts: the extreme memory optimization of 4-bit NormalFloat quantization and parameter-efficient training via low-rank adaptation adapters. With this method, you can fine-tune large, pre-trained base models for downstream tasks by updating only an extremely minuscule portion of the total parameters. In our implementation, we use LoRA with a rank r of 16 and alpha 16. It targets all major linear layers inside transformer blocks—query, key, value, output, and feed-forward projections [41].
+
+Another great thing about it is how efficiently it manages resources. With the base model weights left unfrozen in their 4-bit state and only the lightweight LoRA adapters being trained, fine-tuning can be performed on consumer-grade hardware even with a single GPU having less than 16 GB of VRAM. Thus, not only does this approach open up the possibility for everyone to fine-tune state-of-the-art LLMs, but it also directly mimics a practical way of creating purpose-built models under resource-constrained environments. The same QLoRA protocol was used in this study to fine-tune all three models, Gemma 3-4B, Qwen 3-4B, and Llama-3.2-3B—a must-have step to ensure fair and directly comparable evaluation.
+
+Hyperparameter configuration and training rationale
+The same hyperparameters were used for QLoRA fine-tuning between models to ensure the fairness and reproducibility of the comparison. Training was done on a constrained resource machine, specifically using a single NVIDIA T4 GPU having only 15 GB VRAM space. Major hyperparameters were selected following best practices and empirical evidence in order to strike the right balance concerning performance, stability, and resource usage. Table 1 shows the full setup for everyone to check and reproduce.
+
+Table 1 QLoRA fine-tuning hyperparameters
+Full size table
+We settled on a LoRA rank (r) of 16 as it gave a decent compromise between model capacity versus compute expense. This allows us to capture some complexity without overloading ourselves with trainable parameters. We make the LoRA alpha (α) equal to the rank so that our learning influence stays even, as is conventional. Our target layers are all major linear layers within transformer blocks, which are attention projections(q_proj, k_proj, v_proj, o_proj) and the feed-forward network layers(gate_proj, up_proj, down_proj), for getting adaptation work as best as possible across the model architecture.
+
+An 8-bit AdamW optimizer was used for training with a learning rate of 1e-4 to get the best results. This is a common and good place to start for LoRA-based fine-tuning. To ensure a gradual decay, a cosine learning rate scheduler with a short warm-up phase of 10 steps was used. This helped the model find a more accurate and optimal minimum. To keep VRAM usage and training stability in check, we set the per_device_train_batch_size to 16 with no gradient accumulation. This gave us an effective batch size of 16, which is big enough to give stable gradient updates.
+
+The whole 33,600-sample training set was used for three full epochs of training. This number was chosen so that the model could learn the underlying patterns in the data without the risk of overfitting too much, which can happen when there are more than three epochs on instruction-based datasets.
+
+Training optimizations for resource-constrained environments
+Along with choosing the hyperparameters (Fig. 3), a number of important optimizations were made to make the fine-tuning process possible and quick on a single GPU:
+
+Head trimming: The lm_head, which is the model classification head, was cut down to only include the weights for the two output tokens that are needed, which are “0” and “1”. This simple but effective method cuts down on the memory needed by the head by a lot, freeing up about 1 GB of VRAM and making the first phase of training more stable.
+
+Training on completions only: We covered the input prompt during the loss calculation to help the model learn better. This makes sure that the model only learns to predict the final classification token. The QLoRA authors showed that this method improves performance by keeping the model from utilizing its ability to predict the input text.
+
+Grouping by length: The trainer had the group_by_length argument turned on. The trainer enabled the group_by_length parameter. This method sorts the training data by sequence length, so less padding is needed for each batch, making training much faster.
+
+Fig. 3
+Fig. 3
+Full size image
+Complete pipeline overview
+
+Results
+This part presents the real outputs of our comparative analysis on the performance of Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B models over the multilingual spam classification task. The results have been sequenced to offer an easy walkthrough of model performance, quantization impact on it, and QLoRA fine-tuning enhancement:
+
+Accuracy: This is the simplest metric that shows how accurate the model is overall. The proportion of total emails, both spam and ham, that the model got right is how it is calculated.
+
+Precision: Precision speaks to how dependable the model’s spam predictions are. It answers the question, “What percentage of those emails that the model marked as spam were actually spam?” High precision is key in reducing false positives, that is, when a real email goes to the spam folder by mistake.
+
+Recall: Measuring the ability of the model to find all actual spam emails, Recall answers the question, “What percentage of real spam emails did the model catch?” To avoid false negatives-when spam messages make it past the filter and into your main inbox-high recall is important.
+
+F1-score: F1-score is the aggregate metric that computes the harmonic mean between precision and recall. It delivers one balanced score and is mostly applied in cases with unbalanced datasets, e.g., more ham than spam, because it takes both false positives and false negatives into account.
+
+Confusion matrix: This is a table that provides a detailed breakdown of a model’s predictions. It visualizes the counts of:
+
+o
+True positives (TP): Spam emails correctly identified as spam.
+
+o
+True negatives (TN): Legitimate emails correctly identified as legitimate.
+
+o
+False positives (FP): Legitimate emails incorrectly flagged as spam.
+
+o
+False negatives (FN): Spam emails that were missed and incorrectly classified as legitimate.
+
+Comparative analysis of efficiency and performance
+We present our empirical findings in three detailed tables that show how each model changed over time. Table 2 shows how quantization improves the efficiency of resources. Table 3 shows how well the models work in their native 16-bit precision. Lastly, Table 4 shows the final, improved performance metrics that were reached after the 4-bit QLoRA fine-tuning process.
+
+Table 2 VRAM footprint comparison before and after 4-bit quantization
+Full size table
+Table 3 Performance metrics before fine-tuning (16-bit, 5-shot)
+Full size table
+Table 4 Performance metrics after 4-bit QLoRA fine-tuning
+Full size table
+After we set the 16-bit baseline, we moved on to Stage 2 of our methodology, where we looked at how quantization would affect model performance right away. Before any fine-tuning, the 5-shot test was done again on the 4-bit models. This test showed that performance had only slightly decreased: Gemma 3-4B’s accuracy went from 0.68 to 0.65, Qwen 3-4B’s accuracy went from 0.60 to 0.58, and Llama 3.2-3B’s accuracy went from 0.47 to 0.42. These results show that aggressive 4-bit quantization only hurt performance a little, with accuracy drops of 2 to 5 percentage points. This process set a new, slightly lower baseline from which the QLoRA fine-tuning process began.
+
+These tables show the main results of our study when looked at together. The QLoRA fine-tuning process caused a huge improvement in performance, as shown by the final metrics in Table 4, which are much better than the baseline results in Table 3. This comparison makes it clear who is the best performer on each metric. Gemma 3-4B is the best overall, and Table 2 shows that Llama 3.2-3B is the best at saving memory. The Qwen 3-4B model strikes a good balance between the two. This structured presentation, which effectively separates efficiency, baseline, and final performance data, makes it easier to understand these important trade-offs and follows best practices for open AI model analysis [51].
+
+Detailed model-specific analysis
+Gemma 3-4B: the top performer
+Gemma 3-4B proved to be the best performer. From Tables 3 and 4, one would note that its accuracy rose from 68% to an impressive 90% after fine-tuning. This improvement can be seen clearly in Fig. 4 confusion matrices, where the model before fine-tuning made mistakes of 1,465 false negatives and 1,223 false positives. After fine-tuning, these mistakes were reduced to just 477 false negatives and 363 false positives.
+
+Fig. 4
+Fig. 4
+Full size image
+Confusion matrices before and after QLoRA
+
+The loss at the beginning was low, 0.3768, and then converged very quickly and smoothly towards zero, finally ending up with a very close value of 0.0056 to zero (Fig. 5). This proves that the type of learning is stable and can be termed as efficient learning. The learning rate curve also followed the planned warm-up and cosine decay schedule, as seen in Fig. 6, which helped stability to be achieved.
+
+Fig. 5
+Fig. 5
+Full size image
+Gemma 3-4B training loss curve
+
+Fig. 6
+Fig. 6
+Full size image
+Gemma 3-4B learning rate
+
+As a matter of fact, we were able to reduce the VRAM from 8.6 GB at 16-bit precision to a much more manageable 4.56 GB at 4-bit by quantizing. That makes it available for use on low-resource environments with moderate memory constraints, not working right out of the box based on our qualitative analysis, even after fine-tuning, since it missed on correctly classifying very short emails and accuracy was reduced further in Marathi.
+
+Qwen 3-4B: a strong and efficient contender
+With its significant performance improvement, the Qwen 3-4B model is now a highly efficient classifier. With its first 16-bit setup, the model had a baseline accuracy of 60% and an F1-score of 0.59. After using 4-bit quantized low-rank adaptation, its performance metrics went up a lot, with an accuracy of 84% and an F1-score of 0.82 Tables 3 and 4. This is a very impressive 24-percentage-point increase in accuracy, showing how well the model works and how well the fine-tuning process works.
+
+Figure 7 shows that the fine-tuned Qwen 3 model made a lot fewer mistakes when it came to classifying things. There were fewer false negatives (from 1819 to 740) and fewer false positives (from 1541 to 606). This shows that its ability to tell the difference between instances has improved a lot.
+
+Fig. 7
+Fig. 7
+Full size image
+Confusion matrices before and after QLoRA
+
+Figure 8 shows that Qwen 3’s training loss started out higher at 1.1820 and then dropped steadily and steeply until it reached a low of 0.0314. This trajectory shows that the model learned the task well and stayed stable during training, even though it started from a less-than-ideal point. The learning rate schedule helped keep training stable. As shown in Fig. 9, it started with a warm-up phase, followed by cosine decay, both of which worked well.
+
+Fig. 8
+Fig. 8
+Full size image
+Qwen 3-4B training loss curve
+
+Fig. 9
+Fig. 9
+Full size image
+Qwen 3-4B learning rate
+
+Qwen 3 4-bit version now uses only 3.32 GB of memory instead of 8.05 GB, making it a great option for devices with less RAM. The Javanese and Swedish languages made it difficult for the model to distinguish between spam and ham.
+
+Llama 3.2-3B: demonstrating significant uplift
+A great example of how much the QLoRA fine-tuning method can move the needle is the Llama 3.2-3B model. Accuracy jumped from 47 to 70%. The F1-score shot up from 0.45 to 0.69 post-tuning, an impressive leap of about 23 percentage points according to Tables 3 and 4. Though its net performance was still lower than all other models tested, such a large relative improvement already underscores just how well QLoRA can work when applied atop a sufficiently solid foundation architecture.
+
+It is evident from the confusion matrices in Fig. 10 that the Llama model exploration is proceeding well. Initially, there were 2538 false positives and 1917 false negatives. This was further improved by fine-tuning, which reduced the errors to 1007 and 1514, respectively.
+
+Fig. 10
+Fig. 10
+Full size image
+Confusion matrices before and after QLoRA
+
+The training loss curve for Llama in Fig. 11 began at the highest value of all models, 2.1002, and successfully converged to a low value of 0.0589. This shows that the training was very effective at adapting the model, even though it started off weak. The planned learning rate strategy, which used a warm-up period followed by a cosine decay, is what made this training stable. You can see it in Fig. 12.
+
+Fig. 11
+Fig. 11
+Full size image
+Llama 3.2-3B training loss curve
+
+Fig. 12
+Fig. 12
+Full size image
+Llama 3.2-3B learning rate
+
+Out of the three, the Llama 3.2-3B model uses the least memory. It was 16 bits big and 6.43 GB big, but it was compressed to an incredibly small 2.24 GB in 4 bits, making it work on even the most limited devices. When it comes to languages that weren’t on its official list of supported languages, its performance issues were most noticeable in terms of quality. It struggled to classify samples that were Javanese, Norwegian, Swedish, and Urdu, for instance.
+
+All models have shown significant improvement with QLoRA fine-tuning, but leading this task is the Gemma 3-4B model with top accuracy and excellent precision-recall balance. Somewhat below the best level that can be attained, Llama 3.2-3B proves how much more targeted fine-tuning can improve a moderately performing model into an even better classifier. This analysis proves our approach works and clearly shows the strengths and weaknesses of top open-source models for real-world multilingual use.
+
+Per-language performance analysis
+To gain more insight into the model’s multilingual capabilities and to back up the qualitative results of language-specific errors, we conducted such an analysis of the per-language performance on the validation set. The full list of the F1 scores obtained by the three finetuned model, for the 21 languages in our dataset, is presented in Table 5.
+
+Table 5 Per-language F1-score performance of fine-tuned models
+Full size table
+This analysis allows a quantitative comparison of each of the model performances with different linguistic structures, and you see that some are always more difficult to deal with, even if the overall performance is good. This shows how these models still bear the marks of their pre-training data composition to a small but definite extent.
+
+Table 5 confirms the specific challenges each model has, as seen in our analysis. For example, Gemma 3-4B usually performs best across languages, but its score on Marathi (0.78) drops unexpectedly, even though it does well in other languages. Model Qwen 3-4B faces challenges with Javanese (0.70) and Swedish (0.72). Model Llama 3.2-3B has even more severe performance issues, with its F1 scores being particularly low for Javanese (0.55), Swedish (0.58), Norwegian (0.59), and Urdu (0.61). This makes a strong empirical case for much of the discussion around the long-lasting effects of pre-training data.
+
+Research findings and discussion
+The methodology and results of this research on the fine-tuning of quantized state-of-the-art large language models towards multilingual spam detection have already been described. We evolve Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B from high-precision baseline configurations to specialist classifiers in detail, one after the other, in our analysis-narrating the story of their journey meticulously. This is what follows here, an amalgamation of all these results with detailed discussions that directly answer the overarching research questions behind this study. Our discussion compares model performance, speaks to the significance that our fine-tuning strategy brought forth, evaluates practical usefulness in resource-constrained scenarios, and concludes by evaluating the effectiveness of our synthetic data generation approach.
+
+Comparative performance and the lingering effects of pre-training (RQ1)
+Research Question 1: Which among the following cutting-edge small multilingual LLM frameworks, between Qwen 3-4B, Gemma 3-4B, and Llama 3.2-3B, is most accurate in identifying multilingual spam after being fine-tuned on exactly similar QLoRA methodology?
+
+Research Statement 1: The Gemma 3-4B model fine-tuned blossoms a clear cut above the rest, delivering state-of-the-art accuracy at 90%. Coming in next is the Qwen 3-4B model with accuracy at 84%; thus, it has solidified its place as a very robust and highly efficient runner-up performer. On the other hand, the Llama 3.2-3B model turns out to be last but proves the largest relative change, thereby indicating that indeed, tuning works for everyone.
+
+Our study puts the fine-tuned models in clear order of performance. It was Gemma-3-4B that returned the highest F1-score at 0.88, thus making it the best classifier among them all. The state-of-the-art architecture built using larger frontier models and pre-training knowledge distillation likely explains why this model outperformed others. It lays a solid foundation for learning complex, subtle tasks. You see this with training dynamics, indicating via a very smooth and rapid loss convergence, that this architecture is very good and adapts in a consistent and rapid manner.
+
+The Qwen 3-4B model is a strong option, achieving 84% accuracy and a 0.82 F1-score. It reads memory efficiently and supports multiple languages since it was trained on a 36-trillion-token multilingual dataset. Our fine-tuning process just made them even better.
+
+Llama 3.2-3B achieved just 70% of the final accuracy, with improvement from baseline 47% to a much higher level of performance, demonstrating how powerful QLoRA is. However, the striking finding is in the quantitative per-language analysis. As seen in Table 5, this is where Llama 3.2-3B had most of its performance issues in specific languages, for example, significantly lower F1-scores for Javanese, Norwegian, Swedish, and Urdu. Most revealing is the fact that the best-performing models were somewhat linguistically flawed. As seen in Table 5, Qwen 3-4B scored low on Javanese and Swedish. Gemma 3-4B scored high on Marathi, clearly an outlier compared to its otherwise high scores. This pattern is a key finding because it proves that task-specific fine-tuning on synthetic data can substantially improve overall performance but does not fully eliminate the “imprint” of the model’s original pre-training data. A model’s multilingual generalization depends on the corpus core language elements and the diversity of the initial pre-training data, which presents an important opportunity for model development and data production.
+
+The duality of quantization and fine-tuning: from degradation to dominance (RQ2)
+Research Question 2: How does 4-bit quantization and QLoRA fine-tuning increase small LLM performance beyond quantization loss recovery to provide state-of-the-art features?
+
+Research Statement 2: The first performance reduction from 16-bit to 4-bit quantization was only 3% at average accuracy. Most crucially, QLoRA fine-tuning improved performance, making 4-bit models substantially better than 16-bit ones.
+
+This research discovered that modern LLM structures can withstand extreme quantization. Only 3% performance reduction after quantization illustrates that these models’ essential knowledge is not brittle and can be compacted. Developers who want to employ large models should start with quantization because it’s cheap and effective.
+
+Quantization-fine-tuning cohesiveness is more important. Strong catalysts like QLoRA revealed the compressed model’s potential. Quantized to 4 bits and fine-tuned, the Gemma 3-4B model moved from 68% accurate in 16-bit accuracy to 90% accurate. The 22-point boost is a substantial model capability improvement, not a basic recovery. Fine-tuning on a single job allows the model to develop new, efficient neural pathways in the LoRA adapters, which is how it becomes an expert at spam detection. All model training loss curves are stable and swiftly decrease, indicating that this learning process was strong and efficient even on low-resource hardware.
+
+Paving the way for edge AI: viability for resource-constrained deployment (RQ3)
+Research Question 3: Is 4-bit quantization sufficient for powerful models like Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B on edge devices with limited memory (≤ 4 GB VRAM)?
+
+Research Statement 3: Quantization reduced all models’ memory usage by over 50%, a considerable improvement. Compressed models like Llama 3.2-3B and Qwen 3-4B can now run on devices with 4 GB or less VRAM, resulting in high performance on low-resource environments.
+
+This study shows that advanced AI can overcome resource limits. As Table 2 shows, these models use less VRAM. These big reductions are game-changing. The sizes of Qwen 3 and Llama 3.2 fit well within the memory limits of many consumer devices, such as mid-range smartphones, IoT gateways, and regular laptops that don’t have dedicated GPUs. The fine-tuned Gemma 3-4B, which is 4.56 GB, is slightly larger than the 4 GB limit, but it is still well within the range of most consumer-grade GPUs with 6-8 GB of VRAM, making it very easy to use. This study definitively establishes that it is feasible to attain both cutting-edge precision and exceptional resource efficiency, addressing the primary conflict that has traditionally hindered the implementation of robust LLMs.
+
+A blueprint for overcoming data scarcity: successes and nuances (RQ4)
+Research Question 4: Is a synthetic data generation pipeline that uses high-fidelity translation a strong and privacy-protecting way to get around the problem of not having enough multilingual data to train effective spam classifiers?
+
+Research Statement 4: The outstanding performance of all the finely tuned models strongly supports our method of making a large, synthetic multilingual dataset through high-fidelity translation as a very effective and useful way to get around the major problem of not having enough data.
+
+It would not be possible to get the fine-tuned models to work, especially Gemma 3-4B with 90% accuracy, if the training data were not of high quality and semantically rich. This finding strongly supports our hypothesis: a carefully curated English dataset, when translated by a cutting-edge multilingual model such as Aya-101, can yield a synthetic corpus sufficiently robust to train highly effective, specialized classifiers.
+
+This method has two main benefits. First, it protects your privacy by its very nature. Translating a public corpus completely gets rid of the need to gather, store, and label real user emails from different languages, which helps to ease big ethical and privacy concerns. Second, it offers a scalable and affordable plan for making specialized datasets. The process is much faster than collecting and annotating data by hand in dozens of languages. Our results indicate that this approach may be applicable to other classification tasks characterized by limited multilingual data, yet a robust English dataset.
+
+But our analysis also shows an important difference. As we talked about in Sect. "Comparative Performance and the Lingering Effects of Pre-Training (RQ1)", the language-specific problems seen in each model show that the final performance doesn’t just depend on the fine-tuning data. The quality of the underlying translation model and, perhaps more importantly, how these languages were represented in the LLM’s original pre-training data, still have an effect. This means that synthetic data is a great way to adapt to specific tasks, but to get the same level of excellence in all languages, you might need to use both high-fidelity synthetic fine-tuning data and base models that have been pre-trained on more balanced and linguistically diverse corpora.
+
+Limitations and future work
+This study shows a strong and effective multilingual spam detection method; however, its limitations must be considered. These limits help explain what our contribution is and set a clear direction for any future research.
+
+Generalizability, evaluation rigor, and fidelity of synthetic data
+This study’s main limitations are the use of a single synthetic dataset and its strict evaluation process. While our focus on privacy helped with the lack of data, more research is needed to confirm how strong and generalizability our findings are.
+
+We began by splitting the data into training and validation sets. The best way to check for true generalization and avoid overfitting is to test the final model on a completely separate test set. This works well for developing and comparing models. The metrics we report are based on the validation set. Future work should use a strict train-validation-test method to get a more accurate picture of how well things work in the real world.
+
+Second, the fact that our dataset is synthetic, while a powerful solution, means that there is a trade-off between privacy and being completely honest about “in-the-wild” spam. Spam in the real world often has cultural language cues, adversarial formatting, and idiomatic expressions that may not fully survive the translation process.This is a problem that AI-driven translation quality assessment [52] has pointed out. This may partially elucidate the performance discrepancies noted among specific languages in our study, as quantitatively illustrated in Table 5. Consequently, the paramount subsequent action is to authenticate our meticulously refined models on a minimum of one recognized, real-world multilingual spam corpus (e.g., extensions of the SpamAssassin corpus). A cross-dataset examination would confirm our models’ practicality and robustness to naturally occurring data distributions, validating our framework’s external applicability.
+
+Scope of comparative benchmarking
+We intended to directly compare three cutting-edge small LLMs. Future research should expand this benchmark in two key areas to better understand performance:
+
+A detailed investigation should compare deep semantic comprehension with traditional machine learning classifiers, such as SVM, using multilingual TF-IDF features, to reliably measure performance increases.
+
+QLoRA was used in this study to compare PEFT methods due of its efficiency. A comparison with alternative parameter-efficient fine-tuning methods like standard LoRA or Adapters would reveal the merits and cons of different approaches to this task.
+
+Expanding from text-only to hybrid detection models
+Only text-based email body classification was done in this project. However, many advanced spam assaults use non-textual clues. This major blind spot presents extensibility concerns. Future studies should use hybrid models to analyze additional features to build stronger protection systems. This includes:
+
+New models should include email headers and checks like SPF, DKIM, and DMARC to spot harmful emails.
+
+To detect new spam types like image-based or hidden-character spam, improve the system by training advanced models that can handle text and images.
+
+Enhancing methodological rigor and ethical considerations
+Future research should use statistical significance testing to confirm the performance differences to increase our findings. Programmatic translation quality assessment gave consistency, but native speaker judgment should be utilized for greater insights into idiomatic or pragmatic mismatches. The external API like Aya-101 and GPT-4o, reliance on our pipeline also compromises production system privacy. This is acceptable for an open dataset, but would violate confidentiality if run on sensitive data. Future work should be spent developing Comprehensive on-premise pipelines using open-source models to ensure total data privacy.
+
+Future-proofing the comparative framework
+The field of compact LLMs is changing quickly. The comparative framework shown here should be seen as a benchmark that can be expanded. This framework must be constantly updated to assess new models as they become available to ensure the ongoing identification of cutting-edge architectures for this security-critical use case.
+
+Conclusion
+This paper addressed the dual challenges of increasing multilingual spam threats and substantial computational obstacles that impede the implementation of advanced AI on resource-limited devices. Our study presented and substantiated an innovative, comprehensive framework aimed at addressing this disparity. We used a cutting-edge multilingual model to make a large-scale, privacy-preserving dataset, which showed that quantized low-rank adaptation can turn modern, compact large language models into very accurate and efficient spam classifiers. This study compares top language models like Gemma 3, Qwen 3, and Llama 3.2, and also offers a way to build safe, reliable AI that runs on devices.
+
+Several noteworthy findings from our empirical investigation answered our key research questions. Above all, our results demonstrate a performance hierarchy. The Gemma 3-4B model performs best, achieving 90% accuracy after fine-tuning. Its efficient architecture, which learns from larger instructor models, may explain its improved performance. The Qwen 3-4B model was strong and resource-efficient, while the Llama 3.2-3B model, with a lower baseline, exhibited the highest relative improvement, proving that our fine-tuning strategy works for everyone.
+
+Some of the most interesting findings from our empirical study answered the important question we wanted to answer the most. First and foremost, we show performance on a hierarchy for “getting great value out of big model deployments”. The Gemma 3-4B model does the best and achieves about 90% accuracy after fine-tuning. In hindsight, it’s clear that its more efficient design is the reason it performs the best. The Qwen 3-4B model, which was strong and resource efficient, and the Llama 3.2-3B model at a lower baseline had the most relative increase, showing that our fine-tuning works for everyone.
+
+This study critically presents the interplay of aggressive quantization and parameter-efficient fine-tuning. Quantizing models from 16-bit precision to 4-bit resolution imposed a negligible performance penalty of about 3% in terms of accuracy degradation. QLoRA that followed fine-tuning made up for this small loss and, in fact, improved the performance of 4-bit models relative to their 16-bit counterparts by a great margin. In such a case, specific adaptation may insert new specialized capacity in highly compressed models. Our research validates this strategy on resource-poor PCs in real-world scenarios. The Llama 3.2-3B drops to 2.24 GB and the Qwen 3-4B to 3.32 GB due to over 50% VRAM loss, balancing model power and deployment practicality by making the Models function on devices with < = 4 GB VRAM.
+
+Our synthetic data creation process is supported by the high accuracy of all carefully calibrated models. Our research shows that a big, high-quality English corpus can be translated by a computer to make a multilingual dataset that is diverse and balanced enough to train high-performance classifiers. This method offers a scalable and privacy-preserving alternative to the difficult and often impossible task of gathering and labeling real-world, multilingual data. It opens up new possibilities for future research in areas with few resources.
+
+Even though these results are very convincing, we know that there are some limitations that point to clear and important areas for future research. A principal limitation is that our evaluation, although comprehensive, was performed on a singular, synthetically generated dataset. The best way to validate the models would be to test them on a completely different, real-world spam corpus to see how well they generalize to data distributions that they haven’t seen before. We also trained our current model only on the body text of emails, leaving out headers and other metadata on purpose to make the task easier. This method works, but it doesn’t let the model look at email headers, like routing details or checks such as SPF, DKIM, and DMARC, which can help spot more advanced attacks.
+
+To address these problems, going forward we need to expand this work in a few important directions. First, testing on real-world datasets and comparison not just with a baseline traditional ML, but also with other PEFT techniques. Second, the future for practical spam filters lies in hybrid models, which are capable of looking at email structural and header metadata, plus multi-source content. Finally, as AI evolves rapidly, this comparative framework should be used to evaluate other emerging state-of-the-art LLMs and continue the search for the most optimal architectures for this very important security application.
+
+This paper sets forth a very reasonable and logical path towards state-of-the-art AI within practical constraints. We show that highly accurate multilingual, privacy-preserving security solutions can be trained and deployed on resource-constrained devices using synthetic data generation, augmented weak supervision, aggressive quantization, and parameter-efficient fine-tuning methods. This effort helps create the next generation of smart, easy-to-use, and trustworthy AI that works well even when resources are limited.
+
+Data availability statement
+All the data will be available upon request from the corresponding author (Umair Khan).
+
+References
+Heydari A, ali Tavakoli M, Salim N, Heydari Z (2015) Detection of review spam: a survey. Expert Syst Appl 42(7):3634–3642
+
+Article
+ 
+Google Scholar
+ 
+
+Alabdan R (2020) Phishing attacks survey: types, vectors, and technical approaches. Future Internet 12(10):168
+
+Article
+ 
+Google Scholar
+ 
+
+Garg P, Girdhar N (2021) A systematic review on spam filtering techniques based on natural language processing framework. In: 2021 11th international conference on cloud computing, data science & engineering (confluence). IEEE, pp 30–35
+
+Dada EG, Bassi JS, Chiroma H, Abdulhamid SIM, Adetunmbi AO, Ajibuwa OE (2019) Machine learning for email spam filtering: review, approaches and open research problems. Heliyon 5(6)
+
+Ferreira A, Teles S (2019) Persuasion: how phishing emails can influence users and bypass security measures. Int J Hum Comput Stud 125:19–31
+
+Article
+ 
+Google Scholar
+ 
+
+Paswan MK, Bala PS, Aghila G (2012) Spam filtering: comparative analysis of filtering techniques. In: IEEE-international conference on advances in engineering, science and management (ICAESM-2012). IEEE, pp 170–176
+
+Xia T (2020) A constant time complexity spam detection algorithm for boosting throughput on rule-based filtering systems. IEEE Access 8:82653–82661
+
+Article
+ 
+Google Scholar
+ 
+
+Lv T, Yan P, Yuan H, He W (2020) Spam filter based on naive Bayesian classifier. J Phys Conf Ser 1575(1):012054
+
+Article
+ 
+Google Scholar
+ 
+
+Kim I, Susilo W, Baek J, Kim J, Chow YW (2023) PCSF: privacy-preserving content-based spam filter. IEEE Trans Inf Forensics Secur 18:2856–2869
+
+Article
+ 
+Google Scholar
+ 
+
+Magdy S, Abouelseoud Y, Mikhail M (2022) Efficient spam and phishing emails filtering based on deep learning. Comput Netw 206:108826
+
+Article
+ 
+Google Scholar
+ 
+
+Zhaoquan GU, Yushun XIE, Weixiong HU, Lihua YIN, Yi HAN, Zhihong TIAN (2021) Marginal attacks of generating adversarial examples for spam filtering. Chin J Electron 30(4):595–602
+
+Article
+ 
+Google Scholar
+ 
+
+Şahin DÖ, Demirci S (2020) Spam filtering with KNN: Investigation of the effect of k value on classification performance. In: 2020 28th signal processing and communications applications conference (SIU). IEEE, pp 1–4
+
+Rapacz S, Chołda P, Natkaniec M (2021) A method for fast selection of machine-learning classifiers for spam filtering. Electronics 10(17):2083
+
+Article
+ 
+Google Scholar
+ 
+
+Chandan JR, Dsouza GE, George M, Bhadra J (2022) Spam message filtering based on machine learning algorithms and BERT. In: Intelligent communication technologies and virtual mobile networks: proceedings of ICICV 2022. Springer Nature Singapore, Singapore, pp 227–238
+
+Gaurav D, Tiwari SM, Goyal A, Gandhi N, Abraham A (2020) Machine intelligence-based algorithms for spam filtering on document labeling. Soft Comput 24(13):9625–9638
+
+Article
+ 
+Google Scholar
+ 
+
+Mehrotra T, Rajput GK, Verma M, Lakhani B, Singh N (2021) Email spam filtering technique from various perspectives using machine learning algorithms. In: Data driven approach towards disruptive technologies: proceedings of MIDAS 2020. Springer Singapore, Singapore, pp 423–432
+
+Manita G, Chhabra A, Korbaa O (2023) Efficient e-mail spam filtering approach combining logistic regression model and orthogonal atomic orbital search algorithm. Appl Soft Comput 144:110478
+
+Article
+ 
+Google Scholar
+ 
+
+Kuchipudi B, Nannapaneni RT, Liao Q (2020) Adversarial machine learning for spam filters. In: Proceedings of the 15th international conference on availability, reliability and security, pp 1–6
+
+Zhang K, Zhou F, Wu L, Xie N, He Z (2024) Semantic understanding and prompt engineering for large-scale traffic data imputation. Inf Fusion 102:102038
+
+Article
+ 
+Google Scholar
+ 
+
+Gomaa WH (2020) The impact of deep learning techniques on SMS spam filtering. Int J Adv Comput Sci Appl 11(1)
+
+Cao J, Lai C (2020) A bilingual multi-type spam detection model based on M-BERT. In: GLOBECOM 2020–2020 IEEE global communications conference. IEEE, pp 1–6
+
+Baaqeel H, Zagrouba R (2020) Hybrid SMS spam filtering system using machine learning techniques. In: 2020 21st international arab conference on information technology (ACIT). IEEE, pp 1–8
+
+Kontsewaya Y, Antonov E, Artamonov A (2021) Evaluating the effectiveness of machine learning methods for spam detection. Proc Comput Sci 190:479–486
+
+Article
+ 
+Google Scholar
+ 
+
+Hnini G, Riffi J, Mahraz MA, Yahyaouy A, Tairi H (2020) Spam filtering system based on nearest neighbor algorithms. In: International conference on artificial intelligence & industrial applications. Springer International Publishing, Cham, pp 36–46
+
+Kihal M, Hamza L (2023) Robust multimedia spam filtering based on visual, textual, and audio deep features and random forest. Multimed Tools Appl 82(26):40819–40837
+
+Article
+ 
+Google Scholar
+ 
+
+Shaik CM, Penumaka NM, Abbireddy SK, Kumar V, Aravinth SS (2023) Bi-lstm and conventional classifiers for email spam filtering. In: 2023 third international conference on artificial intelligence and smart energy (ICAIS). IEEE, pp 1350–1355
+
+Ghiassi M, Lee S, Gaikwad SR (2022) Sentiment analysis and spam filtering using the YAC2 clustering algorithm with transferability. Comput Ind Eng 165:107959
+
+Article
+ 
+Google Scholar
+ 
+
+Wang C, Li Q, Ren TY, Wang XH, Guo GX (2021) High efficiency spam filtering: a manifold learning‐based approach. Math Probl Eng 2021(1):2993877
+
+Google Scholar
+ 
+
+Bhattacharya P, Singh A (2020) E-mail spam filtering using genetic algorithm based on probabilistic weights and words count. Int J Integr Eng 12(1):40–49
+
+Google Scholar
+ 
+
+Ahmed N, Amin R, Aldabbas H, Koundal D, Alouffi B, Shah T (2022) Machine learning techniques for spam detection in email and IoT platforms: analysis and research challenges. Secur Commun Netw 2022(1):1862888
+
+Google Scholar
+ 
+
+Bhopale AP, Tiwari A (2021) An application of transfer learning: fine-tuning BERT for spam email classification. In: International conference on machine learning and big data analytics. Springer International Publishing, Cham, pp 67–77
+
+Ojugo AA, Eboka AO (2020) Memetic algorithm for short messaging service spam filter using text normalization and semantic approach. Int J Inform Commun Technol (IJ-ICT) 9(1):9
+
+Article
+ 
+Google Scholar
+ 
+
+Topal MO, Bas A, van Heerden I (2021) Exploring transformers in natural language generation: Gpt, bert, and xlnet. arXiv:2102.08036
+
+Ji K, Kwon Y (2023) New spam filtering method with Hadoop tuning-based MapReduce Naive Bayes. Comput Syst Sci Eng 45(1)
+
+Rifat N, Ahsan M, Chowdhury M, Gomes R (2022) Bert against social engineering attack: phishing text detection. In: 2022 IEEE international conference on electro information technology (eIT). IEEE, pp 1–6
+
+Roumeliotis KI, Tselikas ND, Nasiopoulos DK (2024) LLMs in e-commerce: a comparative analysis of GPT and LLaMA models in product review evaluation. Nat Lang Process J 6:100056
+
+Article
+ 
+Google Scholar
+ 
+
+Roumeliotis KI, Tselikas ND, Nasiopoulos DK (2024) Precision-driven product recommendation software: unsupervised models, evaluated by GPT-4 LLM for enhanced recommender systems. Software 3(1):62–80
+
+Article
+ 
+Google Scholar
+ 
+
+Nam SG, Jang Y, Lee DG, Seo YS (2022) Hybrid features by combining visual and text information to improve spam filtering performance. Electronics 11(13):2053
+
+Article
+ 
+Google Scholar
+ 
+
+Devlin J, Chang MW, Lee K, Toutanova K (2019) Bert: pre-training of deep bidirectional transformers for language understanding. In: Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics: human language technologies, volume 1 (long and short papers), pp 4171–4186
+
+ALBERT. https://huggingface.co/docs/transformers/model_doc/albert
+
+Dettmers T, Pagnoni A, Holtzman A, Zettlemoyer L (2023) Qlora: Efficient finetuning of quantized llms. Adv Neural Inf Process Syst 36:10088–10115
+
+Article
+ 
+Google Scholar
+ 
+
+Team G, Kamath A, Ferret J, Pathak S, Vieillard N, Merhej R, Pouget-Abadie J (2025) Gemma 3 technical report. arXiv:2503.19786
+
+Yang A, Li A, Yang B, Zhang B, Hui B, Zheng B, Qiu Z (2025) Qwen 3 technical report. arXiv:2505.09388.
+
+Dubey A, Jauhri A, Pandey A, Kadian A, Al-Dahle A, Letman A, Ganapathy R (2024) The llama 3 herd of models. arXiv:2407.21783
+
+Warner B, Chaffin A, Clavié B, Weller O, Hallström O, Taghadouini S, Poli I (2024). Smarter, better, faster, longer: a modern bidirectional encoder for fast, memory efficient, and long context finetuning and inference. arXiv:2412.13663
+
+Üstün A, Aryabumi V, Yong ZX, Ko WY, D'souza D, Onilude G, Hooker S (2024) Aya model: an instruction finetuned open-access multilingual language model. arXiv:2402.07827
+
+Roumeliotis KI, Tselikas ND, Nasiopoulos DK (2024) Next-generation spam filtering: comparative fine-tuning of LLMs, NLPs, and CNN models for email spam classification. Electronics 13(11):2034. https://doi.org/10.3390/electronics13112034
+
+Article
+ 
+Google Scholar
+ 
+
+Meta AI (2024) Llama 3.2 Connect 2024: vision, edge, and mobile devices. Meta AI Blog. https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices. Accessed 10 June 2025
+
+Enhancing IoT security with AI-driven hybrid machine learning and neural network-based intrusion detection system (T. Nay, Trans.) (2024) Babylon J Artif Intell 2024:158–167. https://doi.org/10.58496/BJAI/2024/017
+
+Ali A, Ghanem MC (2025) Beyond detection: large language models and next-generation cybersecurity. SHIFRA 2025:81–97. https://doi.org/10.70470/SHIFRA/2025/005
+
+Article
+ 
+Google Scholar
+ 
+
+Does lack of knowledge and hardship of information access signify powerful AI? A large language model perspective (Idrees A. Zahid & Shahad Sabbar Joudar, Trans.). (2023). Appl Data Sci Anal 2023:150–154. https://doi.org/10.58496/ADSA/2023/014
+
+Mohammed SY, Aljanabi M (2024) Advancing translation quality assessment: integrating AI models for real-time feedback. EDRAAK 2024:1–7. https://doi.org/10.70470/EDRAAK/2024/001
+
+Download references
+
+Acknowledgements
+The authors extend their appreciation to the support received from Princess Nourah bint Abdulrahman University Researchers Supporting Project number (PNURSP2026R908), Princess Nourah bint Abdulrahman University, Riyadh, Saudi Arabia.
+
+Author information
+Authors and Affiliations
+Department of Research and Development, Coding Craft Incorporation, San Francisco, CA, USA
+
+Hamza Rauf
+
+Department of Mathematics, Saveetha School of Engineering, Saveetha Institute of Medical and Technical Sciences, Saveetha University, Chennai, Tamil Nadu, 602105, India
+
+Umair Khan
+
+Department of Mathematics, Faculty of Science, Sakarya University, Serdivan/Sakarya, 54050, Türkiye
+
+Umair Khan
+
+Department of Industrial and Systems Engineering, College of Engineering, Princess Nourah bint Abdulrahman University, P.O. Box 84428, Riyadh, 11671, Saudi Arabia
+
+Jomana A. Bashatah
+
+Department of Mathematics, University of Karachi, Karachi, 75270, Pakistan
+
+Aurang Zaib
+
+Contributions
+Conceptualization: H.R., U.K., and A.Z.; Methodology: H.R., U.K., J.A.B., and A.Z.; Software: H.R.; Validation: H.R., and U.K.; Formal analysis: H.R., U.K., and A.Z.; Investigation: H.R.; Resources: H.R.; Data curation: H.R.; Writing—original draft preparation: H.R.; Writing—review and editing: H.R., U.K., J.A.B., and A.Z.; Visualization: H.R.; Supervision: U.K., J.A.B., and A.Z. All authors have read and agreed to the published version of the manuscript.
+
+Corresponding author
+Correspondence to Umair Khan.
+
+Ethics declarations
+Conflict of interest
+The authors declare no conflicts of interest.
+
+Additional information
+Publisher's Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+Rights and permissions
+Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. You do not have permission under this licence to share adapted material derived from this article or parts of it. The images or other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+Reprints and permissions
+
+About this article
+Check for updates. Verify currency and authenticity via CrossMark
+Cite this article
+Rauf, H., Khan, U., Bashatah, J.A. et al. Efficient multilingual spam detection on resource-constrained devices: a comparative analysis of QLoRA fine-tuning of Gemma 3, Qwen 3, and Llama 3.2 models. Complex Intell. Syst. 12, 119 (2026). https://doi.org/10.1007/s40747-026-02247-x
+
+Download citation
+
+Received
+04 September 2025
+
+Accepted
+18 January 2026
+
+Published
+24 February 2026
+
+Version of record
+03 March 2026
+
+DOI
+https://doi.org/10.1007/s40747-026-02247-x
+
+Share this article
+Anyone you share the following link with will be able to read this content:
+
+Get shareable link
+Provided by the Springer Nature SharedIt content-sharing initiative
+
+Keywords
+Spam classification
+Multilingual spam classification
+LLM fine-tuning
+LLM classification
+Privacy and security
+Sections
+Figures
+References
+Abstract
+Introduction
+Literature review
+Methodology
+Results
+Research findings and discussion
+Conclusion
+Data availability statement
+References
+Acknowledgements
+Author information
+Ethics declarations
+Additional information
+Rights and permissions
+About this article
+
+Footer Navigation
+Discover content
+Journals A-Z
+Books A-Z
+Subjects A-Z
+Publish with us
+Journal finder
+Publish your research
+Language editing
+Open access publishing
+Products and services
+Our products
+Librarians
+Societies
+Partners and advertisers
+Our brands
+Springer
+Nature Portfolio
+BMC
+Palgrave Macmillan
+Apress
+Discover
+Corporate Navigation
+Your privacy choices/Manage cookies Your US state privacy rights Accessibility statement Terms and conditions Privacy policy Help and support Legal notice Cancel contracts here
+223.123.41.71
+
+Not affiliated
+
+Springer Nature
+© 2026 Springer Nature

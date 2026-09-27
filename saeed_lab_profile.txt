@@ -1,0 +1,392 @@
+Florida International University
+FIU Portals
+MyFIU
+FIU Canvas
+FIU Email
+FIU Handshake
+ search
+
+ 
+Logo Knight Foundation School of Computing and Information Sciences
+Home
+About
+People
+Academics
+Explore
+Students
+Research
+Community
+News
+Florida International University
+FIU Portals
+MyFIU
+FIU Canvas
+FIU Email
+FIU Handshake
+ search
+
+ 
+Logo Knight Foundation School of Computing and Information Sciences
+Home
+About
+People
+Academics
+Explore
+Students
+Research
+Community
+News
+
+Fahad Saeed
+Professor & Graduate Program Director
+fsaeed@fiu.edu
+(305) 348-3131
+https://pcdslab.github.io
+INV1 205
+By appointment
+ORCID: 0000-0002-3410-9552
+Biography
+Dr. Fahad Saeed is a Professor and Director of Graduate Studies in the Knight Foundation School of Computing and Information Sciences at Florida International University (FIU), Miami, FL. He received his PhD in the Department of Electrical and Computer Engineering, University of Illinois at Chicago (UIC) in 2010. He was trained as a Post-Doctoral Fellow and Research Fellow in the Systems Biology Center at the National Institutes of Health (NIH), Bethesda MD from Aug 2010 to January 2014 respectively, under the supervision of Mark Knepper. Prior to joining FIU, Prof. Saeed was a tenure-track Assistant Professor in the Department of Electrical & Computer Engineering and Department of Computer Science at Western Michigan University (WMU), Kalamazoo, Michigan since Jan 2014. He was tenured and promoted to the rank of Associate Professor at WMU in August 2018. He has served as a visiting scientist in institutions such as the Department of Bio-Systems Science and Engineering (D-BSSE), ETH Zurich, Swiss Institute of Bioinformatics (SIB), and the Epithelial Systems Biology Laboratory (ESBL) at the NIH in Bethesda, Maryland.   Dr. Saeed's research interests are at the intersection of machine learning, high-performance computing, and real-world applications, especially in computational biology. He is the director of the Precision Computational Health and Biomedical Data Science Lab (Saeed Lab) at FIU. His lab develops machine-learning models, combined with high-performance computing and data science approaches, to study functional genomics (proteomics) and the organization of the human brain in the context of prediction, diagnosis, and biomarkers for disorders such as epilepsy, ADHD, autism, and Alzheimer’s. His research has been funded by NVIDIA, Intel/Altera, Xilinx, the National Science Foundation (NSF), and the National Institutes of Health (NIH), including the NSF CAREER and NIH R01 (and R35 MIRA) grants. More information can be found at https://pcdslab.github.io/.
+Honors and Awards
+Excellence in Research and Creative Activities Award, Knight Foundation School of Computing and Information Science (KFSCIS), FIU, Dec 2024
+Editor, PLOS Mental Health, Oct 2023
+FIU Top Scholar, Research and Creative Activities , Florida International University, Sept 2022 CEC News Page
+Associate Editor, Experimental Results, Cambridge University Press, April 2022 Editorial Board Page
+Keynote Speaker at the 14th International Conference on Bioinformatics and Computational Biology (BICOB). More info here: BiCOB-2022 KeyNote Certificate
+Excellence in Applied Research Award, School of Computing and Information Science (SCIS), Florida International University (FIU), Dec 2020
+Distinguished Research and Creative Scholarship Award, Office of Vice President of Research WMU, Feb 2018
+NSF CAREER Award, 2017-2022
+ACM Senior Member, May 2017
+Outstanding New Researcher Award, College of Engineering and Applied Science (CEAS), Western Michigan University, Jan 2016 (1 faculty member gets the award in a single year for the entire college consisting of 7 academic departments)
+IEEE Senior Member, March 2015
+NSF CISE Research Initiation Initiative (CRII) Award, Feb 2015 - Feb 2018
+Fellows Award for Research Excellence (FARE), National Institutes of Health (NIH), June 2012 (Official award ceremony and US\$1000 travel grant)
+Travel award from Swiss Institute of Bioinformatics (SIB), Summers 2009.
+Recipient of Think Swiss Scholarship, by the Government of Switzerland for two years (2007 and 2008).
+Travel award from D-BSSE ETH Zurich, Summers 2008.
+Research and Educational Interests
+Machine-Learning for health and biomedical data, proteomics, neuroinformatics, computational systems biology, high-performance computing.
+
+Background Education
+2010 Ph.D., Electrical and Computer Engineering, University of Illinois at Chicago
+
+2006 B.S.E., Electrical Engineering, University of Engineering and Technology, Lahore
+
+Selected Publications
+P. Parani, U. Mohammad and F. Saeed, "Utilizing Pretrained Vision Transformers and Large Language Models for Epileptic Seizure Prediction," 2025 8th International Conference on Data Science and Machine Learning Applications (CDMA), 2025, IEEE Xplore
+Muhammad Haseeb, and Fahad Saeed*, “GPU-Acceleration of the Distributed-Memory Database Peptide Search of Mass Spectrometry Data” , Nature Scientific Reports, Vol 12, Article 18713, 2023 Nature
+Oswaldo Artiles, Zeina Al Masry, and Fahad Saeed*, “Confounding Effects on the Performance of Machine Learning Analysis of Static Functional Connectivity Computed from rs-fMRI Multi-site Data”, Springer Neuroinformatics, Vol. 21, pages 651-668, August 2023 Springer
+Usman Tariq, and Fahad Saeed* , “SpeCollate: Deep cross-modal similarity network for mass spectrometry data based peptide deductions”, PLoS ONE, Vol. 16, Issue 10, Oct 2021 PubMed | PLoS
+Muhammad Haseeb, and Fahad Saeed* , “High performance computing framework for tera-scale database search of mass spectrometry data“, Nature Computational Science, Vol. 1, 550–561, August 2021 Arxiv | PubMed | Technical Report | Nature
+Fahad Almuqhim, and Fahad Saeed*, "ASD-SAENet: Sparse Autoencoder for detecting Autism Spectrum Disorder (ASD) using fMRI data", Frontiers in Computational Neuroscience, Vol. 15, p. 27, March 2021 Frontiers
+Taban Eslami, Vahid Mirjalili, Alvis Fong, Angela R. Laird, and Fahad Saeed*, “ASD-DiagNet: A Hybrid Learning Approach for Detection of Autism Spectrum Disorder Using fMRI Data”, Frontiers of Neuroinformatics, vol. 13, pages 70, Nov 2019 arXiv | Frontiers
+Complete list of publications:
+https://pcdslab.github.io/papers/
+https://scholar.google.com/citations?user=IPXv-GQAAAAJ&hl=en
+     
+Resources
+Advising
+Financial Aid
+Student Jobs & Opportunities
+Scholarships
+Map & Directions
+Outreach
+Tutoring
+Degree Programs
+
+Quick Links
+Distance & Online Education
+Faculty & Staff Directory
+Labs
+Technical Support
+Virtual Office
+Nondiscrimination
+Title IX
+Report Discrimination or Harassment
+
+Undergrad Advising Services
+ 305-348-7936
+ cisadvising@fiu.edu
+11200 SW 8 Street, PG6-100
+Miami, FL 33199
+
+Graduate Applications
+ 305-348-7989
+ rarocha@fiu.edu
+11200 SW 8 Street, CASE 350
+Miami, FL 33199
+Knight Foundation School of Computing and Information Sciences - General Inquiries
+11200 SW 8th Street, CASE 354
+Miami, FL 33199
+Tel: 305-348-2744
+Fax: 305-348-3549
+
+
+Campus MapsCalendarPhonebookSocial Directory
+Student AffairsA-Z IndexPantherMailMyFIU
+© 2026 Florida International University | Web/Accessibility Policy | Website Feedback
+and his paper is 
+Skip to main content
+
+An official website of the United States government
+
+Here's how you know
+NCBI home page
+Search
+
+Log in
+Primary site navigation
+Search PMC Full-Text Archive
+Search PMC Full-Text Archive
+
+Search in PMC
+Journal List 
+User Guide
+As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with, the contents by NLM or the National Institutes of Health.
+Learn more: PMC Disclaimer | PMC Copyright Notice
+NIHPA Author Manuscripts logo
+2025 8th Int Conf Data Sci Mach Learn Appl (2025). Author manuscript; available in PMC: 2025 May 7.
+Published in final edited form as: 2025 8th Int Conf Data Sci Mach Learn Appl (2025). 2025 Mar 7;2025:132–137. doi: 10.1109/cdma61895.2025.00028
+Utilizing Pretrained Vision Transformers and Large Language Models for Epileptic Seizure Prediction
+Paras Parani 1, Umair Mohammad 1, Fahad Saeed 1
+Author information
+Article notes
+Copyright and License information
+PMCID: PMC12056660  NIHMSID: NIHMS2068962  PMID: 40337012
+The publisher's version of this article is available at 2025 8th Int Conf Data Sci Mach Learn Appl (2025)
+Abstract
+Repeated unprovoked seizures are a major source of concern for people with epilepsy. Predicting seizures before they occur is of interest to both machine-learning scientists as well as clinicians, and is an active area of research. The variability of EEG sensors, type of seizures, and specialized knowledge required for annotating the data complicates the large-scale annotation process essential for supervised predictive models. To address these challenges, we propose the use of Vision Transformers (ViTs) and Large Language Models (LLMs) that were originally trained on publicly available image or text data. Our work leverages these pre-trained models by refining the input, embedding, and classification layers in a minimalistic fashion to predict seizures. Our results demonstrate that LLMs outperforms the ViTs in patient-independent seizure prediction achieving a sensitivity of 79.02% which is 8% higher compared to ViTs and about 12% higher compared to a custom-designed ResNet-based model. Our work demonstrates the successful feasibility of pre-trained models for seizure prediction with its potential for improving the quality of life of people with epilepsy. Our code and related materials are available open-source at: https://github.com/pcdslab/UtilLLM_EPS/
+
+Keywords: Large Language Model (LLM), Vision Transformer (ViT), Electroencephalography (EEG), Epilepsy, Seizure Prediction
+
+I. Introduction
+Epilepsy is a chronic neurological disorder that causes unprovoked repeat seizures, and affects over 65 million people globally [1]. A seizure is a heightened activity of the brain that causes various symptoms ranging from simple loss of focus to loss of muscular control and unconsciousness resulting in falls and injuries [2]. Development of machine-learning models that utilize electroencephalography (EEG) data, and predict epileptic seizure is an active area of research. Successful ML models can enable patients and caregivers to avoid the significant financial and social costs related to seizures. Training generalizable models from scratch is challenging due to limited annotated data that might be available specific to different EEG sensors, epilepsy types, types of seizures, and co-morbid factors. The existing seizure prediction models, therefore, usually report results that are patient-specific on small datasets such as the CHB-MIT dataset [3]. Insufficient performance [4] with either low sensitivity or too many false positives are a well-known problem that requires new training and benchmarking approaches [5].
+
+In this paper, we design and develop a strategy that can be used for fine-tuning models - for predicting seizures - that were originally trained on other data modalities. For this work, we have focused on investigating vision transformers (ViTs) and Large language models (LLMs). A typical epileptic seizure has 4 stages: preictal (before a seizure), ictal (main symptomatic phase), post-ictal (recovery stage) and interictal (periods of normal function between two seizures). Seizure prediction is a challenging task which involves discrimination of preictal and interictal segments, as compared to only detection (distinguishes ictal phases from the non-ictal phases). In this work, we solve two computational challenges: (1) how to refactor the data for models trained on images (ViT), and text (LLM) into a model that can process complex multi-channel EEG data which is then represented as time-series classification (TSC); (2) how to minimally retrain these models that result in better performance metrics as compared to models that are trained from scratch. To this end, the contributions in this paper are listed below:
+
+We propose wrangling methods to transform multi-dimensional time-series EEG data into a format suitable for ViTs (trained on images) and LLMs (trained on text).
+
+We re-design the final stage of the pretrained ViTs and LLMs by modifying (or adding in LLM) the classifier head to perform seizure prediction from this complex time-series data.
+
+We develop and implement a minimalist re-training strategy that requires unfreezing of a few pre-trained layers, while exhibiting superior results as compared to other state-of-the-art methods.
+
+We validated our strategy on two ViTs and one LLM on one of the largest patient-independent datasets for scalp EEG data [5].
+
+The paper is organized as follows: Section II briefly discusses the related work. Section III describes the methods employed to make the pre-trained ViTs and LLMs ready for the seizure prediction task using EEG data, and concisely describes the computing resources and datasets to test the models. Section IV discusses the experimental results and provides recommendations for best practices and finally, Section V concludes the paper and provides future directions.
+
+II. Related Work
+We have identified the following four gaps in existing literature. In this study, we are designing and developing strategies and methods that can fill some of these gaps.
+
+Gap 1. Non generalizability of existing models: One of the most successful end-to-end seizure prediction systems was designed in [6] that achieved a prediction sensitivity of 99.6% using a combined CNN-LSTM model with neural architecture search (NAS). Other recent works have used CNN-LSTM [7], 3D CNN-LSTM [8], and contrastive learning techniques [9] with a maximum sensitivity of 95%. However, the work of [4] demonstrated that the prediction sensitivity of multiple such models including [6] falls below 70% once leave one seizure out (LOSO) cross-validation (CV) - which prevents data leakage - is applied.
+
+Gap 2. Transformers not used in an end-to-end configuration: To improve the performance of predictive models, a few recent works have applied the transformer architecture [10], [11]. Though originally only proposed for NLP tasks [12], transformers have been successfully adopted for other domains such as the vision transformer (ViT) [13]–[15]. Though transformers have been used as a second layer of feature extraction [11] [10] for seizure prediction, their usage in an end-to-end configuration is missing from the literature.
+
+Gap 3. No patient-independent models exist or are tested on small cohorts: All of the above referenced works [6]–[11] test the models using a very small-sized cohort, and perform only patient-specific seizure prediction. More recent patient-independent models [16], [17] use a small cohort and apply CV that may result in data-leakage in training and validation. For effective assessment, datasets with disjoint training and testing sets as illustrated in our recent MLSPred-Bench benchmark [5] are needed.
+
+Gap 4. Absence of Large language (LLMs) for seizure prediction: To the best of our knowledge, LLMs have not been exploited for solving the seizure prediction problem.
+
+III. Materials and Methods
+To assess the usability of pre-trained ViTs and LLMs for seizure prediction, we test two ViTs: ViT-1 is based on the Swin architecture [13], [14] and ViT-2 is based on the SegFormer [15]. One LLM based on the LongFormer [12] is also tested. Originally, ViT-1 and ViT-2 were used for image classification and semantic segmentation respectively. Typically, a ViT splits an image into fixed size patches, then applies linear embeddings to each patch and adds a positional encoding followed by a transformer block. Though multi-channel EEG time-series data is similar to an image in structure, it also has a temporal component along the x-axis in addition to the spatial component (channels) along the y-axis. Further, the fast sampling rates of EEG make the temporal axis more dominant which is very different to colored square-like images on which ViTs are trained.
+
+For example, the EEG data used in this project is available as 12 ML-ready benchmarks [5] which contain 5-second segments labeled as either preictal or interictal. The EEG data comprises 20 channels sampled at 256 Hz which results in each segment being of shape 20 × 1280. Hence, an innovative strategy is needed to make the data ready for for ViTs. Our proposed overall strategy is shown in Fig 1. The rationale behind this strategy is to make multi-channel time-series data suitable for use with ViTs which have been designed to provide optimal performance on square-like 3-channel images. The need is justified because this approach best utilizes the billions of parameters pre-trained on terabytes of data.
+
+Fig. 1.
+Fig. 1.
+
+Open in a new tab
+Illustration of the phases in which data is augmented to make it suitable for being input into a ViT.
+
+A. ViT-1 Design
+ViT-1 consists of six stages: stage one performs patch partitioning, the next four stages are transformer blocks followed by the sixth stage which is the classifier head. While most transformers use a two-step strategy to calculate both local and global self-attention, we have used a modified version of [13] which has these key differences [14]: the attention blocks apply a scaled cosine function to the query and key, log-spaced coordinates are used in the dense layers, and the normalization layer is moved to the end of each residual unit. The input stage of ViT-1 stage accepts an RGB image of shape H × W × 3, though the recommended shapes are either N × N ×3 with N = 256 or N = 512. The first stage partitions each image to H/4 × W/4 patches and the embedding layer projects it onto a feature dimension C (C is a hyperparameter). From stages two to five, the patch size progresses as follows: H/4×W/4×C → H/8×W/8×2C → H/16×W/16×4C → H/32×W/32×8C. The classifier head performs 1D average pooling on the H/32×W/32 tokens followed by dense layers.
+
+The major innovations we performed include formatting the data so that it is suitable for the patch partitioning phase and the classifier head to make it suitable for binary classification. Recall that the multi-channel EEG time-series data samples are available in the shape 20 × 1280 whereas the pre-trained model checkpoint used accepts 256 × 256 × 3. Therefore, we first reduce the window size from five seconds to one second, which splits each segment further into five data points of shape 20×256; the five new data points share the same label (preictal or interictal) as the original data of shape 20 × 1280. Hence, the dataset size of each benchmark grows five-fold albeit each preictal or interictal sample has a smaller resolution of one second. To increase the size along the channel dimension, we over-sample the 20 channels by replicating them 12 times resulting in data of shape 240 × 256, and then 16 channels are over-sampled randomly to create a 256 × 256 image-like representation. We feed the same image to each of the RGB channels of the model. The classifier head is re-designed to predict two classes and added with randomly initialized weights. As part of our partial re-training strategy, we only train stage 1 (up-to the embedding layer), the normalization layer before the classifier and the classifier itself with the following hyper parameters: batch size of 128, 5 epochs, learning rate (LR) of 1e – 3, a warm-up ratio of 0.1, and a 1% weight decay. The warm-up ratio is the ratio of the required training steps needed to reach the pre-set learning rate of 1e–3 to the total steps in 1 epoch. From stage 2 transformer layer up-to stage 5 are frozen.
+
+B. ViT-2 Design
+ViT-2 is adopted from the Segformer [15] and also has six stages similar to ViT-1. Each transformer block in stages 2-5 contains a patch merging layer, a transformer comprising both an encoder and a decoder, and the normalization layer as illustrated in Fig. 2. Instead of positional embeddings, the encoder uses a combination of dense layers and 3 × 3 convolutions to get positional information Y in two steps.
+
+𝑍=𝐶𝑂𝑁𝑉⁡[𝐷𝐸𝑁𝑆𝐸⁡(𝑋𝑖𝑛)]
+(1)
+where Xin is the feature from self-attention modules, DENSE represents the fully connected (FC) network, and CONV is the convolution operation with a 3 × 3 kernel.
+
+𝑌=𝐷𝐸𝑁𝑆𝐸⁡(𝐺𝐸𝐿𝑈⁡(𝑍))
+(2)
+where GELU is the Gaussian Error Linear Unit activation function. The first transformer block in stage 2 uses a 2D convolution kernel 7 × 7, stride 4 and padding 3 × 3 for patch merging. In stages 3-5, a kernel of size 3 × 3 with stride 2 and padding 1 × 1 is used. The pretrained model used is from the NVIDIA/Mit-B0 checkpoint, which is only based on the encoder, is fine-tuned on ImageNet-1k and works with input images of size 512 × 512 × 3.
+
+Fig. 2.
+Fig. 2.
+
+Open in a new tab
+Illustration of the different stages of ViT-2 with the re-trained layers encapsulated by dotted rectangles.
+
+To make the EEG data ready for ViT-2, we reduce the window size from five to two seconds and discard one second of data. Therefore, the original 5-second segment is split into two chunks each of shape 20 × 512; each shares the same label as the original data of shape 20 × 1280. Finally, each data sample is replicated 25 times along the y-axis to get data of shape 500×512. An additional 12 randomly sampled channels are added and the data is replicated 3 times to create the final data of shape 512 × 512 × 3. The classifier head is re-designed to predict two classes. As part of the re-training strategy, we choose to re-train the patch merging layer of stage 2, the normalization layers of each block and the classifier layer (as highlighted in Fig. 2) with the following hyperparameters: batch size of 128, 5 epochs, LR set to 1e – 3, a warm-up ratio of 0.1 and 1% weight decay.
+
+C. LLM (Longformer)
+To test the usability of an LLM for seizure prediction, we used a pre-trained version of the LongFormer [12] which can process up-to 4,096 tokens. The main underlying mechanism involves two types of ”attention patterns”. First, a sliding window of size 512 is used to compute the attention of each token, and multiple window-based attention scores are stacked to form the top layer which cycles over all input tokens. Symmetric global attention is then used to for each pair of tokens in a given sequence followed by classification using a ’CLS’ token. The major modification we performed on the data is converting a sequence of real numbers to a sequence of string tokens. An example token from EEG data appears as follows: {’-’, ’3’, ’.’, ’714’, ’307’, ’22’, ’37’, ’31’, ’193’, ’e’, ’-’, ’05’, ’Ġ-’, ’2’, ’.’, ’07’, ’465’, ’80’, ’889’, ’309’, ’362’, ’e’, ’-’, ’05’, ’Ġ1’, ’.’, ’606’, ’18’, ’690’, ’75’, ’594’, ’348’}.
+
+Tokenizing the original EEG segment of shape 20 × 1280 results in more than 25,000 tokens whereas only a maximum of 4,096 are allowed by the LLM. Reducing the window size to 1 second (256 samples) also does not help. Hence, we apply an innovative new approach inspired by [4] where each of the 20 channels are tokenized individually. First, we convert each data point of shape 20 × 256 into 20 sequences of length 256, each with the same label as the original data, and extract tokens from each sequence and set an upper limit of 2,500 tokens. The rationale behind string tokenization is to make the EEG data LLM-ready, the rationale for using single-channel sequences include better performance and the ability to train without the exhaustion of resources and the rationale for shorter segments is to stay within memory bounds and simultaneously avoid over-fitting. We train only the classifier layer using the following hyperparameters: LR of 5e – 4, warm-up ratio 0.03, weight decay of 1%, batch size 64 and train for 4 epochs. The model makes one prediction for each channel but the final decision is based on majority voting, where a seizure (preictal label) is predicted only if more than 10 channels indicate a positive label.
+
+D. Data and Evaluation
+We used our recently introduced patient-independent seizure prediction benchmark dataset MLSPred-Bench [5]. Recall that seizure prediction requires identifying preictal segments. Therefore, the benchmark dataset extracts preictal segments from a pre-defined seizure prediction horizon (SPH) after allowing for a gap time equal to the seizure occur(rence) period (SOP) before the start of a seizure. However, because preictal phases are not clinically identifiable on an EEG, we test a combination of values for the SPH and SOP based on the literature, where SPH ∈ {2, 5, 15, 30} minutes and the SOP ∈ {1, 2, 5} minutes. As observable, this leads to 12 benchmarks as illustrated in Table I. More information on the benchmarks can be read in our recent paper [5].
+
+TABLE I.
+Illustration of the benchmarks
+
+SPH/SOP	1	2	5
+2	BM1	BM2	BM3
+5	BM4	BM5	BM6
+15	BM7	BM8	BM9
+30	BM10	BM11	BM12
+Open in a new tab
+For evaluation, let us define the true positive (TP) as a correct seizure prediction and a false positive (FP) as an incorrect seizure prediction. Correctly predicting no seizure is a true negative (TN) whereas incorrectly predicting no seizure is a false negative (FN). Then, the ability of the model to correctly predict a seizure is measured by the sensitivity (Sen):
+
+𝑆𝑒𝑛=
+𝑇𝑃
+𝑇𝑃+𝐹𝑁
+ 
+(3)
+The ability of an ML model to correctly identify the negative class is given by the specificity (Spe):
+
+𝑆𝑝𝑒=
+𝑇𝑁
+𝑇𝑁+𝐹𝑃
+ 
+(4)
+The overall ability of the model to predict the correct labels is given by the accuracy (Acc):
+
+𝐴𝑐𝑐=
+𝑇𝑃+𝑇𝑁
+𝑇𝑃+𝐹𝑃+𝑇𝑁+𝐹𝑁
+ 
+(5)
+Along with these 3 metrics, we can evaluate the receiver operating characteristic (ROC) - area under the curve (AUC) scores which measures the ability of the model to offer a trade-off between the sensitivity and specificity. In the next section, we use these metrics to compare both ViTs and the LLMs for all benchmarks against baseline results from a residual neural network (ResNet)-based model [18] available in [5].
+
+IV. Results and Discussions
+Table II compares the AUC scores for both ViTs and the LLM against SPERTL [18]. From a cursory glance, we can interpret that ViT-2 outperforms all other models for the first six benchmarks which use a maximum SPH (preictal time) of five minutes. The highest ROC is 77.00% on benchmark (BM) 6 - (BM6), whereas ResNet has the highest AUC scores from BM7 to BM9 which use a SPH of 15 minutes. However, Longformer was able to beat every other model from BM10 to BM12 with the highest AUC score of 87.57% on BM11. This is also the highest we have observed across all our experiments. On average, the LLM does provide the overall highest average AUC score which we focus on, because it quantifies the ability of the model to provide a high accuracy while providing a good trade-off between the sensitivity and specificity.
+
+TABLE II.
+Comparison of AUC-ROC scores for all models validated on all benchmarks.
+
+BM	ViT-1	ViT-2	LLM	ResNet
+1	69.86%	76.30%	69.45%	66.80%
+2	72.64%	76.20%	69.79%	66.50%
+3	73.32%	76.10%	73.22%	69.40%
+4	73.13%	76.70%	70.23%	63.00%
+5	71.81%	76.06%	71.58%	68.70%
+6	73.65%	77.00%	71.08%	72.90%
+7	73.04%	71.91%	69.30%	81.10%
+8	71.43%	71.95%	70.81%	83.60%
+9	74.18%	71.23%	71.83%	79.20%
+10	43.50%	41.00%	62.07%	56.40%
+11	80.50%	79.22%	87.57%	80.50%
+12	45.03%	42.77%	60.41%	50.80%
+Avg.	68.51%	69.70%	71.40%	70.91%
+Open in a new tab
+However, an AUC score does not necessarily guarantee a high prediction sensitivity or specificity. Therefore, we compare the sensitivity, accuracy and specificity of each model for all benchmarks in Table III. The first interesting result is that the AUC scores on their own do not necessarily translate to high predictive power when using a classification threshold of 0.5. For example, even though the ROC-AUC score of ViT-2 was better than every other model from BM1 to BM6, the LLM actually achieves a higher accuracy and sensitivity compared to all other models on all BMs except for BM2 and BM6. For example, ViT-2 has a 70.74% accuracy for BM2 whereas the LLM has an accuracy of 70.34%. Similarly, ViT-2 has a 76.10% sensitivity on BM6 whereas the LLM has a sensitivity of 66.98%. Most of results show higher sensitivity than specificity, which implies that using only EEG data, the ViTs and LLM used lean towards predicting a seizure with a threshold of 0.5 despite the problem being made class-balanced. Though the specificity can be improved by modifying the threshold, it will reduce the sensitivity which is more significant as missed seizures are more critical.
+
+TABLE III.
+Accuracy, specificity and sensitivity of each model across all benchmarks.
+
+BM	ViT-1	ViT-2	LLM	ResNet
+Acc	Sen	Spe	Acc	Sen	Spe	Acc	Sen	Spe	Acc	Sen	Spe
+1	66.41%	75.50%	57.32%	69.70%	66.50%	72.80%	71.48%	79.95%	63.18%	61.83%	90.81%	32.85%
+2	68.16%	66.76%	69.56%	70.74%	73.90%	67.50%	70.34%	82.83%	57.57%	50.02%	99.67%	0.37%
+3	68.47%	76.26%	60.68%	68.60%	69.57%	67.79%	74.30%	85.48%	63.14%	55.05%	98.37%	11.72%
+4	65.65%	71.68%	59.63%	67.50%	73.50%	61.50%	71.16%	82.38%	59.81%	57.79%	63.18%	52.40%
+5	67.21%	73.00%	61.42%	68.27%	73.79%	62.74%	70.86%	78.94%	62.46%	57.39%	29.06%	85.72%
+6	67.74%	75.03%	60.46%	70.30%	76.10%	64.50%	71.26%	66.98%	75.54%	60.02%	22.94%	97.09%
+7	67.30%	76.19%	58.42%	66.98%	75.18%	58.78%	67.60%	84.34%	50.65%	52.98%	6.97%	99.00%
+8	65.82%	76.19%	55.44%	65.25%	71.00%	59.44%	70.52%	86.54%	54.44%	50.99%	2.64%	99.33%
+9	67.22%	75.33%	59.11%	64.68%	69.42%	59.90%	73.48%	89.91%	57.54%	49.90%	99.58%	0.23%
+10	48.43%	61.60%	35.27%	46.39%	66.77%	26.00%	66.60%	66.99%	66.24%	50.00%	100.00%	0.00%
+11	70.04%	63.93%	76.14%	71.18%	64.87%	77.48%	77.87%	66.73%	89.01%	50.00%	100.00%	0.00%
+12	48.90%	61.10%	36.70%	50.13%	63.19%	37.08%	64.10%	77.17%	50.84%	50.00%	100.00%	0.00%
+Avg	64.28%	71.05%	57.51%	64.98%	70.32%	59.63%	70.80%	79.02%	62.53%	53.83%	67.77%	39.89%
+Open in a new tab
+A. Discussion on why some models work better
+The ability of the ViT to provide a good AUC score for the first six benchmarks shows that it can make accurate predictions based on small preictal times. One characteristic of the first six benchmarks is that short-term local data was used as features. Whereas the window duration was 5 seconds across all 12 benchmarks implying 1280 temporal features, the number of preictal and interictal windows for each seizure were considerably smaller per seizure compared to benchmarks 7-12. Hence, the ViTs work better because the underlying architecture is efficient at extracting the spatial features along fewer short-term local temporal features, but are unable to discern long-term temporal dependencies or correlations when a longer preictal duration are selected. Once we move to benchmarks 7-9, the number of preictal samples per seizure are increased by 200%, but the dataset size is smaller (with fewer seizures). This data may be too small for much deeper architectures such as ViTs and LLMs but ideal for ResNets which are ’less’ deep [19]. Hence, ResNet provides a higher AUC score for benchmarks 7-9. The best AUC score for benchmarks 10-12 which have the highest SPH is provided by the LLM followed by ResNet and then ViT. This is due to the combined impact of tokenizing the sequences per channel and doubling of the number of preictal and interictal samples per seizure which increases the dataset size sufficiently for LLMs.
+
+B. Experiments for Ablation Study, Generalization and ML
+Recall that for both ViT-1 and ViT-2, we unfroze the patch embedding in stage 1, the normalization layer before classification and classifier head in stage 6. For the ablation studies, we tried re-training and testing the models with different combinations of layers frozen. Table IV shows the ROC-AUC scores for benchmarks 5 and 8. It is observable that re-training all three stages clearly provides a significantly higher AUC score compared to when only one or two stages are re-trained.
+
+TABLE IV.
+Ablation Study: ROC-AUC scores for ViT-1 and ViT-2 with different configurations of re-trained layers.
+
+Model 1	ViT-1	ViT-2
+Re-trained Layers	BM5	BM8	BM5	BM8
+Classifier Only	61.21%	59.12%	69.37%	65.67%
+Classifier+Norm	61.67%	58.50%	71.35%	68.73%
+Patch Embedding	70.38%	67.39%	68.51%	70.82%
+All three	71.81%	71.43%	76.06%	71.95%
+Open in a new tab
+Table V shows the superiority of the proposed techniques which improve the AUC score and accuracy by at least 4% compared to four traditional ML methods including: logistic regression (LR), k-Nearest Neighbor (kNN), adaptive boosting (AdaBoost) and bagging. To show the ability of the model to generalize, we test it on another EEG dataset from subjects with Alzheimer’s Disease (AD) where the task was to discriminate between segments from healthy controls and subjects with AD. As the results indicate, both ViT-1 and ViT-2 worked well with ViT-2 outperforming ViT-1 by about 8% in terms of AUC score, accuracy by 7%, sensitivity by 8% and specificity by more than 6%.
+
+TABLE V.
+Results for Traditional ML and Generalization on AD
+
+Traditional ML Results
+Model	AUC	Acc	Sen	Spe
+LR	53.74%	52.11%	32.82%	71.40%
+kNN	57.31%	55.74%	50.13%	61.35%
+AdaBoost	62.41%	54.84%	12.77%	96.92%
+Bagging	65.11%	60.45%	44.03%	76.86%
+AD Dataset Experiments
+ViT-1	73.54%	67.46%	72.80%	61.00%
+ViT-2	81.99%	74.64%	80.31%	67.78%
+Open in a new tab
+C. Computational Resource Discussion
+Our experiments were carried out on our in-house high performance computing (HPC) clusters Raptor and Dragon. Raptor has two HPC central processing units (CPUs) and is equipped with one Graphical Processing Unit (GPU) with 3,849 cores and 12GB memory. Dragon has 6 compute nodes and each node has two 10-core CPUs and 2 GPUs with 10,752 cores each and up-to 96GB total memory. All data wrangling was done on the Dragon compute nodes, the ML experiments on the Raptor compute nodes, the DL experiments with ResNet on Raptor GPU and the VIT and LLM experiments each were done on 1 Dragon node, i.e., on 2 GPUs each. Despite the higher resources used by the ViT and LLMs, on average the ViTs required nearly half an hour of training time per benchmark for 5 epochs whereas the LLM required up-to 60 hours for 4 epochs. In contrast, the ResNet required around 12 minutes per benchmark for 25 epochs whereas the ML models only required a few seconds with the exception of AdaBoost which required 5 minutes.
+
+V. Conclusion and Future Work
+In this work, we developed strategies to reformulate imaging and textual data pre-trained models (2 vision transformers and one LLM) into methods that can process multidimensional time-series EEG data. Our evaluation was accomplished using recent benchmarking datasets, called MLSPred-Bench [5]. Our results indicate that the LLM has the best performance for all metrics by achieving a sensitivity of 79.02%, a specificity of 62.53%, and an accuracy of 70.80%, highlighting its potential as a robust tool for seizure prediction in clinical and home-care settings. Future work includes stratification of different model stages for performance, and data augmentation techniques for better sensitivity. Novel transformer models are also part of the future investigation.
+and he mention this for perspective phd students
+Prospective PhD student (Saeed Lab)
+The Parallel Computing and Data Science Lab (Saeed Lab) is a computational research lab based at Knight Foundation School of Computing and Information Sciences (KFSCIS), Florida International University in Miami, Florida, led by Dr. Fahad Saeed. 
+
+The Saeed Lab is located on FIU’s MMC Campus in the Computing, Arts, Sciences & Education (CASE) building (Room 261). FIU is ranked as #46 in public universities (#98 overall) in the US and is the only public R1 (very high research activity) university in the Miami Metro area.
+
+The Saeed Lab develops machine-learning models, combined with high-performance computing, and data science approaches, to study the functional genomics and organization of the human brain. Our work focuses on understanding the stochastic difference between identified peptides from high-throughput mass spectrometry data for applications related to human health, disease, and environment. In addition, our work focuses on understanding brain function in the context of prediction, diagnosis and characterization of biomarkers specific to disorders such as epilepsy, ADHD, Autism, and Alzheimer's.
+Our team brings together world-class technical expertise and experience, and Saeed Lab's graduated students have acquired top positions in academia as well as industry. More information is available here: https://pcdslab.github.io/team/
+
+
+
+Opportunity
+
+Learn and apply your computational knowledge while completing your MS/PhD degree to solve problems related to proteomics, or neuroscience or other health related filed.
+Work on innovative machine-learning solutions to exciting deduction, diagnosis, and prediction challenges 
+Collaborate with world-class scientists, engineers and researchers at a fast-paced collaborative lab
+Learn about emerging technologies in Saeed Lab tech stack (mass spectrometry, fMRI, EEG benchmarking, machine-learning models, real-time processing on the edge, high-performance computing) and the engineering tradeoffs to translate cutting-edge research to real-world deployments
+Qualifications
+Currently have, or is in the process of obtaining, a BS/MS in Computer Science, Computer Engineering or related field from a reputable university
+Practical or research experience with big data, real-world messy and noisy data (health care/omics data is preferred but not required)
+For machine-learning projects: Strong background in machine-learning design, and implementation; Strong coding skills in Python, Pytorch, TensorFlow, Scikit and related frameworks (for ML projects)
+Excellent written and spoken English
+Nice to Have
+Research and/or practical experience in big data, machine-learning, and/or HPC
+Experience with machine-learning models on mobile and resource-constrained device or AWS
+Publication track record at conferences or journals specific to machine-learning or HPC
+
+lucas.hellogov@gmail.com Switch account
+ 
+The name, email, and photo associated with your Google account will be recorded when you upload files and submit this form
+* Indicates required question
+Full Name
+*
+Email address
+*
+Phone number
+*
+Undergraduate Institution and Country
+*
+Your TOEFL/IELTS score (if you are an international student)
+Your GRE score (not required for admission)
+Github (where we can see your work)
+Other comments not covered in the options above
+
+CV
+*
+Upload 1 supported file: PDF. Max 10 MB.
+Never submit passwords through Google Forms.
+This content is neither created nor endorsed by Google. - Contact form owner - Terms of Service - Privacy Policy
+Does this form look suspicious? Report
+
+Google Forms

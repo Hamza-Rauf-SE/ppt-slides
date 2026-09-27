@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Rauf | Research Meeting with Dr. Hengwei Zhang</title>
+    <title>Hamza Rauf | Research Meeting with Professor Santosh Kumar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* === THEME: SOFT EDITORIAL === */
         :root {
-            --stage-bg: #1a1a1a;
+            --stage-bg: #F2EEDF;
             --slide-bg: #F2EEDF;
             --paper: #F2EEDF;
             --paper-2: #ECE6D2;
@@ -72,6 +72,15 @@
             inset: 0;
             overflow: hidden;
             background: var(--stage-bg, #000);
+        }
+
+        /* Match the outer viewport to full-bleed slides so no black side columns appear. */
+        .deck-viewport:has(.poster-slide.active) {
+            background: #07335f;
+        }
+
+        .deck-viewport:has(.s-closer.active) {
+            background: var(--lemon);
         }
 
         /* 3. Fixed 16:9 design canvas.
@@ -304,6 +313,15 @@
         .card.color-blush { background: var(--blush); }
         .card.color-sage { background: var(--sage); }
         .card.color-lilac { background: var(--lilac); }
+
+        [data-project-url] {
+            cursor: pointer;
+        }
+
+        [data-project-url]:focus-visible {
+            outline: 3px solid rgba(42, 36, 27, 0.45);
+            outline-offset: 6px;
+        }
 
         .card h3 {
             font-family: var(--font-display);
@@ -1328,6 +1346,27 @@
             font-weight: 500;
         }
 
+        .professor-fit .paper-title-block {
+            padding: 18px 22px;
+        }
+
+        .professor-fit .paper-title-block .mini-label {
+            margin-bottom: 6px;
+            font-size: 21px;
+        }
+
+        .professor-fit .paper-title-block h3 {
+            font-size: 29px;
+            line-height: 1.05;
+        }
+
+        .professor-fit .paper-title-block .paper-note {
+            margin-top: 8px;
+            color: var(--ink-soft);
+            font-size: 17px;
+            line-height: 1.18;
+        }
+
         .research-card-stack {
             display: grid;
             grid-template-rows: 1fr 1fr;
@@ -2138,6 +2177,640 @@
             outline-offset: 4px;
             border-radius: 8px;
         }
+
+        /* === SANTOSH KUMAR PAPER-DECK LAYOUTS === */
+        .sk-cover .cover-role {
+            max-width: 1000px;
+            font-size: 29px;
+        }
+
+        .sk-cover .cover-points {
+            margin-top: 34px;
+        }
+
+        .sk-cover .lede {
+            max-width: 980px;
+        }
+
+        .sk-cover .photo-frame {
+            height: 720px;
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .sk-cover .photo-frame img {
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .sk-slide .slide-title {
+            width: 1180px;
+            font-size: 82px;
+        }
+
+        .sk-slide .slide-sub {
+            width: 560px;
+            font-size: 27px;
+        }
+
+        .sk-stage {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 305px;
+            bottom: 126px;
+        }
+
+        .sk-card {
+            border-radius: 30px;
+            padding: 32px 34px;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(42, 36, 27, 0.08);
+            overflow: hidden;
+        }
+
+        .sk-card h3 {
+            margin: 0 0 14px;
+            font-family: var(--font-display);
+            font-size: 42px;
+            line-height: 1.02;
+            font-weight: 500;
+        }
+
+        .sk-card p,
+        .sk-card li {
+            font-size: 23px;
+            line-height: 1.35;
+            color: var(--ink-soft);
+        }
+
+        .sk-card ul {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .sk-card li {
+            margin-bottom: 8px;
+        }
+
+        .sk-card.color-pink,
+        .sk-card.color-lemon,
+        .sk-card.color-blush,
+        .sk-card.color-sage,
+        .sk-card.color-lilac {
+            color: var(--ink);
+        }
+
+        .sk-card.color-pink { background: var(--pink); }
+        .sk-card.color-lemon { background: var(--lemon); }
+        .sk-card.color-blush { background: var(--blush); }
+        .sk-card.color-sage { background: var(--sage); }
+        .sk-card.color-lilac { background: var(--lilac); }
+
+        .sk-stat.color-pink,
+        .sk-method-step.color-pink,
+        .sk-result-item.color-pink,
+        .sk-memory-card.color-pink { background: var(--pink); }
+
+        .sk-stat.color-lemon,
+        .sk-method-step.color-lemon,
+        .sk-result-item.color-lemon,
+        .sk-memory-card.color-lemon { background: var(--lemon); }
+
+        .sk-stat.color-blush,
+        .sk-method-step.color-blush,
+        .sk-result-item.color-blush,
+        .sk-memory-card.color-blush { background: var(--blush); }
+
+        .sk-stat.color-sage,
+        .sk-method-step.color-sage,
+        .sk-result-item.color-sage,
+        .sk-memory-card.color-sage { background: var(--sage); }
+
+        .sk-stat.color-lilac,
+        .sk-method-step.color-lilac,
+        .sk-result-item.color-lilac,
+        .sk-memory-card.color-lilac { background: var(--lilac); }
+
+        html.render-mode .reveal {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .sk-kicker {
+            display: inline-block;
+            margin-bottom: 14px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .sk-big-number {
+            font-family: var(--font-display);
+            font-size: 86px;
+            line-height: 0.9;
+            font-weight: 500;
+        }
+
+        .sk-overview-grid,
+        .sk-rq-grid,
+        .sk-claims-grid,
+        .sk-limits-grid {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .sk-overview-grid .sk-card,
+        .sk-rq-grid .sk-card,
+        .sk-claims-grid .sk-card,
+        .sk-limits-grid .sk-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sk-rq-grid .sk-card {
+            padding-left: 112px;
+            position: relative;
+        }
+
+        .sk-rq-num {
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.68);
+            font-family: var(--font-display);
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .sk-problem-grid {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .sk-problem-grid .sk-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-problem-grid .sk-card h3 {
+            font-size: 48px;
+        }
+
+        .sk-data-grid,
+        .sk-results-grid,
+        .sk-language-grid,
+        .sk-fit-grid {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 24px;
+        }
+
+        .sk-data-flow {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            align-items: stretch;
+            margin-top: 24px;
+        }
+
+        .sk-flow-node {
+            min-height: 170px;
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.66);
+        }
+
+        .sk-flow-node strong {
+            font-family: var(--font-display);
+            font-size: 34px;
+            line-height: 1;
+            font-weight: 500;
+        }
+
+        .sk-flow-node span {
+            font-size: 19px;
+            line-height: 1.25;
+            color: var(--ink-soft);
+        }
+
+        .sk-stat-stack {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .sk-stat {
+            border-radius: 28px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-stat p {
+            font-size: 21px;
+            line-height: 1.25;
+        }
+
+        .sk-method-flow {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 70px 1fr 70px 1fr;
+            align-items: center;
+        }
+
+        .sk-method-step {
+            height: 100%;
+            max-height: 520px;
+            border-radius: 32px;
+            padding: 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-method-step h3 {
+            font-family: var(--font-display);
+            font-size: 47px;
+            line-height: 1;
+            font-weight: 500;
+        }
+
+        .sk-method-step p,
+        .sk-method-step li {
+            font-size: 22px;
+            line-height: 1.32;
+        }
+
+        .sk-method-step ul {
+            margin: 0;
+            padding-left: 22px;
+        }
+
+        .sk-arrow {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 70px;
+            color: var(--ink-soft);
+        }
+
+        .sk-setup-grid {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .sk-setup-grid .sk-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-setup-grid .sk-card h3 {
+            font-size: 36px;
+        }
+
+        .sk-setup-grid .sk-card p {
+            font-size: 20px;
+        }
+
+        .sk-chart-card {
+            height: 100%;
+            border-radius: 32px;
+            padding: 34px 40px;
+            background: rgba(255, 255, 255, 0.62);
+        }
+
+        .sk-chart-title {
+            margin-bottom: 26px;
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 500;
+        }
+
+        .sk-bar-group {
+            display: grid;
+            gap: 25px;
+        }
+
+        .sk-bar-row {
+            display: grid;
+            grid-template-columns: 160px 1fr 84px;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .sk-bar-label {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .sk-bar-track {
+            height: 46px;
+            border-radius: 999px;
+            background: rgba(42, 36, 27, 0.08);
+            overflow: hidden;
+        }
+
+        .sk-bar-fill {
+            height: 100%;
+            border-radius: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .sk-bar-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            text-align: right;
+        }
+
+        .sk-result-stack {
+            height: 100%;
+            display: grid;
+            grid-template-rows: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .sk-result-item {
+            border-radius: 28px;
+            padding: 28px 30px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sk-result-item h3 {
+            font-family: var(--font-display);
+            font-size: 38px;
+            font-weight: 500;
+        }
+
+        .sk-result-item p {
+            margin-top: 8px;
+            font-size: 20px;
+        }
+
+        .sk-result-item strong {
+            font-family: var(--font-display);
+            font-size: 54px;
+            font-weight: 500;
+        }
+
+        .sk-memory-grid {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .sk-memory-card {
+            border-radius: 32px;
+            padding: 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-memory-card h3 {
+            font-family: var(--font-display);
+            font-size: 46px;
+            font-weight: 500;
+        }
+
+        .sk-memory-numbers {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .sk-memory-old {
+            font-size: 25px;
+            color: var(--ink-soft);
+            text-decoration: line-through;
+        }
+
+        .sk-memory-new {
+            font-family: var(--font-display);
+            font-size: 72px;
+            line-height: 0.9;
+        }
+
+        .sk-memory-meter {
+            height: 18px;
+            border-radius: 999px;
+            background: rgba(42, 36, 27, 0.1);
+            overflow: hidden;
+        }
+
+        .sk-memory-meter i {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--ink);
+            opacity: 0.58;
+        }
+
+        .sk-language-list {
+            display: grid;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .sk-language-row {
+            display: grid;
+            grid-template-columns: 160px 1fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 18px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.62);
+        }
+
+        .sk-language-row strong {
+            font-size: 22px;
+        }
+
+        .sk-language-row span {
+            font-size: 20px;
+            color: var(--ink-soft);
+        }
+
+        .sk-language-row b {
+            font-family: var(--font-display);
+            font-size: 34px;
+            font-weight: 500;
+        }
+
+        .sk-error-list {
+            display: grid;
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .sk-error-row {
+            padding-bottom: 18px;
+            border-bottom: 1px dashed var(--rule-soft);
+        }
+
+        .sk-error-row:last-child {
+            border-bottom: 0;
+        }
+
+        .sk-error-row strong {
+            display: block;
+            margin-bottom: 6px;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        .sk-error-row span {
+            font-size: 21px;
+            color: var(--ink-soft);
+        }
+
+        .sk-transfer-list {
+            display: grid;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .sk-transfer-row {
+            display: grid;
+            grid-template-columns: 1fr 44px 1fr;
+            gap: 16px;
+            align-items: center;
+            padding: 16px 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.62);
+        }
+
+        .sk-transfer-row span {
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .sk-transfer-row b {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 500;
+        }
+
+        .sk-professor-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-professor-card blockquote {
+            font-family: var(--font-display);
+            font-size: 47px;
+            line-height: 1.05;
+            font-style: italic;
+        }
+
+        .sk-direction-grid {
+            height: calc(100% - 96px);
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .sk-direction-grid .sk-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sk-direction-grid .sk-card h3 {
+            font-size: 40px;
+        }
+
+        .sk-first-step {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 76px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 28px;
+            background: rgba(255, 255, 255, 0.66);
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-style: italic;
+        }
+
+        .sk-stage.sk-overview-grid,
+        .sk-stage.sk-rq-grid,
+        .sk-stage.sk-claims-grid,
+        .sk-stage.sk-limits-grid,
+        .sk-stage.sk-problem-grid,
+        .sk-stage.sk-data-grid,
+        .sk-stage.sk-results-grid,
+        .sk-stage.sk-language-grid,
+        .sk-stage.sk-fit-grid,
+        .sk-stage.sk-method-flow,
+        .sk-stage.sk-setup-grid,
+        .sk-stage.sk-memory-grid {
+            height: auto;
+        }
+
+        /* === FULL PAPER POSTER SLIDE === */
+        .poster-slide .poster-frame {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .poster-slide .poster-frame img {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            object-fit: fill;
+            display: block;
+            border-radius: 0;
+        }
     </style>
 </head>
 <body>
@@ -2184,7 +2857,6 @@
                             <a class="pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noreferrer" data-editable><span class="pill-icon linkedin" aria-hidden="true">in</span>LinkedIn</a>
                             <a class="pill" href="https://www.youtube.com/@hamzarauf99" target="_blank" rel="noreferrer" data-editable><span class="pill-icon youtube" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.6 7.1a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9 2 12 2 12s0 3 .4 4.9A3 3 0 0 0 4.5 19c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12s0-3-.4-4.9ZM10 15.3V8.7l5.8 3.3-5.8 3.3Z"></path></svg></span>YouTube</a>
                         </div>
-                        <p class="lede reveal delay-5" data-editable>Meeting with Dr. Hengwei Zhang about how my AI platform, RAG, compact LLM, and medical AI experience can support health informatics research.</p>
                         <div class="cover-logo-strip reveal delay-3" aria-label="Affiliations and platforms">
                             <div class="cover-logo"><img src="images/icons/standford_icon.webp" alt="Stanford icon"></div>
                             <div class="cover-logo"><img src="images/icons/harvard_icon.webp" alt="Harvard icon"></div>
@@ -2209,7 +2881,7 @@
                 <div class="eyebrow">Who I Am</div>
                 <div class="pagedot">ii.</div>
                 <div class="left reveal delay-1">
-                    <p class="opener" data-editable>Hamza Rauf - Senior Software Engineer and AI Researcher with industry and research experience, and a strong interest in AI systems that work under real deployment constraints.</p>
+                    <p class="opener" data-editable>Hamza Rauf - Senior Software Engineer and AI Researcher who builds efficient models, data pipelines, and AI systems that work outside the lab.</p>
                     <div class="credential-wall reveal delay-2">
                         <div class="proof-strip">
                             <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" data-preview-alt="GRE certificate" data-preview-mode="portrait">
@@ -2264,7 +2936,7 @@
                     </div>
                     <div class="card color-pink reveal delay-3">
                         <div class="stat-value" data-editable>Top 5%</div>
-                        <p class="stat-label" data-editable>Top 5% of my class, with CGPA 3.31 / 85% and a strong base in data structures, Algorithms, and enterprise systems.</p>
+                        <p class="stat-label" data-editable>Top 5% of my class, with CGPA 3.31 / 85% and a strong base in algorithms, machine learning, and big data.</p>
                     </div>
                     <div class="card color-sage reveal delay-4">
                         <div class="stat-value" data-editable>6+</div>
@@ -2272,7 +2944,7 @@
                     </div>
                     <div class="card color-lilac reveal delay-5">
                         <div class="stat-value" data-editable>Lab fit</div>
-                        <p class="stat-label" data-editable>Research discipline, reliable engineering, hands-on model training, clear writing, and mentoring.</p>
+                        <p class="stat-label" data-editable>Efficient model training, reliable data systems, careful evaluation, clear writing, and mentoring.</p>
                     </div>
                 </div>
                 <div class="footer"><span></span><span>Prospective PhD conversation</span></div>
@@ -2288,7 +2960,7 @@
                         <h3 data-editable>Academic proof</h3>
                         <ul data-editable>
                             <li>Won a fully funded merit scholarship as one of the top 100 students in the country.</li>
-                            <li>Earned distinction in 24 courses, including data structures, Algorithms, and enterprise app development.</li>
+                            <li>Earned distinction in 24 courses, including algorithms, machine learning, and big data.</li>
                             <li>Received a professional job offer before graduation.</li>
                         </ul>
                         <div class="evidence-strip single">
@@ -2302,7 +2974,7 @@
                         <ul data-editable>
                             <li>Worked as a Research Assistant with Dr. Umair Khan, a Stanford top 2% scientist.</li>
                             <li>Published multiple papers, including first-author Q1 work in Complex &amp; Intelligent Systems and co-authored Q1 work in Engineering Applications of Artificial Intelligence.</li>
-                            <li>Worked with systematic reviews, surveys, evaluation metrics, LaTeX, Atlas.ti, and SPSS.</li>
+                            <li>Worked with model comparison, evaluation metrics, literature reviews, scientific writing, and LaTeX.</li>
                         </ul>
                         <div class="evidence-strip double">
                             <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/umair%20google%20schoalr%20profile.png" data-preview-alt="Dr Umair Khan Google Scholar profile" data-preview-mode="scroll" aria-label="Preview Dr Umair Khan Google Scholar profile">
@@ -2385,12 +3057,12 @@
                 <div class="footer"><span>Research readiness</span><span>scholarship - publication - leadership</span></div>
             </section>
 
-            <!-- Slide 4: Published work from the original PPT, reframed for health informatics -->
+            <!-- Slide 4: Published work aligned with efficient machine learning -->
             <section class="slide published-papers" data-label="AI Foundation">
                 <div class="eyebrow">Published work</div>
                 <div class="pagedot">iv.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Research experience: efficient and <em>deployable AI</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>These papers show how I move from model design to experiments, publication, and real deployment limits.</p>
+                <h2 class="slide-title reveal delay-1" data-editable>Research experience: efficient and <em>tested machine learning</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>My work focuses on small models, limited compute, careful comparison, and clear results.</p>
                 <div class="paper-showcase">
                     <article class="paper-tile color-pink reveal delay-1">
                         <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Efficient multilingual spam detection paper">
@@ -2423,7 +3095,7 @@
                                 <span class="pill">Impact factor: 8.0</span>
                                 <span class="pill">Q1</span>
                             </div>
-                            <p data-editable>Compared ANN-LM and Gaussian Process Regression as fast surrogate models for expensive numerical simulations, including uncertainty-aware prediction.</p>
+                            <p data-editable>Compared fast surrogate models for costly simulations. This gave me experience with model choice, error analysis, and uncertainty.</p>
                         </div>
                     </article>
                     <article class="paper-tile color-sage reveal delay-3">
@@ -2439,19 +3111,66 @@
                                 <span class="pill">Spectrum of Engineering Sciences</span>
                                 <span class="pill">2025</span>
                             </div>
-                            <p data-editable>Used generative AI for cyber threat modeling, attack simulation, and defense evaluation.</p>
+                            <p data-editable>Used generative models to create test cases and compare defense methods. The same habit of controlled testing is useful in medical AI.</p>
                         </div>
                     </article>
                 </div>
                 <div class="footer"><span>Research experience</span><span>efficient models - synthetic data - evaluation</span></div>
             </section>
 
-            <!-- Slide 5: Current research from the original PPT, adapted to this meeting context -->
-            <section class="slide current-research" data-label="Professor Zhang">
-                <div class="eyebrow">Current research</div>
+            <!-- Slide 5: First-author paper research summary -->
+            <section class="slide current-research" data-label="My Paper">
+                <div class="eyebrow">My recent paper</div>
                 <div class="pagedot">v.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Compact multilingual AI on <em>limited hardware</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>This first-author paper shows how I frame a problem, control an experiment, study errors, and report limits.</p>
+                <div class="current-research-grid">
+                    <article class="emotion-panel reveal delay-1" style="background: var(--pink);">
+                        <div class="emotion-figure">
+                            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="First page of Efficient multilingual spam detection on resource-constrained devices">
+                        </div>
+                        <div class="paper-title-block">
+                            <p class="mini-label" data-editable>Research question</p>
+                            <h3 data-editable>Can 4-bit QLoRA make small language models accurate across many languages while using less memory?</h3>
+                        </div>
+                    </article>
+                    <div class="research-card-stack">
+                        <article class="card reveal delay-2">
+                            <h3 data-editable>Study design</h3>
+                            <ul data-editable>
+                                <li>42,000 balanced messages across 21 languages.</li>
+                                <li>Compared Gemma 3, Qwen 3, and Llama 3.2.</li>
+                                <li>Tested 16-bit, 4-bit, and 4-bit QLoRA stages.</li>
+                                <li>Used the same training settings on one NVIDIA T4.</li>
+                            </ul>
+                        </article>
+                        <article class="card color-sage reveal delay-3">
+                            <h3 data-editable>Main result and transferable skill</h3>
+                            <ul data-editable>
+                                <li>Gemma reached 90% accuracy and 0.88 F1.</li>
+                                <li>Qwen and Llama fit below 4 GB after quantization.</li>
+                                <li>Language-level analysis exposed uneven performance.</li>
+                                <li>The same quality-cost-privacy tradeoff matters for wearable AI.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>My paper</span><span>multilingual data - QLoRA - memory - honest evaluation</span></div>
+            </section>
+
+            <!-- Slide 6: Full research poster -->
+            <section class="slide poster-slide" data-label="Paper Poster">
+                <div class="poster-frame reveal delay-1">
+                    <img src="images/paper_poster.png" alt="Poster for Efficient Multilingual Spam Detection on Resource-Constrained Devices">
+                </div>
+            </section>
+
+            <!-- Slide 7: Current research restored from the original meeting deck -->
+            <section class="slide current-research" data-label="Current Research">
+                <div class="eyebrow">Current research</div>
+                <div class="pagedot">vii.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Bridging language, signals, and <em>context-rich classification</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>I can apply this same approach to patient narratives, survey responses, clinical notes, and early screening signals.</p>
+                <p class="slide-sub reveal delay-2" data-editable>I can apply this approach to self-reports, mobile context, and wearable signals that describe human behavior.</p>
                 <div class="current-research-grid">
                     <article class="emotion-panel reveal delay-1">
                         <div class="emotion-figure">
@@ -2473,12 +3192,12 @@
                             <p class="soft-rule" data-editable>The deeper skill here is modeling indirect human signals under uncertainty, not only solving one embodied-AI task.</p>
                         </article>
                         <article class="card color-blush reveal delay-3">
-                            <h3 data-editable>How I connect it to health informatics</h3>
+                            <h3 data-editable>How I connect it to mobile health</h3>
                             <ul data-editable>
-                                <li>NLP can help structure patient language, survey responses, and care-management notes.</li>
-                                <li>Compact LLMs can support privacy-sensitive, lower-cost medical AI prototypes.</li>
-                                <li>Prompting, verification, and evaluation fit trustworthy health decision support.</li>
-                                <li>The same mindset can support early Alzheimer's screening and social determinants of health research.</li>
+                                <li>Language can add context to wearable and mobile sensor signals.</li>
+                                <li>Compact models can support private, lower-cost on-device prototypes.</li>
+                                <li>Prompting and verification can support safer agentic health features.</li>
+                                <li>The same evaluation mindset can study stress, craving, smoking, and other behaviors.</li>
                             </ul>
                         </article>
                     </div>
@@ -2486,11 +3205,11 @@
                 <div class="footer"><span>Current research</span><span>small LLMs - prompting - evaluation - human signals</span></div>
             </section>
 
-            <!-- Slide 6: Professional and teaching experience from the original PPT -->
-            <section class="slide s-paper" data-label="GMLP Paper">
-                <div class="eyebrow">Professional experience</div>
-                <div class="pagedot">vi.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Industry and teaching experience <em>with real AI systems</em></h2>
+            <!-- Slide 8: Professional and teaching experience from the original PPT -->
+            <section class="slide s-paper" data-label="Engineering Experience">
+                <div class="eyebrow">Engineering experience</div>
+                <div class="pagedot">viii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Building AI systems <em>that keep working</em></h2>
                 <div class="paper-card">
                     <article class="quote-card reveal delay-1">
                         <div class="project-slider" aria-label="Selected project visuals">
@@ -2751,143 +3470,157 @@
                     </article>
                     <div class="evidence">
                         <article class="card color-sage reveal delay-2">
-                            <h3 data-editable>Devsinc</h3>
-                            <p data-editable>Own services end to end, improve security and compliance workflows, and build RAG- and LLM-powered product features that are reliable in production.</p>
+                            <h3 data-editable>Reliable systems</h3>
+                            <p data-editable>Own services from design to deployment, with logging, monitoring, testing, security fixes, and production support.</p>
                         </article>
                         <article class="card color-lilac reveal delay-3">
-                            <h3 data-editable>CodingCrafts</h3>
-                            <p data-editable>Built full-stack AI products from 2022 to 2025, including agentic workflows, OCR, RAG, tool calling, and SaaS automation features.</p>
+                            <h3 data-editable>Data pipelines</h3>
+                            <p data-editable>Built APIs, background jobs, ETL flows, vector search, and cloud systems for large and changing data.</p>
                         </article>
                         <article class="card color-pink reveal delay-4">
-                            <h3 data-editable>Valyrian Systems</h3>
-                            <p data-editable>Moved monoliths to FastAPI microservices, improved latency, built async workflows, and made backend systems more reliable.</p>
+                            <h3 data-editable>Scale and speed</h3>
+                            <p data-editable>Worked with microservices, parallel jobs, queues, containers, databases, and cloud tools to improve speed and stability.</p>
                         </article>
                         <article class="card color-lemon reveal delay-5">
                             <h3 data-editable>Teaching and mentoring</h3>
-                            <p data-editable>Mentored junior engineers, taught Python through Stanford Code in Place, and guided students on DevOps and cloud projects.</p>
+                            <p data-editable>Mentored engineers, taught Python through Stanford Code in Place, and guided students on cloud projects.</p>
                         </article>
                     </div>
                 </div>
-                <div class="footer"><span>Professional experience</span><span>AI engineering - mentoring - deployment</span></div>
+                <div class="footer"><span>Engineering experience</span><span>data - scale - monitoring - deployment</span></div>
             </section>
 
-            <!-- Slide 7: Hands-on evidence from the original PPT -->
-            <section class="slide" data-label="GMLP Process">
+            <!-- Slide 9: Hands-on evidence from the original PPT -->
+            <section class="slide" data-label="Selected Work">
                 <div class="eyebrow">Hands-on evidence</div>
-                <div class="pagedot">vii.</div>
-                <h2 class="slide-title reveal delay-1" data-editable>Selected projects with <em>research value</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>These projects show the kind of practical work I can contribute from day one.</p>
+                <div class="pagedot">ix.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Selected work that can support <em>mobile health research</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Each example connects to efficient models, health data, agentic systems, large data, or careful testing.</p>
                 <div class="five-grid">
-                    <article class="card color-pink reveal delay-1">
-                        <h3 data-editable>HelloGov AI</h3>
-                        <p data-editable>Built OCR, LLM extraction, validation, and agentic portal automation for real user workflows.</p>
+                    <article class="card color-pink reveal delay-1" data-project-url="https://link.springer.com/article/10.1007/s40747-026-02247-x" aria-label="Open the compact LLM paper">
+                        <h3 data-editable>Small models on devices</h3>
+                        <p data-editable>Published QLoRA work with compact LLMs, 21 languages, and about 90% accuracy.</p>
                     </article>
-                    <article class="card color-blush reveal delay-2">
+                    <article class="card color-blush reveal delay-2" data-project-url="https://colab.research.google.com/drive/1bgJzD1ClIquled056gSh04265TX4T5FA?usp=sharing" aria-label="Open the Medical Image VLM Colab">
                         <h3 data-editable>Medical image VLM</h3>
                         <p data-editable>Fine-tuned Llama 3 Vision 11B with PEFT, LoRA, and 4-bit quantization.</p>
                     </article>
-                    <article class="card color-lemon reveal delay-3">
-                        <h3 data-editable>Graph + hybrid RAG</h3>
-                        <p data-editable>Built context-aware retrieval with vector search, graph context, reranking, and LLM reasoning.</p>
+                    <article class="card color-lemon reveal delay-3" data-project-url="https://valyriansys.com/products/hawkeye-100" aria-label="Open the Hawkeye 100 project">
+                        <h3 data-editable>Large data systems</h3>
+                        <p data-editable>Built distributed databases, queues, ETL flows, search pipelines, and monitored cloud services.</p>
                     </article>
                     <article class="card color-sage reveal delay-4">
-                        <h3 data-editable>Qwen3 reasoning</h3>
-                        <p data-editable>Built reward-guided reasoning alignment with structured outputs and custom evaluation.</p>
+                        <h3 data-editable>Model evaluation</h3>
+                        <p data-editable>Compared models with clear metrics and built monitoring for relevance, safety, and errors.</p>
                     </article>
-                    <article class="card color-lilac reveal delay-5">
-                        <h3 data-editable>MaYa AI platform</h3>
-                        <p data-editable>Built a multi-agent conversational platform with retrieval, reranking, frustration detection, and workflow-aware next-step guidance for merchants, funders, and sales teams.</p>
+                    <article class="card color-lilac reveal delay-5" data-project-url="https://github.com/Hamza-Rauf-SE/re-agent/blob/main/README.md" aria-label="Open the Verified AI Agent project">
+                        <h3 data-editable>Verified AI agent</h3>
+                        <p data-editable>Built an agent whose claims are checked by a solver or real program before they are marked proven.</p>
                     </article>
                 </div>
                 <div class="pipeline-strip reveal delay-5" data-editable>
-                    my fit: medical AI, RAG, evaluation, workflow automation, deployable decision support
+                    my fit: efficient models - large data pipelines - careful testing - systems that can be deployed
                 </div>
-                <div class="footer"><span>Selected projects</span><span>OCR - VLM - RAG - reasoning - multi-agent workflows</span></div>
+                <div class="footer"><span>Selected work</span><span>compact AI - agents - data systems - evaluation</span></div>
             </section>
 
-            <!-- Slide 8: Research-relevant skills from the original PPT -->
+            <!-- Slide 10: Research-relevant skills from the original PPT -->
             <section class="slide" data-label="Alignment">
                 <div class="eyebrow">Research-relevant skills</div>
-                <div class="pagedot">viii.</div>
+                <div class="pagedot">x.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Technical toolkit I can bring to <em>the lab</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>Organized around the research direction I want to support: NLP, data management, visualization, machine learning, and health informatics.</p>
+                <p class="slide-sub reveal delay-2" data-editable>My strongest match is efficient and agentic AI backed by strong data, privacy, monitoring, and deployment skills.</p>
                 <div class="alignment-table reveal delay-3">
-                    <div class="cell head-row">Skill area</div>
-                    <div class="cell head-row">Tools and experience</div>
-                    <div class="cell head-row">How I would apply it</div>
-                    <div class="cell row-label">Foundation models</div>
-                    <div class="cell">LLMs, VLMs, LoRA, QLoRA, PEFT, quantization, prompting, reasoning evaluation.</div>
-                    <div class="cell">Use compact models for medical AI prototypes and lower-cost clinical decision support.</div>
-                    <div class="cell row-label">Data and AI pipelines</div>
-                    <div class="cell">Synthetic data, embeddings, vector DBs, hybrid search, reranking, PySpark and ETL foundations.</div>
-                    <div class="cell">Build population health data pipelines, continuous scoring, and RAG over policies and care criteria.</div>
-                    <div class="cell row-label">Systems and deployment</div>
-                    <div class="cell">FastAPI, Flask, Node.js, AWS, Azure, Docker, Kubernetes, CI/CD, observability, APIs.</div>
-                    <div class="cell">Turn research models into monitored, secure, workflow-ready health informatics tools.</div>
-                    <div class="cell row-label last">Research practice</div>
-                    <div class="cell last">Literature reviews, experiment design, evaluation metrics, scientific writing, mentoring.</div>
-                    <div class="cell last">Support publishable studies with reproducible baselines and clear evaluation.</div>
+                    <div class="cell head-row">Lab need</div>
+                    <div class="cell head-row">My evidence</div>
+                    <div class="cell head-row">How I can start</div>
+                    <div class="cell row-label">Wearable AI</div>
+                    <div class="cell">Small LLMs, LoRA, QLoRA, 4-bit training, model comparison, and limited-device tests.</div>
+                    <div class="cell">Test compact models on wearable sensor windows with F1, speed, memory, and power measures.</div>
+                    <div class="cell row-label">Sensor data at scale</div>
+                    <div class="cell">Python, PyTorch, TensorFlow, scikit-learn, ETL, queues, distributed databases, and cloud jobs.</div>
+                    <div class="cell">Prepare long mobile sensor streams and build repeatable person-level training and testing pipelines.</div>
+                    <div class="cell row-label">Privacy and deployment</div>
+                    <div class="cell">FastAPI, AWS, Docker, Kubernetes, CI/CD, logging, monitoring, security, and testing.</div>
+                    <div class="cell">Turn a research model into a private, monitored prototype for real-time or on-device use.</div>
+                    <div class="cell row-label last">Agentic intervention</div>
+                    <div class="cell last">Verified agents, RAG, LangGraph, tool use, guardrails, and AI monitoring.</div>
+                    <div class="cell last">Combine sensor state, recent context, care rules, and confidence before suggesting an action.</div>
                 </div>
-                <div class="footer"><span>Technical toolkit</span><span>models - pipelines - systems - research practice</span></div>
+                <div class="footer"><span>Technical fit</span><span>wearable AI - sensor data - privacy - agents</span></div>
             </section>
 
-            <!-- Slide 9: Direct alignment, adapted to this research agenda -->
-            <section class="slide" data-label="Research Idea 1">
-                <div class="eyebrow">Direct alignment</div>
-                <div class="pagedot">ix.</div>
-                <div class="idea-hero reveal delay-1">
-                    <p class="marker" data-editable>My fit with this research agenda</p>
-                    <h2 data-editable>Health informatics needs <em>AI that fits real workflows</em></h2>
-                    <p class="body-copy" data-editable>The research direction I want to support brings together NLP, data systems, visualization, machine learning, population health, and digital health tools.</p>
+            <!-- Slide 11: Professor Kumar's wearable and mobile health research -->
+            <section class="slide current-research professor-fit" data-label="Professor Kumar">
+                <div class="eyebrow">Professor Kumar's research</div>
+                <div class="pagedot">xi.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>From wearable signals to <em>timely support</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>His work turns noisy sensor data into useful knowledge for private and timely health support.</p>
+                <div class="current-research-grid">
+                    <article class="emotion-panel reveal delay-1">
+                        <div class="emotion-figure">
+                            <svg viewBox="0 0 760 390" role="img" aria-label="Wearable signals moving through compact and context models to a behavior state">
+                                <rect x="34" y="48" width="190" height="292" rx="24" fill="var(--paper)"></rect>
+                                <text x="129" y="92" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="24">Wearable signals</text>
+                                <path d="M62 142 C82 98 98 188 120 142 S160 98 182 142" fill="none" stroke="var(--pink)" stroke-width="7" stroke-linecap="round"></path>
+                                <path d="M62 202 C84 164 101 238 123 202 S160 168 190 202" fill="none" stroke="var(--sage)" stroke-width="7" stroke-linecap="round"></path>
+                                <path d="M62 262 C82 220 105 304 128 262 S166 224 194 262" fill="none" stroke="var(--lilac)" stroke-width="7" stroke-linecap="round"></path>
+                                <path d="M242 194 H308" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+                                <path d="m294 180 16 14-16 14" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="328" y="66" width="188" height="112" rx="24" fill="var(--lemon)"></rect>
+                                <text x="422" y="113" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="23">Compact model</text>
+                                <text x="422" y="145" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="18">sensor windows</text>
+                                <rect x="328" y="212" width="188" height="112" rx="24" fill="var(--blush)"></rect>
+                                <text x="422" y="259" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="23">Context model</text>
+                                <text x="422" y="291" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="18">time + setting</text>
+                                <path d="M534 194 H590" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+                                <path d="m576 180 16 14-16 14" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="610" y="113" width="116" height="164" rx="24" fill="var(--sage)"></rect>
+                                <text x="668" y="181" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="22">Behavior</text>
+                                <text x="668" y="212" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="22">state</text>
+                                <text x="668" y="247" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="17">stress · craving</text>
+                            </svg>
+                        </div>
+                        <div class="paper-title-block" data-project-url="https://www.memphis.edu/cs/santosh-kumar/papers/stress2015.pdf" aria-label="Open Professor Kumar's cStress paper">
+                            <p class="mini-label" data-editable>Professor Kumar paper · ACM UbiComp 2015</p>
+                            <h3 data-editable>cStress: Towards a Gold Standard for Continuous Stress Assessment in the Mobile Environment</h3>
+                            <p class="paper-note" data-editable>A careful pipeline for detecting stress from noisy wearable data.</p>
+                        </div>
+                    </article>
+                    <div class="research-card-stack">
+                        <article class="card reveal delay-2">
+                            <h3 data-editable>What his work shows</h3>
+                            <ul data-editable>
+                                <li>Wearable signals can reveal stress, smoking, conversation, and craving in daily life.</li>
+                                <li>Useful models must handle noise, personal differences, privacy, and real-time limits.</li>
+                                <li>mDOT and MD2K connect computing, behavior science, engineering, and medicine.</li>
+                            </ul>
+                        </article>
+                        <article class="card color-blush reveal delay-3">
+                            <h3 data-editable>Why I fit</h3>
+                            <ul data-editable>
+                                <li><strong>I bring:</strong> compact models, QLoRA, data pipelines, verified agents, and reliable deployment.</li>
+                                <li><strong>I can test:</strong> person-level errors, false alarms, speed, memory, power, and privacy.</li>
+                                <li><strong>I want to learn:</strong> wearable signal processing, field studies, and intervention testing.</li>
+                            </ul>
+                            <p class="soft-rule" data-editable><strong>Shared goal:</strong> efficient AI that works across people and supports timely action.</p>
+                        </article>
+                    </div>
                 </div>
-                <div class="idea-panel">
-                    <article class="card color-lemon reveal delay-2">
-                        <h3 data-editable>Research direction I want to support</h3>
-                        <p data-editable>Build prediction pipelines for population health, palliative care, social determinants of health, and early Alzheimer's screening.</p>
-                    </article>
-                    <article class="card reveal delay-3">
-                        <h3 data-editable>My experience</h3>
-                        <ul data-editable>
-                            <li>Fine-tuning small LLMs and VLMs with LoRA and QLoRA</li>
-                            <li>Building RAG pipelines, data workflows, agent systems, and evaluation setups</li>
-                            <li>Shipping AI systems with APIs, monitoring, reliability, and deployment limits</li>
-                        </ul>
-                    </article>
-                    <article class="card color-sage reveal delay-4">
-                        <h3 data-editable>Paper I read</h3>
-                        <p data-editable>The JBI paper uses a practical ML pipeline to predict who may benefit from palliative care, using claims data, rolling scoring, feature engineering, resampling, and model maintenance.</p>
-                    </article>
-                    <article class="card color-blush reveal delay-5">
-                        <h3 data-editable>Where I can contribute</h3>
-                        <p data-editable>I can contribute to RAG-based decision support, smaller medical AI models, reproducible ML pipelines, and prototypes that can move toward real use.</p>
-                    </article>
-                </div>
-                <div class="footer"><span>Direct alignment</span><span>health informatics - deployable AI - research fit</span></div>
+                <div class="footer"><span>Professor Kumar alignment</span><span>wearables - behavior - privacy - intervention</span></div>
             </section>
 
-            <!-- Slide 10: Initial ideas to discuss, adapted from the original proposed direction slide -->
+            <!-- Slide 12: Four initial ideas to discuss -->
             <section class="slide" data-label="Research Idea 2">
                 <div class="eyebrow">Initial ideas to discuss</div>
-                <div class="pagedot">x.</div>
+                <div class="pagedot">xii.</div>
                 <div class="idea-hero reveal delay-1" style="background: var(--sage);">
-                    <p class="marker" data-editable>Proposed research direction</p>
-                    <h2 data-editable>AI pipelines for <em>medical decision support</em></h2>
-                    <p class="body-copy" data-editable>I want to focus on care workflows, early Alzheimer's screening, and medical AI that is efficient, clear, and useful in practice.</p>
+                    <p class="marker" data-editable>Proposed research directions</p>
+                    <h2 data-editable>Practical AI for <em>sensing and support</em></h2>
+                    <p class="body-copy" data-editable>Four starting ideas that connect efficient models, wearable data, privacy, and safe agentic features.</p>
                 </div>
                 <div class="idea-panel">
                     <article class="card color-pink reveal delay-2">
-                        <div class="idea-card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 48 48">
-                                <path d="M11 16h26"></path>
-                                <path d="M11 24h18"></path>
-                                <path d="M11 32h14"></path>
-                                <path d="m31 29 4 4 8-8"></path>
-                            </svg>
-                        </div>
-                        <h3 data-editable>Idea 1 - RAG for care management</h3>
-                        <p data-editable>Use RAG to explain risk scores using policy rules, care criteria, and model evidence.</p>
-                    </article>
-                    <article class="card reveal delay-3">
                         <div class="idea-card-icon" aria-hidden="true">
                             <svg viewBox="0 0 48 48">
                                 <rect x="10" y="11" width="28" height="20" rx="6"></rect>
@@ -2896,14 +3629,42 @@
                                 <path d="m18 21 4 4 8-8"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 2 - compact medical AI</h3>
+                        <h3 data-editable>Idea 1 - edge-ready behavior sensing</h3>
                         <ul data-editable>
-                            <li>Use PEFT and QLoRA to train smaller models with less compute.</li>
-                            <li>Test compact LLMs, VLMs, or hybrid ML models for early Alzheimer's and related screening tasks.</li>
-                            <li>Measure calibration, fairness, explainability, and deployment cost.</li>
+                            <li>Measure speed, memory use, model size, and power needs.</li>
+                            <li>Track person-level F1, false alarms, and missed events.</li>
+                            <li>Build a small real-time wearable prototype.</li>
                         </ul>
                     </article>
+                    <article class="card reveal delay-3">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M11 16h26"></path>
+                                <path d="M11 24h18"></path>
+                                <path d="M11 32h14"></path>
+                                <path d="m31 29 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 2 - private personalization</h3>
+                        <p data-editable>Use lightweight local updates to adjust a shared model to each person without moving raw sensor data.</p>
+                    </article>
                     <article class="card color-lilac reveal delay-4">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="10" y="11" width="28" height="20" rx="6"></rect>
+                                <path d="M18 37h12"></path>
+                                <path d="M24 31v6"></path>
+                                <path d="m18 21 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 3 - agentic wearable support</h3>
+                        <ul data-editable>
+                            <li>Combine a sensor event with recent context and retrieved care rules.</li>
+                            <li>Check confidence before the agent suggests an action.</li>
+                            <li>Log the reason, evidence, and result for review.</li>
+                        </ul>
+                    </article>
+                    <article class="card color-lemon reveal delay-5">
                         <div class="idea-card-icon" aria-hidden="true">
                             <svg viewBox="0 0 48 48">
                                 <path d="M11 25c5-8 11-12 18-12 6.5 0 8.5 4.5 8.5 8.5S35 31 29 31c-4.5 0-7.5-2.5-9.5-5.5"></path>
@@ -2912,39 +3673,24 @@
                                 <path d="M30 21h.01"></path>
                             </svg>
                         </div>
-                        <h3 data-editable>Idea 3 - kidney tissue segmentation</h3>
-                        <p data-editable>Benchmark Meta Segment Anything 3 for kidney tissue segmentation with grounding prompts, then test whether fine-tuning can improve accuracy.</p>
-                        <div class="kidney-figure">
-                            <img src="images/glomerulus.jpg" alt="Glomerulus kidney tissue example">
-                        </div>
-                    </article>
-                    <article class="card color-lemon reveal delay-5">
-                        <div class="idea-card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 48 48">
-                                <path d="M14 12h20"></path>
-                                <path d="M14 24h20"></path>
-                                <path d="M14 36h13"></path>
-                                <path d="m30 34 4 4 7-9"></path>
-                            </svg>
-                        </div>
-                        <h3 data-editable>My starting contribution</h3>
-                        <p data-editable>Start with papers, a clear baseline, evaluation metrics, and a small prototype that can grow into a publishable study.</p>
+                        <h3 data-editable>Idea 4 - sensor data-to-knowledge</h3>
+                        <p data-editable>Build a reliable pipeline from long sensor streams to behavior events, quality checks, model monitoring, and clear research reports.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Proposed directions</span><span>RAG - compact models - segmentation - deployable ML</span></div>
+                <div class="footer"><span>Initial ideas</span><span>edge sensing - personalization - agents - data pipelines</span></div>
             </section>
 
-            <!-- Slide 11: Why me, adapted from the original contribution slide -->
+            <!-- Slide 13: Why me, adapted from the original contribution slide -->
             <section class="slide" data-label="Execution Plan">
                 <div class="eyebrow">What I can contribute</div>
-                <div class="pagedot">xi.</div>
+                <div class="pagedot">xiii.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Why <em>me</em></h2>
-                <p class="slide-sub reveal delay-2" data-editable>I can contribute on both the research side and the engineering side.</p>
+                <p class="slide-sub reveal delay-2" data-editable>I can connect careful experiments with the systems needed to run them well.</p>
                 <div class="chart-wrap">
                     <article class="card color-blush reveal delay-1">
-                        <h3 data-editable>I can bridge research and engineering</h3>
-                        <p data-editable>I know how to design experiments and also how to deploy working AI systems. That matters in health informatics because even a strong model is only useful if it fits real workflows.</p>
-                        <p class="soft-rule" data-editable>I am comfortable working with constraints like limited compute, limited data, latency, privacy, reliability, and evaluation pressure.</p>
+                        <h3 data-editable>I bring a useful mix</h3>
+                        <p data-editable>I have published model work and more than six years of experience building software and AI systems.</p>
+                        <p class="soft-rule" data-editable>I also know my gap: I need direct training in wearable signal processing, behavioral study design, and mobile health evaluation. I am ready to learn these areas from the group.</p>
                     </article>
                     <article class="roadmap reveal delay-2">
                         <div class="roadmap-line"></div>
@@ -2952,32 +3698,32 @@
                             <div class="roadmap-dot">i.</div>
                             <div>
                                 <h3 data-editable>Research</h3>
-                                <p data-editable>Published papers, systematic literature reviews, experiment design, scientific writing, and evaluation metrics.</p>
+                                <p data-editable>Published papers, model comparison, baselines, metrics, error analysis, and scientific writing.</p>
                             </div>
                         </div>
                         <div class="roadmap-item">
                             <div class="roadmap-dot" style="background: var(--pink);">ii.</div>
                             <div>
                                 <h3 data-editable>Systems</h3>
-                                <p data-editable>AI platforms, backend services, cloud workflows, observability, CI/CD, and reliable deployment habits.</p>
+                                <p data-editable>Data pipelines, AI platforms, cloud jobs, monitoring, CI/CD, and reliable deployment.</p>
                             </div>
                         </div>
                         <div class="roadmap-item">
                             <div class="roadmap-dot" style="background: var(--sage);">iii.</div>
                             <div>
-                                <h3 data-editable>Models and impact</h3>
-                                <p data-editable>Small LLMs, VLMs, RAG, synthetic data, agents, and a clear goal of building useful medical AI systems.</p>
+                                <h3 data-editable>Working style</h3>
+                                <p data-editable>I test, document, ask questions early, and report both good results and limits clearly.</p>
                             </div>
                         </div>
                     </article>
                 </div>
-                <div class="footer"><span>Why me</span><span>research - systems - models - impact</span></div>
+                <div class="footer"><span>Why me</span><span>research - systems - honesty - learning</span></div>
             </section>
 
-            <!-- Slide 12: Research trajectory from the original PPT -->
+            <!-- Slide 14: Research trajectory from the original PPT -->
             <section class="slide question-slide" data-label="Discussion">
                 <div class="eyebrow">Research trajectory</div>
-                <div class="pagedot">xii.</div>
+                <div class="pagedot">xiv.</div>
                 <h2 class="slide-title reveal delay-1" data-editable>Short-term and long-term goals</h2>
                 <div class="questions">
                     <article class="question-card reveal delay-1">
@@ -2990,7 +3736,7 @@
                             </svg>
                         </div>
                         <h3 data-editable>First 6-12 months</h3>
-                        <p data-editable>Learn the group's current projects, read the key papers, reproduce a baseline, and help build one focused health informatics prototype or pipeline.</p>
+                        <p data-editable>Learn the group's sensor data and tools, read the key papers, reproduce one wearable behavior baseline, and document the full pipeline.</p>
                     </article>
                     <article class="question-card reveal delay-2">
                         <div class="question-icon" aria-hidden="true">
@@ -3002,7 +3748,7 @@
                             </svg>
                         </div>
                         <h3 data-editable>During graduate study</h3>
-                        <p data-editable>Build efficient AI methods for healthcare workflows, publish useful results, and create systems that work beyond clean benchmark datasets.</p>
+                        <p data-editable>Build efficient and agentic mobile health systems, publish useful results, and test them across people and real settings.</p>
                     </article>
                     <article class="question-card reveal delay-3">
                         <div class="question-icon" aria-hidden="true">
@@ -3012,27 +3758,483 @@
                             </svg>
                         </div>
                         <h3 data-editable>Long term</h3>
-                        <p data-editable>Become a researcher who builds efficient and trustworthy AI systems for real medical and human-centered settings.</p>
+                        <p data-editable>Lead research that joins private on-device AI, wearable sensing, and timely support for real health needs.</p>
                     </article>
                 </div>
-                <div class="footer"><span>Trajectory</span><span>baselines - useful research - real health impact</span></div>
+                <div class="footer"><span>Trajectory</span><span>learn - reproduce - improve - publish</span></div>
             </section>
 
-            <!-- Slide 13: Closing, adapted from the original thank-you slide -->
+            <!-- Slide 15: Closing, adapted from the original thank-you slide -->
             <section class="slide s-closer" data-label="Closing">
                 <div class="center">
                     <p class="marker reveal delay-1" data-editable>Thank you</p>
-                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>health informatics research with real-world impact</em>.</h2>
+                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>efficient and trustworthy AI for wearable health</em>.</h2>
                     <p class="thanks-note reveal delay-3" data-editable>Thank you for your time and consideration.</p>
-                    <p class="reveal delay-4" data-editable>Questions and feedback are very welcome. I am especially interested in where my background in AI platforms, RAG pipelines, compact LLMs, and applied medical AI could be most useful.</p>
+                    <p class="reveal delay-4" data-editable>I would value your advice on which project best fits my background in compact models, agents, data systems, evaluation, and deployment.</p>
                 </div>
             </section>
         </main>
+
+        <template id="paperLedDeckArchive">
+        <main class="deck-stage">
+            <!-- Slide 1: Paper-led meeting cover -->
+            <section class="slide s-cover sk-cover active" data-label="Opening">
+                <div class="swatches reveal delay-1" aria-hidden="true">
+                    <i style="background: var(--pink)"></i>
+                    <i style="background: var(--lemon)"></i>
+                    <i style="background: var(--sage)"></i>
+                </div>
+                <div class="stack">
+                    <div class="cover-copy">
+                        <div class="kicker reveal delay-1">
+                            <span class="cover-name" data-editable>Hamza Rauf</span>
+                            <span class="cover-role" data-editable>First-author paper presentation · Research meeting with Professor Santosh Kumar</span>
+                        </div>
+                        <div class="cover-points reveal delay-2">
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>Efficient multilingual spam detection on resource-constrained devices.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>21 languages and 42,000 balanced messages.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>Gemma 3, Qwen 3, and Llama 3.2 compared with one QLoRA protocol.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>Best result: 90% accuracy and 0.88 F1 on a single NVIDIA T4.</p>
+                            </div>
+                        </div>
+                        <div class="contact-strip reveal delay-3">
+                            <a class="pill" href="https://doi.org/10.1007/s40747-026-02247-x" target="_blank" rel="noopener noreferrer" data-editable>Open paper ↗</a>
+                            <span class="pill" data-editable>Complex &amp; Intelligent Systems · 2026</span>
+                        </div>
+                        <p class="lede reveal delay-4" data-editable>I chose my own work so I can explain the full research chain: the gap, design choices, experiments, results, failures, and next steps.</p>
+                    </div>
+                    <div class="cover-visual reveal delay-3">
+                        <div class="photo-frame">
+                            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="First page of Hamza Rauf's multilingual spam detection paper">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Why this paper demonstrates readiness -->
+            <section class="slide sk-slide" data-label="Research Readiness">
+                <div class="eyebrow">Why I chose this paper</div>
+                <div class="pagedot">ii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>A complete research story, <em>not only a final score</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>As first author, I can explain why each choice was made and where the study still falls short.</p>
+                <div class="sk-stage sk-overview-grid">
+                    <article class="sk-card color-pink reveal delay-1">
+                        <span class="sk-kicker">Problem</span>
+                        <h3 data-editable>Two limits at once</h3>
+                        <p data-editable>Multilingual data is scarce, while modern language models are expensive to train and run on private devices.</p>
+                    </article>
+                    <article class="sk-card color-lemon reveal delay-2">
+                        <span class="sk-kicker">Method</span>
+                        <h3 data-editable>Controlled comparison</h3>
+                        <p data-editable>Three compact LLMs were tested through the same 16-bit, 4-bit, and QLoRA stages.</p>
+                    </article>
+                    <article class="sk-card color-sage reveal delay-3">
+                        <span class="sk-kicker">Evidence</span>
+                        <h3 data-editable>Accuracy and cost</h3>
+                        <p data-editable>We measured classification quality, error types, language-level behavior, and memory use.</p>
+                    </article>
+                    <article class="sk-card color-lilac reveal delay-4">
+                        <span class="sk-kicker">Research judgment</span>
+                        <h3 data-editable>Limits are part of the result</h3>
+                        <p data-editable>The study identifies weak languages, synthetic-data risks, and the need for real-world testing.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Research readiness</span><span>question · method · evidence · limits</span></div>
+            </section>
+
+            <!-- Slide 3: Problem framing -->
+            <section class="slide sk-slide" data-label="Problem">
+                <div class="eyebrow">Research problem</div>
+                <div class="pagedot">iii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Useful spam detection sits between <em>three pressures</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>The problem is not simply whether a large model can classify an email.</p>
+                <div class="sk-stage sk-problem-grid">
+                    <article class="sk-card color-pink reveal delay-1">
+                        <span class="sk-kicker">Coverage</span>
+                        <h3 data-editable>Spam is multilingual</h3>
+                        <p data-editable>English-only data leaves many languages and scripts under-tested.</p>
+                        <div class="sk-big-number">21</div>
+                    </article>
+                    <article class="sk-card color-lemon reveal delay-2">
+                        <span class="sk-kicker">Resources</span>
+                        <h3 data-editable>LLMs are memory-heavy</h3>
+                        <p data-editable>A 4B model at 16-bit precision needs roughly 8–9 GB before deployment overhead.</p>
+                        <div class="sk-big-number">4-bit</div>
+                    </article>
+                    <article class="sk-card color-sage reveal delay-3">
+                        <span class="sk-kicker">Privacy</span>
+                        <h3 data-editable>Email should stay local</h3>
+                        <p data-editable>Sending private messages to a remote model creates risk and added delay.</p>
+                        <div class="sk-big-number">on-device</div>
+                    </article>
+                </div>
+                <div class="footer"><span>Problem framing</span><span>coverage · resources · privacy</span></div>
+            </section>
+
+            <!-- Slide 4: Research questions -->
+            <section class="slide sk-slide" data-label="Questions">
+                <div class="eyebrow">Research questions</div>
+                <div class="pagedot">iv.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Four questions shaped <em>the experiment</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Each question maps to a measurable part of the pipeline.</p>
+                <div class="sk-stage sk-rq-grid">
+                    <article class="sk-card color-pink reveal delay-1">
+                        <span class="sk-rq-num">1</span>
+                        <h3 data-editable>Which model wins?</h3>
+                        <p data-editable>Compare Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B under one training method.</p>
+                    </article>
+                    <article class="sk-card color-lemon reveal delay-2">
+                        <span class="sk-rq-num">2</span>
+                        <h3 data-editable>Can QLoRA recover the loss?</h3>
+                        <p data-editable>Measure whether fine-tuning only restores quantized models or pushes them beyond 16-bit baselines.</p>
+                    </article>
+                    <article class="sk-card color-sage reveal delay-3">
+                        <span class="sk-rq-num">3</span>
+                        <h3 data-editable>Can models fit within 4 GB?</h3>
+                        <p data-editable>Track VRAM before and after 4-bit quantization to test edge feasibility.</p>
+                    </article>
+                    <article class="sk-card color-lilac reveal delay-4">
+                        <span class="sk-rq-num">4</span>
+                        <h3 data-editable>Can synthetic data fill the gap?</h3>
+                        <p data-editable>Test whether high-quality translation can support strong multilingual classifiers without private emails.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Research questions</span><span>performance · recovery · memory · data</span></div>
+            </section>
+
+            <!-- Slide 5: Dataset creation -->
+            <section class="slide sk-slide" data-label="Dataset">
+                <div class="eyebrow">Dataset design</div>
+                <div class="pagedot">v.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>From one English corpus to a <em>balanced multilingual benchmark</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Data generation was structured to protect privacy and keep every language and class balanced.</p>
+                <div class="sk-stage sk-data-grid">
+                    <article class="sk-card color-blush reveal delay-1">
+                        <span class="sk-kicker">Synthetic data pipeline</span>
+                        <h3 data-editable>Generate, verify, then split</h3>
+                        <div class="sk-data-flow">
+                            <div class="sk-flow-node">
+                                <strong>Enron</strong>
+                                <span>Public English spam and ham source data</span>
+                            </div>
+                            <div class="sk-flow-node" style="background: var(--lemon);">
+                                <strong>Aya-101</strong>
+                                <span>Segmented translation into 21 languages</span>
+                            </div>
+                            <div class="sk-flow-node" style="background: var(--sage);">
+                                <strong>Quality check</strong>
+                                <span>Meaning, tone, culture, and spam/ham label preserved</span>
+                            </div>
+                        </div>
+                        <p class="soft-rule" data-editable>Each language contains a unique, balanced set rather than repeated translations of the same messages.</p>
+                    </article>
+                    <div class="sk-stat-stack">
+                        <article class="sk-stat color-pink reveal delay-2">
+                            <div class="sk-big-number">42k</div>
+                            <p data-editable>Total messages</p>
+                        </article>
+                        <article class="sk-stat color-lemon reveal delay-3">
+                            <div class="sk-big-number">21</div>
+                            <p data-editable>Languages across several scripts and language families</p>
+                        </article>
+                        <article class="sk-stat color-sage reveal delay-4">
+                            <div class="sk-big-number">50/50</div>
+                            <p data-editable>Spam and ham balance within each language</p>
+                        </article>
+                        <article class="sk-stat color-lilac reveal delay-5">
+                            <div class="sk-big-number">80/20</div>
+                            <p data-editable>33,600 train and 8,400 validation samples</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Dataset design</span><span>public source · translation · quality checks · balance</span></div>
+            </section>
+
+            <!-- Slide 6: Controlled evaluation pipeline -->
+            <section class="slide sk-slide" data-label="Method">
+                <div class="eyebrow">Experimental design</div>
+                <div class="pagedot">vi.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>One protocol, <em>three stages</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>The design separates natural model ability, the cost of compression, and the gain from task-specific training.</p>
+                <div class="sk-stage sk-method-flow">
+                    <article class="sk-method-step color-blush reveal delay-1">
+                        <span class="sk-kicker">Stage 1</span>
+                        <h3 data-editable>16-bit baseline</h3>
+                        <ul data-editable>
+                            <li>Native precision</li>
+                            <li>5-shot prompting</li>
+                            <li>No task training</li>
+                        </ul>
+                    </article>
+                    <div class="sk-arrow reveal delay-2">→</div>
+                    <article class="sk-method-step color-lemon reveal delay-2">
+                        <span class="sk-kicker">Stage 2</span>
+                        <h3 data-editable>4-bit baseline</h3>
+                        <ul data-editable>
+                            <li>NF4 quantization</li>
+                            <li>Same 5-shot test</li>
+                            <li>Measure compression cost</li>
+                        </ul>
+                    </article>
+                    <div class="sk-arrow reveal delay-3">→</div>
+                    <article class="sk-method-step color-sage reveal delay-3">
+                        <span class="sk-kicker">Stage 3</span>
+                        <h3 data-editable>QLoRA tuning</h3>
+                        <ul data-editable>
+                            <li>Frozen 4-bit base</li>
+                            <li>Train small adapters</li>
+                            <li>Same data and metrics</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="footer"><span>Experimental design</span><span>baseline · compression · adaptation</span></div>
+            </section>
+
+            <!-- Slide 7: Training setup and reproducibility -->
+            <section class="slide sk-slide" data-label="Training">
+                <div class="eyebrow">Reproducible setup</div>
+                <div class="pagedot">vii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Training designed around <em>a single constrained GPU</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>The same settings were used for all three models to keep the comparison fair.</p>
+                <div class="sk-stage sk-setup-grid">
+                    <article class="sk-card color-pink reveal delay-1">
+                        <span class="sk-kicker">Compute</span>
+                        <div class="sk-big-number">T4</div>
+                        <h3 data-editable>15 GB VRAM</h3>
+                        <p data-editable>One GPU for the full fine-tuning protocol.</p>
+                    </article>
+                    <article class="sk-card color-blush reveal delay-2">
+                        <span class="sk-kicker">Adapters</span>
+                        <div class="sk-big-number">16</div>
+                        <h3 data-editable>Rank and alpha</h3>
+                        <p data-editable>Attention and feed-forward projections targeted.</p>
+                    </article>
+                    <article class="sk-card color-lemon reveal delay-3">
+                        <span class="sk-kicker">Training</span>
+                        <div class="sk-big-number">3</div>
+                        <h3 data-editable>Epochs</h3>
+                        <p data-editable>Batch size 16, AdamW 8-bit, learning rate 1e-4.</p>
+                    </article>
+                    <article class="sk-card color-sage reveal delay-4">
+                        <span class="sk-kicker">Memory</span>
+                        <div class="sk-big-number">≈1 GB</div>
+                        <h3 data-editable>Head trimmed</h3>
+                        <p data-editable>The output head kept only the two class tokens.</p>
+                    </article>
+                    <article class="sk-card color-lilac reveal delay-5">
+                        <span class="sk-kicker">Efficiency</span>
+                        <div class="sk-big-number">less pad</div>
+                        <h3 data-editable>Length grouping</h3>
+                        <p data-editable>Completion-only loss and length-aware batches reduced waste.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Training setup</span><span>same protocol · one T4 · reproducible settings</span></div>
+            </section>
+
+            <!-- Slide 8: Accuracy and F1 results -->
+            <section class="slide sk-slide" data-label="Results">
+                <div class="eyebrow">Main results</div>
+                <div class="pagedot">viii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>QLoRA did more than <em>recover quantization loss</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>All three 4-bit models surpassed their original 16-bit baselines after fine-tuning.</p>
+                <div class="sk-stage sk-results-grid">
+                    <article class="sk-chart-card reveal delay-1">
+                        <h3 class="sk-chart-title" data-editable>Accuracy: 16-bit baseline → 4-bit QLoRA</h3>
+                        <div class="sk-bar-group">
+                            <div class="sk-bar-row">
+                                <span class="sk-bar-label">Gemma 3-4B</span>
+                                <div class="sk-bar-track"><div class="sk-bar-fill" style="width:90%; background:var(--pink);">68 → 90</div></div>
+                                <span class="sk-bar-value">90%</span>
+                            </div>
+                            <div class="sk-bar-row">
+                                <span class="sk-bar-label">Qwen 3-4B</span>
+                                <div class="sk-bar-track"><div class="sk-bar-fill" style="width:84%; background:var(--lemon);">60 → 84</div></div>
+                                <span class="sk-bar-value">84%</span>
+                            </div>
+                            <div class="sk-bar-row">
+                                <span class="sk-bar-label">Llama 3.2-3B</span>
+                                <div class="sk-bar-track"><div class="sk-bar-fill" style="width:70%; background:var(--sage);">47 → 70</div></div>
+                                <span class="sk-bar-value">70%</span>
+                            </div>
+                        </div>
+                        <p class="soft-rule" style="margin-top:32px; font-size:22px;" data-editable>Before tuning, 4-bit quantization lowered average accuracy by only about three points.</p>
+                    </article>
+                    <div class="sk-result-stack">
+                        <article class="sk-result-item color-pink reveal delay-2">
+                            <div><h3 data-editable>Gemma wins</h3><p data-editable>Best accuracy and best balance.</p></div>
+                            <strong>0.88 F1</strong>
+                        </article>
+                        <article class="sk-result-item color-lemon reveal delay-3">
+                            <div><h3 data-editable>Qwen balances</h3><p data-editable>Strong quality with lower memory.</p></div>
+                            <strong>0.82 F1</strong>
+                        </article>
+                        <article class="sk-result-item color-sage reveal delay-4">
+                            <div><h3 data-editable>Llama improves most</h3><p data-editable>Large relative gain from a weak start.</p></div>
+                            <strong>+23 pts</strong>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Main results</span><span>accuracy · F1 · fair comparison</span></div>
+            </section>
+
+            <!-- Slide 9: Memory footprint -->
+            <section class="slide sk-slide" data-label="Efficiency">
+                <div class="eyebrow">Resource efficiency</div>
+                <div class="pagedot">ix.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Quantization cut every model by <em>more than half</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Qwen and Llama moved below the paper’s 4 GB edge-memory target.</p>
+                <div class="sk-stage sk-memory-grid">
+                    <article class="sk-memory-card color-pink reveal delay-1">
+                        <h3 data-editable>Gemma 3-4B</h3>
+                        <div class="sk-memory-numbers"><span class="sk-memory-old">8.60 GB</span><span class="sk-memory-new">4.56 GB</span></div>
+                        <div class="sk-memory-meter"><i style="width:53%;"></i></div>
+                        <p data-editable>Best classifier, but slightly above the strict 4 GB target.</p>
+                    </article>
+                    <article class="sk-memory-card color-lemon reveal delay-2">
+                        <h3 data-editable>Qwen 3-4B</h3>
+                        <div class="sk-memory-numbers"><span class="sk-memory-old">8.05 GB</span><span class="sk-memory-new">3.32 GB</span></div>
+                        <div class="sk-memory-meter"><i style="width:41%;"></i></div>
+                        <p data-editable>Strong balance between classification quality and memory.</p>
+                    </article>
+                    <article class="sk-memory-card color-sage reveal delay-3">
+                        <h3 data-editable>Llama 3.2-3B</h3>
+                        <div class="sk-memory-numbers"><span class="sk-memory-old">6.43 GB</span><span class="sk-memory-new">2.24 GB</span></div>
+                        <div class="sk-memory-meter"><i style="width:35%;"></i></div>
+                        <p data-editable>Smallest footprint, but also the lowest final accuracy.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Resource efficiency</span><span>quality and memory must be judged together</span></div>
+            </section>
+
+            <!-- Slide 10: Language and error analysis -->
+            <section class="slide sk-slide" data-label="Error Analysis">
+                <div class="eyebrow">Error analysis</div>
+                <div class="pagedot">x.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>The average score hides <em>where models fail</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Fine-tuning helps every model, but it does not erase the language mix learned during pretraining.</p>
+                <div class="sk-stage sk-language-grid">
+                    <article class="sk-card color-lilac reveal delay-1">
+                        <span class="sk-kicker">Weakest language examples</span>
+                        <h3 data-editable>Per-language F1 reveals uneven generalization</h3>
+                        <div class="sk-language-list">
+                            <div class="sk-language-row"><strong>Gemma</strong><span>Marathi</span><b>0.78</b></div>
+                            <div class="sk-language-row"><strong>Qwen</strong><span>Javanese · Swedish</span><b>0.70 · 0.72</b></div>
+                            <div class="sk-language-row"><strong>Llama</strong><span>Javanese · Swedish · Norwegian · Urdu</span><b>0.55–0.61</b></div>
+                        </div>
+                    </article>
+                    <article class="sk-card color-blush reveal delay-2">
+                        <span class="sk-kicker">Error reductions after QLoRA</span>
+                        <h3 data-editable>Both missed spam and blocked real mail fell</h3>
+                        <div class="sk-error-list">
+                            <div class="sk-error-row"><strong>Gemma</strong><span data-editable>False negatives: 1,465 → 477 · False positives: 1,223 → 363</span></div>
+                            <div class="sk-error-row"><strong>Qwen</strong><span data-editable>False negatives: 1,819 → 740 · False positives: 1,541 → 606</span></div>
+                            <div class="sk-error-row"><strong>Llama</strong><span data-editable>False negatives: 1,917 → 1,514 · False positives: 2,538 → 1,007</span></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Error analysis</span><span>language fairness · false positives · false negatives</span></div>
+            </section>
+
+            <!-- Slide 11: Answers to the research questions -->
+            <section class="slide sk-slide" data-label="Findings">
+                <div class="eyebrow">What the study shows</div>
+                <div class="pagedot">xi.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Four findings, with <em>one important caution</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>The result is a design pattern for efficient AI, not proof that one model works everywhere.</p>
+                <div class="sk-stage sk-claims-grid">
+                    <article class="sk-card color-pink reveal delay-1"><span class="sk-kicker">RQ1</span><h3 data-editable>Gemma performs best</h3><p data-editable>90% accuracy and 0.88 F1 under the shared protocol.</p></article>
+                    <article class="sk-card color-lemon reveal delay-2"><span class="sk-kicker">RQ2</span><h3 data-editable>QLoRA adds task skill</h3><p data-editable>Fine-tuned 4-bit models surpassed their untuned 16-bit baselines.</p></article>
+                    <article class="sk-card color-sage reveal delay-3"><span class="sk-kicker">RQ3</span><h3 data-editable>Edge memory is possible</h3><p data-editable>Qwen and Llama fit below 4 GB, while Gemma offers higher quality at 4.56 GB.</p></article>
+                    <article class="sk-card color-lilac reveal delay-4"><span class="sk-kicker">RQ4 + caution</span><h3 data-editable>Synthetic data can train strong models</h3><p data-editable>But real-world and language-level tests are still required before deployment.</p></article>
+                </div>
+                <div class="footer"><span>Research findings</span><span>performance · adaptation · memory · data quality</span></div>
+            </section>
+
+            <!-- Slide 12: Limitations and future work -->
+            <section class="slide sk-slide" data-label="Limitations">
+                <div class="eyebrow">Limitations and next experiments</div>
+                <div class="pagedot">xii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>What I would test <em>before making a deployment claim</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>The most useful next work strengthens external validity, not only the headline score.</p>
+                <div class="sk-stage sk-limits-grid">
+                    <article class="sk-card color-blush reveal delay-1"><h3 data-editable>Use a held-out real dataset</h3><p data-editable>The reported scores come from one synthetic corpus and a validation split. A separate real multilingual corpus is needed.</p></article>
+                    <article class="sk-card color-sage reveal delay-2"><h3 data-editable>Add structure and images</h3><p data-editable>Email headers, SPF, DKIM, DMARC, links, and image-based spam can strengthen a hybrid detector.</p></article>
+                    <article class="sk-card color-lilac reveal delay-3"><h3 data-editable>Test language quality with people</h3><p data-editable>Native-speaker review and statistical tests should support the automated translation checks.</p></article>
+                    <article class="sk-card color-lemon reveal delay-4"><h3 data-editable>Benchmark more methods</h3><p data-editable>Compare classical ML, standard LoRA, adapters, newer compact models, latency, energy, and device-level behavior.</p></article>
+                </div>
+                <div class="footer"><span>Limitations</span><span>real data · hybrid signals · human checks · wider benchmarks</span></div>
+            </section>
+
+            <!-- Slide 13: Alignment with Professor Kumar -->
+            <section class="slide sk-slide" data-label="Professor Kumar Fit">
+                <div class="eyebrow">Why this work connects to Professor Kumar</div>
+                <div class="pagedot">xiii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>The domain changes; the <em>research pattern transfers</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Professor Kumar’s mDOT and MD2K work connects wearable sensor data, behavioral inference, privacy, and timely intervention.</p>
+                <div class="sk-stage sk-fit-grid">
+                    <article class="sk-card color-blush reveal delay-1">
+                        <span class="sk-kicker">Transferable pattern</span>
+                        <h3 data-editable>From multilingual text to mobile health sensing</h3>
+                        <div class="sk-transfer-list">
+                            <div class="sk-transfer-row"><span>Limited labels</span><b>→</b><span>Rare, costly behavior labels in long sensor streams</span></div>
+                            <div class="sk-transfer-row"><span>Language variation</span><b>→</b><span>Variation across people, devices, and daily context</span></div>
+                            <div class="sk-transfer-row"><span>Private email</span><b>→</b><span>Private behavioral and health signals</span></div>
+                            <div class="sk-transfer-row"><span>Edge memory limits</span><b>→</b><span>Wearable battery, memory, and response-time limits</span></div>
+                        </div>
+                    </article>
+                    <article class="sk-card color-sage sk-professor-card reveal delay-2">
+                        <span class="sk-kicker">Research fit</span>
+                        <blockquote data-editable>Sensor stream → behavior estimate → timely support</blockquote>
+                        <p data-editable>My experience with compact models and careful error analysis can transfer to sensing stress, conversation, smoking, craving, and other health behaviors.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Professor Kumar alignment</span><span>wearables · privacy · sensor data · on-device AI</span></div>
+            </section>
+
+            <!-- Slide 14: Research directions for discussion -->
+            <section class="slide sk-slide" data-label="Future Research">
+                <div class="eyebrow">Directions I would like to discuss</div>
+                <div class="pagedot">xiv.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Efficient AI for <em>wearable health systems</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>I would start with the lab’s real problem and baseline rather than force the spam method onto health data.</p>
+                <div class="sk-stage">
+                    <div class="sk-direction-grid">
+                        <article class="sk-card color-pink reveal delay-1"><span class="sk-kicker">Direction 1</span><h3 data-editable>Resource-aware behavior sensing</h3><p data-editable>Use compact models on wearable sensor windows while tracking F1, memory, response time, and energy.</p></article>
+                        <article class="sk-card color-sage reveal delay-2"><span class="sk-kicker">Direction 2</span><h3 data-editable>Private cross-person adaptation</h3><p data-editable>Adapt a shared model to each person with lightweight updates while keeping raw health signals local.</p></article>
+                        <article class="sk-card color-lilac reveal delay-3"><span class="sk-kicker">Direction 3</span><h3 data-editable>Safer intervention timing</h3><p data-editable>Measure uncertainty and false alarms before a prediction can trigger support on a wearable.</p></article>
+                    </div>
+                    <div class="sk-first-step reveal delay-4" data-editable>First step: choose one behavior such as stress or smoking, reproduce a sensing baseline, inspect person-level errors, and test one efficient improvement.</div>
+                </div>
+                <div class="footer"><span>Research directions</span><span>multimodal sensing · personalization · intervention timing</span></div>
+            </section>
+
+            <!-- Slide 15: Closing -->
+            <section class="slide s-closer" data-label="Closing">
+                <div class="center">
+                    <p class="marker reveal delay-1" data-editable>Thank you</p>
+                    <h2 class="reveal delay-2" data-editable>This work shows how I think about <em>data, models, constraints, and honest evaluation</em>.</h2>
+                    <p class="thanks-note reveal delay-3" data-editable>I would value your feedback on how this research approach could support wearable and mobile health problems in your group.</p>
+                    <p class="reveal delay-4" data-editable>Which current project would be the strongest starting point for my background in compact models and production systems?</p>
+                </div>
+            </section>
+        </main>
+        </template>
     </div>
 
     <div class="deck-controls" aria-label="Presentation controls">
         <button id="prevSlide" title="Previous slide" aria-label="Previous slide">‹</button>
-        <span id="slideCounter">1 / 13</span>
+        <span id="slideCounter">1 / 16</span>
         <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
         <button id="nextSlide" title="Next slide" aria-label="Next slide">›</button>
     </div>
@@ -3048,6 +4250,10 @@
     </div>
 
     <script>
+        if (new URLSearchParams(window.location.search).get("render") === "1") {
+            document.documentElement.classList.add("render-mode");
+        }
+
         /* === SLIDE PRESENTATION CONTROLLER === */
         class SlidePresentation {
             constructor() {
@@ -3152,7 +4358,7 @@
         class InlineEditor {
             constructor() {
                 this.isActive = false;
-                this.storageKey = "hengwei-zhang-meeting-deck-edits-v5";
+                this.storageKey = "santosh-kumar-meeting-deck-edits-v2";
                 this.editables = Array.from(document.querySelectorAll("[data-editable]"));
                 this.load();
             }
@@ -3375,11 +4581,41 @@
             }
         }
 
+        /* === EXTERNAL PROJECT LINKS === */
+        class ExternalProjectLinks {
+            constructor(editor) {
+                this.editor = editor;
+                this.items = Array.from(document.querySelectorAll("[data-project-url]"));
+                this.items.forEach((item) => this.bind(item));
+            }
+
+            bind(item) {
+                item.setAttribute("role", "link");
+                if (!item.hasAttribute("tabindex")) item.setAttribute("tabindex", "0");
+
+                item.addEventListener("click", (event) => this.open(item, event));
+                item.addEventListener("keydown", (event) => {
+                    if (event.key !== "Enter" && event.key !== " ") return;
+                    event.preventDefault();
+                    this.open(item, event);
+                });
+            }
+
+            open(item, event) {
+                if (this.editor?.isActive) return;
+                if (event.target?.closest("button, a, [contenteditable='true']")) return;
+                const url = item.dataset.projectUrl;
+                if (!url) return;
+                window.open(url, "_blank", "noopener,noreferrer");
+            }
+        }
+
         const deck = new SlidePresentation();
         const editor = new InlineEditor();
         const credentialPreview = new CredentialPreview();
         const projectCarousel = new ProjectCarousel();
         const certificateCarousel = new CertificateCarousel();
+        const externalProjectLinks = new ExternalProjectLinks(editor);
 
         /* === EDIT HOTZONE INTERACTIONS === */
         const hotzone = document.querySelector(".edit-hotzone");

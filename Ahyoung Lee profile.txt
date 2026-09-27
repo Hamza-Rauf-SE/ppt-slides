@@ -1,0 +1,776 @@
+Ahyoung Lee
+ahyoung
+
+AHYOUNG LEE received her M.S., and Ph.D. degrees in computer science and engineering from the University of Colorado, Denver .  She was a postdoctoral fellow at Georgia Institute of Technology in the BWN Lab under the supervision of Prof. Ian F. Akyildiz with a research project focused on Software Defined Networking (SDN). Currently, she is an Associate Professor with the Department of Computer Science at Kennesaw State University. Her research interests focus on modeling and analysis with applications in SDN, Mobile Wireless Networks, Sensor Networks, Cyber-Physical Systems, and LoRaWAN; future Internet architecture for improving big data centers, Internet of Things (IoT), and Internet-centric technologies in Cloud/Fog/Edge for network management.
+
+Currently, her research focuses on Green Communication Systems and Networks in the areas of sustainable and green-enabled communications and computing networks, as well as communication and computing technologies enabling other green solutions such as smart grids, green cloud and fog computing data centers, green buildings and green logistics, and smart cities.  Thus, I am a VIP team leader PI for L3BN: Low-Power Low-Cost Long-Range Broadband Networking Lab. If you are interested to join L3BN lab please contact me. 
+
+and her lab is 
+Skip to main navigationSkip to main contentSkip to footer
+Kennesaw State University
+KSU Home Arrow Navigate Icon
+Current Students
+
+
+
+Faculty & Staff
+
+
+
+Colleges
+
+Offices & Services
+
+Policies & Governance
+
+
+A-Z Index
+Magnifying Glass Icon
+Broadband Networking Lab
+Broadband Networking Lab
+Office of Research Undergraduate Research Students Vertically Integrated Projects Teams Broadband Networking Lab
+Vertically Integrated Projects
+
+Home
+About VIP
+KSU Teams
+Students
+Faculty & Staff
+Office of Undergraduate Research
+Office of Research
+Goals
+This project aims to explore new techniques for the design of efficient algorithms on energy-starved IoT cloud computing networks, and a new cloud network paradigm such as a consolidation of Low-Power Wide-Area Network (LPWAN) such as using Long Range Radio (LoRa) technology with edge cloud computing to support QoS both energy-starved IoT and general IoT data communications. LoRa is a low energy consumption, low bit rate, cost-effective, and license-free IoT, which has a significant long-range. LoRa can be combined with software-defined networking to create unified, adaptable, rapid-deployable networks. Therefore, these project solutions can apply to many high-impact situations where there is loss of telecommunication, for example natural disasters such as hurricanes and war zones where conventional telecommunication infrastructure is damaged. In these cases, low-cost, long-range, rapid deployable wireless communication systems are urgently needed.
+
+Experience Gained
+Conduct high-impact research to solve crucial telecommunication problems.
+Develop soft, entrepreneurial, and networking skills.
+Analyze engineering approaches, be able to integrate software, hardware, communication systems, and network infrastructures.
+Develop proof-of-concept projects related to future telecommunications.
+Majors and Interests Needed
+Computer Science
+Electrical Engineering
+Information Technology
+Software Engineering
+Data Science
+Mathematics
+Physics
+Engineering Technology
+Instructional Technology & Innovation
+Health and Human Services
+Team Advisors
+Ahyoung Lee, Ph.D.
+Assistant Professor of Computer Science
+Email: alee146@kennesaw.edu
+
+Sumit Chakravarty, Ph.D.
+Assistant Chair of the Department of Electrical and Computer Engineering and Professor of Electrical Engineering
+Email: schakra2@kennesaw.edu
+
+Hoseon Lee, Ph.D.
+Professor of Electrical Engineering
+Email: hlee69@kennesaw.edu
+
+Kennesaw State University Logo
+Facebook Icon
+X Icon
+LinkedIn Icon
+Instagram Icon
+YouTube Icon
+Contact Information
+
+Kennesaw Campus
+1000 Chastain Road
+Kennesaw, GA 30144
+
+Marietta Campus
+1100 South Marietta Pkwy
+Marietta, GA 30060
+
+Phone
+470-KSU-INFO
+(470-578-4636)
+
+Campus Maps
+Parking
+Media Resources
+Campus
+
+A-Z Index
+Academic Calendar
+Campus News
+D2L Brightspace
+University Information Technology Services
+Related Links
+
+Libraries
+Housing
+Financial Aid
+Degrees, Majors & Programs
+Registrar
+Job Opportunities
+Campus Security
+Global Education
+Sustainability
+Accessibility
+© 2026 Kennesaw State University. All Rights Reserved.
+
+Privacy Statement
+Accreditation
+Advisories
+Report a Concern
+Feedback
+Open Records
+Human Trafficking Notice
+Text Only
+This website uses cookies. Find out more in our Privacy Notice at https://www.kennesaw.edu/privacy-statement.php. For Data Privacy related Questions or Requests, please complete this form.
+
+and her paper isDDPG CAD: Intelligent Channel Activity Detection
+Scheduling in Massive IoT LoRaWAN
+Jui Mhatre∗
+, Ahyoung Lee†
+, Hoseon Lee‡
+, and Tu N. Nguyen∗
+∗†Department of Computer Science, Kennesaw State University, Marietta GA 30060, USA.
+‡Department of Electrical and Computer Engineering, Kennesaw State University, Marietta GA 30060, USA
+Email: jmhatre1@students.kennesaw.edu∗
+,{ahyoung.lee (Corresponding author)†
+, hoseon.lee‡
+, tu.nguyen∗}@kennesaw.edu
+Abstract—Beyond 5G and future 6G aim to address rising
+energy demands as the world becomes more interconnected.
+LoRaWAN network is an energy-efficient IoT solution, but
+frequent retransmissions can quickly deplete sensor batteries.
+Efficient traffic management and collision avoidance are crucial.
+Initially, LoRaWAN used ALOHA for multi-access, causing
+increased network collisions. The recent innovation of Channel
+Activity Detection (CAD) has emerged to tackle these issues.
+CAD enhances multi-access by sensing channel activity before
+transmission. Although an improvement, CAD is not foolproof.
+Our paper introduces enhancements to CAD through the Deep
+Deterministic Policy Gradient-based Algorithm (DDPG CAD).
+To assess CAD functionality, we develop LoRaCAD, a dedicated
+simulator. We also conduct a thorough comparative analysis of
+scheduling strategies, considering energy efficiency, latency, and
+packet delivery ratio.
+Index Terms—LoRaWAN, deep deterministic policy gradient,
+channel activity detection, energy efficient.
+I. INTRODUCTION
+5G and 6G networks aim to provide high-capacity, highspeed, ubiquitous, and green communication to improve
+coverage and energy efficiency. Some applications, such as
+smart agriculture, prioritize energy efficiency and extended
+coverage range over high-speed connectivity, where lowenergy and long-range networks are crucial. LPWAN is a
+low-power, wide-area coverage technology. LoRaWAN, a
+major LPWAN tech, supports long-range and minimal energy
+consumption. It uses the ALOHA multiple access technique,
+leading to collisions and congestion. Duty cycle restrictions
+allow devices to transmit for 1-10% of the time, causing
+high latency. Massive IoT exacerbates these challenges due
+to increased network traffic.
+Efficient channel sensing techniques like Channel Activity
+Detection (CAD) and Lightweight Carrier Sensing (LCS)
+can help overcome communication challenges. An optimal
+scheduling algorithm reduces collisions and selects transmission parameters for better spectrum usage and lower power
+consumption. In LoRaWAN, scheduling involves selecting
+transmission parameters that define signal characteristics.
+To improve results, CAD and LCS can be combined with
+scheduling strategies. A CAD-enabled simulator is needed to
+investigate channel-sensing-based scheduling strategies. Our
+study compared existing LoRa simulators as shown in Table
+I. Based on the studies of various simulators we observed
+• Channel Activity Detection (CAD): Existing simulators
+did not support the CAD simulation.
+• LoRa Gateway with energy module: Current simulators
+cannot furnish gateway details, such as battery level, to
+prevent battery exhaustion attacks [1].
+• LoRa Gateway with load handling: The current simulators do not consider device scalability limitations.
+• Integration of scheduling algorithms: Developing a simulator seamlessly incorporating reinforcement learningbased algorithms is essential, eliminating users’ need for
+intricate network knowledge.
+LoRaWAN uses an efficient channel sensing technique
+called Channel Activity Detection (CAD) to reduce energy
+consumption. However, CAD has limitations when operating
+on busy channels, leading to delays and potential collisions.
+A new method in [6] called LCS based on CAD has been
+introduced to enhance network scalability and reduce energy
+consumption. A CSMA-based multi-access technique is proposed in [7] to mitigate collisions for both short and long
+messages, especially during periods of high traffic, thereby
+lowering energy consumption. In [8], energy consumption
+is impressively reduced by 177%, presenting a mathematical energy efficiency model in multi-gateway LoRa. The
+model optimally allocates frequency channels, spread factors,
+and transmission power. Based on our literature review,
+limitations of existing simulators, and understanding of the
+requirements in LoRaWAN scheduling strategies, we propose,
+• We developed a LoRa Simulator based on Channel
+Activity Detection (LoRaCAD) to assess the effectiveness of reinforcement learning (RL)-based scheduling
+strategies with channel sensing.
+• We designed a scheduling strategy based on RL,
+specifically employing the Deep Deterministic Policy
+Gradient Algorithm with Channel Activity Detection
+(DDPG CAD), which is proposed to optimize the selection of transmission parameters.
+• DDPG CAD also enhances the functioning of CAD by
+predicting the number of CAD repetitions.
+• We assessed the performance of our algorithm by comparing the outcomes with studies in Table II.
+The remainder of this paper is organized as follows. We
+give a network system model and formulate a research idea
+in II. We submit the structure of the solution in section III
+TABLE I: Comparative Study of Simulators
+Features NS3 [2] FloRa [3] LoRaSim [4] LoRa-MAB [5] LoRaCAD
+Language C++, Python C++ Python Python Python
+Energy Model ✓ ✓ ✓ ✓ ✓
+Adaptive Data Rate Support ✓ ✓ x x ✓
+ACK Support ✓ ✓ x x x
+Imperfect SF ✓ ✓ x ✓ ✓
+Signal Capture Effect ✓ ✓ ✓ ✓ ✓
+Device Class A A A A A
+Multi-Gateway ✓ ✓ ✓ x x
+Channel Activity Detection x x x x ✓
+Gateway Load x x x x ✓
+Machine Learning Algorithm Integration x x ✓ ✓ ✓
+and give implementation details of the scheduling algorithm
+DDPG CAD and simulator LoRaCAD, followed by evaluation results in IV and conclusion V.
+II. SYSTEM MODEL AND PROBLEM FORMULATION
+Fig. 1: Overview of LoRaWAN Architecture.
+Our LoRaWAN network under consideration has N sensors, one Gateway, and one network server. It is a star
+topology network with all sensors connecting to the Gateway,
+which connects to the network server (Fig. 1). We focus our
+scope of research on communication between sensors and the
+LoRaWAN gateway. The US-based LoRaWAN has 72 uplink
+and eight downlink channels, also known as central frequency
+(CF), two bandwidths (BW), four coding rates (CR), 16
+transmission powers (TP), and six spread factors (SF), [9]
+which count to 55,296 transmission settings. These are still
+limited settings in massive IoT if they transmit simultaneously. Moreover, LoRaWAN uses the ALOHA technique for
+multi-access. Proper scheduling of transmission parameters is
+required to optimize the network’s data rates, airtime, and energy consumption. Thus, optimizing transmission parameters
+can improve LoRaWAN’s energy efficiency. Another aspect
+is channel activity detection (CAD), which performs channel
+sensing for a preamble to check channel idleness.
+CAD is an energy-efficient way to transmit sensor data by
+sensing channels before transmission. Before CAD operation,
+SF and BW are selected, and CADMode is enabled and
+inaccessible for 32
+BW ms. Then for next 2
+SF
+BW ms actual sensing
+takes place and results are processed in 2
+SF ∗BW
+1750e3 ms. The
+end of CAD processing is denoted by CADDone interrupt
+when we can check CADDetected interrupt for results about
+channel idleness [10]. If CADDetected is true, if the channel
+is busy, then the packet for which transmission was under
+consideration is dequeued from the buffer and appended to
+the end of the queue. If the CADDetected is false, then
+transmission starts at an immediate moment. We observe a
+few issues in this.
+1) Collision for CADDetected = false: Fig. 2a shows
+a scenario of CAD when two or more devices with the
+same SF and BW perform cAD simultaneously on the same
+channel. Both devices detect that the channel is idle using
+CADDetection, start transmitting instantly, and end up in a
+collision. Massive IoT aggravates this issue.
+2) Waiting time increase for CADDetected = true: Fig 2b
+shows a scenario when the channel is busy, and other devices
+perform CADDetection on this channel, they have to wait for
+transmission to be completed. Moreover, the packet trying to
+transmit is enqueued in the buffer and made to wait till others
+finish. This causes starvation for devices in busy networks.
+Hence, we propose to design a new CAD strategy to
+improve multi-access using a scheduling algorithm using RL.
+Existing simulators (see Table I) lack CAD functionality
+and gateway load management, essential features for evaluating CAD-based algorithms and scheduling strategies in
+LoRaWAN networks.
+III. PROPOSED SOLUTION
+In this paper, we propose a twofold solution as discussed,
+A. Scheduling Algorithm with Improved CAD: DDPG CAD
+We have proposed a deep deterministic policy gradient RL
+(DDPG) algorithm that intelligently optimizes the selection
+of transmission parameters to avoid overlap and lower energy
+consumption by avoiding collisions. The state includes the
+location of devices, the data size they have to transmit, and
+the gateway load limit. The action consists of transmission
+parameters and CAD retries performed after the channel is
+found busy. The reward factor is −1 ∗ energy consumption
+since we aim to minimize the energy by maximizing the
+rewards. The transmission parameters are responsible for
+energy-efficient schedule generation. Input to the algorithm
+is a set of all sensor join requests with their information,
+such as locations or identifiers.
+1) Solution to existing CAD issues: Two key issues are
+identified and solved in Fig. 2. To address these challenges,
+we introduce two enhancements to CAD using our algorithm:
+The number of CAD repetition predictions and the introduction of randomized transmission delays. Fig. 3(a) illustrates
+how the randomized timer introduces delays in CAD checks
+and enriches the likelihood of successful transmission even
+(a) Idle Channel. (b) Busy Channel.
+Fig. 2: Issues with existing CAD in LoRaWAN: Devices start transmitting instantly after identifying the idle channel and
+lead to collision (Fig. 2a). Delayed packet transmission if the channel is busy (Fig. 2b).
+(a) Variation due to Randomized Timer. (b) Variation due to Number of CAD Repetitions.
+Fig. 3: Solution to issues with existing CAD in LoRaWAN: Variation in Randomized Timer before CAD allows transmission
+devices identify other devices ready to transmit even if number of CAD repetitions are same (Fig. 3a). If not the same, then
+different CADs detect busy channels (Fig. 3b).
+when the number of CAD repetitions remains the same.
+In Fig. 3(b), we demonstrate the effectiveness of predicting
+different numbers of CAD operations to prevent collisions. If
+a randomized timer initiates CAD processes simultaneously,
+unequal CAD checks ensure that devices with a higher
+number (e.g., device 2) can avoid collisions. If the channel
+is persistently busy, we limit the CAD operation to a defined
+number of repetitions. After that, the packet is enqueued.
+2) Scheduling transmission parameters: Transmission parameter selection affects energy consumption in LoRaWAN.
+The SF defines a number of chips forming a symbol. This
+increases the transmission duration and the time the power
+amplifier continues to power the transmitter. BW specifies
+the number of symbols transmitted in a given time for an
+increase in BW, ToA, and energy consumption for the sensor
+decreases. Higher values of CF increase ToA [11]. Similarly,
+the coding range and transmission power can be scheduled
+to obtain different signal quality and control energy.
+B. CAD-based Simulator: LoRaCAD
+LoRaCAD has two primary functions: enabling CAD functionality in sensors and facilitating gateway load management.
+Three main elements are the - GW sensors and the environment. Within LoRaCAD, three-channel groups are available:
+64 upstream channels (125KHz BW) and eight upstream and
+eight downstream channels (500KHz BW). Devices utilize
+these by selecting one channel as CF in transmission parameters. Other transmission parameters are scheduled according
+to the required signal and traffic conditions. The Network
+Server hosts the scheduling algorithm, offering the flexibility
+to integrate various scheduling algorithms and conduct comparative analyses. The Gateway module defines a limit of the
+device connections to the Gateway to manage the gateway
+load. CAD operations are managed within the transmission
+module using the parameter that allows the specification
+of the maximum number of CAD operations. LoRaCAD
+operates as a multithreaded simulator, each device functioning
+as an individual thread. When the thread starts executing,
+it requests a connection to the gateway. The connection is
+accepted if the gateway limit is not reached. The devices
+also notify the gateway of their locations. Gateway combines
+information about all devices and sends it to a network server
+to schedule the transmission parameters for all these devices.
+The transmission parameters are notified to devices using
+MAC commands. The device uses parameters for the packet
+that it wants to transmit. We show the method of transmission
+TABLE II: State of the art Algorithms
+Algorithm Performance Parameter
+ADR MAX [12] Energy and PDR
+ADR AVG [13] Energy and PDR
+NO ADR [13] Energy and PDR
+ADR Lite [14] Energy and PDR
+LP-MAB [15] Energy and PDR
+LoRa ADR+ [13] Energy and PDR
+LoRa ADR++ [16] Energy and PDR
+ASA [17] Latency
+DPST [17] Latency and Energy
+in Fig. 3. Any new scheduling strategy to be tested is stored
+on the network server and is referenced using the properties
+section.
+IV. PERFORMANCE EVALUATION
+We evaluate the DDPG CAD algorithm on LoRaCAD and
+compare results with algorithms mentioned in Table II. We
+analyze average energy consumption per device, packet delivery ratio (PDR), and average latency. We set the environment
+using parameters as per the Table III. We evaluate algorithms
+mentioned in urban and suburban areas. The difference lies
+in network parameters altering the network traffic, path loss,
+distance from gateways, and range [13].
+A. Discussion on the Simulation Results
+Our evaluation is presented in two stages. First, we evaluate
+the performance of LoRaCAD with the existing simulator,
+LoRaSim. Second, we compare the existing algorithms with
+our DDPG CAD on LoRaCAD. This shows the performance
+improvement of DDPG CAD in the LoRa environment.
+1) Comparison of LoRaCAD with LoRaSim: We assessed
+the performance of the LoRa-RL scheduling algorithm, as
+detailed in [18], on both LoRaSim and LoRaCAD platforms. Through these comparative evaluations, we aim to
+show the importance of having a CAD-enabled simulator
+to get a broader and more accurate picture of the network.
+It also helps us understand how channel sensing improves
+performance. Additionally, it helps evaluate ML/RL models
+with CAD-related predictions before emulating or deploying
+them in the network. LoRaSim uses packet retransmissions
+to handle losses, collisions, and lack of acknowledgment. LoRaCAD, on the other hand, employs carrier sensing through
+CAD to reduce collisions and retransmissions, leading to
+lower energy consumption. The disparity in energy consumption is evident in Fig. 4a due to the significantly lower energy
+expenditure in CAD operations compared to retransmissions.
+LoRaSim discards packets after a specified number of retransmissions, while LoRaCAD detects channel activity before
+transmission and initiates a CAD retry after a shorter backoff
+time. Our RL model predicts a maximum number of CAD
+retries. The channel is sensed before each retransmission until
+the packet is transmitted successfully or the retransmission
+limit is exhausted, increasing the probability of success.
+Hence, we observe in Fig. 4b that we gain a increase in
+PDR for LoRaCAD. We observe that increase in devices also
+TABLE III: Simulation parameters.
+Parameter Value
+Bit Rate Reference in [9]
+Number of Device 1,000
+Transmission Power Reference in [9]
+Gateway load Limit 120 connections
+Signal to Noise Ratio Reference in [19]
+Reference Distance 40.0
+path loss exponent 2.08
+mean path-loss at d0 127.41
+CAD Backoff Timer 2ms
+Network Area (Min)(X0, Y0) (0,0)
+Network Area (Max)(XM, YM) (1,000,1,000)
+Gateway Location (LGX, LGY ) (500,500)
+increases the latency in Fig. 4c. LoRaCAD latency improves
+because CAD is faster than retransmission.
+2) Comparison of DDPG CAD with existing scheduling
+strategies: We evaluate DDPG CAD using urban and suburban scenarios with parameters in [13]. The network is denser
+in urban environments than in rural areas, causing higher
+collision probabilities. This emphasizes the significance of
+channel sensing-based scheduling. Conversely, in rural environments, the longer distances cause signal attenuation
+and loss. This necessitates an increased transmission power.
+Fig. 5a, Fig. 5b compares PDR (%) for various state-ofthe-art algorithms to our proposed algorithm. CAD retries
+until an idle channel is found, or max retries are exhausted
+when the channel is busy. This process repeats before every
+retransmission. This reduces the possibility of collision and
+packet loss, increasing the PDR. Thus, our algorithm is
+a better solution for applications where data accuracy and
+reliable transmission are more critical.
+Fig. 5c and Fig. 5d evaluate energy consumption for
+various algorithms to our proposed DDPG CAD algorithm.
+The ADR++ consumes the lowest energy of all of them. More
+energy is consumed for channel sensing and retrying, which is
+less so in ADR-based algorithms. But DDPG CAD consumes
+lower energy as compared to other existing algorithms. This
+makes our algorithm a better choice in unreliable networks
+to gain energy efficiency.
+V. CONCLUSION
+We have identified and addressed two pivotal challenges to
+improve the energy efficiency of sensors in a star topology for
+extensive IoT applications. The first is collisions in dense networks, while the second involves optimizing gateway load. To
+tackle these, we propose an innovative scheduling algorithm
+called the Deep Deterministic Policy Gradient Algorithm with
+Channel Activity Detection functionality (DDPG CAD). This
+algorithm enhances Channel Activity Detection (CAD) by
+resolving existing CAD-related problems. We have developed
+LoRaCAD, a specialized simulator crafted to evaluate the
+performance of our energy-optimized scheduling algorithm.
+We compare energy and PDR metrics with state-of-the-art
+solutions in urban and rural environments. Our observations
+reveal a remarkable PDR of 87%, represent a substantial
+6% advancement over the LoRa ADR++.
+
+but her otehr paper are 
+
+MDPI Open Access Journals
+Journals Topics Information Author Services Initiatives About
+Sign In / Sign Up Submit
+ 
+Search for Articles:
+Title / Keyword
+Author / Affiliation / Email
+Advanced
+ 
+Journals  Engineering Proceedings  Volume 89  Issue 1  10.3390/engproc2025089033 
+engproc-logo
+Submit to this Journal
+Article Menu
+Academic Editors
+	Teen-Hang Meen
+	Chun-Yen Chang
+	Cheng-Fu Yang
+Related Info Link
+More by Authors Links
+Article Views1711
+Citations4
+Table of Contents
+Abstract
+Introduction
+Related Works
+Methodology
+Result and Discussion
+Conclusions
+Author Contributions
+Funding
+Institutional Review Board Statement
+Informed Consent Statement
+Data Availability Statement
+Conflicts of Interest
+References
+share
+Share
+announcement
+Help
+format_quote
+Cite
+question_answer
+Discuss in SciProfiles
+first_pageDownload PDFsettingsOrder Article Reprints
+Open AccessProceeding Paper
+Enhancing Fabric Detection and Classification Using YOLOv5 Models †
+by Makara Mao 1ORCID,Jun Ma 1ORCID,Ahyoung Lee 2ORCID andMin Hong 3,*ORCID
+1
+Department of Software Convergence, Soonchunhyang University, Asan-si 31538, Republic of Korea
+2
+Department of Computer Science, Kennesaw State University, Marietta, GA 30060, USA
+3
+Department of Computer Software Engineering, Soonchunhyang University, Asan-si 31538, Republic of Korea
+*
+Author to whom correspondence should be addressed.
+†
+Presented at the 2024 IEEE 7th International Conference on Knowledge Innovation and Invention, Nagoya, Japan, 16–18 August 2024.
+Eng. Proc. 2025, 89(1), 33; https://doi.org/10.3390/engproc2025089033
+Published: 3 March 2025
+(This article belongs to the Proceedings of 2024 IEEE 7th International Conference on Knowledge Innovation and Invention)
+Downloadkeyboard_arrow_down Browse Figures Versions Notes
+Abstract
+The YOLO series is widely recognized for its efficiency in the real-time detection of objects within images and videos. Accurately identifying and classifying fabric types in the textile industry is vital to ensuring quality, managing supply, and increasing customer satisfaction. We developed a method for fabric type classification and object detection using the YOLOv5 architecture. The model was trained on a diverse dataset containing images of different fabrics, including cotton, hanbok, dyed cotton yarn, and a plain cotton blend. We conducted a dataset preparation process, including data collection, annotation, and training procedures for data augmentation to improve model generalization. The model’s performance was evaluated using precision, recall, and F1-score. The developed model detected and classified fabrics with an accuracy of 81.08%. YOLOv5s allowed a faster performance than other models. The model can be used for automated quality control, inventory tracking, and retail analytics. The deep learning-based object detection method with YOLOv5 addresses challenges related to fabric classification, improving the abilities and productivity of manufacturing and operations.
+Keywords: YOLOv5; fabric classification; object detection; deep learning
+1. Introduction
+Deep learning has improved rapidly recently. Image recognition and video classification are widely used within industry to judge the ripeness of fruits and vegetables [1]. Object detection methods have attracted much attention, as exemplified by the YOLO algorithm. The advent of YOLO has notably enhanced detection speeds, expanding the operation of deep learning into various domains.
+In online shopping applications, platforms such as Amazon, eBay, and Taobao have seamlessly integrated YOLO for diverse functionalities [2]. In agriculture, YOLO is extensively applied to environmental monitoring, crop health assessment, and pest detection. In online shopping applications, image recognition is used in clothing design, coordinating accessories, categorizing items, and conducting analyses [3]. With the rapid growth of e-commerce, online shopping has provided consumers with convenience and cheaper products. In the apparel industry, engaging customers depends on visual elements such as color, style, and other features, highlighting the need for accurate image representation [4].
+For online stores, showcasing garments’ various color and style variations as well as many try-on pictures and accessory options is paramount. This facilitates a straightforward selection aligned with customers’ preferences and enhances the shopping experience [5]. The applications of AI technologies such as YOLO extend beyond online shopping to clothing classification and detection, underscoring their versatility and potential in the industry [6]. Leveraging YOLO’s real-time processing capabilities and high accuracy in object detection, online retailers can streamline the browsing experience, offer accurate product recommendations, and elevate customer satisfaction. Moreover, this integration empowers online retailers to optimize inventory management to enhance the shopping experience.
+2. Related Works
+Object detection and image classification have been advanced thanks to deep learning techniques. In particular, the YOLO models have garnered considerable attention due to their ability to execute object detection. Video classification using deep learning techniques is used to simulate clothing for customers [7]. Song et al. [8] proposed evolved YOLOv5-based object detection to address inaccurate detection. The enhanced model achieved a better object detection performance using network pruning and parameter optimization [8]. The eye-in-hand measurement method showed increased precision, recall, mean average precision (mAP) value, and F1 score in contrast with the original YOLOv5 models [8]. Li et al. [9] enhanced object detection and addressed illegal immigration, industrial scenarios, natural disasters, and locating missing individuals or items utilizing photography with an F11 4K PRO drone and the VisDrone dataset.
+Aduen et al. [10] enhanced the YOLOv5 object detection of smaller objects, particularly in autonomous racing, proposing a modified YOLO-Z model. The model’s mAP was enhanced by 6.9% for fewer objects at an intersection over union of 50% in object detection and its speed increased by 3 ms compared with the original YOLOv5. Hang et al. [11] proposed YOLOv5 for object detection in satellite images by introducing fusion layers and predicting heads. They used swin transformer prediction heads (SPHs) to reduce calculation intricacy and integrate normalization-based attention modules (NAMs) to improve attention performance. Evaluated on the NWPU-VHR10 and DOTA datasets, the modified model SPH-YOLOv5 outperformed the original YOLOv5 with an increase of 0.071 in mAP. Additionally, most YOLO versions enhance object detection based on machine learning.
+3. Methodology
+YOLOv5 is an advanced deep-learning technique that consists of an input, backbone, neck, and head. Among its variants, YOLOv5s is notable for its compact size, making it ideal for edge artificial intelligence (AI) and deployment on microcontroller units (MCUs). Deep learning models rely on GPU-powered systems for efficient computations. We used an open-source Jupyter Notebook (7.2.2) for model training and testing. Figure 1 shows the steps used for setup, configuration, and running process applications to create a new YOLO layer. Users need to confirm the graphics processing unit (GPU) and compute the unified device architecture (CUDA) settings before installing YOLO algorithms. Finally, the selected YOLO algorithm was trained and tested by using pre-defined weights.
+Engproc 89 00033 g001
+Figure 1. Implementation process for YOLOv5 model.
+3.1. YOLO Algorithms
+YOLO is a single-stage object detection algorithm renowned for its efficiency and effectiveness. Unlike traditional two-stage methods, YOLO formulates object detection as a regression problem. It predicts bounding boxes and class probabilities from entire images in a single evaluation, offering real-time inference capabilities. This approach enables YOLO to achieve a high accuracy while maintaining an impressive speed, making it well-suited for various applications such as autonomous vehicles, surveillance systems, and robotics. YOLO streamlines the object detection process by simultaneously handling localization and classification and provides a robust and efficient solution for computer vision tasks.
+The YOLO series has evolved through Darknet powering versions 1 to 4, while YOLOv5 is built on PyTorch (2.5.1+cu121). YOLOv1, inspired by GoogLeNet, treated object detection as a regression task. YOLOv2 improved accuracy and speed by adopting the Darknet-19 framework, though challenges remained in detecting small objects. To address this, YOLOv3 introduced a feature fusion module and expanded its output to three dimensions, enhancing performance with smaller objects. Based on such advancements, YOLOv4 refined its detection accuracy. YOLOv5, the latest version, allows for more compact models.
+The YOLO architecture is structured using the backbone, neck, and head. Figure 2 highlights the main differences among the various versions of YOLO. In YOLOv5, the FOCUS function enhances the processing speed by slicing and rearranging the input image. Spatial pyramid pooling (SPP) reduces image distortion in measurements, color, or culture. It accelerates the generation of candidate boxes while decreasing computational overheads.
+Engproc 89 00033 g002
+Figure 2. Architecture and processes of YOLOv5.
+3.2. Dataset
+Image datasets were collected using a camera, capturing data from the fabric category machine shown in Figure 3. The dataset comprised more than 5000 images and was categorized into five groups: plain cotton fabric, the hanbok fabric nobang, dyed cotton yarn, hanbok fabric, and a plain cotton blend fabric.
+Engproc 89 00033 g003
+Figure 3. Images of samples of each category of fabric.
+The dataset was split into training, validation, and testing sets. The training set was used to train the model, while the testing dataset was used for fine-tuning parameters and selecting the best model. Table 1 presents the distribution of samples in each category used in this study.
+Table 1. Fabric dataset in this study.
+
+3.3. Image Labeling
+LabelImg is an annotation tool developed in Python (3.12.4) that applies PyQt for its graphical interface annotations. It stores XML files in the PASCAL VOC format. Movere is also used in the YOLO and CreateML formats. The tool determines the object’s area and class in labeling and selects an appropriate layout compatible with YOLO. This information includes the class, X, and Y coordinates and the distance and confines of objects Figure 4.
+Engproc 89 00033 g004
+Figure 4. YOLOv5 labeling.
+4. Result and Discussion
+We used a Windows 10 system with an AMD Ryzen 9 5900X processor running at 3.70 GHz, 128 GB of RAM, and an NVIDIA GeForce RTX. PyTorch, TensorFlow, and other supporting libraries were used to develop the YOLOv5 with a backbone, neck, and head. In object detection, the spatial locations of objects are represented by encircling boxes. YOLO employs anchor boxes of different sizes and shapes to manage overlapping objects within images. Each anchor box is evaluated to determine which object’s encircling box has the highest overlapping-to-non-overlapping ratio. In training, the expected encircling boxes are more continuous than the ground-truth labels, enhancing the detection performance where bounding boxes are color-coded by class, as shown in Table 2 and the results in Figure 5.
+Engproc 89 00033 g005
+Figure 5. Results from testing the types of fabrics.
+Table 2. Performance obtained for 5 and 100 epochs. Time spent by CPU and GPU.
+
+5. Conclusions
+We used the lightweight YOLOv5 algorithm for clothing recognition in various conditions and weight constraints. YOLOv5s, a single-stage object detection approach, enhances both the detection speed and size of the compact model. The model was developed and tested using the Jupyter Notebook in an open-source integrated development environment. Image samples were taken using the LUMIX GH6 camera. Steps for building an efficient and cost-effective computing setup were developed. The experimental results highlighted the benefits of YOLOv5s regarding mAP, CPU and GPU operation times, and efficiency.
+
+and i want to mention like agnet based self healing capability or the reinforcement learning
+like the Abstract of someone else paper is , not this professor AHYOUNG LEE paper 
+The Internet of Things (IoT) is revolutionizing communication by connecting everyday objects to the Internet, enabling data exchange and automation. Low-Power Wide-Area networks (LPWANs) provide a wireless communication solution optimized for long-range, low-power IoT devices. LoRa is a prominent LPWAN technology; its ability to provide long-range, low-power wireless connectivity makes it ideal for IoT applications that cover large areas or where battery life is critical. Despite its advantages, LoRa uses a random access mode, which makes it susceptible to increased collisions as the network expands. In addition, the scalability of LoRa is affected by the distribution of its transmission parameters. This paper introduces a Reinforcement Learning-based Time-Slotted (RL-TS) LoRa protocol that incorporates a mechanism for distributing transmission parameters. It leverages a reinforcement learning algorithm, enabling nodes to autonomously select their time slots, thereby optimizing the allocation of transmission parameters and TDMA slots. To evaluate the effectiveness of our approach, we conduct simulations to assess the convergence speed of the reinforcement learning algorithm, as well as its impact on throughput and packet delivery ratio (PDR). The results demonstrate significant improvements, with PDR increasing from 0.45–0.85 in LoRa to 0.88–0.97 in RL-TS, and throughput rising from 80–150 packets to 156–172 packets. Additionally, RL-TS achieves 82% reduction in collisions compared to LoRa, highlighting its effectiveness in enhancing network performance. Moreover, a detailed comparison with conventional LoRa and other existing protocols is provided, highlighting the advantages of the proposed method.
+
+Keywords: LoRa, Q-learning, LPWAN, scalability, IoT
+and i also want to mention my re-agent to kind of align my resreach direction with her
+
+and his Labs
+
+
+The mDOT Center
+Transforming health and wellness via temporally-precise mHealth interventions
+side-area-image-1side-area-image-2side-area-image-3side-area-image-4side-area-image-5side-area-image-6
+mDOT@MD2K.org
+901.678.1526
+Posts by mDOT_Center
+
+ logodark logolight logo 
+Home
+Research
+Training
+Resources
+News & Events
+About
+  
+ logodark logolight logo 
+Home
+Research
+Training
+Resources
+News & Events
+About
+  
+About
+mDOT Center > About
+// About Us
+Overview
+The mHealth Center for Discovery, Optimization & Translation of Temporally-Precise Interventions (the mDOT Center) provides the methods, tools, and infrastructure for researchers to discover, optimize and deploy temporally-precise mHealth interventions to address growing public health problems.
+
+Organized around three Technology Research & Development (TR&D) projects, the mDOT Center represents a unique national resource that is developing multiple methodological and technological innovations. Each TR&D is creating technological resources for the biological community that include easily deployable wearables, apps for wearables and smartphones, and a companion mHealth cloud system, all of which are open-source.
+Our Vision
+Innovation
+The Team
+
+Health Needs
+One of the biggest drivers of the nation’s rising healthcare spending is providing care for patients with chronic diseases, many of which are linked to health behaviors such as poor diet, lack of exercise, and smoking. A key strategy for making self-care and preventive measures more achievable has been the integration of passive monitoring into everyday life via mobile sensors and providing personalized information and guidance to patients.
+
+mHealth Solutions
+mDOT Center tools transform the ability of researchers to leverage the full range of available sensors and mobile technologies, allowing them to deliver dynamically personalized and temporally-precise mHealth interventions to individuals. These interventions can precipitate a much-needed transformation by enabling patients to initiate and sustain the lifestyle choices necessary to prevent or manage the burden of chronic health conditions.
+
+// Technological Resources for the Biological Community
+Technology Research & Development
+TR&D1
+DISCOVERY
+The mDOT Center develops methods of identifying the ideal moments when health risks are elevated yet mitigatable. Our technologies have a significant potential to advance the fundamental understanding of health and behavior by supporting the analysis of complex, longitudinal, mHealth data.
+
+TR&D2
+OPTIMIZATION
+To maximize the chances of success, mobile health intervention content is optimized to address the key drivers of current risk. The mDOT Center addresses these challenges by developing advanced reinforcement learning methods so that they can be applied to the case of mHealth interventions.
+
+TR&D3
+TRANSLATION
+The mDOT Center resources make remote care possible for patients who have traditionally required close involvement of clinicians, marking a major transformation in care delivery. Our deliverables enable much greater personalization of mHealth interventions by expanding access to emerging biomarkers.
+
+// Positioned to Transform Healthcare
+Strategic Alignment
+Vision
+Innovation & Impact
+Organizational Structure
+We envision a powerful new paradigm for maintaining health and managing the growing burden of chronic diseases, specifically, temporally-precise mHealth interventions that are optimized to the moment-to-moment biopsychosocial-environmental context of each individual to directly manage, treat, and prevent medical conditions. The long-term goal of this center is to establish a national technological resource for enabling optimal health care (and self-care) for each individual by leveraging noisy but ubiquitous measures of health, behaviors, surrounding contexts, and responses to treatments and interventions via mHealth biomarkers.
+
+To illustrate our vision, consider a high-need patient, Sam, who has just been discharged from the hospital after treatment (fitted with a prosthetic heart valve) for a new onset of heart failure. Under a currently typical care scenario, Sam receives prescription medication and has one week and one month follow up visits scheduled. To prevent recurrence, he is recommended to reduce sedentary behavior, improve his diet, quit smoking, and brush twice daily to reduce his risk of heart valve infection. Sam is motivated and works on each of these recommendations initially. But, in the absence of any active ongoing support, he gradually falls back to his prehospitalization lifestyle and ends up in the hospital again with a second heart failure event.
+
+It does not have to be that way. mDOT Center technologies enable fundamentally new behavioral intervention approaches to substantially increase the likelihood of success of maintaining a healthier lifestyle. The mDOT Center works with multiple collaborative projects to enable temporally-precise mHealth interventions that can be applied to patients like Sam. At the time of discharge, Sam can be provided with sensors that can provide regular measurements of cardiovascular states remotely. Sam’s clinicians can use these measures to adjust his medications accordingly, with confidence that missing data and uncertainty are robustly handled. Second, Sam can be provided with a temporally-precise physical activity intervention app (on his smartphone and wearable device) that gives him personalized recommendations on how to improve physical activity optimized to his current life circumstances and preferences. Third, Sam can be provided with a temporally-precise intervention to stay abstinent from smoking. Finally, Sam can be provided with personalized interventions to control overeating and to develop a habit of brushing and flossing twice daily.
+
+None of these interventions will keep Sam out of the hospital if Sam does not maintain these new behaviors. mDOT Center technologies will initially assist Sam with navigating the challenges of multiple behavior change by coordinating among the suite of interventions that he has been provided with. mDOT Center technologies will keep Sam engaged for the long run by making sure that intervention apps behave sensibly in the absence of needed inputs when Sam forgets to charge or carry his personal devices; and by adapting intervention intensity as his commitment for each behavior ebbs and flows over time and his life circumstances evolve and change. Finally, mDOT Center technologies ensure that Sam doesn’t need to worry about risks to his privacy as a result of engaging with mHealth interventions. In summary, health behaviors are powerful drivers of health states, often with effects on par with or exceeding the effect of pharmaceuticals. The mDOT Center will harness sensors and machine learning to support patients like Sam to become engaged, effective, long-term partners in their own disease prevention and management.
+Collaborating Institutions
+uiuc
+logo 3 3
+osu bw
+harvard bw
+ucla
+UOFMBWLOGO
+mdotLogoFadeSmall
+The mDOT Center
+FedEx Institute of Technology
+365 Innovation Drive, Suite 335
+Memphis, TN 38152
+
+info@mDOTCenter.org
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Become a collaborative or service project.
+
+Join us in developing the tools and technologies to transform healthcare.
+
+Partner with us.
+mHealth Newsletter
+
+Email Address
+
+
+
+The mHealth Center for Discovery, Optimization & Translation of Temporally-Precise Interventions is supported by the National Institutes
+
+of Health’s National Institute of Biomedical Imaging and Bioengineering through its Biomedical Technology Resource Centers Program.
+
+© mDOT Center/MD2K @ University of Memphis.  All rights reserved.
+
+
+and 
+HomeAboutProjectsStudiesTraining
+PREV
+NEXT
+
+
+mHealthHUB
+A Virtual Collaboratory for Technologists, Researchers and Clinicians to Connect, Learn, Share, and Innovate on mHealth Tools to Transform Healthcare
+
+Learn More
+About
+Projects
+Studies
+Training
+mHealthHUB
+DEPLOYMENTS
+
+2
+8
+Studies
+2
+,
+2
+5
+4
+Participants
+1
+0
+0
+,
+0
+0
+0
+Person-Days of Data
+5
+Trillion Data Points
+Active Projects
+Media Image
+mDOT Center
+The mHealth Center for Discovery, Optimization & Translation of Temporally-Precise Interventions provides the methods, tools, and infrastructure for researchers to discover, optimize and deploy temporally-precise mHealth interventions to address growing public health problems.
+
+Media Image
+mProv
+Provenance-based data analytics cyberinfrastructure for high-frequency mobile sensor data gives mHealth researchers the means to manage metadata for streaming sensor data.
+
+Media Image
+mGuard
+mGuard leverages Named Data Networking (NDN) to produce the naming scheme and trust model for typical mHealth research data, develop innovative mechanisms for the specification and automated enforcement of sophisticated access control policies, and improve NDN’s pub-sub API to support a broader range of applications.
+
+Completed Projects
+Media Image
+MD2K/BD2K
+MD2K is part of the National Institutes of Health (NIH) Big Data to Knowledge (BD2K) initiative, designed to support advances in research, policy, and training that are needed for the effective use of Big Data in biomedical research. MD2K develops and deploys cutting edge approaches, methods, software, tools, and other resources that enables biomedical researchers to use Big Data to advance human health.
+
+Media Image
+mPerf
+mPerf uses mobile sensors to support productivity and employee well-being. It is an an open-source software platform that allows researchers to transform high-frequency mobile sensor data into biomarkers. mPerf uses this platform to better understand performance and support individual well-being.
+
+Media Image
+mContain
+mContain is a free mobile app to help track social distancing during a virus outbreak. It uses smartphone technology to detect proximity encounters (within 6 feet for several minutes) with other app users, displays the number of daily proximity encounters and crowding, and can notify other users about possible exposures to COVID-19 individuals.
+
+Media Image
+Open mHealth
+The goal of this project is the development, test and validation, repository and dissemination of a software infrastructure that addresses data FAIR (findable, accessible, interoperable and reusable) using data and metadata standards.
+
+Media Image
+mResearch
+The goal of the mResearch project is to make necessary enhancements to the MD2K infrastructure so it becomes a true community resource that computing researchers from across the country and around the world can easily use to conduct reproducible and extensible research on any aspect of the collection and analysis of high-frequency mobile sensor data.
+
+Media Image
+Novel use of mHealth Data
+MD2K is part of the National Institutes of Health (NIH) Big Data to Knowledge (BD2K) initiative, designed to support advances in research, policy, and training that are needed for the effective use of Big Data in biomedical research. MD2K develops and deploys cutting edge approaches, methods, software, tools, and other resources that enables biomedical researchers to use Big Data to advance human health.
+
+Media Image
+Context-Awareness & Personalization
+The goals of this project are to adapt computational models for detecting stress, craving, smoking, eating and geoexposures from mobile sensor data by incorporating modeling advances; determine timing for intervention and adaptation of content based on detection of the above listed biomarkers; and to facilitate intervention data collection for user students.
+
+Media Image
+EasySense
+The collaborative research project developed and evaluated a mobile sensor called EasySense that can provide continuous physiological monitoring without skin contact in the field environments using radio frequency (RF) probes.
+
+Media Image
+More Projects
+Click to view the full list of active and completed MD2K projects.
+
+Reach out to us.
+MD2K Center of Excellence
+
+FedEx Institute of Technology, Suite 335
+
+365 Innovation Drive, Memphis, TN 38152
+
+info@md2k.org901-678-1526
+About us
+Advancing biomedical discovery and improving health through mobile sensor Big Data
+
+The MD2K Team aims to lay the scientific foundations for turning the wealth of mobile sensor data available through new and rapidly evolving wearable sensors into reliable and actionable health information, and contribute to the vision of predictive, preventive, personalized, participatory, and precision (P5) medicine.
+
+Copyright © 2022 MD2K. MD2K was established by the National Institutes of Health Big Data to Knowledge Initiative (Grant #1U54EB020404)
+

@@ -1,0 +1,1743 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamza Rauf | AI Researcher</title>
+<meta name="description" content="Hamza Rauf is an AI researcher and senior software engineer working on machine learning, large language models, vision-language models, efficient on-device AI, cybersecurity, human-computer interaction, and AI for health.">
+<meta name="author" content="Hamza Rauf">
+<meta property="og:title" content="Hamza Rauf | AI Researcher">
+<meta property="og:description" content="Machine learning, large language models, efficient on-device AI, cybersecurity, and AI for health.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="images/profile_picture.jpeg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232A241B'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23F2EEDF'>HR</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   THEME TOKENS: light editorial palette, carried over from the decks
+   ============================================================ */
+:root{
+  --bg:#FFFFFF;
+  --bg-2:#F4F2ED;
+  --surface:#FAF9F6;
+  --surface-2:#FCFCFA;
+  --ink:#1C1813;
+  --ink-soft:#4C453B;
+  --ink-faint:#8A8073;
+  --rule:rgba(28,24,19,.13);
+  --rule-strong:rgba(28,24,19,.28);
+  --accent:#A2543A;
+  --pink:#E1A4C2;
+  --lemon:#D6DD63;
+  --blush:#E8C9B6;
+  --sage:#B7C7A8;
+  --lilac:#C9BEDC;
+  --shadow:0 1px 2px rgba(28,24,19,.04),0 10px 26px -18px rgba(28,24,19,.20);
+  --font-display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --font-body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rail-w:332px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#17130F;
+  --bg-2:#1E1A15;
+  --surface:rgba(255,255,255,.05);
+  --surface-2:rgba(255,255,255,.028);
+  --ink:#F1EBDD;
+  --ink-soft:#BEB4A2;
+  --ink-faint:#8B8272;
+  --rule:rgba(241,235,221,.13);
+  --rule-strong:rgba(241,235,221,.26);
+  --accent:#E3A277;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+/* ============================================================
+   BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,p,ul,ol,figure,blockquote{margin:0}
+ul{padding:0;list-style:none}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--lemon);color:#2A241B}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{
+  display:grid;
+  grid-template-columns:var(--rail-w) minmax(0,1fr);
+  gap:0;
+  max-width:1460px;
+  margin:0 auto;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:0 0 8px 0;
+}
+.skip:focus{left:0}
+
+/* ============================================================
+   LEFT RAIL
+   ============================================================ */
+.rail{
+  position:sticky;top:0;align-self:start;
+  height:100dvh;overflow-y:auto;overscroll-behavior:contain;
+  padding:44px 34px 32px 40px;
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:26px;
+  scrollbar-width:thin;
+}
+.rail::-webkit-scrollbar{width:6px}
+.rail::-webkit-scrollbar-thumb{background:var(--rule-strong);border-radius:99px}
+
+.portrait{
+  width:132px;height:132px;border-radius:50%;
+  object-fit:cover;
+  border:1px solid var(--rule-strong);
+  box-shadow:var(--shadow);
+}
+.rail-name{
+  font-family:var(--font-display);
+  font-size:38px;line-height:1.04;font-weight:600;letter-spacing:-.01em;
+  margin-top:18px;
+}
+.rail-role{
+  font-size:13.5px;color:var(--ink-soft);margin-top:9px;
+  letter-spacing:.005em;
+}
+.rail-role em{font-family:var(--font-display);font-size:16px;font-style:italic;color:var(--ink)}
+.swatches{display:flex;gap:6px;margin-top:18px}
+.swatches i{width:26px;height:6px;border-radius:99px;display:block}
+
+.rail-meta{display:flex;flex-direction:column;gap:7px;font-size:13px;color:var(--ink-soft)}
+.rail-meta li{display:flex;gap:9px;align-items:flex-start}
+.rail-meta svg{width:14px;height:14px;flex:none;margin-top:4px;fill:var(--ink-faint)}
+
+.links{display:flex;flex-wrap:wrap;gap:7px}
+.link-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 12px;border-radius:99px;
+  border:1px solid var(--rule-strong);
+  background:var(--surface-2);
+  font-size:12.5px;font-weight:500;letter-spacing:.01em;
+  transition:background .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease);
+}
+.link-pill:hover{background:var(--surface);border-color:var(--ink);transform:translateY(-1px)}
+.link-pill svg{width:13px;height:13px;fill:currentColor}
+.link-pill.is-copied{background:var(--lemon);color:#2A241B;border-color:transparent}
+
+/* rail nav + scrollspy */
+.nav{display:flex;flex-direction:column;gap:1px;margin-top:2px}
+.nav a{
+  position:relative;
+  padding:5px 0 5px 20px;
+  font-size:13px;color:var(--ink-faint);
+  transition:color .2s var(--ease),padding .3s var(--ease);
+}
+.nav a::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:9px;height:1px;background:var(--rule-strong);
+  transition:width .3s var(--ease),background .3s var(--ease);
+}
+.nav a:hover{color:var(--ink)}
+.nav a.is-active{color:var(--ink);font-weight:500}
+.nav a.is-active::before{width:16px;background:var(--accent)}
+
+.rail-foot{margin-top:auto;padding-top:22px;font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em}
+.theme-toggle{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 13px;border:1px solid var(--rule-strong);border-radius:99px;
+  font-size:12px;color:var(--ink-soft);margin-bottom:16px;
+  transition:border-color .25s var(--ease),color .25s var(--ease);
+}
+.theme-toggle:hover{border-color:var(--ink);color:var(--ink)}
+.theme-toggle svg{width:14px;height:14px;fill:currentColor}
+.icon-moon{display:none}
+:root[data-theme="dark"] .icon-sun{display:none}
+:root[data-theme="dark"] .icon-moon{display:block}
+
+/* mobile top bar (built by JS) */
+.mobilebar{
+  display:none;position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--rule);
+}
+.mobilebar-inner{display:flex;gap:6px;overflow-x:auto;padding:11px 16px;scrollbar-width:none}
+.mobilebar-inner::-webkit-scrollbar{display:none}
+.mobilebar a{
+  flex:none;padding:6px 13px;border-radius:99px;font-size:12.5px;
+  color:var(--ink-soft);border:1px solid var(--rule);white-space:nowrap;
+}
+.mobilebar a.is-active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ============================================================
+   CONTENT COLUMN
+   ============================================================ */
+.content{padding:44px 60px 90px;min-width:0}
+.section{padding:44px 0;border-top:1px solid var(--rule);scroll-margin-top:24px}
+.section:first-of-type{border-top:0;padding-top:8px}
+.section-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.eyebrow{
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:500;
+}
+.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(28px,3.4vw,40px);line-height:1.08;font-weight:600;letter-spacing:-.015em;
+}
+.section-title em{font-style:italic;color:var(--accent);font-weight:500}
+.section-note{font-size:13.5px;color:var(--ink-soft);max-width:60ch}
+.section-note a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+.lede{
+  font-family:var(--font-display);
+  font-size:clamp(23px,2.5vw,30px);line-height:1.34;font-weight:500;letter-spacing:-.005em;
+  max-width:26ch;
+}
+.lede em{font-style:italic;color:var(--accent)}
+.lede-sub{margin-top:15px;font-size:14px;line-height:1.6;color:var(--ink-soft);max-width:40ch}
+.prose{max-width:66ch;display:flex;flex-direction:column;gap:15px;color:var(--ink-soft);font-size:15px}
+.prose strong{color:var(--ink);font-weight:500}
+.prose a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+.about-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:44px;align-items:start}
+
+/* achievements ledger: groups stacked one after another,
+   each opened by a full-width rule */
+.ach-grid{display:flex;flex-direction:column;gap:40px}
+.ach-head{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;
+  margin:0 0 22px;padding:0 0 13px;
+  border-bottom:1px solid var(--rule);
+}
+.ach-dot{width:9px;height:9px;border-radius:2px;flex:none}
+.ach-list{display:flex;flex-direction:column;gap:14px;max-width:88ch}
+.ach-list li{
+  position:relative;padding-left:20px;
+  font-size:13.5px;line-height:1.55;color:var(--ink-soft);
+}
+.ach-list li::before{
+  content:"";position:absolute;left:0;top:6px;
+  width:7px;height:7px;border-radius:50%;
+  border:1.5px solid var(--rule-strong);
+}
+.ach-list b{color:var(--ink);font-weight:600}
+
+.now-block{
+  margin-top:28px;padding:20px 21px 22px;
+  border:1px solid var(--rule);border-left:3px solid var(--lemon);
+  border-radius:4px 14px 14px 4px;background:var(--surface-2);
+}
+.now-block h3{
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;margin-bottom:12px;
+}
+.now-block ul{display:flex;flex-direction:column;gap:10px}
+.now-block li{font-size:13px;color:var(--ink-soft);line-height:1.5}
+.now-block b{color:var(--ink);font-weight:500}
+
+/* stat band */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(138px,100%),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  border-radius:14px;overflow:hidden;margin-top:30px;
+}
+.stat{background:var(--bg);padding:17px 18px}
+.stat b{
+  display:block;font-family:var(--font-display);
+  font-size:31px;line-height:1;font-weight:600;letter-spacing:-.02em;
+}
+.stat span{display:block;margin-top:7px;font-size:11.5px;color:var(--ink-soft);line-height:1.42}
+
+/* generic card */
+.card{
+  position:relative;
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:15px;
+  padding:22px 22px 24px;
+  box-shadow:var(--shadow);
+  transition:transform .35s var(--ease),border-color .35s var(--ease);
+}
+.card::before{
+  content:"";position:absolute;left:22px;top:-1px;width:34px;height:3px;border-radius:0 0 3px 3px;
+  background:var(--pink);
+}
+.card.c-lemon::before{background:var(--lemon)}
+.card.c-sage::before{background:var(--sage)}
+.card.c-lilac::before{background:var(--lilac)}
+.card.c-blush::before{background:var(--blush)}
+.card h3{font-size:15.5px;font-weight:600;letter-spacing:-.005em;margin-bottom:9px}
+.card p{font-size:13.5px;color:var(--ink-soft);line-height:1.58}
+.card ul.ticks{margin-top:11px;display:flex;flex-direction:column;gap:6px}
+.card ul.ticks li{
+  position:relative;padding-left:15px;font-size:12.5px;color:var(--ink-soft);line-height:1.5;
+}
+.card ul.ticks li::before{
+  content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;
+  background:var(--rule-strong);
+}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:16px}
+
+/* ============================================================
+   NEWS
+   ============================================================ */
+.news{display:flex;flex-direction:column}
+.news li{
+  display:grid;grid-template-columns:108px minmax(0,1fr);gap:20px;
+  padding:13px 0;border-bottom:1px solid var(--rule);font-size:14px;
+}
+.news li:first-child{padding-top:0}
+.news time{
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-faint);padding-top:4px;font-weight:500;
+}
+.news p{color:var(--ink-soft);line-height:1.55}
+.news strong{color:var(--ink);font-weight:500}
+.news a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.news li[data-extra]{display:none}
+.news.is-open li[data-extra]{display:grid}
+.more-btn{
+  margin-top:16px;font-size:12.5px;color:var(--ink-soft);
+  display:inline-flex;align-items:center;gap:7px;
+  border-bottom:1px solid var(--rule-strong);padding-bottom:2px;
+}
+.more-btn:hover{color:var(--ink)}
+.more-btn svg{width:11px;height:11px;fill:currentColor;transition:transform .3s var(--ease)}
+.news.is-open + .more-btn svg{transform:rotate(180deg)}
+
+/* ============================================================
+   FILTER CHIPS
+   ============================================================ */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}
+.chip{
+  padding:6px 14px;border-radius:99px;border:1px solid var(--rule-strong);
+  font-size:12.5px;color:var(--ink-soft);
+  transition:all .25s var(--ease);
+}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip.is-on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ============================================================
+   PUBLICATIONS
+   ============================================================ */
+.pubs{display:flex;flex-direction:column;gap:14px}
+.pub{
+  display:grid;grid-template-columns:78px minmax(0,1fr);gap:22px;
+  padding:20px 22px;border:1px solid var(--rule);border-radius:15px;
+  background:var(--surface-2);
+  transition:border-color .35s var(--ease),background .35s var(--ease),transform .35s var(--ease);
+}
+.pub:hover{border-color:var(--rule-strong);background:var(--surface);transform:translateY(-2px)}
+.pub-thumb{
+  width:78px;aspect-ratio:3/4;border-radius:7px;overflow:hidden;
+  border:1px solid var(--rule);background:var(--bg-2);cursor:zoom-in;
+  box-shadow:var(--shadow);
+}
+.pub-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s var(--ease)}
+.pub-thumb:hover img{transform:scale(1.05)}
+.pub-thumb.is-blank{display:flex;align-items:center;justify-content:center;cursor:default}
+.pub-thumb.is-blank span{
+  font-family:var(--font-display);font-size:26px;color:var(--ink-faint);font-style:italic;
+}
+.pub-venue{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+.pub h3{
+  font-family:var(--font-display);
+  font-size:21px;line-height:1.25;font-weight:600;letter-spacing:-.01em;margin:7px 0 8px;
+}
+.pub h3 a:hover{color:var(--accent)}
+.pub-authors{font-size:12.5px;color:var(--ink-soft);margin-bottom:9px}
+.pub-authors b{color:var(--ink);font-weight:600}
+.pub-abs{font-size:13px;color:var(--ink-soft);line-height:1.56;max-width:72ch}
+.pub-abs code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;padding:1px 5px;border-radius:4px;background:var(--surface);border:1px solid var(--rule)}
+.pub-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.tag{
+  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+  padding:3px 9px;border-radius:99px;background:var(--surface);
+  border:1px solid var(--rule);color:var(--ink-soft);
+}
+.tag.q1{background:var(--lemon);color:#2A241B;border-color:transparent}
+.tag.first{background:var(--pink);color:#2A241B;border-color:transparent}
+.tag.q2{background:var(--sage);color:#2A241B;border-color:transparent}
+.tag.review{background:var(--lilac);color:#2A241B;border-color:transparent}
+.tag.prep{background:var(--blush);color:#2A241B;border-color:transparent}
+.tag-link{
+  font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;
+  padding:3px 10px;border-radius:99px;border:1px solid var(--ink);color:var(--ink);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.tag-link:hover{background:var(--ink);color:var(--bg)}
+.tag-link svg{width:9px;height:9px;fill:currentColor}
+.pub[hidden]{display:none}
+
+/* ============================================================
+   POSTER
+   ============================================================ */
+.posters{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:20px}
+.poster{
+  border:1px solid var(--rule);border-radius:15px;overflow:hidden;
+  background:var(--surface-2);box-shadow:var(--shadow);
+}
+.poster-img{cursor:zoom-in;background:var(--bg-2);overflow:hidden}
+.poster-img img{width:100%;transition:transform .6s var(--ease)}
+.poster-img:hover img{transform:scale(1.03)}
+.poster figcaption{padding:16px 18px 18px}
+.poster figcaption h3{font-size:14.5px;font-weight:600;margin-bottom:6px}
+.poster figcaption p{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.poster-slot{
+  border:1px dashed var(--rule-strong);border-radius:15px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;padding:40px 24px;text-align:center;min-height:210px;color:var(--ink-faint);
+}
+.poster-slot b{font-family:var(--font-display);font-size:19px;font-weight:500;color:var(--ink-soft)}
+.poster-slot span{font-size:12px;max-width:30ch;line-height:1.5}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(288px,100%),1fr));gap:16px}
+.project{
+  display:flex;flex-direction:column;gap:9px;
+  padding:20px 21px 21px;border:1px solid var(--rule);border-radius:15px;
+  background:var(--surface-2);position:relative;
+  transition:border-color .35s var(--ease),transform .35s var(--ease),background .35s var(--ease);
+}
+.project:hover{border-color:var(--rule-strong);transform:translateY(-3px);background:var(--surface)}
+.project h3{font-size:15px;font-weight:600;letter-spacing:-.005em;line-height:1.3;padding-right:20px}
+.project p{font-size:13px;color:var(--ink-soft);line-height:1.55}
+.project .stack{font-size:11.5px;color:var(--ink-faint);letter-spacing:.01em;margin-top:auto;padding-top:6px}
+.project .arrow{
+  position:absolute;top:19px;right:19px;width:13px;height:13px;
+  fill:var(--ink-faint);transition:transform .3s var(--ease),fill .3s var(--ease);
+}
+a.project:hover .arrow{transform:translate(2px,-2px);fill:var(--accent)}
+.project[hidden]{display:none}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{
+  content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--rule);
+}
+.tl-item{position:relative;padding:0 0 26px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-26px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:1.5px solid var(--rule-strong);
+}
+.tl-item.is-now::before{background:var(--lemon);border-color:var(--lemon)}
+.tl-when{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+.tl-item h3{font-size:16px;font-weight:600;margin:5px 0 2px;letter-spacing:-.005em}
+.tl-where{font-size:13px;color:var(--ink-soft);font-style:italic;font-family:var(--font-display);font-size:15px}
+.tl-item ul{margin-top:9px;display:flex;flex-direction:column;gap:5px;max-width:70ch}
+.tl-item ul li{position:relative;padding-left:15px;font-size:13px;color:var(--ink-soft);line-height:1.55}
+.tl-item ul li::before{
+  content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--rule-strong);
+}
+
+/* ============================================================
+   CREDENTIALS
+   ============================================================ */
+.creds{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(148px,100%),1fr));gap:12px}
+.cred{
+  display:flex;flex-direction:column;gap:10px;align-items:flex-start;
+  padding:15px 16px;border:1px solid var(--rule);border-radius:13px;background:var(--surface-2);
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+}
+.cred[data-zoom]{cursor:zoom-in}
+.cred:hover{border-color:var(--rule-strong);transform:translateY(-2px)}
+.cred img{
+  height:22px;width:auto;object-fit:contain;
+  background:#fff;border-radius:6px;padding:5px 8px;box-sizing:content-box;
+}
+.cred b{display:block;font-size:12.5px;font-weight:600;line-height:1.35}
+.cred span{display:block;margin-top:4px;font-size:11px;color:var(--ink-faint);line-height:1.4}
+
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:12px;margin-bottom:16px}
+.score{
+  display:flex;gap:14px;align-items:center;padding:13px 15px;
+  border:1px solid var(--rule);border-radius:13px;background:var(--surface-2);cursor:zoom-in;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+}
+.score:hover{border-color:var(--rule-strong);transform:translateY(-2px)}
+.score-thumb{width:38px;height:48px;border-radius:5px;overflow:hidden;border:1px solid var(--rule);flex:none;background:#fff}
+.score-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.score b{display:block;font-family:var(--font-display);font-size:23px;line-height:1;font-weight:600}
+.score span{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:4px}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(255px,100%),1fr));gap:22px}
+.skill-group h3{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+  font-weight:600;margin-bottom:11px;
+}
+.skill-list{display:flex;flex-wrap:wrap;gap:6px}
+.skill-list span{
+  font-size:12px;padding:4px 10px;border-radius:7px;
+  background:var(--surface);border:1px solid var(--rule);color:var(--ink-soft);
+}
+
+/* ============================================================
+   CONTACT + FOOTER
+   ============================================================ */
+.contact-box{
+  border:1px solid var(--rule);border-radius:18px;padding:34px 34px 36px;
+  background:var(--surface-2);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:center;
+}
+.contact-box .lede{max-width:22ch}
+.contact-links{display:flex;flex-direction:column;gap:9px;min-width:210px}
+.footer{
+  margin-top:40px;padding-top:22px;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em;
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lightbox{
+  position:fixed;inset:0;z-index:90;display:none;
+  align-items:center;justify-content:center;padding:40px 60px;
+  background:color-mix(in srgb,#14110C 88%,transparent);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.lightbox.is-open{display:flex}
+.lightbox img{
+  max-width:100%;max-height:calc(100dvh - 130px);object-fit:contain;
+  border-radius:8px;box-shadow:0 30px 80px -30px rgba(0,0,0,.9);
+  background:#fff;
+}
+.lb-figure{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%}
+.lb-cap{font-size:12.5px;color:rgba(242,238,223,.78);text-align:center;max-width:70ch}
+.lb-btn{
+  position:absolute;width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(242,238,223,.1);border:1px solid rgba(242,238,223,.25);
+  color:#F2EEDF;transition:background .25s var(--ease);
+}
+.lb-btn:hover{background:rgba(242,238,223,.22)}
+.lb-btn svg{width:16px;height:16px;fill:currentColor}
+.lb-close{top:22px;right:26px}
+.lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+.lb-next{right:14px;top:50%;transform:translateY(-50%)}
+.lb-btn[hidden]{display:none}
+
+.totop{
+  position:fixed;right:24px;bottom:24px;z-index:35;
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--bg);box-shadow:var(--shadow);
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
+.totop.is-on{opacity:1;pointer-events:auto;transform:none}
+.totop svg{width:15px;height:15px;fill:currentColor}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1180px){
+  :root{--rail-w:290px}
+  .rail{padding:36px 24px 28px 28px}
+  .content{padding:40px 36px 80px}
+  .about-grid{grid-template-columns:1fr;gap:26px}
+  .lede{max-width:none}
+}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  .rail{
+    position:static;height:auto;overflow:visible;
+    border-right:0;border-bottom:1px solid var(--rule);
+    padding:34px 20px 26px;
+  }
+  .rail .nav{display:none}
+  .rail-foot{margin-top:6px}
+  .mobilebar{display:block}
+  .content{padding:22px 20px 70px}
+  .section{padding:34px 0;scroll-margin-top:60px}
+  .contact-box{grid-template-columns:1fr;padding:26px 22px 28px}
+  .pub{grid-template-columns:62px minmax(0,1fr);gap:16px;padding:17px 18px}
+  .pub-thumb{width:62px}
+  .news li{grid-template-columns:1fr;gap:3px}
+  .news time{padding-top:0}
+  .lightbox{padding:56px 14px 26px}
+  .lb-prev{left:6px}
+  .lb-next{right:6px}
+}
+@media (max-width:520px){
+  .rail-name{font-size:32px}
+  .portrait{width:106px;height:106px}
+  .stats{grid-template-columns:1fr 1fr}
+  .totop{right:14px;bottom:14px}
+}
+@media print{
+  .rail,.mobilebar,.totop,.chips,.more-btn,.theme-toggle{display:none!important}
+  .wrap{grid-template-columns:1fr}
+  .reveal{opacity:1;transform:none}
+  .section{break-inside:avoid;border-top:1px solid #ccc}
+  body{background:#fff;color:#000;font-size:11pt}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<div class="mobilebar" id="mobilebar" aria-hidden="true"><div class="mobilebar-inner"></div></div>
+
+<div class="wrap">
+
+  <!-- ==========================================================
+       LEFT RAIL
+       ========================================================== -->
+  <header class="rail">
+    <div>
+      <img class="portrait" src="images/profile_picture.jpeg" alt="Hamza Rauf" width="132" height="132">
+      <h1 class="rail-name">Hamza&nbsp;Rauf</h1>
+      <p class="rail-role"><em>AI researcher</em> &amp; senior software engineer working on efficient, trustworthy machine learning.</p>
+      <div class="swatches" aria-hidden="true">
+        <i style="background:var(--pink)"></i>
+        <i style="background:var(--lemon)"></i>
+        <i style="background:var(--sage)"></i>
+        <i style="background:var(--lilac)"></i>
+      </div>
+    </div>
+
+    <ul class="rail-meta">
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M12 2 1 8l11 6 9-4.9V17h2V8L12 2Zm-6 9.2v3.6C6 17.1 8.7 19 12 19s6-1.9 6-4.2v-3.6l-6 3.3-6-3.3Z"/></svg>
+        <span>B.S. Computer Science, Sukkur IBA University</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+        <span>Lahore, Pakistan &middot; open to relocation</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 10.6 4.3 2.5-.8 1.3L11 13.2V6h2v6.6Z"/></svg>
+        <span>Applying to PhD programs in AI and computer science</span>
+      </li>
+    </ul>
+
+    <div class="links">
+      <a class="link-pill" id="emailPill" href="mailto:hamzarauf.se@gmail.com" data-copy="hamzarauf.se@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.6 7h14.8L12 12.2Z"/></svg>
+        Email
+      </a>
+      <a class="link-pill" href="https://scholar.google.com/citations?user=c-yjPVMAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M12 3 2 9l10 6 10-6-10-6Zm-6 8.4v4.1c0 2 3.1 3.5 6 3.5s6-1.5 6-3.5v-4.1l-6 3.6-6-3.6Z"/></svg>
+        Scholar
+      </a>
+      <a class="link-pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2.01 0-2.32 1.57-2.32 3.2V21h-4V9Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="link-pill" href="https://github.com/Hamza-Rauf-SE" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        GitHub
+      </a>
+      <a class="link-pill" href="https://www.researchgate.net/profile/Hamza-Rauf-7" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M19.6 4.5c-.5-.6-1.3-.9-2.3-.9-.9 0-1.6.3-2.1.9-.5.6-.8 1.4-.8 2.4v1.4c0 1 .3 1.8.8 2.4.5.6 1.2.9 2.1.9 1 0 1.8-.3 2.3-.9.5-.6.8-1.4.8-2.4V6.9c0-1-.3-1.8-.8-2.4Zm-.8 3.8c0 .7-.1 1.2-.4 1.5-.2.3-.6.5-1.1.5s-.9-.2-1.1-.5c-.2-.3-.4-.8-.4-1.5V6.8c0-.6.1-1.1.4-1.4.2-.3.6-.5 1.1-.5s.9.2 1.1.5c.3.3.4.8.4 1.4v1.5ZM9.6 10.8H6.9v9.6h2.3v-3.7h1.4l1.9 3.7h2.6l-2.3-4.2c1.2-.6 1.9-1.7 1.9-3.2 0-2.6-1.7-4-5.1-4Zm.3 5.8h-.7v-3.8h.8c1.4 0 2.1.6 2.1 1.9 0 1.3-.7 1.9-2.2 1.9Z"/></svg>
+        ResearchGate
+      </a>
+      <a class="link-pill" href="https://www.youtube.com/@hamzarauf99" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M21.6 7.1a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9 2 12 2 12s0 3 .4 4.9A3 3 0 0 0 4.5 19c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12s0-3-.4-4.9ZM10 15.3V8.7l5.8 3.3-5.8 3.3Z"/></svg>
+        YouTube
+      </a>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#interests">Research interests</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#posters">Posters</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#teaching">Teaching &amp; service</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#skills">Toolkit</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="rail-foot">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">
+        <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm0-13.5a1 1 0 0 1 1 1V6a1 1 0 1 1-2 0V4.5a1 1 0 0 1 1-1Zm0 15a1 1 0 0 1 1 1V21a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1ZM4.5 11h1.5a1 1 0 1 1 0 2H4.5a1 1 0 1 1 0-2Zm13.5 0h1.5a1 1 0 1 1 0 2H18a1 1 0 1 1 0-2ZM6.2 5a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1-1.4 1.4l-1-1a1 1 0 0 1 0-1.4Zm9.8 9.8a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1-1.4 1.4l-1-1a1 1 0 0 1 0-1.4ZM17.8 5a1 1 0 0 1 0 1.4l-1 1A1 1 0 0 1 15.4 6l1-1a1 1 0 0 1 1.4 0ZM8 14.8a1 1 0 0 1 0 1.4l-1 1A1 1 0 0 1 5.6 15.8l1-1a1 1 0 0 1 1.4 0Z"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 13.3A9 9 0 1 1 10.7 3a7 7 0 0 0 10.3 10.3Z"/></svg>
+        <span>Theme</span>
+      </button>
+      <div>&copy; <span id="year">2026</span> Hamza Rauf</div>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       CONTENT
+       ========================================================== -->
+  <main class="content">
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="eyebrow" style="margin-bottom:14px">About</p>
+          <p class="lede">Curiosity starts the work. <em>Persistence</em> is what finishes it.</p>
+          <p class="lede-sub">Every result on this page took far more attempts than it took ideas. Staying with a hard problem until the numbers are honest, and the method holds up under someone else&rsquo;s scrutiny, is the part of research I enjoy most.</p>
+          <div class="now-block">
+            <h3>Currently</h3>
+            <ul>
+              <li><b>Research assistant</b> to Dr. Umair Khan, Sakarya University, working on compact LLMs and neural surrogates.</li>
+              <li><b>Senior software engineer</b> at Devsinc, covering RAG systems, application security, and regulated infrastructure.</li>
+              <li><b>Applying to PhD programs</b> across machine learning, large language models, cybersecurity, and health.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="prose reveal">
+          <p>I am a senior software engineer and AI researcher. For the past two years I have worked as a <strong>research assistant to Dr. Umair Khan</strong>, listed among Stanford&rsquo;s World Top 2% Scientists, publishing on compact language models and machine learning surrogates in <strong>Q1 journals with impact factors of 8.0 and 5.0</strong>.</p>
+          <p>My research sits where two pressures meet: models are getting larger while the devices and budgets that have to run them are not. My first-author work shows that a <strong>4-bit quantized 4B-parameter model, fine-tuned with QLoRA on synthetic multilingual data, can beat its own 16-bit baseline by 22 percentage points</strong> while fitting inside edge memory limits. I care as much about the evaluation as the result: per-class metrics, error analysis, and stating plainly where a study still falls short.</p>
+          <p>Alongside research, I have spent <strong>6+ years shipping production AI systems</strong>: retrieval pipelines, agentic workflows, and document automation used by tens of thousands of people. That experience is why I keep asking what happens to a model after the benchmark table.</p>
+          <p>I am currently <strong>applying to PhD programs</strong>, and my interests are broad rather than tied to one narrow topic: machine learning, large language models and vision-language models, efficient and on-device AI, cybersecurity, human-computer interaction, and AI for health and scientific computing. I am happy to shape a direction around the problems a group actually cares about. <a href="#contact">Get in touch</a> if any of that overlaps with your work.</p>
+        </div>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><b>6</b><span>peer-reviewed journal articles, two in Q1 venues</span></div>
+        <div class="stat"><b>331</b><span>GRE: Verbal 166, Quant 165</span></div>
+        <div class="stat"><b>21</b><span>languages in the synthetic corpus I built</span></div>
+        <div class="stat"><b>+22</b><span>percentage point accuracy gain from QLoRA over the 16-bit baseline</span></div>
+        <div class="stat"><b>6+</b><span>years engineering AI systems in production</span></div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section" id="achievements">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Track record</p>
+          <h2 class="section-title">Selected <em>achievements</em></h2>
+        </div>
+      </div>
+      <div class="ach-grid">
+
+        <div class="ach-group g1">
+          <h3 class="ach-head reveal"><span class="ach-dot" style="background:var(--pink)"></span>Research &amp; publications</h3>
+          <ul class="ach-list reveal">
+            <li>Published <b>six peer-reviewed journal articles</b> spanning resource-efficient language models, scientific machine learning, computational fluid dynamics, and cybersecurity.</li>
+            <li>First-author paper on efficient, on-device AI in the <b>Q1 journal Complex &amp; Intelligent Systems</b>.</li>
+            <li>Co-authored paper on ML surrogate modelling for magnetized second-grade nanofluid flow in the <b>Q1 journal Engineering Applications of Artificial Intelligence</b>.</li>
+            <li>Co-authored a 2026 paper in the <b>Q2 journal Asia-Pacific Journal of Chemical Engineering</b>, comparing Morlet wavelet neural networks trained with Levenberg-Marquardt and Adam.</li>
+            <li>Collaborating with <b>Dr. Umair Khan</b>, a Stanford World Top 2% Scientist, on machine learning for complex problems in computational fluid dynamics.</li>
+          </ul>
+        </div>
+
+        <div class="ach-group g2">
+          <h3 class="ach-head reveal"><span class="ach-dot" style="background:var(--lemon)"></span>Academic record</h3>
+          <ul class="ach-list reveal">
+            <li>Awarded a <b>fully funded merit scholarship</b> for my bachelor&rsquo;s degree by ranking among the <b>top 100 students nationwide</b>.</li>
+            <li>Scored <b>331 out of 340 on the GRE</b> (Quantitative 165, Verbal 166), placing in the top percentile.</li>
+            <li>Graduated in the <b>top 5%</b> of the Computer Science class at Sukkur IBA University.</li>
+            <li>Selected as a <b>Section Leader for Stanford&rsquo;s global Code in Place</b> program, mentoring international students in Python over a six-week course.</li>
+            <li>Member of a <b>Harvard CS50x Puzzle Day 2024</b> team that solved 9 out of 9 puzzles.</li>
+          </ul>
+        </div>
+
+        <div class="ach-group g3">
+          <h3 class="ach-head reveal"><span class="ach-dot" style="background:var(--sage)"></span>Industry &amp; recognition</h3>
+          <ul class="ach-list reveal">
+            <li><b>Over 5 years</b> of professional experience in the tech industry, currently a Senior Software Engineer at one of Pakistan&rsquo;s top technology companies.</li>
+            <li>Led end-to-end development of the <b>HelloGov AI platform</b>, which scaled to over <b>50,000 applications a year</b> for more than 10,000 premium users.</li>
+            <li>Named <b>Employee of the Year two years running</b> (2023 and 2024) at Coding Crafts for leadership in AI development.</li>
+            <li>Won a competitive prize at the <b>NETSOL AI Hackathon</b>, designing and implementing a high-impact AI solution under strict time constraints.</li>
+            <li>The <b>first student in my batch</b> to secure a professional job offer before graduating.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESEARCH INTERESTS -->
+    <section class="section" id="interests">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What I work on</p>
+          <h2 class="section-title">Research <em>interests</em></h2>
+        </div>
+      </div>
+      <p class="section-note reveal" style="margin:-10px 0 24px">My interests are deliberately broad. The thread running through all of them is the same: build a capable model under a real constraint, then test it honestly.</p>
+      <div class="grid-2">
+        <article class="card reveal">
+          <h3>Large language &amp; vision-language models</h3>
+          <p>Adapting LLMs and VLMs to specialised domains through parameter-efficient fine-tuning, structured prompting, retrieval grounding, and reinforcement learning for reasoning.</p>
+          <ul class="ticks">
+            <li>Zero-shot, k-shot, chain-of-thought, and chain-of-verification prompting compared head to head.</li>
+            <li>Multimodal adaptation, from radiological description to document understanding.</li>
+            <li>Agents whose claims are verified by a solver or a real program before they are trusted.</li>
+          </ul>
+        </article>
+        <article class="card c-lemon reveal">
+          <h3>Efficient &amp; on-device AI</h3>
+          <p>Making capable models fit real hardware budgets: parameter-efficient fine-tuning (LoRA and QLoRA), 4-bit and 8-bit quantization, and compact models under strict VRAM ceilings.</p>
+          <ul class="ticks">
+            <li>How much capability does quantization actually cost, and how much can training recover?</li>
+            <li>Privacy as an architectural choice, not a policy afterthought: keep the data on the device.</li>
+            <li>Accuracy, latency, memory, and energy reported together, because only one of them is free.</li>
+          </ul>
+        </article>
+        <article class="card c-sage reveal">
+          <h3>AI for cybersecurity</h3>
+          <p>Generative models on both sides of the problem: simulating realistic attacks to stress-test defences, and building detectors that run privately at the edge.</p>
+          <ul class="ticks">
+            <li>GAN and VAE based threat simulation, including novel and advanced persistent threats.</li>
+            <li>Multilingual spam and phishing detection on resource-constrained devices.</li>
+            <li>Adversarial robustness, and the secure, compliant deployment of ML services.</li>
+          </ul>
+        </article>
+        <article class="card c-lilac reveal">
+          <h3>Human-computer interaction</h3>
+          <p>Reading indirect human signals under uncertainty, from text and self-reports to gestures and sensor context, and designing interfaces that use those signals responsibly.</p>
+          <ul class="ticks">
+            <li>Fine-grained emotion and behaviour classification where labels are subjective and scarce.</li>
+            <li>Gesture-driven interaction for natural control and accessibility.</li>
+            <li>Interfaces that surface model confidence instead of hiding it behind a single answer.</li>
+          </ul>
+        </article>
+        <article class="card c-blush reveal">
+          <h3>AI for health &amp; science</h3>
+          <p>Language models in high-stakes clinical settings, and neural surrogates that stand in for numerical solvers too expensive to run at scale.</p>
+          <ul class="ticks">
+            <li>A taxonomy of clinical LLM applications, with safety and fairness as first-class axes.</li>
+            <li>ANN, GPR, and wavelet neural network surrogates for nonlinear transport problems.</li>
+            <li>Medical imaging models adapted on modest hardware rather than a cluster.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Trustworthy evaluation</h3>
+          <p>Comparative benchmarking designed so the comparison is actually fair: one protocol, matched hyperparameters, per-class reporting, and explicit limits.</p>
+          <ul class="ticks">
+            <li>Macro and per-class F1 over headline accuracy, especially on imbalanced classes.</li>
+            <li>Error analysis and failure modes treated as findings, not appendices.</li>
+            <li>Stating plainly where a study falls short, rather than leaving it to the reader.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="section" id="news">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Recent</p>
+          <h2 class="section-title"><em>News</em></h2>
+        </div>
+      </div>
+      <ul class="news" id="newsList">
+        <li>
+          <time datetime="2026-08-09">Aug 2026</time>
+          <p><strong>Co-authored paper published</strong> in <em>Asia-Pacific Journal of Chemical Engineering</em> (Q2, IF 1.7) on Morlet wavelet neural network surrogates for chemically reactive two-phase nanofluid flow.</p>
+        </li>
+        <li>
+          <time datetime="2026-02">Feb 2026</time>
+          <p><strong>First-author paper published open access</strong> in <em>Complex &amp; Intelligent Systems</em> (Q1, IF 5.0) on QLoRA fine-tuning of Gemma 3, Qwen 3, and Llama 3.2 for multilingual spam detection. <a href="https://doi.org/10.1007/s40747-026-02247-x" target="_blank" rel="noopener noreferrer">Read it &rarr;</a></p>
+        </li>
+        <li>
+          <time datetime="2026-01">2026</time>
+          <p>Joined <strong>Devsinc</strong> as a Senior Software Engineer, leading application security, GDPR/PCI&nbsp;DSS infrastructure work, and RAG-based product capabilities.</p>
+        </li>
+        <li>
+          <time datetime="2025-12">Dec 2025</time>
+          <p><strong>Co-authored paper published</strong> in <em>Engineering Applications of Artificial Intelligence</em> (Q1, IF 8.0) on ML surrogates for magnetized second-grade nanofluid flow.</p>
+        </li>
+        <li>
+          <time datetime="2025-09">2025</time>
+          <p><strong>Two manuscripts under review</strong>: a Morlet wavelet neural network surrogate for two-phase radiative nanofluid flow, and comparative ML modelling of micropolar hybrid nanofluids.</p>
+        </li>
+        <li>
+          <time datetime="2025-08-30">Aug 2025</time>
+          <p>Attended <strong>AI Essentials for Healthcare Leaders</strong> at FAST-NUCES, on responsible clinical AI adoption.</p>
+        </li>
+        <li>
+          <time datetime="2025-02">Feb to Apr 2025</time>
+          <p>Taught <strong>DevOps &amp; cloud engineering</strong> as a Cloud Instructor at CloudSchool, across AWS, Azure, and GCP.</p>
+        </li>
+        <li data-extra>
+          <time datetime="2024-10-25">Oct 2024</time>
+          <p>Certified as an <strong>AWS Solutions Architect</strong>; earlier that year, <strong>Oracle Certified Generative AI Professional</strong>.</p>
+        </li>
+        <li data-extra>
+          <time datetime="2024-06-01">Jun 2024</time>
+          <p>Began a <strong>research assistantship with Dr. Umair Khan</strong> (Stanford World Top 2% Scientist), Sakarya University.</p>
+        </li>
+        <li data-extra>
+          <time datetime="2024-04-22">Apr 2024</time>
+          <p>Served as a <strong>Section Leader for Stanford Code in Place</strong>, mentoring students through a six-week Python course.</p>
+        </li>
+        <li data-extra>
+          <time datetime="2024-03">2024</time>
+          <p>Solved <strong>9 of 9 puzzles</strong> with my team at Harvard <strong>CS50x Puzzle Day</strong>.</p>
+        </li>
+      </ul>
+      <button class="more-btn" id="newsToggle" type="button" aria-expanded="false" aria-controls="newsList">
+        <span>Show earlier news</span>
+        <svg viewBox="0 0 24 24"><path d="M12 16 4 8h16l-8 8Z"/></svg>
+      </button>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Peer-reviewed &amp; in progress</p>
+          <h2 class="section-title"><em>Publications</em></h2>
+        </div>
+        <p class="section-note">Author order as published. <b>Bold</b> marks my name. Thumbnails open the full first page. <a href="https://scholar.google.com/citations?user=c-yjPVMAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Full list on Google Scholar</a>.</p>
+      </div>
+
+      <div class="chips" id="pubFilter" role="tablist" aria-label="Filter publications">
+        <button class="chip is-on" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="chip" data-filter="journal" role="tab" aria-selected="false">Published</button>
+        <button class="chip" data-filter="review" role="tab" aria-selected="false">Under review</button>
+        <button class="chip" data-filter="prep" role="tab" aria-selected="false">In preparation</button>
+      </div>
+
+      <div class="pubs" id="pubList">
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb" data-zoom="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" data-gallery="pubs" data-caption="Efficient multilingual spam detection on resource-constrained devices. Complex &amp; Intelligent Systems, 2026" role="button" tabindex="0" aria-label="Open paper preview">
+            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="First page of the Complex and Intelligent Systems paper" loading="lazy">
+          </div>
+          <div>
+            <p class="pub-venue">Complex &amp; Intelligent Systems &middot; Vol. 12, art. 119 &middot; 2026</p>
+            <h3><a href="https://doi.org/10.1007/s40747-026-02247-x" target="_blank" rel="noopener noreferrer">Efficient multilingual spam detection on resource-constrained devices: a comparative analysis of QLoRA fine-tuning of Gemma 3, Qwen 3, and Llama 3.2 models</a></h3>
+            <p class="pub-authors"><b>Hamza Rauf</b>, Umair Khan, Jomana A. Bashatah, Aurang Zaib</p>
+            <p class="pub-abs">A privacy-preserving framework for multilingual spam detection where data and compute are both scarce. I synthesised a balanced 21-language corpus by high-fidelity translation of the English Enron set, then fine-tuned 4-bit quantized Gemma 3-4B, Qwen 3-4B, and Llama 3.2-3B under one shared QLoRA protocol. Gemma 3-4B reached 90% accuracy and 0.88 F1, which is 22 percentage points above its own 16-bit baseline, while quantization cut every model&rsquo;s VRAM footprint by more than half, bringing two of the three under a 4&nbsp;GB edge-memory target.</p>
+            <div class="pub-tags">
+              <span class="tag q1">Q1 &middot; IF 5.0</span>
+              <span class="tag first">First author</span>
+              <span class="tag">Open access</span>
+              <span class="tag">QLoRA &middot; on-device LLMs</span>
+              <a class="tag-link" href="https://doi.org/10.1007/s40747-026-02247-x" target="_blank" rel="noopener noreferrer">DOI <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb" data-zoom="images/papers/Comparative%20analysis%20of%20advanced%20machine%20learning%20models.jpg" data-gallery="pubs" data-caption="Comparative analysis of advanced machine learning models for second-grade liquid. Engineering Applications of Artificial Intelligence, 2025" role="button" tabindex="0" aria-label="Open paper preview">
+            <img src="images/papers/Comparative%20analysis%20of%20advanced%20machine%20learning%20models.jpg" alt="First page of the Engineering Applications of Artificial Intelligence paper" loading="lazy">
+          </div>
+          <div>
+            <p class="pub-venue">Engineering Applications of Artificial Intelligence &middot; 2025</p>
+            <h3>Comparative analysis of advanced machine learning models for second-grade liquid via stimulating CoFe<sub>2</sub>O<sub>4</sub> nanoparticles over a convective moving plate</h3>
+            <p class="pub-authors">Umair Khan, <b>Hamza Rauf</b>, Aurang Zaib, Abeer M. Alotaibi</p>
+            <p class="pub-abs">Time-dependent flow of a magnetized second-grade nanofluid is expensive to solve numerically, so we benchmarked machine learning surrogates against a high-fidelity solver. Gaussian Process Regression matched the ANN-Levenberg-Marquardt benchmark at R&sup2;&nbsp;=&nbsp;1.0 while additionally quantifying its own uncertainty, a property that matters more than a decimal place of accuracy when the surrogate feeds engineering design decisions.</p>
+            <div class="pub-tags">
+              <span class="tag q1">Q1 &middot; IF 8.0</span>
+              <span class="tag">Neural surrogates</span>
+              <span class="tag">Uncertainty quantification</span>
+              <a class="tag-link" href="https://doi.org/10.1016/j.engappai.2025.113551" target="_blank" rel="noopener noreferrer">DOI <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>APJ</span></div>
+          <div>
+            <p class="pub-venue">Asia-Pacific Journal of Chemical Engineering &middot; August 2026</p>
+            <h3>Residual strength prediction of chemically reactive two-phase nanofluid flow in a Bingham-Papanastasiou rheological theory using a Morlet-based wavelet neural network approach</h3>
+            <p class="pub-authors">Umair Khan, <b>Hamza Rauf</b>, Aurang Zaib, J. K. Madhukesh</p>
+            <p class="pub-abs">Chemically reactive two-phase Bingham-Papanastasiou nanofluid flow under magnetic effects, velocity slip, and zero mass-flux conditions. Numerical solutions from MATLAB <code>bvp4c</code> trained Morlet wavelet neural networks under both Levenberg-Marquardt and Adam optimisation. The Levenberg-Marquardt model tracked the numerical results closely and produced lower prediction error than the Adam-trained network, supporting Morlet wavelet networks as efficient surrogates for complex nanofluid behaviour.</p>
+            <div class="pub-tags">
+              <span class="tag q2">Q2 &middot; IF 1.7</span>
+              <span class="tag">Wavelet neural networks</span>
+              <span class="tag">Surrogate modelling</span>
+              <a class="tag-link" href="https://doi.org/10.1002/apj.70283" target="_blank" rel="noopener noreferrer">DOI <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb" data-zoom="images/papers/using%20En-ai%20fro%20security.jpg" data-gallery="pubs" data-caption="Using Generative AI for simulating cyber security attacks and defense mechanisms. Spectrum of Engineering Sciences, 2024" role="button" tabindex="0" aria-label="Open paper preview">
+            <img src="images/papers/using%20En-ai%20fro%20security.jpg" alt="First page of the generative AI cyber threat modeling paper" loading="lazy">
+          </div>
+          <div>
+            <p class="pub-venue">Spectrum of Engineering Sciences &middot; 2024</p>
+            <h3>Using generative AI for simulating cyber security attacks and defense mechanisms: a new approach to AI-driven cyber threat modeling</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b>, Syed Imran Hussain Shah, Taib Ali, Hassam Gul, Maria Soomro</p>
+            <p class="pub-abs">A proactive framework for threat modeling that uses GANs and VAEs to synthesise diverse, realistic attack scenarios, including novel and advanced persistent threats, so defences can be stress-tested before they are needed rather than after a breach.</p>
+            <div class="pub-tags">
+              <span class="tag first">First author</span>
+              <span class="tag">Generative models</span>
+              <span class="tag">Security</span>
+              <a class="tag-link" href="https://sesjournal.org/index.php/1/article/view/218" target="_blank" rel="noopener noreferrer">Read <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>SLR</span></div>
+          <div>
+            <p class="pub-venue">Spectrum of Engineering Sciences &middot; 2025</p>
+            <h3>Sentiment analysis of Twitter for electoral process: a systematic literature review</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b>, Naveed Ullah Khan, Muhammad Rizwan Khaliq</p>
+            <p class="pub-abs">A systematic review of Twitter sentiment analysis for electoral prediction across studies published between 2015 and 2020, assessing data collection, preprocessing, and algorithm choices, and identifying the methodological gaps that later work should close.</p>
+            <div class="pub-tags">
+              <span class="tag first">First author</span>
+              <span class="tag">Systematic review</span>
+              <span class="tag">NLP</span>
+              <a class="tag-link" href="https://sesjournal.org/index.php/1/article/view/169" target="_blank" rel="noopener noreferrer">Read <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>Bc</span></div>
+          <div>
+            <p class="pub-venue">Spectrum of Engineering Sciences &middot; 2025</p>
+            <h3>Blockchain for supply chain optimization in industrial engineering: enhancing transparency, security, and efficiency in manufacturing networks</h3>
+            <p class="pub-authors">Syed Sheraz Ul Hasan Mohani, Syed Tauqeer Ali Shah, Abdul Waheed, <b>Hamza Rauf</b></p>
+            <p class="pub-abs">Empirical evidence that blockchain integration improves transparency, security, and operational efficiency in industrial supply chains, with technological readiness and IT infrastructure identified as the decisive success factors.</p>
+            <div class="pub-tags">
+              <span class="tag">Co-author</span>
+              <span class="tag">Applied systems</span>
+              <a class="tag-link" href="https://sesjournal.org/index.php/1/article/view/171" target="_blank" rel="noopener noreferrer">Read <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="review">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>WNN</span></div>
+          <div>
+            <p class="pub-venue">Under review</p>
+            <h3>Numerical analysis of radiative flow in a two-phase Bingham-Papanastasiou rheological nanofluid model: a comparative study using Morlet-based wavelet neural network optimization</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b>, Umair Khan, Anuar Ishak</p>
+            <p class="pub-abs">Two-phase radiative nanofluid transport under a zero mass-flux boundary condition, solved with MATLAB <code>bvp4c</code> to generate benchmark data for skin friction and Nusselt number. A Morlet-based wavelet neural network surrogate is then trained under Levenberg-Marquardt versus Adam; LM reaches near-exact accuracy and makes fast parametric sweeps practical for thermo-fluidic design.</p>
+            <div class="pub-tags">
+              <span class="tag review">Under review</span>
+              <span class="tag first">First author</span>
+              <span class="tag">Wavelet neural networks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="review">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>ANN</span></div>
+          <div>
+            <p class="pub-venue">Under review</p>
+            <h3>Machine learning based comparative modeling of buoyancy-driven non-Newtonian (micropolar) hybrid nanofluid flow</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b>, Umair Khan, Aurang Zaib, J. K. Madhukesh, Anuar Ishak</p>
+            <p class="pub-abs">A comparative study of ML models for non-Newtonian hybrid nanofluid behaviour relevant to blood-flow dynamics. The ANN-Levenberg-Marquardt model reached R&sup2;&nbsp;=&nbsp;1.0 and cut prediction error by more than 90% against the alternatives, giving a robust surrogate for an otherwise costly CFD problem.</p>
+            <div class="pub-tags">
+              <span class="tag review">Under review</span>
+              <span class="tag first">First author</span>
+              <span class="tag">Surrogate modelling</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="prep">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>Rx</span></div>
+          <div>
+            <p class="pub-venue">In preparation &middot; narrative review</p>
+            <h3>Large language models in healthcare: a taxonomy of applications and safety considerations</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b></p>
+            <p class="pub-abs">A structured review organising clinical LLM systems by task, data modality, deployment setting, and model type. It synthesises prompting, RAG, fine-tuning, and multimodal approaches, then examines evaluation, safety, and fairness for high-stakes clinical environments.</p>
+            <div class="pub-tags">
+              <span class="tag prep">In preparation</span>
+              <span class="tag">LLMs in health</span>
+              <span class="tag">Safety &amp; fairness</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="prep">
+          <div class="pub-thumb" data-zoom="images/embodied%20emotion%20classification.png" data-gallery="pubs" data-caption="Embodied emotion classification: mapping textual cues to Ekman's six emotions" role="button" tabindex="0" aria-label="Open figure preview">
+            <img src="images/embodied%20emotion%20classification.png" alt="Figure mapping text cues to six emotion categories" loading="lazy">
+          </div>
+          <div>
+            <p class="pub-venue">In preparation</p>
+            <h3>Embodied emotion classification via small LLMs using prompting strategies</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b></p>
+            <p class="pub-abs">Fine-grained embodied emotion classification with small LLMs (Gemma-3 4B and peers), benchmarking zero-shot, k-shot, chain-of-thought, and chain-of-verification prompting. Macro and per-class F1 across Ekman&rsquo;s six emotions are reported alongside compute cost, to find prompt designs that hold up under a limited budget.</p>
+            <div class="pub-tags">
+              <span class="tag prep">In preparation</span>
+              <span class="tag">Prompting strategies</span>
+              <span class="tag">Small LLMs</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub reveal" data-kind="journal">
+          <div class="pub-thumb is-blank" aria-hidden="true"><span>BS</span></div>
+          <div>
+            <p class="pub-venue">Undergraduate thesis &middot; Sukkur IBA University &middot; 2022</p>
+            <h3>Roman Urdu and English spam SMS filtering and detection</h3>
+            <p class="pub-authors"><b>Hamza Rauf</b>, Muhammad Noor Gohar</p>
+            <p class="pub-abs">A multilingual SMS spam filter for English, Roman Urdu, and Urdu, built on datasets I created for under-resourced languages. The Naive Bayes classifier exceeded 98% accuracy, and the system shipped as an Android application backed by a Flask service doing real-time language detection and classification. It was the starting point for the multilingual work I still do.</p>
+            <div class="pub-tags">
+              <span class="tag">Thesis</span>
+              <span class="tag">Low-resource languages</span>
+              <span class="tag">Deployed</span>
+              <a class="tag-link" href="https://drive.google.com/file/d/1KFz2C4dJpLkzWizTuY8YPCIMBoiKWqdh/view" target="_blank" rel="noopener noreferrer">Read thesis <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- POSTERS -->
+    <section class="section" id="posters">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Presented work</p>
+          <h2 class="section-title">Research <em>posters</em></h2>
+        </div>
+        <p class="section-note">Click a poster to view it full size.</p>
+      </div>
+      <div class="posters">
+        <figure class="poster reveal">
+          <div class="poster-img" data-zoom="images/paper_poster.png" data-gallery="posters" data-caption="Efficient multilingual spam detection on resource-constrained devices: QLoRA fine-tuning of Gemma 3, Qwen 3, and Llama 3.2" role="button" tabindex="0" aria-label="Open poster full size">
+            <img src="images/paper_poster.png" alt="Research poster: efficient multilingual spam detection on resource-constrained devices" loading="lazy">
+          </div>
+          <figcaption>
+            <h3>Efficient multilingual spam detection on resource-constrained devices</h3>
+            <p>Synthetic 21-language corpus, 4-bit quantization, and QLoRA fine-tuning across three compact LLMs. This is the poster companion to the <em>Complex &amp; Intelligent Systems</em> paper.</p>
+            <div class="pub-tags" style="margin-top:12px">
+              <a class="tag-link" href="https://doi.org/10.1007/s40747-026-02247-x" target="_blank" rel="noopener noreferrer">Read the paper <svg viewBox="0 0 24 24"><path d="M5 5h6v2H7v10h10v-4h2v6H5V5Zm9 0h5v5h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H14V5Z"/></svg></a>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- ADD MORE POSTERS HERE: copy the <figure class="poster"> block above,
+             point both the data-zoom and the <img src> at your new file in images/,
+             and update the caption. -->
+        <div class="poster-slot reveal">
+          <b>More posters coming</b>
+          <span>Additional posters will be added here as they are presented.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Built, not just described</p>
+          <h2 class="section-title">Selected <em>projects</em></h2>
+        </div>
+        <p class="section-note">Research prototypes and production systems. Cards with an arrow link out.</p>
+      </div>
+
+      <div class="chips" id="projFilter" role="tablist" aria-label="Filter projects">
+        <button class="chip is-on" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="chip" data-filter="research" role="tab" aria-selected="false">Research</button>
+        <button class="chip" data-filter="production" role="tab" aria-selected="false">Production systems</button>
+      </div>
+
+      <div class="projects" id="projList">
+        <a class="project reveal" data-kind="research" href="https://github.com/Hamza-Rauf-SE/re-agent" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Verified AI agent</h3>
+          <p>A verification-first LLM agent for binary reverse engineering, with 20 MCP tools for symbolic execution and SMT-based validation. An evidence ledger separates proven results from unverified claims. It passed all 36 benchmark checks across four Mach-O binaries, with recovered keys confirmed by real execution.</p>
+          <p class="stack">angr &middot; Z3 &middot; MCP tools &middot; symbolic execution</p>
+        </a>
+        <a class="project reveal" data-kind="research" href="https://colab.research.google.com/drive/1bgJzD1ClIquled056gSh04265TX4T5FA?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Medical imaging VLM</h3>
+          <p>Llama 3.2 Vision 11B adapted for radiological description with PEFT, LoRA, and 4-bit quantization, giving a path from a general foundation model to a specialised clinical tool on modest hardware.</p>
+          <p class="stack">VLMs &middot; PEFT &middot; 4-bit quantization</p>
+        </a>
+        <a class="project reveal" data-kind="research" href="https://colab.research.google.com/drive/14SlTBwyqHXZtnwuwt2Rbb1xXKBiDnI71?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>GRPO alignment of Qwen3</h3>
+          <p>Reinforcement-learning alignment of Qwen3-4B for mathematical reasoning: first a format-teaching fine-tune, then GRPO with custom reward functions scoring both logical coherence and final-answer correctness.</p>
+          <p class="stack">RLHF/GRPO &middot; reward design &middot; reasoning</p>
+        </a>
+        <a class="project reveal" data-kind="research" href="https://colab.research.google.com/drive/1xcB2KZ3cCCbAXGK6HfJD8ej92nCsW8XN?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Transformer LM from scratch</h3>
+          <p>A 60M-parameter GPT-style model written from first principles in PyTorch, including causal self-attention, layer norm, and a mixed-precision training loop, then trained on TinyStories to coherent generation.</p>
+          <p class="stack">PyTorch &middot; architecture &middot; training loops</p>
+        </a>
+        <article class="project reveal" data-kind="research">
+          <h3>Hybrid RAG vs. Graph RAG</h3>
+          <p>A recommendation engine comparing hybrid retrieval (vector + keyword + reranking) against a Graph RAG pipeline over interconnected data, evaluated for accuracy and relevance with Fiddler AI observability.</p>
+          <p class="stack">LangChain &middot; Haystack &middot; retrieval evaluation</p>
+        </article>
+        <a class="project reveal" data-kind="research" href="https://colab.research.google.com/drive/1cGtj7ebzX-zI3jQ0fFJBMw3vUa8qDYM-?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Embedded face-mask detector</h3>
+          <p>A two-stage real-time pipeline for constrained devices: a lightweight Haar cascade localises faces, then a fine-tuned MobileNetV2 classifies mask use. Transfer learning applied under a tight compute budget.</p>
+          <p class="stack">MobileNetV2 &middot; OpenCV &middot; edge inference</p>
+        </a>
+        <a class="project reveal" data-kind="production" href="https://www.hellogov.com/" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>HelloGov AI</h3>
+          <p>An AI platform automating U.S. passport applications end to end, using OCR plus a fine-tuned Llama 3.2 for document extraction and validation, with event-driven orchestration. Scaled to 50,000+ applications a year for 10,000+ users.</p>
+          <p class="stack">FastAPI &middot; LangChain &middot; AWS Lambda &middot; OCR</p>
+        </a>
+        <a class="project reveal" data-kind="production" href="https://github.com/Hamza-Rauf-SE/civix-ai-lead" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Civix CRM &amp; voice agent</h3>
+          <p>A B2B CRM with agentic outreach: automated calling, SMS and email sequences, call summarisation, and contextual lead handling built on LangGraph tool-calling workflows.</p>
+          <p class="stack">LangGraph &middot; agentic AI &middot; Redis &middot; AWS</p>
+        </a>
+        <article class="project reveal" data-kind="production">
+          <h3>MaYa deal intelligence</h3>
+          <p>A conversational platform serving merchants, funders, and sales reps from shared deal data, with multi-step intent and sentiment reasoning, real-time frustration detection, and automatic escalation to a human.</p>
+          <p class="stack">LangGraph &middot; LangSmith &middot; retrieval &middot; reranking</p>
+        </article>
+        <a class="project reveal" data-kind="production" href="https://valyriansys.com/products/hawkeye-100" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Large-scale data systems</h3>
+          <p>Distributed databases, queues, ETL flows, and search pipelines behind monitored cloud services, including a real-time network anomaly detector that caught over 95% of threats in live traffic.</p>
+          <p class="stack">Kafka &middot; Kubernetes &middot; PostgreSQL &middot; Grafana</p>
+        </a>
+        <article class="project reveal" data-kind="production">
+          <h3>DataStax GenAI builder</h3>
+          <p>A GenAI development platform with a drag-and-drop agent builder for composing AI workflows, with RBAC, billing, and MCP-server integration. Usability work drove a 35 to 40% lift in engagement.</p>
+          <p class="stack">Next.js &middot; Django &middot; MCP &middot; Terraform</p>
+        </article>
+        <a class="project reveal" data-kind="research" href="https://github.com/Hamza-Rauf-SE/Human-Computer-Interaction-using-gestures" target="_blank" rel="noopener noreferrer">
+          <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <h3>Gesture-based HCI system</h3>
+          <p>A cross-platform system for launching and controlling applications through customisable multi-finger gestures, with per-device user profiles. A small study in natural interaction and accessibility.</p>
+          <p class="stack">Python &middot; computer vision &middot; MongoDB</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Research &amp; industry</p>
+          <h2 class="section-title"><em>Experience</em></h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <article class="tl-item is-now reveal">
+          <p class="tl-when">Jun 2024 to present</p>
+          <h3>Research Assistant</h3>
+          <p class="tl-where">Dr. Umair Khan (Stanford World Top 2% Scientist) &middot; Sakarya University, Turkey</p>
+          <ul>
+            <li>Co-authored five papers on compact LLMs and machine learning surrogates for computational fluid dynamics. Three are published, two of them in Q1 journals.</li>
+            <li>Built ANN surrogate models reaching near-perfect R&sup2; and cutting prediction error by over 90% relative to competing techniques.</li>
+            <li>Created a 21-language synthetic corpus and a QLoRA pipeline for privacy-preserving on-device classification.</li>
+            <li>Took a QLoRA-tuned Gemma 3-4B to 90% multilingual spam accuracy, a 22 percentage point uplift over its baseline within edge memory limits.</li>
+          </ul>
+        </article>
+        <article class="tl-item is-now reveal">
+          <p class="tl-when">2026 to present</p>
+          <h3>Senior Software Engineer</h3>
+          <p class="tl-where">Devsinc &middot; Lahore, Pakistan</p>
+          <ul>
+            <li>Own services end to end, from architecture and full-stack development through deployment, monitoring, and production support.</li>
+            <li>Lead application security: deep code analysis, vulnerability remediation, and CVE fixes across services.</li>
+            <li>Design infrastructure for GDPR and PCI DSS compliance, covering sensitive data handling and regulated workflows.</li>
+            <li>Architect RAG-based and LLM-powered capabilities, including intelligent search, AI assistants, and reusable AI tooling for engineering workflows.</li>
+          </ul>
+        </article>
+        <article class="tl-item reveal">
+          <p class="tl-when">2022 to 2025</p>
+          <h3>Senior Software Engineer</h3>
+          <p class="tl-where">Coding Crafts &middot; Pakistan / United States (remote)</p>
+          <ul>
+            <li>Led development of the HelloGov AI platform, scaling to 50,000+ applications a year for 10,000+ premium users.</li>
+            <li>Raised model performance with a RAG system (+40% accuracy) and LoRA fine-tuning of Llama 3 (+26% accuracy).</li>
+            <li>Delivered a GenAI agent-building platform for DataStax whose drag-and-drop interface lifted engagement by 35%.</li>
+            <li>Mentored three junior engineers on architecture, code quality, and DevOps, improving team throughput by 20%.</li>
+            <li><strong>Employee of the Year, 2023 and 2024.</strong></li>
+          </ul>
+        </article>
+        <article class="tl-item reveal">
+          <p class="tl-when">2020 to 2022</p>
+          <h3>Software Engineer</h3>
+          <p class="tl-where">Valyrian Systems &middot; Pakistan / United States (remote)</p>
+          <ul>
+            <li>Migrated a monolith to a high-availability microservices platform on Docker and Kubernetes, cutting API latency 60% at peak load.</li>
+            <li>Deployed an unsupervised real-time network anomaly detector that identified and mitigated over 95% of live threats.</li>
+            <li>Built an automated test suite from scratch, raising coverage to 90% and reducing critical production bugs by 75%.</li>
+          </ul>
+        </article>
+        <article class="tl-item reveal">
+          <p class="tl-when">2018 to 2022</p>
+          <h3>B.S. Computer Science</h3>
+          <p class="tl-where">Sukkur IBA University, Pakistan</p>
+          <ul>
+            <li>Fully funded merit scholarship, awarded by ranking in the top 100 students nationwide.</li>
+            <li>Graduated in the top 5% of the class; CGPA 3.31 / 85%, with distinction in 24 courses.</li>
+            <li>Coursework in research methodology, artificial intelligence, machine learning, computer vision, big data, and algorithms.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- TEACHING & SERVICE -->
+    <section class="section" id="teaching">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Beyond the bench</p>
+          <h2 class="section-title">Teaching &amp; <em>service</em></h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="card c-sage reveal">
+          <h3>Section Leader, Stanford Code in Place</h3>
+          <p>Apr to May 2024. Selected to lead a small-group section of Stanford&rsquo;s global introductory Python course, teaching control flow, data structures, and functions over six weeks with weekly code review and debugging support.</p>
+        </article>
+        <article class="card c-lilac reveal">
+          <h3>Cloud Instructor, CloudSchool</h3>
+          <p>Feb to Apr 2025. Taught modern DevOps across AWS, Azure, and GCP, and designed a mock production project in which students implemented CI/CD, containerisation, and cloud-native deployment pipelines.</p>
+        </article>
+        <article class="card c-blush reveal">
+          <h3>Mentoring &amp; community</h3>
+          <p>Mentor three junior engineers on architecture and code quality at work; ran digital-skills workshops and thalassemia awareness campaigns at university, and mentored underprivileged students on academics and internships.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Conferences</h3>
+          <p>iCoMET, the International Conference on Computing, Mathematics &amp; Engineering Technologies (2020, 2022, 2024), Sukkur IBA University. AI Essentials for Healthcare Leaders, FAST-NUCES, 2025.</p>
+        </article>
+        <article class="card c-lemon reveal">
+          <h3>Competitions</h3>
+          <p>Harvard CS50x Puzzle Day 2024, where my team solved 9 of 9 puzzles. NETSOL AI Hackathon, a prize-winning AI solution designed and implemented under strict time constraints.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Representation</h3>
+          <p>Cultural representative for Sukkur IBA University at the 15th South Asian Management Forum, and university badminton representative at a national sports festival.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="section" id="credentials">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Verified</p>
+          <h2 class="section-title">Scores &amp; <em>credentials</em></h2>
+        </div>
+        <p class="section-note">Click any card to view the certificate.</p>
+      </div>
+
+      <div class="scores">
+        <div class="score reveal" data-zoom="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" data-gallery="creds" data-caption="GRE score report: 331 total (Verbal 166, Quantitative 165)" role="button" tabindex="0">
+          <div class="score-thumb"><img src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" alt="GRE score report" loading="lazy"></div>
+          <div><b>331</b><span>GRE: Verbal 166, Quant 165</span></div>
+        </div>
+        <div class="score reveal" data-zoom="images/hamza_GRE_Certificate/Ielts_Certificate.jpg" data-gallery="creds" data-caption="IELTS certificate: band 7.0" role="button" tabindex="0">
+          <div class="score-thumb"><img src="images/hamza_GRE_Certificate/Ielts_Certificate.jpg" alt="IELTS certificate" loading="lazy"></div>
+          <div><b>7.0</b><span>IELTS Academic</span></div>
+        </div>
+        <div class="score reveal" data-zoom="images/hamza_GRE_Certificate/Duolingo%20English%20Test.jpg" data-gallery="creds" data-caption="Duolingo English Test certificate" role="button" tabindex="0">
+          <div class="score-thumb"><img src="images/hamza_GRE_Certificate/Duolingo%20English%20Test.jpg" alt="Duolingo English Test certificate" loading="lazy"></div>
+          <div><b>125</b><span>Duolingo English Test, out of 160</span></div>
+        </div>
+        <div class="score reveal" data-zoom="images/hamza_GRE_Certificate/Hamza-scholarship-certificate.jpg" data-gallery="creds" data-caption="Fully funded merit scholarship: top 100 students nationwide" role="button" tabindex="0">
+          <div class="score-thumb"><img src="images/hamza_GRE_Certificate/Hamza-scholarship-certificate.jpg" alt="Merit scholarship certificate" loading="lazy"></div>
+          <div><b>Top 100</b><span>National merit scholarship</span></div>
+        </div>
+      </div>
+
+      <div class="creds">
+        <div class="cred reveal" data-zoom="images/certificates/aws.jpg" data-gallery="creds" data-caption="AWS Certified Solutions Architect, 2024" role="button" tabindex="0">
+          <img src="images/icons/aws%20icon.png" alt="" loading="lazy">
+          <div><b>AWS Solutions Architect</b><span>Amazon Web Services &middot; 2024</span></div>
+        </div>
+        <div class="cred reveal" data-zoom="images/certificates/oracle.jpg" data-gallery="creds" data-caption="Oracle Certified Generative AI Professional, 2024" role="button" tabindex="0">
+          <img src="images/icons/oracle_icon.png" alt="" loading="lazy">
+          <div><b>Generative AI Professional</b><span>Oracle &middot; 2024</span></div>
+        </div>
+        <div class="cred reveal" data-zoom="images/certificates/standford.jpg" data-gallery="creds" data-caption="Stanford Code in Place: Section Leader, 2024" role="button" tabindex="0">
+          <img src="images/icons/standford_icon.webp" alt="" loading="lazy">
+          <div><b>Code in Place</b><span>Stanford &middot; Section Leader, 2024</span></div>
+        </div>
+        <div class="cred reveal" data-zoom="images/certificates/harvard.jpg" data-gallery="creds" data-caption="Harvard CS50x Puzzle Day 2024: 9 of 9 puzzles solved" role="button" tabindex="0">
+          <img src="images/icons/harvard_icon.webp" alt="" loading="lazy">
+          <div><b>CS50x Puzzle Day</b><span>Harvard &middot; 9/9 solved, 2024</span></div>
+        </div>
+        <div class="cred reveal" data-zoom="images/certificates/microsoft.jpg" data-gallery="creds" data-caption="Microsoft Software Engineering Virtual Experience Program" role="button" tabindex="0">
+          <img src="images/icons/microsoft_icon.png" alt="" loading="lazy">
+          <div><b>Software Engineering VEP</b><span>Microsoft &middot; 2020</span></div>
+        </div>
+        <div class="cred reveal">
+          <img src="images/icons/deloitte_icon.png" alt="" loading="lazy">
+          <div><b>STEM Connect VEP</b><span>Deloitte &middot; 2022</span></div>
+        </div>
+        <div class="cred reveal">
+          <img src="images/icons/commonwealth_bank_iconj.png" alt="" loading="lazy">
+          <div><b>Careers in Technology</b><span>Commonwealth Bank &middot; 2020</span></div>
+        </div>
+        <div class="cred reveal">
+          <img src="images/icons/microsoft_icon.png" alt="" loading="lazy">
+          <div><b>Data Science with Databricks</b><span>Azure &middot; 2022</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">How I work</p>
+          <h2 class="section-title">Technical <em>toolkit</em></h2>
+        </div>
+      </div>
+      <div class="skills">
+        <div class="skill-group reveal">
+          <h3>Machine learning</h3>
+          <div class="skill-list">
+            <span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>Hugging Face</span>
+            <span>Transformers</span><span>Axolotl</span><span>LoRA / QLoRA</span><span>4-bit &amp; 8-bit quantization</span>
+            <span>GRPO / RLHF</span><span>OpenCV</span><span>YOLO</span><span>MATLAB</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>LLM systems</h3>
+          <div class="skill-list">
+            <span>RAG</span><span>Graph RAG</span><span>LangChain</span><span>LangGraph</span><span>LangSmith</span>
+            <span>MCP servers</span><span>Tool calling</span><span>Agentic workflows</span><span>Embeddings</span>
+            <span>Hybrid search</span><span>Reranking</span><span>Guardrails</span><span>LLM evaluation</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Research practice</h3>
+          <div class="skill-list">
+            <span>Experimental design</span><span>Systematic reviews</span><span>Statistical analysis</span>
+            <span>SPSS</span><span>ATLAS.ti</span><span>EndNote</span><span>LaTeX</span>
+            <span>Scientific writing</span><span>Publication figures</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Engineering</h3>
+          <div class="skill-list">
+            <span>Python</span><span>C++</span><span>TypeScript</span><span>SQL</span><span>Bash</span>
+            <span>FastAPI</span><span>Django</span><span>Flask</span><span>React</span><span>Next.js</span>
+            <span>Node.js</span><span>PostgreSQL</span><span>Redis</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Data &amp; infrastructure</h3>
+          <div class="skill-list">
+            <span>AWS</span><span>Azure</span><span>GCP</span><span>Docker</span><span>Kubernetes</span>
+            <span>Kafka</span><span>RabbitMQ</span><span>PySpark</span><span>ETL pipelines</span>
+            <span>Pinecone</span><span>FAISS</span><span>Vector databases</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Reliability &amp; security</h3>
+          <div class="skill-list">
+            <span>CI/CD</span><span>GitHub Actions</span><span>Terraform</span><span>Prometheus</span>
+            <span>Grafana</span><span>Sentry</span><span>PyTest</span><span>Playwright</span>
+            <span>GDPR</span><span>PCI DSS</span><span>Vulnerability remediation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section-title"><em>Contact</em></h2>
+        </div>
+      </div>
+      <div class="contact-box reveal">
+        <div>
+          <p class="lede">Open to <em>PhD positions</em>, research collaborations, and conversations across applied AI.</p>
+          <p class="prose" style="margin-top:16px">If you work on language models, vision-language models, efficient or on-device AI, cybersecurity, human-computer interaction, or AI for health and science, I would like to hear about it. I reply to every genuine enquiry.</p>
+        </div>
+        <div class="contact-links">
+          <a class="link-pill" href="mailto:hamzarauf.se@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.6 7h14.8L12 12.2Z"/></svg>
+            hamzarauf.se@gmail.com
+          </a>
+          <a class="link-pill" href="https://scholar.google.com/citations?user=c-yjPVMAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M12 3 2 9l10 6 10-6-10-6Zm-6 8.4v4.1c0 2 3.1 3.5 6 3.5s6-1.5 6-3.5v-4.1l-6 3.6-6-3.6Z"/></svg>
+            Google Scholar
+          </a>
+          <a class="link-pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.82-2.05 3.75-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2.01 0-2.32 1.57-2.32 3.2V21h-4V9Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="link-pill" href="https://github.com/Hamza-Rauf-SE" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+          <a class="link-pill" href="https://www.researchgate.net/profile/Hamza-Rauf-7" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M19.6 4.5c-.5-.6-1.3-.9-2.3-.9-.9 0-1.6.3-2.1.9-.5.6-.8 1.4-.8 2.4v1.4c0 1 .3 1.8.8 2.4.5.6 1.2.9 2.1.9 1 0 1.8-.3 2.3-.9.5-.6.8-1.4.8-2.4V6.9c0-1-.3-1.8-.8-2.4Zm-.8 3.8c0 .7-.1 1.2-.4 1.5-.2.3-.6.5-1.1.5s-.9-.2-1.1-.5c-.2-.3-.4-.8-.4-1.5V6.8c0-.6.1-1.1.4-1.4.2-.3.6-.5 1.1-.5s.9.2 1.1.5c.3.3.4.8.4 1.4v1.5ZM9.6 10.8H6.9v9.6h2.3v-3.7h1.4l1.9 3.7h2.6l-2.3-4.2c1.2-.6 1.9-1.7 1.9-3.2 0-2.6-1.7-4-5.1-4Zm.3 5.8h-.7v-3.8h.8c1.4 0 2.1.6 2.1 1.9 0 1.3-.7 1.9-2.2 1.9Z"/></svg>
+            ResearchGate
+          </a>
+        </div>
+      </div>
+      <div class="footer">
+        <span>Hamza Rauf, AI researcher and senior software engineer</span>
+        <span>Last updated September 2026</span>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close">
+    <svg viewBox="0 0 24 24"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3 1.4 1.4Z"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous">
+    <svg viewBox="0 0 24 24"><path d="M15.4 4.6 8 12l7.4 7.4 1.4-1.4L10.8 12l6-6-1.4-1.4Z"/></svg>
+  </button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next">
+    <svg viewBox="0 0 24 24"><path d="M8.6 4.6 7.2 6l6 6-6 6 1.4 1.4L16 12 8.6 4.6Z"/></svg>
+  </button>
+  <figure class="lb-figure">
+    <img id="lbImg" src="" alt="">
+    <figcaption class="lb-cap" id="lbCap"></figcaption>
+  </figure>
+</div>
+
+<button class="totop" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M12 4 4.6 11.4 6 12.8l5-5V20h2V7.8l5 5 1.4-1.4L12 4Z"/></svg>
+</button>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  var stored = null;
+  try { stored = localStorage.getItem('hr-theme'); } catch (e) {}
+  if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+
+  document.getElementById('themeToggle').addEventListener('click', function () {
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('hr-theme', next); } catch (e) {}
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- mobile nav, cloned from the rail nav ---------- */
+  var nav = document.getElementById('nav');
+  var navLinks = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var mobileInner = document.querySelector('.mobilebar-inner');
+  navLinks.forEach(function (a) {
+    var clone = a.cloneNode(true);
+    mobileInner.appendChild(clone);
+  });
+  var mobileLinks = Array.prototype.slice.call(mobileInner.querySelectorAll('a'));
+
+  /* ---------- scrollspy ---------- */
+  var sections = navLinks.map(function (a) {
+    return document.querySelector(a.getAttribute('href'));
+  }).filter(Boolean);
+
+  var ticking = false;
+  function syncSpy() {
+    ticking = false;
+    var marker = window.scrollY + window.innerHeight * 0.28;
+    var index = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= marker) index = i;
+    }
+    // at the very bottom, always highlight the last section
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 4) {
+      index = sections.length - 1;
+    }
+    navLinks.forEach(function (a, i) { a.classList.toggle('is-active', i === index); });
+    mobileLinks.forEach(function (a, i) {
+      var on = i === index;
+      a.classList.toggle('is-active', on);
+      if (on) {
+        var left = a.offsetLeft - mobileInner.clientWidth / 2 + a.clientWidth / 2;
+        mobileInner.scrollTo({ left: left, behavior: 'smooth' });
+      }
+    });
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(syncSpy); }
+    toTop.classList.toggle('is-on', window.scrollY > 700);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', syncSpy);
+
+  /* ---------- back to top ---------- */
+  var toTop = document.getElementById('toTop');
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var revealables = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    revealables.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i % 6, 5) * 55 + 'ms';
+      io.observe(el);
+    });
+  } else {
+    revealables.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---------- filters (publications + projects) ---------- */
+  function wireFilter(chipsId, listId) {
+    var chips = document.getElementById(chipsId);
+    var list = document.getElementById(listId);
+    if (!chips || !list) return;
+    chips.addEventListener('click', function (event) {
+      var chip = event.target.closest('.chip');
+      if (!chip) return;
+      var want = chip.getAttribute('data-filter');
+      Array.prototype.forEach.call(chips.querySelectorAll('.chip'), function (c) {
+        var on = c === chip;
+        c.classList.toggle('is-on', on);
+        c.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      Array.prototype.forEach.call(list.children, function (item) {
+        if (!item.hasAttribute('data-kind')) return;
+        var show = want === 'all' || item.getAttribute('data-kind') === want;
+        item.hidden = !show;
+        if (show) item.classList.add('is-in');
+      });
+    });
+  }
+  wireFilter('pubFilter', 'pubList');
+  wireFilter('projFilter', 'projList');
+
+  /* ---------- news expander ---------- */
+  var newsList = document.getElementById('newsList');
+  var newsToggle = document.getElementById('newsToggle');
+  newsToggle.addEventListener('click', function () {
+    var open = newsList.classList.toggle('is-open');
+    newsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    newsToggle.querySelector('span').textContent = open ? 'Show less' : 'Show earlier news';
+  });
+
+  /* ---------- copy email on the rail pill ---------- */
+  var emailPill = document.getElementById('emailPill');
+  emailPill.addEventListener('click', function (event) {
+    if (!navigator.clipboard) return; // let the mailto: link do its job
+    event.preventDefault();
+    var label = emailPill.querySelector('svg').nextSibling;
+    navigator.clipboard.writeText(emailPill.getAttribute('data-copy')).then(function () {
+      emailPill.classList.add('is-copied');
+      label.textContent = ' Copied ';
+      setTimeout(function () {
+        emailPill.classList.remove('is-copied');
+        label.textContent = ' Email ';
+      }, 1600);
+    }, function () {
+      window.location.href = emailPill.getAttribute('href');
+    });
+  });
+
+  /* ---------- lightbox ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lbPrev = document.getElementById('lbPrev');
+  var lbNext = document.getElementById('lbNext');
+  var group = [];
+  var cursor = 0;
+  var lastFocused = null;
+
+  function show(i) {
+    cursor = (i + group.length) % group.length;
+    var node = group[cursor];
+    lbImg.src = node.getAttribute('data-zoom');
+    lbCap.innerHTML = node.getAttribute('data-caption') || '';
+    lbImg.alt = node.getAttribute('data-caption') || 'Enlarged image';
+    var many = group.length > 1;
+    lbPrev.hidden = !many;
+    lbNext.hidden = !many;
+  }
+
+  function openLightbox(node) {
+    var name = node.getAttribute('data-gallery');
+    group = name
+      ? Array.prototype.slice.call(document.querySelectorAll('[data-gallery="' + name + '"][data-zoom]'))
+      : [node];
+    lastFocused = document.activeElement;
+    show(group.indexOf(node));
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  document.addEventListener('click', function (event) {
+    var trigger = event.target.closest('[data-zoom]');
+    if (trigger) { openLightbox(trigger); return; }
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function (event) {
+    var trigger = event.target.closest && event.target.closest('[data-zoom]');
+    if (trigger && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      openLightbox(trigger);
+      return;
+    }
+    if (!lightbox.classList.contains('is-open')) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft' && group.length > 1) show(cursor - 1);
+    if (event.key === 'ArrowRight' && group.length > 1) show(cursor + 1);
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', function (e) { e.stopPropagation(); show(cursor - 1); });
+  lbNext.addEventListener('click', function (e) { e.stopPropagation(); show(cursor + 1); });
+
+  syncSpy();
+})();
+</script>
+</body>
+</html>
