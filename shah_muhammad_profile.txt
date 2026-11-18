@@ -1,0 +1,373 @@
+
+Shah Muhammad Hamdi
+Associate Professor of Computer Science, Utah State University, Logan, UT, United States.
+Verified email at usu.edu - Homepage
+Multimodal AITime Series and GraphCyberinfrastructureMachine LearningSpace Weather
+
+Shah Muhammad Hamdi
+Bio
+News
+Papers
+Projects
+Teaching
+Services
+Lab
+
+
+Shah Muhammad Hamdi, Ph.D.
+Shah Muhammad Hamdi, Ph.D.
+Associate Professor of Computer Science
+School of Computing, Utah State University
+Biography
+Dr. Shah Muhammad Hamdi is an Associate Professor of Computer Science at Utah State University. His research develops machine learning techniques tailored to multivariate time series and graph data, with applications to the prediction and analysis of extreme solar events such as solar flares and solar energetic particles. He leads the design of ML-based cyberinfrastructure to integrate heterogeneous, large-scale scientific data and support reproducible forecasting workflows for the space weather community. Dr. Hamdi has secured over $1.3M in extramural funding as Principal Investigator, published more than 70 refereed papers, and was recognized as the Outstanding Computer Science Faculty Researcher of the Year by CS USU in 2024.
+
+Interests
+Multimodal AI
+Generative Modeling
+Time Series and Graph Learning
+Cyberinfrastructure for Science
+AI for Earth and Space Sciences
+Education
+Ph.D., Computer Science (2020)
+
+Georgia State University
+
+M.S., Computer Science (2020)
+
+Georgia State University
+
+B.Sc., Computer Science & Engineering (2014)
+
+Rajshahi University of Engineering and Technology, Rajshahi, Bangladesh
+
+Recent News
+August 2025 — Congratulations to Reza on our IEEE ICDM 2025 paper.
+August 2025 — Congratulations to Santosh on our ACM CIKM 2025 paper.
+August 2025 — Congratulations to Peiyu and Pouya on our two IEEE DSAA 2025 papers.
+July 2025 — I am excited to serve as PI on our recently awarded NSF CAIG grant Award #2530946! Grateful to my collaborator Soukaina (Co-PI) for her excellent work on SEP prediction, to Reza for advancing multimodal augmentation theory, and to Ludger (Co-PI) for bringing deep physics expertise to the team.
+December 2024 — Congratulations to Reza on our SIAM SDM 2025 paper.
+December 2024 — Congratulations to Onur, Peiyu, Reza, and Pouya on four IEEE Big Data 2024 papers.
+December 2024 — Soukaina and I got featured in Utah State Today.
+December 2024 — Congratulations to Khaznah, Pouya, and Omar on three ICPR 2024 papers.
+February 2023 — I received the NSF SHINE grant Award #2301397!
+October 2022 — Congratulations to Soukaina on our ACM CIKM 2022 paper.
+August 2022 — I started my Assistant Professor position at CS USU.
+January 2022 — I received the NSF CRII award Award #2305781!
+August 2020 — I started my Assistant Professor position at CS NMSU.
+Featured Publications
+MohammadReza EskandariNasab, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi (2025). AVATAR: Adversarial Autoencoders with Autoregressive Refinement for Time Series Generation. Proceedings of the 2025 SIAM International Conference on Data Mining, SDM 2025, Alexandria, VA, USA, May 1-3, 2025.
+ URL
+ Cite
+ DOI
+S. Chapagain, Shah Muhammad Hamdi, S. Filali Boubrahimi (2025). Pruning Strategies for Backdoor Defense in LLMs. Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM).
+ Cite
+Onur Vural, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi (2025). Solar Flare Prediction Using Multivariate Time Series of Photospheric Magnetic Field Parameters: A Comparative Analysis of Vector, Time Series, and Graph Data Representations. Remote Sensing.
+ URL
+ Cite
+ DOI
+M. EskandariNasab, Shah Muhammad Hamdi, S. Filali Boubrahimi (2025). TIMED: Adversarial and Autoregressive Refinement of Diffusion-Based Time Series Generation. Proceedings of the 2025 IEEE International Conference on Data Mining (ICDM).
+ Cite
+MohammadReza EskandariNasab, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi (2024). Impacts of Data Preprocessing and Sampling Techniques on Solar Flare Prediction from Multivariate Time Series Data of Photospheric Magnetic Field Parameters. The Astrophysical Journal Supplement Series.
+ URL
+ Cite
+ DOI
+Papers
+Pouya Hosseinzadeh, Soukaina Filali Boubrahimi, Shah Muhammad Hamdi (2025). An End-to-end Ensemble Machine Learning Approach for Predicting High-impact Solar Energetic Particle Events Using Multimodal Data. The Astrophysical Journal Supplement Series.
+ URL
+ Cite
+ DOI
+Omar Bahri, Peiyu Li, Soukaïna Filali Boubrahimi, Shah Muhammad Hamdi (2025). Predicting Solar Energetic Particle Events with Time Series Shapelets. The Astrophysical Journal.
+ URL
+ Cite
+ DOI
+MohammadReza EskandariNasab, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi (2025). AVATAR: Adversarial Autoencoders with Autoregressive Refinement for Time Series Generation. Proceedings of the 2025 SIAM International Conference on Data Mining, SDM 2025, Alexandria, VA, USA, May 1-3, 2025.
+ URL
+ Cite
+ DOI
+P. Hosseinzadeh, P. Li, O. Bahri, S. Filali Boubrahimi, Shah Muhammad Hamdi (2025). CACTUS: Cross-Aligned Counterfactual Explanation for Time Series Classification. Proceedings of the 2025 IEEE 12th International Conference on Data Science and Advanced Analytics (DSAA).
+ Cite
+P. Li, O. Bahri, P. Hosseinzadeh, S. Filali Boubrahimi, Shah Muhammad Hamdi (2025). Diverse and Plausible Counterfactual Explanations for Time Series via Latent Space Optimization. Proceedings of the 2025 IEEE 12th International Conference on Data Science and Advanced Analytics (DSAA).
+ Cite
+See all publications
+© 2026 Me. This work is licensed under CC BY NC ND 4.0
+
+
+Published with Hugo Blox Builder — the free, open source website builder that empowers creators.
+his current research (this the youtube transcript so you cna ignore the MAN word)
+MAN: When the sun flares up, its energy interacts vigorously with the magnetosphere, the ionosphere, and the atmosphere in very noticeable ways. [MUSIC PLAYING] NARRATOR: That right there is a solar flare, and this is a coronal mass ejection. Both occur because of instability in the sun's magnetic field, and all of that fuzz is energy released as a result. Put Earth in the way and that could cause some problems. SHAH MUHAMMAD HAMDI: It can interrupt our GPS communication, our radio communication, and also,
+
+in today's technology-driven society, millions of devices can be affected. NARRATOR: While there's currently methods of predicting when these events will occur, USU researchers are working on using AI to help make the process more efficient. OMAR BAHRI: What we are trying to do is to leverage all of these technologies to have predictions that are timely and allow us enough time to take preventive measures and predictions in which we have high confidence. NARRATOR: So what they're doing here is three-fold.
+
+They're first helping develop a method to clean and process initial data, then create the predictive machine learning model itself, and then help describe why it's predicting what it's predicting. PEIYU LI: Explanation behind the decision making is very important to, like, build trust between the decision makers and the solar flare prediction. NARRATOR: Currently, they're attempting to study the past 12 hours of the sun's activity to then predict if in the next 24 hours there may be a large flare, which gives us
+
+an important early warning window, especially as we look toward future space missions. MOHAMMADREZA ESKANDARINASAB: So we are going to have a more huge presence on space. So being able to predict these phenomenons are going to be more and more important for us. NARRATOR: The research team is still working on getting the model working, but the hope is that when it does come online, predictions could come fast. SOUKAINA FILALI BOUBRAHIMI: Because our end goal, eventually, is whenever data is coming in a near real time
+
+or sometimes real time, those data sets are processed, and hopefully, will give us prediction within a few minutes. And of course, these are very important for different stakeholders. NARRATOR: So at the end of the day, these predictions will help us plan for these solar disturbances and mitigate the effects felt not only here on Earth, but wherever humanity is in space. [MUSIC PLAYING]
+
+current nsf projectsCurrent projects
+Solar flare prediction from multivariate time series-based solar magnetic field parameters: In our research on solar flare prediction using multivariate time series of solar magnetic field parameters, we have made significant contributions to understanding and forecasting solar activity. Our work involves analyzing complex datasets to identify patterns and develop predictive models for solar flares. By leveraging advanced statistical techniques and machine learning algorithms, we have improved the accuracy of solar flare forecasts, which is crucial for mitigating the impact of space weather on technological systems. Our publications in this area have been well-received in the scientific community, highlighting the importance of our contributions to solar physics and space weather prediction. 
+
+Funding: NSF Award # 2301397: SHINE: Understanding the Relationships of Photospheric Vector Magnetic Field Parameters in Solar Flare Occurrences using Graph-based Machine Learning Models
+
+ML cyberinfrastructure development of multivariate time series and functional networks: Our research focuses on developing a comprehensive machine learning (ML) cyberinfrastructure tailored for multivariate time series and functional networks. We aim to create a unified framework that facilitates both supervised and unsupervised ML tasks across various data representations. By customizing and applying advanced ML techniques, our project seeks to enhance the analysis and interpretation of complex datasets, thereby advancing the capabilities of ML applications in diverse scientific domains. 
+
+Funding: NSF Award # 2305781: CRII: OAC: Cyberinfrastructure for Machine Learning on Multivariate Time Series Data and Functional Networks
+papers:
+View article
+hamza
+
+Shah Muhammad Hamdi
+Shah Muhammad Hamdi
+[HTML] from sciencedirect.com
+FlaPLeT: A full-stack web platform for end-to-end time series data processing and machine learning in solar flare prediction
+Authors
+MohammadReza EskandariNasab, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi
+Publication date
+2026/2/1
+Journal
+SoftwareX
+Volume
+33
+Pages
+102540
+Publisher
+Elsevier
+Description
+Solar flare prediction is a central challenge in space weather forecasting, with direct implications for satellite operations, aviation safety, and power grid reliability. Machine learning has achieved state-of-the-art performance for this task, particularly when applied to photospheric magnetic field parameters. FlaPLeT is an open-source, full-stack web platform that supports end-to-end machine learning workflows for multivariate time-series–based solar flare prediction without requiring any coding expertise. Built with React, Django, Celery, and PostgreSQL, the system integrates dataset preprocessing, data augmentation, functional network (graph) construction, and machine learning model training into modular asynchronous tasks that generate downloadable datasets, trained models, and structured JSON reports. The platform is deployed on a dedicated Windows server using NGINX, Waitress, Redis, TLS encryption …
+Total citations
+Cited by 3
+2026
+Scholar articles
+FlaPLeT: A full-stack web platform for end-to-end time series data processing and machine learning in solar flare prediction
+MR EskandariNasab, SM Hamdi, SF Boubrahimi - SoftwareX, 2026
+Cited by 3 Related articles All 5 versions
+PrivacyTermsHelp
+paper2:
+View article
+hamza
+
+Shah Muhammad Hamdi
+Shah Muhammad Hamdi
+[PDF] from arxiv.org
+SolarGPT-QA: A Domain-Adaptive Large Language Model for Educational Question Answering in Space Weather and Heliophysics
+Authors
+Santosh Chapagain, MohammadReza EskandariNasab, Onur Vural, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi
+Publication date
+2026/1/17
+Journal
+arXiv preprint arXiv:2601.12131
+Description
+Solar activity, including solar flares, coronal mass ejections (CMEs), and geomagnetic storms can significantly impact satellites, aviation, power grids, data centers, and space missions. Extreme solar events can cause substantial economic damage with limited advance warning, underscoring the importance of early warning systems, accurate forecasting, and effective education in space science. Although large language models (LLMs) perform well on general tasks, they often lack domain specific knowledge and pedagogical capability to clearly explain complex space science concepts. We introduce SolarGPT-QA, a question answering system based on a domain adapted large language model built on the LLaMA-3 base model. The model is trained using scientific literature and large scale question and answer data generated with GPT-4 and refined using Grok-3 in a student friendly storytelling style. To evaluate response quality, we employ an LLM-as-judge evaluation framework, where a strong reference model assesses generated answers using structured criteria including scientific accuracy, clarity, completeness, and pedagogical effectiveness. Results show that SolarGPT-QA performs strongly relative to general purpose models in zero shot settings and achieves competitive performance compared to instruction tuned models for educational explanations in space weather and heliophysics. Ablation studies indicate that combining domain adaptive pretraining with fine tuning is important for balancing scientific accuracy and educational effectiveness.
+Total citations
+Cited by 1
+2026
+Scholar articles
+SolarGPT-QA: A Domain-Adaptive Large Language Model for Educational Question Answering in Space Weather and Heliophysics
+S Chapagain, MR EskandariNasab, O Vural… - arXiv preprint arXiv:2601.12131, 2026
+Cited by 1 Related articles All 2 versions
+PrivacyTermsHelp
+
+
+ 	
+HomeHiDAM
+
+
+
+
+Shah Muhammad Hamdi
+Address: Science and Engineering Research (SER) Building, SER 330, Dept. of Computer Science, Utah State University, Logan, UT
+
+Email: s.hamdi(AT)usu(DOT)edu
+
+Phone: 435-797-1573
+
+Research interest
+
+Data mining and machine learning on graphs, time series, spatiotemporal and high-dimensional data; dimensionality reduction with tensor decomposition and feature selection; deep learning.
+
+Short Bio
+Shah Muhammad Hamdi is an Assistant Professor of Computer Science in Utah State University, where he leads Hi-dimensional Data Analytics and Mining (HiDAM) lab. Before joining USU at Fall '22, he was an Assistant Professor of Computer Science in New Mexico State University. He received his PhD in Computer Science from Georgia State University in 2020. He worked in the Data Mining Lab (DMLab) under the supervision of Prof. Dr. Rafal Angryk. His research interests are machine learning, data mining, and deep learning, more specifically, finding interesting patterns from real-life graphs and time series data. His research finds applications in the fields of neurological disease prediction, solar weather analysis, and social network analysis. He received his Bachelor’s degree in Computer Science in 2014 from Rajshahi University of Engineering and Technology (RUET), Rajshahi, Bangladesh.
+
+[Google Scholar] [DBLP]  [LinkedIn]  [ResearchGate] 
+
+Recent news
+August 2025: Congratulations to Reza for our conference paper in IEEE ICDM 2025 !
+
+August 2025: Congratulations to Santosh for our conference paper in ACM CIKM 2025 !
+
+August 2025: Congratulations to Peiyu and Pouya for our two conference papers in IEEE DSAA 2025 !
+
+July 2025: We received the NSF CAIG grant ! 
+
+December 2024: Congratulations to Reza  for our conference paper in SIAM SDM 2025 !
+
+December 2024: Congratulations to Onur, Peiyu, Reza, and Pouya for our four conference papers in IEEE Big Data 2024 !
+
+December 2024: Congratulations to Khaznah, Pouya, and Omar for our three conference papers in ICPR 2024 !
+
+October 2024: Congratulations to Santosh for our conference paper in IEEE DSAA 2024 !
+
+May 2024: Congratulations to Cory and Santosh for our conference paper in AAAI ICWSM 2024 !
+
+December 2023: Congratulations to Omar, Peiyu, Cory, and Santosh for our three conference papers in IEEE Big Data 2023 !
+
+February 2023: I received the NSF SHINE grant !
+
+December 2022: Congratulations to Omar and Peiyu for our two conference papers in IEEE Big Data 2022 !
+
+October 2022: Congratulations to Soukaina for our conference paper in ACM CIKM 2022 !
+
+May 2022: May 2024: Congratulations to Cory for our conference paper in AAAI ICWSM 2022 !
+
+August 2022: I started my position at CS USU.
+
+January 2022: I have received the NSF CRII award !
+
+August 2020: I started my position at CS NMSU.
+
+Publications
+Alshammari, K., Hamdi, S.M. and Boubrahimi, S.F., 2024. "Identifying Flare-indicative Photospheric Magnetic Field Parameters from Multivariate Time-series Data of Solar Active Regions". The Astrophysical Journal Supplement Series, 271(2), p.39.
+
+P. Hosseinzadeh, A. Nassar, S. F. Boubrahimi, and S. M. Hamdi, ”ML-Based Streamflow Prediction in the Upper Colorado River Basin Using Climate Variables Time Series Data”, Hydrology, 2023.
+
+K. Alshammari, S. M. Hamdi, and S. F. Boubrahimi, ”Feature Selection from Multivariate Time Series Data: A Case Study of Solar Flare Prediction”, workshop for Big Data Analytics for Humanitarian Crises, 2022 IEEE International Conference on Big Data (Big Data), 2022.
+
+O. Bahri, P. Li, S. F. Boubrahimi, and S. M. Hamdi, ”Shapelet-Based Temporal Association Rule Mining for Multivariate Time Series Classification,” 2022 IEEE International Conference on Big Data (Big Data), 2022.
+
+P. Li, O. Bahri, S. F. Boubrahimi and S. M. Hamdi, ”SG-CF: Shapelet-Guided Counterfactual Explanation for Time Series Classification”, 2022 IEEE International Conference on Big Data (Big Data), 2022.
+
+K. Alshammari, S. M. Hamdi, A. A. M. Muzaheed, and S. F. Boubrahimi, ”Forecasting Multivariate Time Series of the Magnetic Field Parameters of the Solar Events”, CIKM workshop for Applied Machine Learning Methods for Time Series Forecasting (AMLTS), 2022.
+
+S. M. Hamdi, A. F. Ahmad, S. F. Boubrahimi, and A. A. M. Muzaheed, ”Multivariate Time Series-based Solar Flare Prediction by Functional Network Embedding and Sequence Modeling,” CIKM workshop for Applied Machine Learning Methods for Time Series Forecasting (AMLTS), 2022.
+
+S. F. Boubrahimi, and S. M. Hamdi, ”On the Mining of Time Series Data Counterfactual Explanations using Barycenters”, In Proceedings of the 31st ACM International Conference on Information and Knowledge Management (CIKM ’22), 2022.
+
+O. Bahri, S. F. Boubrahimi, and S. M. Hamdi, ”Temporal Rule-Based Counterfactual Explanations for Multivariate Time Series”, 21st IEEE International Conference on Machine Learning and Applications (ICMLA), 2022.
+
+P. Li, S. F. Boubrahimi, and S. M. Hamdi, ”Fast Counterfactual Explanation for Solar Flare Prediction”, 21st IEEE International Conference on Machine Learning and Applications (ICMLA), 2022.
+
+P. Li, S. F. Boubrahimi, and S. M. Hamdi, ”Motif-Guided Time Series Counterfactual Explanations”, ICPR workshop on Explainable and Ethical AI (XAIE), 2022.
+
+R. Johnson, S. F. Boubrahimi, S. M. Hamdi, O. Bahri, ”Physics-Informed Neural Networks for Solar Wind Prediction”, ICPR workshop on Pattern Recognition and Remote Sensing, 2022.
+
+O. Bahri, S. F. Boubrahimi, and S. M. Hamdi, ”Shapelet-Based Counterfactual Explanations for Multivariate Time Series”, SIGKDD International Workshop on Mining and Learning from Time Series, 2022.
+
+C. J. Cascalheira, S. M. Hamdi, J. R. Scheer, S. Saha, S. F. Boubrahimi, and M. De Choudhury, “Classifying minority stress disclosure on social media with bidirectional long short-term memory,” Association for the Advancement of Artificial Intelligence (AAAI) 16th International Conference on Web and Social Media (ICWSM), 2022.
+
+A. A. M. Muzaheed, S. M. Hamdi, and S. F. Boubrahimi. Sequence model-based end-to-end solar flare classification from multivariate time series data. In20th IEEE International Conference On Machine Learning and Applications, ICMLA 2021, virtually online, December 13-16, 2021.
+
+S. F. Boubrahimi, S. M. Hamdi, R. Ma, and R. Angryk, ” On the Mining of the Minimal Set of Time Series Data Shapelets,” 2020 IEEE International Conference on Big Data, Atlanta, GA.
+
+S. S. Chowdhuri, S. F. Boubrahimi, and S. M. Hamdi, “Time Series Data Augmentation using Time Warped Auto-encoders,” 2021 IEEE 20th International Conference on Machine Learning and Applications (ICMLA), online, 2021, pp. 467-470.
+
+P. Li, S. F. Boubrahimi, and S. M. Hamdi, “Shapelets-based Data Augmentation for Time Series Classification,” 2021 IEEE 20th International Conference on Machine Learning and Applications (ICMLA), online, 2021, pp. 1373-1378.
+
+P. Li, S. F. Boubrahimi, and S. M. Hamdi, “Graph-based Clustering for Time Series Data”, 2021 IEEE International Conference on Big Data, online, 2021, pp. 4464-4467.
+
+R. Angryk, P. Martens, B. Aydin, D. Kempton, S. Mahajan, S. Basodi, A. Ahmadzadeh, X. Cai, S. F. Boubrahimi, S. M. Hamdi, M. Schuh, and M. Georgoulis, “Multivariate time series dataset for space weather data analytics,” Scientific Data, 2020.
+
+S. M. Hamdi, and R. Angryk, “Interpretable Feature Learning of Graphs using Tensor Decomposition,” 2019 IEEE 19th International Conference on Data Mining (ICDM), November 8-11, 2019,  Beijing, China.
+
+S. M. Hamdi, S. F. Boubrahimi, and R. Angryk. 2019, “Tensor Decomposition-based Node Embedding,” 28th ACM International Conference on Information and Knowledge Management (CIKM ’19), November 3–7, 2019, Beijing, China.
+
+S. M. Hamdi, Y. Wu, R. Angryk, L. C. Krishnamurthy, and R. Morris, “Identification of Discriminative Subnetwork from fMRI-based Complete Functional Connectivity Networks,” International Journal of Semantic Computing 13, no. 01 (2019): 25-44.
+
+S. M. Hamdi, B. Aydin, S. F. Boubrahimi, R. Angryk, L. C. Krishnamurthy, and R. Morris, “Biomarker Detection from fMRI-based Complete Functional Connectivity Networks,” 2018 IEEE International Conference of Artificial Intelligence and Knowledge Engineering (IEEE AIKE 2018), Laguna Hills, CA, USA. (Best Paper Candidate).
+
+S. M. Hamdi, Y. Wu, S. F. Boubrahimi, R. Angryk, L. C. Krishnamurthy, and R. Morris, “Tensor Decomposition for Neurodevelopmental Disorder Prediction,” 2018 International Conference of Brain Informatics, Arlington, TX, USA.
+
+S. F. Boubrahimi, R. Ma, B. Aydin, S. M. Hamdi, and R. A. Angryk, “Scalable kNN Search Approximation for Time Series Data”, 2018 IEEE International Conference on Pattern Recognition (ICPR), Beijing, China.
+
+S. M. Hamdi, D. Kempton, R. Ma, S. F. Boubrahimi and R. A. Angryk, “A time series classification-based approach for solar flare prediction,” 2017 IEEE International Conference on Big Data (Big Data), Boston, MA, USA, 2017, pp. 2543-2551.
+
+R. Ma, S. F. Boubrahimi, S. M. Hamdi and R. A. Angryk, “Solar flare prediction using multivariate time series decision trees,” 2017 IEEE International Conference on Big Data (Big Data), Boston, MA, USA, 2017, pp. 2569-2578.
+
+S. M. Hamdi, B. Aydin and R. A. Angryk, “A Pattern Growth-Based Approach for Mining Spatiotemporal Co-occurrence Patterns,” 2016 IEEE 16th International Conference on Data Mining Workshops (ICDMW), Barcelona, 2016, pp. 1125-1132.
+
+A. Kucuk, S. M. Hamdi, B. Aydin, M. A. Schuh and R. A. Angryk, “Pg-Trajectory: A PostgreSQL/PostGIS Based Data Model for Spatiotemporal Trajectories,” 2016 IEEE International Conferences on Big Data and Cloud Computing (BDCloud), Social Computing and Networking (SocialCom), Sustainable Computing and Communications (SustainCom) (BDCloud-SocialCom-SustainCom), Atlanta, GA, 2016, pp. 81-88.
+
+S. M. Hamdi, S. T. Zuhori, F. Mahmud and B. Pal, “A Compare between Shor’s Quantum Factoring Algorithm and General Number Field Sieve”, Proceedings of the1st International Conference on Electrical Engineering and Information and Communication Technology (ICEEICT ‘14), Dhaka, Bangladesh, April 2014.
+
+Teaching
+Algorithms and Data Structures, Fall '24, USU
+
+Artificial Neural Networks, Fall '24, USU
+
+Applied Deep Learning, Spring '23, '24, USU
+
+Machine Learning with Graphs, Fall '22 (interactive broadcast), '23, USU
+
+Graph Data Mining, Spring ’22, ’21 (online synchronous), NMSU.
+
+Deep Learning, Fall ’21, ’20 (online synchronous), NMSU.
+
+Data Structures and Algorithms/Algorithms Transition, Fall ’21, NMSU.
+
+Introduction to Data Structures, Spring ’22, NMSU.
+
+Theoretical Foundation of Computer Science, Spring ’17, GSU.
+
+youtube project transcript:
+MAN: When the sun flares up, its energy interacts vigorously with the magnetosphere, the ionosphere, and the atmosphere in very noticeable ways. [MUSIC PLAYING] NARRATOR: That right there is a solar flare, and this is a coronal mass ejection. Both occur because of instability in the sun's magnetic field, and all of that fuzz is energy released as a result. Put Earth in the way and that could cause some problems. SHAH MUHAMMAD HAMDI: It can interrupt our GPS communication, our radio communication, and also,
+
+in today's technology-driven society, millions of devices can be affected. NARRATOR: While there's currently methods of predicting when these events will occur, USU researchers are working on using AI to help make the process more efficient. OMAR BAHRI: What we are trying to do is to leverage all of these technologies to have predictions that are timely and allow us enough time to take preventive measures and predictions in which we have high confidence. NARRATOR: So what they're doing here is three-fold.
+
+They're first helping develop a method to clean and process initial data, then create the predictive machine learning model itself, and then help describe why it's predicting what it's predicting. PEIYU LI: Explanation behind the decision making is very important to, like, build trust between the decision makers and the solar flare prediction. NARRATOR: Currently, they're attempting to study the past 12 hours of the sun's activity to then predict if in the next 24 hours there may be a large flare, which gives us
+
+an important early warning window, especially as we look toward future space missions. MOHAMMADREZA ESKANDARINASAB: So we are going to have a more huge presence on space. So being able to predict these phenomenons are going to be more and more important for us. NARRATOR: The research team is still working on getting the model working, but the hope is that when it does come online, predictions could come fast. SOUKAINA FILALI BOUBRAHIMI: Because our end goal, eventually, is whenever data is coming in a near real time
+
+or sometimes real time, those data sets are processed, and hopefully, will give us prediction within a few minutes. And of course, these are very important for different stakeholders. NARRATOR: So at the end of the day, these predictions will help us plan for these solar disturbances and mitigate the effects felt not only here on Earth, but wherever humanity is in space. [MUSIC PLAYING]
+
+paper 1: View article
+hamza
+
+Shah Muhammad Hamdi
+Shah Muhammad Hamdi
+[HTML] from sciencedirect.com
+FlaPLeT: A full-stack web platform for end-to-end time series data processing and machine learning in solar flare prediction
+Authors
+MohammadReza EskandariNasab, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi
+Publication date
+2026/2/1
+Journal
+SoftwareX
+Volume
+33
+Pages
+102540
+Publisher
+Elsevier
+Description
+Solar flare prediction is a central challenge in space weather forecasting, with direct implications for satellite operations, aviation safety, and power grid reliability. Machine learning has achieved state-of-the-art performance for this task, particularly when applied to photospheric magnetic field parameters. FlaPLeT is an open-source, full-stack web platform that supports end-to-end machine learning workflows for multivariate time-series–based solar flare prediction without requiring any coding expertise. Built with React, Django, Celery, and PostgreSQL, the system integrates dataset preprocessing, data augmentation, functional network (graph) construction, and machine learning model training into modular asynchronous tasks that generate downloadable datasets, trained models, and structured JSON reports. The platform is deployed on a dedicated Windows server using NGINX, Waitress, Redis, TLS encryption …
+Total citations
+Cited by 3
+2026
+Scholar articles
+FlaPLeT: A full-stack web platform for end-to-end time series data processing and machine learning in solar flare prediction
+MR EskandariNasab, SM Hamdi, SF Boubrahimi - SoftwareX, 2026
+Cited by 3 Related articles All 5 versions
+PrivacyTermsHelp
+paper 2:
+View article
+hamza
+
+Shah Muhammad Hamdi
+Shah Muhammad Hamdi
+[PDF] from arxiv.org
+SolarGPT-QA: A Domain-Adaptive Large Language Model for Educational Question Answering in Space Weather and Heliophysics
+Authors
+Santosh Chapagain, MohammadReza EskandariNasab, Onur Vural, Shah Muhammad Hamdi, Soukaina Filali Boubrahimi
+Publication date
+2026/1/17
+Journal
+arXiv preprint arXiv:2601.12131
+Description
+Solar activity, including solar flares, coronal mass ejections (CMEs), and geomagnetic storms can significantly impact satellites, aviation, power grids, data centers, and space missions. Extreme solar events can cause substantial economic damage with limited advance warning, underscoring the importance of early warning systems, accurate forecasting, and effective education in space science. Although large language models (LLMs) perform well on general tasks, they often lack domain specific knowledge and pedagogical capability to clearly explain complex space science concepts. We introduce SolarGPT-QA, a question answering system based on a domain adapted large language model built on the LLaMA-3 base model. The model is trained using scientific literature and large scale question and answer data generated with GPT-4 and refined using Grok-3 in a student friendly storytelling style. To evaluate response quality, we employ an LLM-as-judge evaluation framework, where a strong reference model assesses generated answers using structured criteria including scientific accuracy, clarity, completeness, and pedagogical effectiveness. Results show that SolarGPT-QA performs strongly relative to general purpose models in zero shot settings and achieves competitive performance compared to instruction tuned models for educational explanations in space weather and heliophysics. Ablation studies indicate that combining domain adaptive pretraining with fine tuning is important for balancing scientific accuracy and educational effectiveness.
+Total citations
+Cited by 1
+2026
+Scholar articles
+SolarGPT-QA: A Domain-Adaptive Large Language Model for Educational Question Answering in Space Weather and Heliophysics
+S Chapagain, MR EskandariNasab, O Vural… - arXiv preprint arXiv:2601.12131, 2026
+Cited by 1 Related articles All 2 versions
+PrivacyTermsHelp

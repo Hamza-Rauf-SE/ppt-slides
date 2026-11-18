@@ -1,0 +1,3614 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Rauf | Research Meeting with Dr. Shah Muhammad Hamdi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* === THEME: SOFT EDITORIAL === */
+        :root {
+            --stage-bg: #1a1a1a;
+            --slide-bg: #F2EEDF;
+            --paper: #F2EEDF;
+            --paper-2: #ECE6D2;
+            --ink: #2A241B;
+            --ink-soft: #5C5345;
+            --pink: #E1A4C2;
+            --lemon: #D6DD63;
+            --blush: #E8C9B6;
+            --sage: #B7C7A8;
+            --lilac: #C9BEDC;
+            --card-fill: rgba(255, 255, 255, 0.55);
+            --rule-soft: rgba(42, 36, 27, 0.18);
+            --rule-medium: rgba(42, 36, 27, 0.35);
+            --font-display: "Cormorant Garamond", Garamond, serif;
+            --font-body: "Work Sans", sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.72s;
+        }
+
+        /* === BASE RESET === */
+        * {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        ol,
+        blockquote {
+            margin: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--ink);
+        }
+
+        /* ===========================================
+           FIXED 16:9 STAGE: MANDATORY BASE STYLES
+           Include this ENTIRE file in every presentation.
+           Slides are authored at 1920x1080 and scaled as a whole.
+           =========================================== */
+
+        /* 1. Lock the browser viewport */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: var(--stage-bg, #000);
+        }
+
+        /* 2. Full-window deck viewport */
+        .deck-viewport {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            background: var(--stage-bg, #000);
+            transition: background 0.4s ease;
+        }
+
+        /* 3. Fixed 16:9 design canvas.
+           JavaScript sets transform: translate(...) scale(...). */
+        .deck-stage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            transform-origin: 0 0;
+            background: var(--slide-bg, #fff);
+        }
+
+        /* 4. Slides stack inside the fixed stage.
+           Content must be laid out at 1920x1080, not reflowed per device. */
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            background: var(--slide-bg, #fff);
+        }
+
+        .slide.active,
+        .slide.visible {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+        }
+
+        /* 5. Keep media inside authored slide bounds */
+        img,
+        video,
+        canvas,
+        svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* 6. Presentation chrome stays outside the slide design system */
+        .deck-controls {
+            position: fixed;
+            left: 50%;
+            bottom: 22px;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        /* 7. Print one fixed-size slide per page */
+        @media print {
+            html,
+            body {
+                width: 1920px;
+                height: auto;
+                overflow: visible;
+                background: #fff;
+            }
+
+            .deck-viewport {
+                position: static;
+                overflow: visible;
+                background: #fff;
+            }
+
+            .deck-stage {
+                position: static;
+                width: auto;
+                height: auto;
+                transform: none !important;
+                background: none;
+            }
+
+            .slide {
+                position: relative;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                width: 1920px;
+                height: 1080px;
+                break-after: page;
+                page-break-after: always;
+            }
+
+            .slide:last-child {
+                break-after: auto;
+                page-break-after: auto;
+            }
+
+            .deck-controls {
+                display: none !important;
+            }
+        }
+
+        /* 8. Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+
+        /* === TYPOGRAPHY === */
+        .serif {
+            font-family: var(--font-display);
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .serif em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .kicker,
+        .marker,
+        .pagedot,
+        .footer {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .body-copy,
+        .card p,
+        .pill,
+        li {
+            font-family: var(--font-body);
+        }
+
+        /* === SHARED SLIDE CHROME === */
+        .eyebrow {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+            font-family: var(--font-body);
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 0;
+            color: var(--ink);
+        }
+
+        .pagedot {
+            position: absolute;
+            top: 60px;
+            right: 80px;
+            font-size: 26px;
+            color: var(--ink-soft);
+        }
+
+        .footer {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 26px;
+            color: var(--ink-soft);
+        }
+
+        .slide-title {
+            position: absolute;
+            left: 80px;
+            top: 130px;
+            width: 1050px;
+            font-family: var(--font-display);
+            font-size: 88px;
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .slide-title em {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .slide-sub {
+            position: absolute;
+            right: 80px;
+            top: 148px;
+            width: 520px;
+            font-family: var(--font-display);
+            font-size: 28px;
+            line-height: 1.25;
+            font-style: italic;
+            color: var(--ink-soft);
+            text-align: right;
+        }
+
+        /* === ANIMATIONS === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.visible .delay-1 { transition-delay: 0.08s; }
+        .slide.visible .delay-2 { transition-delay: 0.16s; }
+        .slide.visible .delay-3 { transition-delay: 0.24s; }
+        .slide.visible .delay-4 { transition-delay: 0.32s; }
+        .slide.visible .delay-5 { transition-delay: 0.40s; }
+
+        /* === SOFT EDITORIAL COMPONENTS === */
+        .card {
+            border-radius: 28px;
+            background: var(--card-fill);
+            padding: 34px 36px;
+        }
+
+        .card.color-pink { background: var(--pink); }
+        .card.color-lemon { background: var(--lemon); }
+        .card.color-blush { background: var(--blush); }
+        .card.color-sage { background: var(--sage); }
+        .card.color-lilac { background: var(--lilac); }
+
+        [data-project-url] {
+            cursor: pointer;
+        }
+
+        [data-project-url]:focus-visible {
+            outline: 3px solid rgba(42, 36, 27, 0.45);
+            outline-offset: 6px;
+        }
+
+        .card h3 {
+            font-family: var(--font-display);
+            font-size: 46px;
+            line-height: 1.04;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin-bottom: 16px;
+        }
+
+        .card h3 em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .card p,
+        .card li {
+            font-size: 24px;
+            line-height: 1.42;
+            color: var(--ink-soft);
+        }
+
+        .card ul {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .card strong,
+        .card.color-pink p,
+        .card.color-lemon p,
+        .card.color-blush p,
+        .card.color-sage p,
+        .card.color-lilac p {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 999px;
+            padding: 7px 16px;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--rule-soft);
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .pill-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            flex: 0 0 auto;
+            color: #fff;
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .pill-icon svg {
+            width: 14px;
+            height: 14px;
+            display: block;
+            fill: currentColor;
+        }
+
+        .pill-icon.scholar {
+            background: #4285f4;
+        }
+
+        .pill-icon.linkedin {
+            background: #0a66c2;
+            font-family: var(--font-body);
+        }
+
+        .pill-icon.youtube {
+            background: #ff0033;
+        }
+
+        .soft-rule {
+            border-top: 1px dashed var(--rule-soft);
+            padding-top: 18px;
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 72px;
+            line-height: 0.9;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .swatches {
+            position: absolute;
+            top: 80px;
+            right: 80px;
+            display: flex;
+            gap: 14px;
+        }
+
+        .swatches i {
+            width: 56px;
+            height: 56px;
+            display: block;
+            border-radius: 50%;
+        }
+
+        /* === COVER SLIDE === */
+        .s-cover .stack {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 58px;
+            bottom: 82px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 500px;
+            gap: 98px;
+            align-items: stretch;
+        }
+
+        .s-cover .cover-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-width: 0;
+            height: 100%;
+        }
+
+        .s-cover .cover-visual {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .s-cover .photo-frame {
+            width: 500px;
+            height: 650px;
+            border-radius: 42px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            box-shadow: 0 28px 48px rgba(42, 36, 27, 0.12);
+        }
+
+        .s-cover .photo-frame img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .s-cover .kicker {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 0 0 8px;
+            color: var(--ink);
+        }
+
+        .s-cover .cover-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-style: normal;
+            font-size: 82px;
+            line-height: 0.9;
+            letter-spacing: 0;
+        }
+
+        .s-cover .cover-role {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-style: normal;
+            font-size: 32px;
+            line-height: 1.08;
+            color: var(--ink-soft);
+        }
+
+        .s-cover .cover-points {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            max-width: 1030px;
+            margin-top: 58px;
+        }
+
+        .s-cover .cover-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            min-height: 0;
+            border-radius: 24px;
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            box-shadow: 0 16px 28px rgba(42, 36, 27, 0.08);
+        }
+
+        .s-cover .cover-point:nth-child(1) {
+            background: rgba(198, 219, 186, 0.72);
+        }
+
+        .s-cover .cover-point:nth-child(2) {
+            background: rgba(247, 226, 236, 0.76);
+        }
+
+        .s-cover .cover-point:nth-child(3) {
+            background: rgba(230, 240, 183, 0.76);
+        }
+
+        .s-cover .cover-point:nth-child(4) {
+            background: rgba(213, 202, 234, 0.72);
+        }
+
+        .s-cover .cover-dot {
+            width: 12px;
+            height: 12px;
+            margin-top: 7px;
+            border-radius: 50%;
+            background: var(--ink);
+            flex: 0 0 auto;
+        }
+
+        .s-cover .cover-point p {
+            margin: 0;
+            font-size: 22px;
+            line-height: 1.28;
+            color: var(--ink);
+        }
+
+        .s-cover .lede {
+            max-width: 1020px;
+            font-family: var(--font-body);
+            font-size: 25px;
+            line-height: 1.34;
+            color: var(--ink-soft);
+            margin-top: 4px;
+        }
+
+        .s-cover .contact-strip {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .s-cover .cover-logo-strip {
+            display: grid;
+            grid-template-columns: repeat(8, 98px);
+            grid-auto-rows: 98px;
+            gap: 14px;
+            align-items: start;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .s-cover .cover-logo {
+            width: 98px;
+            height: 98px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.09);
+            box-shadow: 0 18px 34px rgba(42, 36, 27, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .s-cover .cover-logo img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* === FOREWORD SLIDE === */
+        .s-foreword .left {
+            position: absolute;
+            left: 80px;
+            top: 176px;
+            width: 780px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .s-foreword .opener {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 500;
+            font-size: 50px;
+            line-height: 1.08;
+            color: var(--ink);
+        }
+
+        .s-foreword .opener::first-letter {
+            float: left;
+            font-size: 120px;
+            line-height: 0.85;
+            padding: 8px 14px 0 0;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .s-foreword .right {
+            position: absolute;
+            right: 80px;
+            top: 184px;
+            width: 780px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .s-foreword .credential-wall {
+            display: grid;
+            gap: 12px;
+        }
+
+        .s-foreword .proof-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .s-foreword .profile-proof {
+            position: relative;
+            border-radius: 28px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            box-shadow: 0 18px 34px rgba(42, 36, 27, 0.08);
+            overflow: visible;
+            transform-origin: center center;
+            transition: transform 220ms var(--ease-out-expo),
+                        box-shadow 220ms ease,
+                        background 220ms ease;
+        }
+
+        .s-foreword .profile-proof:hover,
+        .s-foreword .profile-proof:focus-within {
+            z-index: 30;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 26px 52px rgba(42, 36, 27, 0.18);
+        }
+
+        .s-foreword .proof-thumb {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            background: rgba(255, 255, 255, 0.92);
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .s-foreword .profile-proof .proof-thumb {
+            height: 132px;
+        }
+
+        .s-foreword .proof-thumb img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            transition: transform 220ms var(--ease-out-expo);
+        }
+
+        .s-foreword .profile-proof .proof-thumb img {
+            object-fit: contain;
+            object-position: center top;
+            background: #fff;
+        }
+
+        .s-foreword .proof-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-top: 10px;
+        }
+
+        .s-foreword .proof-title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            line-height: 1;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .s-foreword .proof-note {
+            font-size: 12px;
+            line-height: 1.3;
+            color: var(--ink-soft);
+            text-align: right;
+        }
+
+        .s-foreword .profile-proof .proof-meta {
+            margin-top: 8px;
+            justify-content: center;
+            text-align: center;
+            min-height: 42px;
+        }
+
+        .s-foreword .linkedin-proof {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: minmax(0, 2.7fr) minmax(190px, 0.95fr);
+            gap: 18px;
+            align-items: center;
+            padding: 14px 16px;
+        }
+
+        .s-foreword .linkedin-proof .proof-thumb {
+            height: 138px;
+        }
+
+        .s-foreword .linkedin-proof .proof-thumb img {
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .s-foreword .linkedin-proof .proof-meta {
+            min-height: 0;
+            margin-top: 0;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            text-align: left;
+            gap: 8px;
+        }
+
+        .s-foreword .linkedin-proof .proof-title {
+            font-size: 24px;
+            line-height: 0.95;
+        }
+
+        .s-foreword .linkedin-proof .proof-note {
+            font-size: 15px;
+            line-height: 1.35;
+            text-align: left;
+            max-width: 220px;
+        }
+
+        .credential-lightbox {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 44px 48px;
+            background: rgba(42, 36, 27, 0.18);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 180ms ease;
+            pointer-events: none;
+            z-index: 180;
+        }
+
+        .credential-lightbox.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .credential-lightbox-frame {
+            width: 920px;
+            height: min(900px, calc(100vh - 88px));
+            padding: 18px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(42, 36, 27, 0.16);
+            box-shadow: 0 32px 90px rgba(42, 36, 27, 0.28);
+            overflow: hidden;
+            transform: scale(0.96);
+            transition: transform 220ms var(--ease-out-expo);
+        }
+
+        .credential-lightbox.is-open .credential-lightbox-frame {
+            transform: scale(1);
+        }
+
+        .credential-lightbox.is-landscape .credential-lightbox-frame {
+            width: 1120px;
+            height: min(700px, calc(100vh - 88px));
+        }
+
+        .credential-lightbox.is-portrait .credential-lightbox-frame {
+            width: 700px;
+            height: min(920px, calc(100vh - 88px));
+        }
+
+        .credential-lightbox.is-scroll .credential-lightbox-frame {
+            width: 760px;
+            height: min(920px, calc(100vh - 88px));
+            overflow-y: auto;
+            scrollbar-gutter: stable;
+        }
+
+        .credential-lightbox-media {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .credential-lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center top;
+            display: block;
+            background: #fff;
+        }
+
+        .credential-lightbox.is-scroll .credential-lightbox-media {
+            height: auto;
+            overflow: visible;
+        }
+
+        .credential-lightbox.is-scroll img {
+            width: 100%;
+            height: auto;
+            object-fit: unset;
+            object-position: center top;
+        }
+
+        .s-foreword .profile-proof:hover,
+        .s-foreword .profile-proof:focus-within {
+            transform: none;
+        }
+
+        .s-foreword .profile-proof:hover .proof-thumb img,
+        .s-foreword .profile-proof:focus-within .proof-thumb img {
+            transform: scale(1.02);
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 100px;
+            line-height: 0.95;
+            font-weight: 500;
+            letter-spacing: 0;
+            color: var(--ink);
+        }
+
+        .stat-label {
+            margin-top: 12px;
+            font-size: 23px;
+            line-height: 1.35;
+            color: var(--ink);
+        }
+
+        /* === GRID LAYOUTS === */
+        .three-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 300px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .readiness-slide .three-grid {
+            top: 242px;
+            bottom: 88px;
+        }
+
+        .readiness-slide .slide-title {
+            top: 120px;
+            width: 1320px;
+            font-size: 80px;
+            line-height: 0.95;
+        }
+
+        .readiness-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 30px 30px 26px;
+        }
+
+        .readiness-card h3 {
+            margin-bottom: 0;
+            font-size: 40px;
+            line-height: 1.02;
+        }
+
+        .readiness-card ul {
+            padding-left: 22px;
+        }
+
+        .readiness-card li {
+            font-size: 21px;
+            line-height: 1.34;
+            margin-bottom: 8px;
+        }
+
+        .readiness-card.recognition-card li {
+            line-height: 1.22;
+            margin-bottom: 6px;
+        }
+
+        .readiness-card .evidence-strip {
+            margin-top: auto;
+            display: grid;
+            gap: 8px;
+        }
+
+        .readiness-card .evidence-strip.single {
+            grid-template-columns: 1fr;
+        }
+
+        .readiness-card .evidence-strip.double {
+            grid-template-columns: 1fr;
+        }
+
+        .readiness-card .evidence-strip.double .evidence-thumb {
+            height: 152px;
+        }
+
+        .readiness-card .evidence-thumb {
+            height: 220px;
+            border-radius: 18px;
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 14px 28px rgba(42, 36, 27, 0.08);
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .readiness-card .evidence-thumb img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            object-position: center;
+            background: #fff;
+            transition: transform 220ms var(--ease-out-expo);
+        }
+
+        .readiness-card .evidence-thumb:hover img,
+        .readiness-card .evidence-thumb:focus img {
+            transform: scale(1.02);
+        }
+
+        .certificate-slider {
+            position: relative;
+            height: 390px;
+            margin-top: auto;
+            border-radius: 22px;
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.2)),
+                radial-gradient(circle at 18% 20%, rgba(214, 221, 99, 0.22), transparent 34%),
+                radial-gradient(circle at 82% 74%, rgba(225, 164, 194, 0.24), transparent 38%);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+        }
+
+        .certificate-slide {
+            position: absolute;
+            inset: 16px 18px 54px;
+            opacity: 0;
+            transform: translateX(18px) scale(0.992);
+            pointer-events: none;
+            transition: opacity 360ms ease, transform 360ms ease;
+        }
+
+        .certificate-slide.is-active {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .certificate-slide .evidence-thumb {
+            height: 100%;
+            border-radius: 16px;
+        }
+
+        .certificate-nav {
+            position: absolute;
+            top: 50%;
+            z-index: 5;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-family: var(--font-body);
+            font-size: 24px;
+            line-height: 1;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 10px 24px rgba(42, 36, 27, 0.12);
+            transition: transform 220ms ease, background 220ms ease;
+        }
+
+        .certificate-nav:hover,
+        .certificate-nav:focus-visible {
+            background: rgba(255, 255, 255, 0.96);
+            transform: translateY(-50%) scale(1.08);
+            outline: none;
+        }
+
+        .certificate-nav.prev {
+            left: 10px;
+        }
+
+        .certificate-nav.next {
+            right: 10px;
+        }
+
+        .certificate-dots {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 18px;
+            display: grid;
+            grid-template-columns: repeat(11, 1fr);
+            gap: 5px;
+        }
+
+        .certificate-dots i {
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(42, 36, 27, 0.18);
+            transition: background 220ms ease, transform 220ms ease;
+        }
+
+        .certificate-dots i.is-active {
+            background: rgba(42, 36, 27, 0.44);
+            transform: scaleY(1.55);
+        }
+
+        .two-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 285px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+        }
+
+        .four-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 300px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        .paper-showcase {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 292px;
+            bottom: 126px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .paper-tile {
+            position: relative;
+            border-radius: 30px;
+            padding: 22px 22px 24px;
+            background: var(--card-fill);
+            display: grid;
+            grid-template-rows: 292px auto;
+            gap: 20px;
+            overflow: visible;
+        }
+
+        .paper-tile:hover,
+        .paper-tile:focus-within {
+            z-index: 30;
+        }
+
+        .paper-tile.color-pink {
+            background: var(--pink);
+        }
+
+        .paper-tile.color-lemon {
+            background: var(--lemon);
+        }
+
+        .paper-tile.color-sage {
+            background: var(--sage);
+        }
+
+        .paper-shot {
+            width: 100%;
+            height: 292px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.62);
+            overflow: hidden;
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            cursor: zoom-in;
+        }
+
+        .paper-shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .paper-full-preview {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 650px;
+            height: 865px;
+            padding: 18px;
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(42, 36, 27, 0.16);
+            box-shadow: 0 30px 80px rgba(42, 36, 27, 0.33);
+            opacity: 0;
+            transform: translate(-50%, -49%) scale(0.94);
+            transition: opacity 180ms ease, transform 240ms var(--ease-out-expo);
+            pointer-events: none;
+            z-index: 80;
+        }
+
+        .paper-full-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top center;
+            border-radius: 16px;
+            background: #fff;
+            display: block;
+        }
+
+        .paper-shot:hover + .paper-full-preview,
+        .paper-shot:focus + .paper-full-preview {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .published-papers .eyebrow,
+        .published-papers .pagedot {
+            top: 42px;
+        }
+
+        .published-papers .slide-title {
+            top: 96px;
+            width: 990px;
+            font-size: 78px;
+            line-height: 0.96;
+        }
+
+        .published-papers .slide-sub {
+            top: 128px;
+            font-size: 26px;
+        }
+
+        .published-papers .paper-showcase {
+            top: 266px;
+            bottom: 110px;
+        }
+
+        .published-papers .paper-tile {
+            grid-template-rows: 328px auto;
+            gap: 18px;
+        }
+
+        .published-papers .paper-shot {
+            height: 328px;
+        }
+
+        .paper-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .paper-meta h3 {
+            font-family: var(--font-display);
+            font-size: 38px;
+            line-height: 1.02;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .paper-meta p {
+            font-size: 20px;
+            line-height: 1.32;
+            color: var(--ink);
+        }
+
+        .paper-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .paper-facts .pill {
+            font-size: 17px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.58);
+        }
+
+        .five-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 310px;
+            bottom: 250px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
+        .stack-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .mini-label {
+            font-family: var(--font-display);
+            font-size: 27px;
+            font-style: italic;
+            color: var(--ink-soft);
+            margin-bottom: 14px;
+        }
+
+        /* === CURRENT RESEARCH SLIDE === */
+        .current-research .slide-title {
+            top: 112px;
+            width: 1120px;
+            font-size: 76px;
+            line-height: 0.96;
+        }
+
+        .current-research .slide-sub {
+            top: 128px;
+            width: 560px;
+            font-size: 26px;
+        }
+
+        .current-research-grid {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 300px;
+            bottom: 126px;
+            display: grid;
+            grid-template-columns: 0.92fr 1.08fr;
+            gap: 30px;
+        }
+
+        .emotion-panel {
+            border-radius: 34px;
+            padding: 26px;
+            background: var(--lilac);
+            display: grid;
+            grid-template-rows: 402px auto;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .emotion-figure {
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .emotion-figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        .paper-title-block {
+            border-radius: 24px;
+            padding: 22px 24px;
+            background: rgba(255, 255, 255, 0.64);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+        }
+
+        .paper-title-block .mini-label {
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .paper-title-block h3 {
+            font-family: var(--font-display);
+            font-size: 40px;
+            line-height: 1.03;
+            font-weight: 500;
+        }
+
+        .research-card-stack {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .current-research .card {
+            padding: 26px 30px;
+        }
+
+        .current-research .card h3 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .current-research .card li,
+        .current-research .card p {
+            font-size: 19px;
+            line-height: 1.27;
+        }
+
+        .current-research .card li {
+            margin-bottom: 5px;
+        }
+
+        .current-research .soft-rule {
+            padding-top: 10px;
+        }
+
+        /* === PAPER SLIDE === */
+        .s-paper .paper-card {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 320px;
+            bottom: 135px;
+            display: grid;
+            grid-template-columns: 0.95fr 1.15fr;
+            gap: 36px;
+        }
+
+        .s-paper .slide-title {
+            font-size: 72px;
+            width: 1260px;
+        }
+
+        .s-paper .quote-card {
+            border-radius: 36px;
+            background: var(--lemon);
+            padding: 34px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .s-paper blockquote {
+            font-family: var(--font-display);
+            font-size: 58px;
+            line-height: 1.05;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .s-paper blockquote em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .s-paper .evidence {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .s-paper .card {
+            padding: 24px 26px;
+        }
+
+        .s-paper .card h3 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .s-paper .card p {
+            font-size: 21px;
+            line-height: 1.34;
+        }
+
+        .s-paper .step-num {
+            font-size: 62px;
+        }
+
+        .project-slider {
+            position: relative;
+            min-height: 474px;
+            border-radius: 28px;
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.16)),
+                radial-gradient(circle at 16% 14%, rgba(225, 164, 194, 0.28), transparent 34%),
+                radial-gradient(circle at 84% 74%, rgba(183, 199, 168, 0.34), transparent 36%);
+            border: 1px solid rgba(42, 36, 27, 0.14);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+        }
+
+        .project-panel {
+            position: absolute;
+            inset: 0;
+            padding: 26px 28px 22px;
+            display: grid;
+            grid-template-rows: auto 1fr auto auto;
+            gap: 10px;
+            opacity: 0;
+            transform: translateX(24px) scale(0.992);
+            pointer-events: none;
+            transition: opacity 420ms ease, transform 420ms ease;
+        }
+
+        .project-panel.is-active {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .project-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .project-topline h3 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            line-height: 0.96;
+            font-weight: 600;
+            letter-spacing: 0;
+            margin: 0;
+        }
+
+        .project-badge {
+            flex: 0 0 auto;
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 13px;
+            line-height: 1;
+            font-weight: 600;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(42, 36, 27, 0.14);
+        }
+
+        .project-visual {
+            border-radius: 24px;
+            background: rgba(242, 238, 223, 0.74);
+            border: 1px solid rgba(42, 36, 27, 0.13);
+            padding: 18px;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 14px;
+            min-height: 258px;
+        }
+
+        .project-window {
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.66);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            padding: 14px;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 12px;
+        }
+
+        .project-window-bar {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .project-window-bar i {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--pink);
+        }
+
+        .project-window-bar i:nth-child(2) {
+            background: var(--lemon);
+        }
+
+        .project-window-bar i:nth-child(3) {
+            background: var(--sage);
+        }
+
+        .project-screen {
+            display: grid;
+            gap: 8px;
+        }
+
+        .project-row {
+            min-height: 30px;
+            border-radius: 12px;
+            background: rgba(42, 36, 27, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink-soft);
+        }
+
+        .project-row strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .project-flow {
+            display: grid;
+            gap: 8px;
+        }
+
+        .flow-node {
+            border-radius: 16px;
+            min-height: 40px;
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 13px;
+            line-height: 1.14;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .flow-node.accent-pink { background: rgba(225, 164, 194, 0.7); }
+        .flow-node.accent-sage { background: rgba(183, 199, 168, 0.72); }
+        .flow-node.accent-lemon { background: rgba(214, 221, 99, 0.72); }
+        .flow-node.accent-lilac { background: rgba(201, 190, 220, 0.72); }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: flex-start;
+        }
+
+        .project-stack span {
+            border-radius: 999px;
+            padding: 5px 9px;
+            background: rgba(255, 255, 255, 0.64);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 600;
+            color: var(--ink-soft);
+        }
+
+        .project-caption {
+            font-size: 15px;
+            line-height: 1.22;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .project-progress {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 7px;
+        }
+
+        .project-progress i {
+            height: 5px;
+            border-radius: 999px;
+            background: rgba(42, 36, 27, 0.18);
+            transition: background 260ms ease, transform 260ms ease;
+        }
+
+        .project-progress i.is-active {
+            background: rgba(42, 36, 27, 0.42);
+            transform: scaleY(1.6);
+        }
+
+        .project-nav {
+            position: absolute;
+            top: 50%;
+            z-index: 6;
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-family: var(--font-body);
+            font-size: 28px;
+            line-height: 1;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.68);
+            box-shadow: 0 10px 28px rgba(42, 36, 27, 0.12);
+            transition: transform 220ms ease, background 220ms ease;
+        }
+
+        .project-nav:hover,
+        .project-nav:focus-visible {
+            background: rgba(255, 255, 255, 0.92);
+            transform: translateY(-50%) scale(1.08);
+            outline: none;
+        }
+
+        .project-nav.prev {
+            left: 16px;
+        }
+
+        .project-nav.next {
+            right: 16px;
+        }
+
+        /* === ALIGNMENT MATRIX === */
+        .alignment-table {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 315px;
+            bottom: 130px;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr 1fr;
+            grid-template-rows: 74px repeat(4, 1fr);
+            background: var(--card-fill);
+            border-radius: 28px;
+            padding: 8px;
+            overflow: hidden;
+        }
+
+        .alignment-table .cell {
+            padding: 20px 22px;
+            border-right: 1px dashed var(--rule-soft);
+            border-bottom: 1px dashed var(--rule-soft);
+            font-size: 22px;
+            line-height: 1.34;
+            color: var(--ink-soft);
+        }
+
+        .alignment-table .cell:nth-child(3n) {
+            border-right: 0;
+        }
+
+        .alignment-table .head-row {
+            font-family: var(--font-display);
+            font-size: 30px;
+            color: var(--ink);
+            border-bottom: 1.5px solid var(--rule-medium);
+        }
+
+        .alignment-table .row-label {
+            font-family: var(--font-display);
+            font-size: 34px;
+            line-height: 1.02;
+            color: var(--ink);
+        }
+
+        .alignment-table .last {
+            border-bottom: 0;
+        }
+
+        /* === RESEARCH IDEA SLIDES === */
+        .idea-hero {
+            position: absolute;
+            left: 80px;
+            top: 235px;
+            width: 620px;
+            bottom: 150px;
+            border-radius: 36px;
+            padding: 54px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--pink);
+        }
+
+        .idea-hero h2 {
+            font-family: var(--font-display);
+            font-size: 112px;
+            line-height: 0.96;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .idea-hero h2 em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .idea-panel {
+            position: absolute;
+            left: 740px;
+            right: 80px;
+            top: 235px;
+            bottom: 150px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .slide[data-label="Research Idea 1"] .idea-hero {
+            top: 182px;
+            bottom: 104px;
+        }
+
+        .slide[data-label="Research Idea 1"] .idea-panel {
+            top: 182px;
+            bottom: 104px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-hero {
+            top: 128px;
+            bottom: 172px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel {
+            top: 128px;
+            bottom: 172px;
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-height: 0;
+            overflow: hidden;
+            padding: 24px 34px;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-card-icon {
+            width: 66px;
+            height: 66px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            box-shadow: 0 14px 26px rgba(42, 36, 27, 0.08);
+            flex: 0 0 auto;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card.color-pink .idea-card-icon {
+            background: rgba(247, 226, 236, 0.92);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card:not(.color-pink):not(.color-lilac):not(.color-lemon) .idea-card-icon {
+            background: rgba(198, 219, 186, 0.9);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card.color-lilac .idea-card-icon {
+            background: rgba(213, 202, 234, 0.92);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card.color-lemon .idea-card-icon {
+            background: rgba(230, 240, 183, 0.92);
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-card-icon svg {
+            width: 34px;
+            height: 34px;
+            stroke: var(--ink);
+            stroke-width: 1.9;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card h3 {
+            font-size: 31px;
+            margin-bottom: 0;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card p,
+        .slide[data-label="Research Idea 2"] .idea-panel .card li {
+            font-size: 18px;
+            line-height: 1.22;
+        }
+
+        .slide[data-label="Research Idea 2"] .idea-panel .card li {
+            margin-bottom: 4px;
+        }
+
+        .kidney-figure {
+            margin-top: 6px;
+            height: 78px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(42, 36, 27, 0.12);
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .kidney-figure img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .pipeline-strip {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            bottom: 140px;
+            height: 74px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 18px;
+            background: var(--card-fill);
+            padding: 0 30px;
+            font-family: var(--font-display);
+            font-size: 25px;
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        /* === CHART STYLE === */
+        .chart-wrap {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 280px;
+            bottom: 145px;
+            display: grid;
+            grid-template-columns: 560px 1fr;
+            gap: 36px;
+        }
+
+        .roadmap {
+            background: var(--card-fill);
+            border-radius: 28px;
+            padding: 42px 46px;
+            position: relative;
+        }
+
+        .roadmap-line {
+            position: absolute;
+            left: 74px;
+            top: 88px;
+            bottom: 80px;
+            border-left: 2px dashed var(--rule-medium);
+        }
+
+        .roadmap-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 24px;
+            margin-bottom: 34px;
+        }
+
+        .roadmap-dot {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--lemon);
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 28px;
+            z-index: 2;
+        }
+
+        .roadmap-item h3 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 500;
+            line-height: 1.04;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-item p {
+            font-size: 23px;
+            line-height: 1.4;
+            color: var(--ink-soft);
+        }
+
+        /* === QUESTION SLIDE === */
+        .question-slide {
+            background: var(--pink);
+        }
+
+        .question-slide .eyebrow,
+        .question-slide .pagedot {
+            color: var(--ink);
+        }
+
+        .question-slide .slide-title {
+            top: 108px;
+            width: 1380px;
+        }
+
+        .questions {
+            position: absolute;
+            left: 80px;
+            right: 80px;
+            top: 198px;
+            bottom: 140px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .question-card {
+            border-radius: 36px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 50px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 24px;
+        }
+
+        .question-icon {
+            width: 92px;
+            height: 92px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(42, 36, 27, 0.1);
+            box-shadow: 0 16px 28px rgba(42, 36, 27, 0.08);
+        }
+
+        .question-card:nth-child(1) .question-icon {
+            background: rgba(230, 240, 183, 0.9);
+        }
+
+        .question-card:nth-child(2) .question-icon {
+            background: rgba(198, 219, 186, 0.9);
+        }
+
+        .question-card:nth-child(3) .question-icon {
+            background: rgba(213, 202, 234, 0.9);
+        }
+
+        .question-icon svg {
+            width: 46px;
+            height: 46px;
+            stroke: var(--ink);
+            stroke-width: 1.9;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .question-card h3 {
+            font-family: var(--font-display);
+            font-size: 62px;
+            line-height: 1;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin: 0;
+        }
+
+        .question-card p {
+            font-size: 25px;
+            line-height: 1.45;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        /* === CLOSER === */
+        .s-closer {
+            background: var(--lemon);
+        }
+
+        .s-closer .center {
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            width: 1420px;
+            text-align: center;
+        }
+
+        .s-closer .marker {
+            font-size: 34px;
+            color: var(--ink);
+            margin-bottom: 18px;
+        }
+
+        .s-closer h2 {
+            font-family: var(--font-display);
+            font-size: 128px;
+            line-height: 0.94;
+            font-weight: 500;
+            letter-spacing: 0;
+            margin-bottom: 22px;
+        }
+
+        .s-closer h2 em {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .s-closer p {
+            font-size: 25px;
+            line-height: 1.36;
+            color: var(--ink);
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .s-closer .thanks-note {
+            margin-bottom: 14px;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        /* === DECK UI === */
+        .deck-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(42, 36, 27, 0.72);
+            color: #F2EEDF;
+            font-family: var(--font-body);
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+            opacity: 0.28;
+            transition: opacity 0.25s ease;
+        }
+
+        .deck-controls:hover,
+        .deck-controls:focus-within {
+            opacity: 0.95;
+        }
+
+        .deck-controls button,
+        .edit-toggle {
+            appearance: none;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(242, 238, 223, 0.16);
+            color: #F2EEDF;
+            min-width: 34px;
+            height: 34px;
+            font-family: var(--font-body);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .progress-track {
+            width: 170px;
+            height: 5px;
+            border-radius: 999px;
+            background: rgba(242, 238, 223, 0.22);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: var(--lemon);
+            border-radius: inherit;
+        }
+
+        .edit-hotzone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            z-index: 10000;
+            cursor: pointer;
+        }
+
+        .edit-toggle {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(42, 36, 27, 0.78);
+            color: var(--paper);
+            transition: opacity 0.3s ease;
+        }
+
+        .edit-toggle.show,
+        .edit-toggle.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        [contenteditable="true"] {
+            outline: 2px dashed rgba(42, 36, 27, 0.45);
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-viewport">
+        <main class="deck-stage" id="deckStage">
+            <!-- Slide 1: Cover, adapted from the original PPT opening slide -->
+            <section class="slide s-cover active" data-label="Opening">
+                <div class="swatches reveal delay-1" aria-hidden="true">
+                    <i style="background: var(--pink)"></i>
+                    <i style="background: var(--lemon)"></i>
+                    <i style="background: var(--sage)"></i>
+                </div>
+                <div class="stack">
+                    <div class="cover-copy">
+                        <div class="kicker reveal delay-1">
+                            <span class="cover-name" data-editable>Hamza Rauf</span>
+                            <span class="cover-role" data-editable>Senior Software Engineer and AI Researcher</span>
+                        </div>
+                        <div class="cover-points reveal delay-2">
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>6+ years of industry-level AI and software experience.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>GRE 331 and IELTS 7.0.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>2+ years of research experience with Dr. Umair Khan, a Stanford top 2% scientist.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>Published in Q1 journals with impact factors 8.0 and 5.0.</p>
+                            </div>
+                            <div class="cover-point">
+                                <span class="cover-dot" aria-hidden="true"></span>
+                                <p data-editable>Section leader at Stanford Code in Place and Harvard CS50x Puzzle Day participant.</p>
+                            </div>
+                        </div>
+                        <div class="contact-strip reveal delay-4">
+                            <a class="pill" href="mailto:hamzarauf.se@gmail.com" data-editable>hamzarauf.se@gmail.com</a>
+                            <a class="pill" href="https://scholar.google.com/citations?user=c-yjPVMAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" data-editable><span class="pill-icon scholar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2 9l10 6 10-6-10-6Zm-6 8.4v4.1c0 2 3.1 3.5 6 3.5s6-1.5 6-3.5v-4.1l-6 3.6-6-3.6Z"></path></svg></span>Google Scholar</a>
+                            <a class="pill" href="https://www.linkedin.com/in/hamza-rauf-/" target="_blank" rel="noreferrer" data-editable><span class="pill-icon linkedin" aria-hidden="true">in</span>LinkedIn</a>
+                            <a class="pill" href="https://www.youtube.com/@hamzarauf99" target="_blank" rel="noreferrer" data-editable><span class="pill-icon youtube" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.6 7.1a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1C2 9 2 12 2 12s0 3 .4 4.9A3 3 0 0 0 4.5 19c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15 22 12 22 12s0-3-.4-4.9ZM10 15.3V8.7l5.8 3.3-5.8 3.3Z"></path></svg></span>YouTube</a>
+                        </div>
+                        <div class="cover-logo-strip reveal delay-3" aria-label="Affiliations and platforms">
+                            <div class="cover-logo"><img src="images/icons/standford_icon.webp" alt="Stanford icon"></div>
+                            <div class="cover-logo"><img src="images/icons/harvard_icon.webp" alt="Harvard icon"></div>
+                            <div class="cover-logo"><img src="images/icons/microsoft_icon.png" alt="Microsoft icon"></div>
+                            <div class="cover-logo"><img src="images/icons/aws icon.png" alt="AWS icon"></div>
+                            <div class="cover-logo"><img src="images/icons/oracle_icon.png" alt="Oracle icon"></div>
+                            <div class="cover-logo"><img src="images/icons/commonwealth_bank_iconj.png" alt="Commonwealth Bank icon"></div>
+                            <div class="cover-logo"><img src="images/icons/deloitte_icon.png" alt="Deloitte icon"></div>
+                            <div class="cover-logo"><img src="images/icons/kpmg_icon.png" alt="KPMG icon"></div>
+                        </div>
+                    </div>
+                    <div class="cover-visual reveal delay-3">
+                        <div class="photo-frame">
+                            <img src="images/profile_picture.jpeg" alt="Hamza Rauf profile picture">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Who I Am, adapted from the original PPT profile slide -->
+            <section class="slide s-foreword" data-label="Profile">
+                <div class="eyebrow">Who I Am</div>
+                <div class="pagedot">ii.</div>
+                <div class="left reveal delay-1">
+                    <p class="opener" data-editable>Hamza Rauf - Senior Software Engineer and AI Researcher who builds efficient models, data pipelines, and AI systems that work outside the lab.</p>
+                    <div class="credential-wall reveal delay-2">
+                        <div class="proof-strip">
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" data-preview-alt="GRE certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="Hamza Rauf GRE certificate">
+                                    <img src="images/hamza_GRE_Certificate/hamza_GRE_Certificate.jpg" alt="GRE certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>GRE 331</p>
+                                    <p class="proof-note" data-editable>Q165 / V166</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Ielts_Certificate.jpg" data-preview-alt="IELTS certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="IELTS certificate">
+                                    <img src="images/hamza_GRE_Certificate/Ielts_Certificate.jpg" alt="IELTS certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>IELTS 7.0</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Percentage-Certificate.jpg" data-preview-alt="Sukkur IBA percentage certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="Sukkur IBA percentage certificate">
+                                    <img src="images/hamza_GRE_Certificate/Percentage-Certificate.jpg" alt="Percentage certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>85% certificate</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Duolingo%20English%20Test.jpg" data-preview-alt="Duolingo English Test certificate" data-preview-mode="portrait">
+                                <div class="proof-thumb" tabindex="0" aria-label="Duolingo English Test certificate">
+                                    <img src="images/hamza_GRE_Certificate/Duolingo%20English%20Test.jpg" alt="Duolingo English Test certificate">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>Duolingo English</p>
+                                </div>
+                            </article>
+                            <article class="profile-proof linkedin-proof" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza%20linkedin%20profile.png" data-preview-alt="Hamza Rauf LinkedIn profile screenshot" data-preview-mode="scroll">
+                                <div class="proof-thumb" tabindex="0" aria-label="Hamza Rauf LinkedIn profile screenshot">
+                                    <img src="images/hamza_GRE_Certificate/hamza%20linkedin%20profile.png" alt="Hamza Rauf LinkedIn profile screenshot">
+                                </div>
+                                <div class="proof-meta">
+                                    <p class="proof-title" data-editable>LinkedIn profile</p>
+                                    <p class="proof-note" data-editable>roles, tech stack, activity, and public profile</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="card color-lemon reveal delay-2">
+                        <div class="stat-value" data-editable>331</div>
+                        <p class="stat-label" data-editable>GRE score, with IELTS 7.0 and a B.S. in Computer Science from Sukkur IBA University.</p>
+                    </div>
+                    <div class="card color-pink reveal delay-3">
+                        <div class="stat-value" data-editable>Top 5%</div>
+                        <p class="stat-label" data-editable>Top 5% of my class, with CGPA 3.31 / 85% and a strong base in algorithms, machine learning, and big data.</p>
+                    </div>
+                    <div class="card color-sage reveal delay-4">
+                        <div class="stat-value" data-editable>6+</div>
+                        <p class="stat-label" data-editable>Years of AI and software experience across backend, frontend, cloud, automation, and production systems.</p>
+                    </div>
+                    <div class="card color-lilac reveal delay-5">
+                        <div class="stat-value" data-editable>Lab fit</div>
+                        <p class="stat-label" data-editable>Compact domain LLMs, deep learning for time series, research platforms, careful evaluation, and clear writing.</p>
+                    </div>
+                </div>
+                <div class="footer"><span></span><span>Prospective PhD conversation</span></div>
+            </section>
+
+            <!-- Slide 3: Academic and research achievements from the original PPT -->
+            <section class="slide readiness-slide" data-label="Readiness">
+                <div class="eyebrow">Evidence of readiness</div>
+                <div class="pagedot">iii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Academic and research <em>achievements</em></h2>
+                <div class="three-grid">
+                    <article class="card color-blush readiness-card reveal delay-1">
+                        <h3 data-editable>Academic proof</h3>
+                        <ul data-editable>
+                            <li>Won a fully funded merit scholarship as one of the top 100 students in the country.</li>
+                            <li>Earned distinction in 24 courses, including algorithms, machine learning, and big data.</li>
+                            <li>Received a professional job offer before graduation.</li>
+                        </ul>
+                        <div class="evidence-strip single">
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/Hamza-scholarship-certificate.jpg" data-preview-alt="Hamza scholarship certificate" data-preview-mode="landscape" aria-label="Preview Hamza scholarship certificate">
+                                <img src="images/hamza_GRE_Certificate/Hamza-scholarship-certificate.jpg" alt="Hamza scholarship certificate">
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card color-sage readiness-card reveal delay-2">
+                        <h3 data-editable>Research proof</h3>
+                        <ul data-editable>
+                            <li>Worked as a Research Assistant with Dr. Umair Khan, a Stanford top 2% scientist.</li>
+                            <li>Published multiple papers, including first-author Q1 work in Complex &amp; Intelligent Systems and co-authored Q1 work in Engineering Applications of Artificial Intelligence.</li>
+                            <li>Worked with model comparison, evaluation metrics, literature reviews, scientific writing, and LaTeX.</li>
+                        </ul>
+                        <div class="evidence-strip double">
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/umair%20google%20schoalr%20profile.png" data-preview-alt="Dr Umair Khan Google Scholar profile" data-preview-mode="scroll" aria-label="Preview Dr Umair Khan Google Scholar profile">
+                                <img src="images/hamza_GRE_Certificate/umair%20google%20schoalr%20profile.png" alt="Dr Umair Khan Google Scholar profile">
+                            </div>
+                            <div class="evidence-thumb" tabindex="0" data-preview-src="images/hamza_GRE_Certificate/hamza%20google%20schoalr%20profile.png" data-preview-alt="Hamza Rauf Google Scholar profile" data-preview-mode="scroll" aria-label="Preview Hamza Rauf Google Scholar profile">
+                                <img src="images/hamza_GRE_Certificate/hamza%20google%20schoalr%20profile.png" alt="Hamza Rauf Google Scholar profile">
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card color-lilac readiness-card recognition-card reveal delay-3">
+                        <h3 data-editable>Recognition</h3>
+                        <ul data-editable>
+                            <li>Employee of the Year in both 2023 and 2024.</li>
+                            <li>Section leader at Stanford Code in Place 2024.</li>
+                            <li>Part of the winning team at the NETSOL AI Hackathon.</li>
+                        </ul>
+                        <div class="certificate-slider" aria-label="Recognition certificate slider">
+                            <section class="certificate-slide is-active">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_01.jpg" data-preview-alt="Recognition certificate 1" data-preview-mode="landscape" aria-label="Preview recognition certificate 1">
+                                    <img src="images/certificates/Certificates/Certificates_01.jpg" alt="Recognition certificate 1">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_02.jpg" data-preview-alt="Recognition certificate 2" data-preview-mode="landscape" aria-label="Preview recognition certificate 2">
+                                    <img src="images/certificates/Certificates/Certificates_02.jpg" alt="Recognition certificate 2">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_03.jpg" data-preview-alt="Recognition certificate 3" data-preview-mode="landscape" aria-label="Preview recognition certificate 3">
+                                    <img src="images/certificates/Certificates/Certificates_03.jpg" alt="Recognition certificate 3">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_04.jpg" data-preview-alt="Recognition certificate 4" data-preview-mode="landscape" aria-label="Preview recognition certificate 4">
+                                    <img src="images/certificates/Certificates/Certificates_04.jpg" alt="Recognition certificate 4">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_05.jpg" data-preview-alt="Recognition certificate 5" data-preview-mode="landscape" aria-label="Preview recognition certificate 5">
+                                    <img src="images/certificates/Certificates/Certificates_05.jpg" alt="Recognition certificate 5">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_06.jpg" data-preview-alt="Recognition certificate 6" data-preview-mode="landscape" aria-label="Preview recognition certificate 6">
+                                    <img src="images/certificates/Certificates/Certificates_06.jpg" alt="Recognition certificate 6">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_07.jpg" data-preview-alt="Recognition certificate 7" data-preview-mode="landscape" aria-label="Preview recognition certificate 7">
+                                    <img src="images/certificates/Certificates/Certificates_07.jpg" alt="Recognition certificate 7">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_08.jpg" data-preview-alt="Recognition certificate 8" data-preview-mode="landscape" aria-label="Preview recognition certificate 8">
+                                    <img src="images/certificates/Certificates/Certificates_08.jpg" alt="Recognition certificate 8">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_09.jpg" data-preview-alt="Recognition certificate 9" data-preview-mode="landscape" aria-label="Preview recognition certificate 9">
+                                    <img src="images/certificates/Certificates/Certificates_09.jpg" alt="Recognition certificate 9">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_10.jpg" data-preview-alt="Recognition certificate 10" data-preview-mode="landscape" aria-label="Preview recognition certificate 10">
+                                    <img src="images/certificates/Certificates/Certificates_10.jpg" alt="Recognition certificate 10">
+                                </div>
+                            </section>
+                            <section class="certificate-slide">
+                                <div class="evidence-thumb" tabindex="0" data-preview-src="images/certificates/Certificates/Certificates_11.jpg" data-preview-alt="Recognition certificate 11" data-preview-mode="landscape" aria-label="Preview recognition certificate 11">
+                                    <img src="images/certificates/Certificates/Certificates_11.jpg" alt="Recognition certificate 11">
+                                </div>
+                            </section>
+                            <button class="certificate-nav prev" type="button" aria-label="Previous certificate">‹</button>
+                            <button class="certificate-nav next" type="button" aria-label="Next certificate">›</button>
+                            <div class="certificate-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Research readiness</span><span>scholarship - publication - leadership</span></div>
+            </section>
+
+            <!-- Slide 4: Published work aligned with efficient machine learning -->
+            <section class="slide published-papers" data-label="AI Foundation">
+                <div class="eyebrow">Published work</div>
+                <div class="pagedot">iv.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Research experience: efficient and <em>tested machine learning</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>My work focuses on small models, limited compute, careful comparison, and clear results.</p>
+                <div class="paper-showcase">
+                    <article class="paper-tile color-pink reveal delay-1">
+                        <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Efficient multilingual spam detection paper">
+                            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="First page of Efficient multilingual spam detection paper">
+                        </div>
+                        <div class="paper-full-preview" aria-hidden="true">
+                            <img src="images/papers/Efficient%20multilingual%20spam%20detection%20on%20resource-constrained%20devices.jpg" alt="">
+                        </div>
+                        <div class="paper-meta">
+                            <h3 data-editable>Efficient multilingual spam detection on resource-constrained devices</h3>
+                            <div class="paper-facts" data-editable>
+                                <span class="pill">Complex &amp; Intelligent Systems</span>
+                                <span class="pill">Impact factor: 5</span>
+                                <span class="pill">Q1 journal</span>
+                            </div>
+                            <p data-editable>Built a 21-language dataset and fine-tuned Gemma 3, Qwen 3, and Llama 3.2 with 4-bit QLoRA. The best result reached about 90% accuracy and 0.88 F1.</p>
+                        </div>
+                    </article>
+                    <article class="paper-tile color-lemon reveal delay-2">
+                        <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Comparative analysis paper">
+                            <img src="images/papers/Comparative%20analysis%20of%20advanced%20machine%20learning%20models.jpg" alt="First page of Comparative analysis of advanced machine learning models paper">
+                        </div>
+                        <div class="paper-full-preview" aria-hidden="true">
+                            <img src="images/papers/Comparative%20analysis%20of%20advanced%20machine%20learning%20models.jpg" alt="">
+                        </div>
+                        <div class="paper-meta">
+                            <h3 data-editable>Comparative analysis of advanced machine learning models for second-grade liquid</h3>
+                            <div class="paper-facts" data-editable>
+                                <span class="pill">Engineering Applications of Artificial Intelligence</span>
+                                <span class="pill">Impact factor: 8.0</span>
+                                <span class="pill">Q1</span>
+                            </div>
+                            <p data-editable>Compared fast machine learning surrogates for costly physics simulations. This gave me experience with scientific data, model choice, error analysis, and uncertainty.</p>
+                        </div>
+                    </article>
+                    <article class="paper-tile color-sage reveal delay-3">
+                        <div class="paper-shot" tabindex="0" aria-label="Preview full first page of Generative AI cyber security paper">
+                            <img src="images/papers/using%20En-ai%20fro%20security.jpg" alt="First page of Generative AI cyber security paper">
+                        </div>
+                        <div class="paper-full-preview" aria-hidden="true">
+                            <img src="images/papers/using%20En-ai%20fro%20security.jpg" alt="">
+                        </div>
+                        <div class="paper-meta">
+                            <h3 data-editable>Using Generative AI for simulating cyber security attacks and defense mechanisms</h3>
+                            <div class="paper-facts" data-editable>
+                                <span class="pill">Spectrum of Engineering Sciences</span>
+                                <span class="pill">2025</span>
+                            </div>
+                            <p data-editable>Used generative models to create realistic attack scenarios and compare defenses. Synthetic data with quality checks is a habit I can bring to the lab's generation work.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Research experience</span><span>efficient models - synthetic data - evaluation</span></div>
+            </section>
+
+            <!-- Slide 5: Current research restored from the original meeting deck -->
+            <section class="slide current-research" data-label="Current Research">
+                <div class="eyebrow">Current research</div>
+                <div class="pagedot">v.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Bridging language, signals, and <em>context-rich classification</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>The same approach can support the lab's new LLM work in space weather education and safety.</p>
+                <div class="current-research-grid">
+                    <article class="emotion-panel reveal delay-1">
+                        <div class="emotion-figure">
+                            <img src="images/embodied%20emotion%20classification.png" alt="Embodied emotion classification example showing text cues mapped to joy, anger, fear, surprise, sadness, and disgust">
+                        </div>
+                        <div class="paper-title-block">
+                            <p class="mini-label" data-editable>Current paper from my CV</p>
+                            <h3 data-editable>Embodied Emotion Classification via Small LLMs Using Prompting Strategies</h3>
+                        </div>
+                    </article>
+                    <div class="research-card-stack">
+                        <article class="card reveal delay-2">
+                            <h3 data-editable>Current question</h3>
+                            <ul data-editable>
+                                <li>Which prompting strategy works best for small LLMs on fine-grained embodied emotion classification?</li>
+                                <li>Compares zero-shot, k-shot, chain-of-thought, and chain-of-verification prompting.</li>
+                                <li>Measures macro and per-class F1 across Ekman's six emotions under limited compute.</li>
+                            </ul>
+                            <p class="soft-rule" data-editable>The deeper skill here is modeling indirect human signals under uncertainty, not only solving one embodied-AI task.</p>
+                        </article>
+                        <article class="card color-blush reveal delay-3">
+                            <h3 data-editable>How I connect it to the HiDAM lab</h3>
+                            <ul data-editable>
+                                <li>The lab now builds domain LLMs, such as SolarGPT-QA, and studies LLM safety, such as backdoor defense by pruning.</li>
+                                <li>My work on QLoRA, prompting, and compact models fits that direction and keeps cost and privacy under control.</li>
+                                <li>Per-class F1 matters when some classes are rare. That is the same problem as rare M and X class flares.</li>
+                                <li>Prompting, verification, and LLM-as-judge style evaluation fit the lab's focus on trustworthy results.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Current research</span><span>small LLMs - prompting - evaluation - domain LLMs</span></div>
+            </section>
+
+            <!-- Slide 6: Paper discussion, SolarGPT-QA -->
+            <section class="slide current-research" data-label="Paper 1">
+                <div class="eyebrow">Paper I studied, 1 of 2</div>
+                <div class="pagedot">vi.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>A space weather LLM that <em>teaches, not only answers</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>SolarGPT-QA adapts LLaMA-3 to space weather with scientific papers and generated questions, then grades the answers with an LLM judge.</p>
+                <div class="current-research-grid">
+                    <article class="emotion-panel reveal delay-1">
+                        <div class="emotion-figure">
+                            <svg viewBox="0 0 760 390" role="img" aria-label="Scientific papers and generated questions flow into domain pretraining and fine-tuning of LLaMA-3, producing answers graded by an LLM judge">
+                                <rect x="34" y="48" width="190" height="292" rx="24" fill="var(--paper)"></rect>
+                                <text x="129" y="86" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="22">Training data</text>
+                                <text x="129" y="112" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="17">papers + generated Q&amp;A</text>
+                                <rect x="62" y="146" width="134" height="34" rx="10" fill="var(--pink)"></rect>
+                                <text x="129" y="169" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="16">scientific papers</text>
+                                <rect x="62" y="202" width="134" height="34" rx="10" fill="var(--sage)"></rect>
+                                <text x="129" y="225" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="16">GPT-4 questions</text>
+                                <rect x="62" y="258" width="134" height="34" rx="10" fill="var(--lilac)"></rect>
+                                <text x="129" y="281" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="16">Grok-3 refined</text>
+                                <path d="M242 194 H308" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+                                <path d="m294 180 16 14-16 14" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="328" y="66" width="188" height="112" rx="24" fill="var(--lemon)"></rect>
+                                <text x="422" y="113" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="23">Domain pretraining</text>
+                                <text x="422" y="145" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="18">LLaMA-3 base</text>
+                                <rect x="328" y="212" width="188" height="112" rx="24" fill="var(--blush)"></rect>
+                                <text x="422" y="259" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="23">Fine-tuning</text>
+                                <text x="422" y="291" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="18">student-friendly Q&amp;A</text>
+                                <path d="M534 194 H590" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+                                <path d="m576 180 16 14-16 14" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="610" y="113" width="116" height="164" rx="24" fill="var(--sage)"></rect>
+                                <text x="668" y="181" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="22">Answer</text>
+                                <text x="668" y="212" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="22">graded</text>
+                                <text x="668" y="247" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="17">by LLM judge</text>
+                            </svg>
+                        </div>
+                        <div class="paper-title-block">
+                            <p class="mini-label" data-editable>Chapagain, EskandariNasab, Vural, Hamdi, and Boubrahimi - 2026</p>
+                            <h3 data-editable>SolarGPT-QA: A Domain-Adaptive LLM for Educational Question Answering in Space Weather and Heliophysics</h3>
+                        </div>
+                    </article>
+                    <div class="research-card-stack">
+                        <article class="card reveal delay-2">
+                            <h3 data-editable>What I learned</h3>
+                            <ul data-editable>
+                                <li>The model starts from LLaMA-3, learns from scientific papers first, then from a large set of generated questions and answers.</li>
+                                <li>The Q&amp;A data was generated with GPT-4 and refined with Grok-3 in a student-friendly storytelling style.</li>
+                                <li>Answers are graded by an LLM judge on scientific accuracy, clarity, completeness, and teaching quality.</li>
+                            </ul>
+                            <p class="soft-rule" data-editable>Ablations show that domain pretraining and fine-tuning work best together, balancing accuracy with clear explanations.</p>
+                        </article>
+                        <article class="card color-blush reveal delay-3">
+                            <h3 data-editable>Why it connects to my work</h3>
+                            <ul data-editable>
+                                <li>My first-author paper used the same pattern: generate data with a larger model, check quality, then fine-tune compact models with QLoRA.</li>
+                                <li>I have run prompting and LLM-as-judge style evaluations in my emotion classification work.</li>
+                                <li>I can test a compact version of SolarGPT-QA and report cost, memory, and answer quality together.</li>
+                                <li>I want to learn the space weather content so the answers stay scientifically correct.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Paper discussion 1</span><span>domain LLM - generated Q&amp;A - LLM judge - education</span></div>
+            </section>
+
+            <!-- Slide 6b: Paper discussion, FlaPLeT -->
+            <section class="slide current-research" data-label="Paper 2">
+                <div class="eyebrow">Paper I studied, 2 of 2</div>
+                <div class="pagedot">vii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>A no-code platform for <em>flare prediction research</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>FlaPLeT runs the full workflow in a browser: preprocessing, augmentation, graph building, and model training as background tasks.</p>
+                <div class="current-research-grid">
+                    <article class="emotion-panel reveal delay-1">
+                        <div class="emotion-figure">
+                            <svg viewBox="0 0 760 390" role="img" aria-label="A browser sends time series data to Django and Celery tasks that preprocess, augment, build graphs, and train models, returning datasets, models, and reports">
+                                <rect x="34" y="48" width="190" height="292" rx="24" fill="var(--paper)"></rect>
+                                <text x="129" y="86" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="22">Browser</text>
+                                <text x="129" y="112" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="17">React, no coding needed</text>
+                                <rect x="62" y="146" width="134" height="34" rx="10" fill="var(--pink)"></rect>
+                                <text x="129" y="169" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="16">upload time series</text>
+                                <rect x="62" y="202" width="134" height="34" rx="10" fill="var(--sage)"></rect>
+                                <text x="129" y="225" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="16">choose settings</text>
+                                <rect x="62" y="258" width="134" height="34" rx="10" fill="var(--lilac)"></rect>
+                                <text x="129" y="281" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="16">track the run</text>
+                                <path d="M242 194 H308" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+                                <path d="m294 180 16 14-16 14" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="328" y="66" width="188" height="112" rx="24" fill="var(--lemon)"></rect>
+                                <text x="422" y="113" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="23">Django + Celery</text>
+                                <text x="422" y="145" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="18">background tasks</text>
+                                <rect x="328" y="212" width="188" height="112" rx="24" fill="var(--blush)"></rect>
+                                <text x="422" y="252" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="20">Preprocess, augment,</text>
+                                <text x="422" y="278" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="20">build graph, train</text>
+                                <text x="422" y="306" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="17">PostgreSQL + Redis</text>
+                                <path d="M534 194 H590" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></path>
+                                <path d="m576 180 16 14-16 14" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="610" y="113" width="116" height="164" rx="24" fill="var(--sage)"></rect>
+                                <text x="668" y="171" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="20">Datasets</text>
+                                <text x="668" y="200" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="20">models</text>
+                                <text x="668" y="229" text-anchor="middle" fill="var(--ink)" font-family="Work Sans" font-size="20">reports</text>
+                                <text x="668" y="258" text-anchor="middle" fill="var(--ink-soft)" font-family="Work Sans" font-size="16">downloadable</text>
+                            </svg>
+                        </div>
+                        <div class="paper-title-block">
+                            <p class="mini-label" data-editable>EskandariNasab, Hamdi, and Boubrahimi - SoftwareX 2026</p>
+                            <h3 data-editable>FlaPLeT: A Full-Stack Web Platform for End-to-End Time Series Processing and Machine Learning in Solar Flare Prediction</h3>
+                        </div>
+                    </article>
+                    <div class="research-card-stack">
+                        <article class="card reveal delay-2">
+                            <h3 data-editable>What I learned</h3>
+                            <ul data-editable>
+                                <li>Researchers can run end-to-end machine learning on multivariate flare time series without writing code.</li>
+                                <li>Four steps run as modular background tasks: preprocessing, data augmentation, functional network (graph) construction, and model training.</li>
+                                <li>Every run returns downloadable datasets, trained models, and a structured JSON report.</li>
+                            </ul>
+                            <p class="soft-rule" data-editable>Built with React, Django, Celery, Redis, and PostgreSQL, and served over TLS from a dedicated server.</p>
+                        </article>
+                        <article class="card color-blush reveal delay-3">
+                            <h3 data-editable>Why it connects to my work</h3>
+                            <ul data-editable>
+                                <li>I have shipped production platforms on this same stack: React, Django, FastAPI, Redis, PostgreSQL, task queues, and AWS.</li>
+                                <li>I scaled HelloGov AI to more than 10,000 users with monitoring, CI/CD, and background jobs.</li>
+                                <li>I can add tests, reproducible run tracking, and monitoring, and help move toward near real-time predictions.</li>
+                                <li>The lab's goal of predictions within minutes of new data fits my event-driven systems work.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Paper discussion 2</span><span>React - Django - Celery - reproducible workflows</span></div>
+            </section>
+
+            <!-- Slide 7: Professional and teaching experience from the original PPT -->
+            <section class="slide s-paper" data-label="Engineering Experience">
+                <div class="eyebrow">Engineering experience</div>
+                <div class="pagedot">viii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Building AI systems <em>that keep working</em></h2>
+                <div class="paper-card">
+                    <article class="quote-card reveal delay-1">
+                        <div class="project-slider" aria-label="Selected project visuals">
+                            <section class="project-panel is-active">
+                                <div class="project-topline">
+                                    <h3 data-editable>Civix CRM</h3>
+                                    <span class="project-badge">Voice AI + CRM</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Lead queue</strong><span>call - email - SMS</span></div>
+                                            <div class="project-row"><strong>Voice summary</strong><span>OpenAI</span></div>
+                                            <div class="project-row"><strong>Pipeline</strong><span>webhooks</span></div>
+                                            <div class="project-row"><strong>Monitoring</strong><span>Sentry</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-pink">OpenAI + LangGraph agent</div>
+                                        <div class="flow-node accent-sage">FastAPI workflow services</div>
+                                        <div class="flow-node accent-lemon">SQS + EventBridge events</div>
+                                        <div class="flow-node accent-lilac">Redis state + AWS S3 artifacts</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>B2B lead generation platform with automated outreach, call summaries, contextual follow-ups, and production monitoring.</p>
+                                <div class="project-stack"><span>React</span><span>Next.js</span><span>FastAPI</span><span>LangGraph</span><span>AWS</span><span>Docker</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>HelloGov AI</h3>
+                                    <span class="project-badge">Document AI</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Passport flow</strong><span>tracking</span></div>
+                                            <div class="project-row"><strong>OCR extraction</strong><span>Llama 3.2</span></div>
+                                            <div class="project-row"><strong>GraphQL API</strong><span>secure docs</span></div>
+                                            <div class="project-row"><strong>CloudWatch</strong><span>observability</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-sage">Applicant uploads documents</div>
+                                        <div class="flow-node accent-lemon">OCR + LLM validation</div>
+                                        <div class="flow-node accent-pink">Lambda + SQS orchestration</div>
+                                        <div class="flow-node accent-lilac">S3 storage + real-time status</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>AI-powered passport workflow automation with document extraction, intelligent guidance, and reliable background processing.</p>
+                                <div class="project-stack"><span>Next.js</span><span>GraphQL</span><span>FastAPI</span><span>LangChain</span><span>Lambda</span><span>S3</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>Yoga Joint</h3>
+                                    <span class="project-badge">Modernization</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Legacy app</strong><span>migration</span></div>
+                                            <div class="project-row"><strong>SSR frontend</strong><span>Next.js</span></div>
+                                            <div class="project-row"><strong>Services</strong><span>Nest.js</span></div>
+                                            <div class="project-row"><strong>Perf gain</strong><span>40%</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-lilac">Reusable React components</div>
+                                        <div class="flow-node accent-sage">Node/Nest backend flows</div>
+                                        <div class="flow-node accent-lemon">PostgreSQL data layer</div>
+                                        <div class="flow-node accent-pink">Grafana production visibility</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Legacy platform modernization focused on performance, maintainability, release automation, and a better user experience.</p>
+                                <div class="project-stack"><span>Next.js</span><span>Nest.js</span><span>PostgreSQL</span><span>Jenkins</span><span>Docker</span><span>Grafana</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>MaYa Platform</h3>
+                                    <span class="project-badge">Multi-agent AI</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Deal context</strong><span>Supabase</span></div>
+                                            <div class="project-row"><strong>Intent</strong><span>classifier</span></div>
+                                            <div class="project-row"><strong>Frustration</strong><span>escalation</span></div>
+                                            <div class="project-row"><strong>Next action</strong><span>agent</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-pink">Conversation input</div>
+                                        <div class="flow-node accent-sage">Retrieval + reranking</div>
+                                        <div class="flow-node accent-lemon">LangGraph reasoning</div>
+                                        <div class="flow-node accent-lilac">Stage-specific guidance</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Conversational deal intelligence for merchants, funders, and sales teams with grounded replies and automated escalation.</p>
+                                <div class="project-stack"><span>Python</span><span>FastAPI</span><span>LangGraph</span><span>LangSmith</span><span>Supabase</span><span>OpenAI</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>Product RAG</h3>
+                                    <span class="project-badge">Recommendations</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>User query</strong><span>semantic</span></div>
+                                            <div class="project-row"><strong>Embeddings</strong><span>OpenAI</span></div>
+                                            <div class="project-row"><strong>Vector DB</strong><span>Pinecone</span></div>
+                                            <div class="project-row"><strong>Rerank</strong><span>hybrid</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-sage">Product catalog chunks</div>
+                                        <div class="flow-node accent-lemon">FAISS + Pinecone search</div>
+                                        <div class="flow-node accent-pink">Context-aware recommendation</div>
+                                        <div class="flow-node accent-lilac">Prometheus + Grafana metrics</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Recommendation engine using embeddings, hybrid retrieval, reranking, and full-stack APIs for intelligent product discovery.</p>
+                                <div class="project-stack"><span>RAG</span><span>LangChain</span><span>FastAPI</span><span>Pinecone</span><span>FAISS</span><span>PostgreSQL</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>DataStax</h3>
+                                    <span class="project-badge">GenAI platform</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Agent builder</strong><span>drag-drop</span></div>
+                                            <div class="project-row"><strong>RBAC</strong><span>JWT</span></div>
+                                            <div class="project-row"><strong>Billing</strong><span>Stripe</span></div>
+                                            <div class="project-row"><strong>Infra</strong><span>Terraform</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-lilac">MCP server patterns</div>
+                                        <div class="flow-node accent-sage">LangChain workflow nodes</div>
+                                        <div class="flow-node accent-lemon">Lambda + EventBridge execution</div>
+                                        <div class="flow-node accent-pink">Grafana + Sentry observability</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Developer-focused GenAI platform with workflow composition, protected account flows, billing, deployment, and monitoring.</p>
+                                <div class="project-stack"><span>Next.js</span><span>Django</span><span>LangChain</span><span>MCP</span><span>Terraform</span><span>Stripe</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>Fiddler + WikiChat</h3>
+                                    <span class="project-badge">AI monitoring</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>PII</strong><span>detection</span></div>
+                                            <div class="project-row"><strong>Sentiment</strong><span>analysis</span></div>
+                                            <div class="project-row"><strong>Relevance</strong><span>scoring</span></div>
+                                            <div class="project-row"><strong>Toxicity</strong><span>guardrail</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-pink">Chat response stream</div>
+                                        <div class="flow-node accent-sage">Fiddler enrichment layers</div>
+                                        <div class="flow-node accent-lemon">Trust scoring dashboard</div>
+                                        <div class="flow-node accent-lilac">Continuous improvement loop</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Responsible AI observability layer for chatbot quality, diagnostics, safety checks, and transparent model behavior.</p>
+                                <div class="project-stack"><span>RAG Stack</span><span>Fiddler AI</span><span>Monitoring</span><span>PII</span><span>Trust</span><span>Evaluation</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>WikiChat</h3>
+                                    <span class="project-badge">Knowledge RAG</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Article stream</strong><span>live</span></div>
+                                            <div class="project-row"><strong>Embeddings</strong><span>Bedrock</span></div>
+                                            <div class="project-row"><strong>Vector DB</strong><span>Astra</span></div>
+                                            <div class="project-row"><strong>Chat UI</strong><span>wikich.at</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-sage">Wikipedia content updates</div>
+                                        <div class="flow-node accent-lemon">Titan embeddings</div>
+                                        <div class="flow-node accent-pink">Astra vector search</div>
+                                        <div class="flow-node accent-lilac">Contextual conversational answers</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Conversational interface for Wikipedia knowledge using live updates, vector search, and RAG-based answer generation.</p>
+                                <div class="project-stack"><span>Amazon Bedrock</span><span>Astra DB</span><span>Vector Search</span><span>RAG</span><span>Prompting</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>Terraform IaC</h3>
+                                    <span class="project-badge">Cloud automation</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>Plan</strong><span>versioned</span></div>
+                                            <div class="project-row"><strong>Provision</strong><span>cloud</span></div>
+                                            <div class="project-row"><strong>Delegate</strong><span>task-based</span></div>
+                                            <div class="project-row"><strong>Destroy</strong><span>cost control</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-lilac">Reusable Terraform modules</div>
+                                        <div class="flow-node accent-sage">Automated resource lifecycle</div>
+                                        <div class="flow-node accent-lemon">CI/CD infrastructure changes</div>
+                                        <div class="flow-node accent-pink">Reduced drift and manual overhead</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Infrastructure-as-code workflow for reproducible environments, automated provisioning, and cloud cost optimization.</p>
+                                <div class="project-stack"><span>Terraform</span><span>AWS</span><span>CI/CD</span><span>Automation</span><span>DevOps</span></div>
+                            </section>
+                            <section class="project-panel">
+                                <div class="project-topline">
+                                    <h3 data-editable>NextAuth AstraDB</h3>
+                                    <span class="project-badge">Open source auth</span>
+                                </div>
+                                <div class="project-visual">
+                                    <div class="project-window">
+                                        <div class="project-window-bar"><i></i><i></i><i></i></div>
+                                        <div class="project-screen">
+                                            <div class="project-row"><strong>NextAuth.js</strong><span>adapter</span></div>
+                                            <div class="project-row"><strong>AstraDB</strong><span>sessions</span></div>
+                                            <div class="project-row"><strong>Serverless</strong><span>identity</span></div>
+                                            <div class="project-row"><strong>Docs</strong><span>community</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="project-flow">
+                                        <div class="flow-node accent-sage">User signs in</div>
+                                        <div class="flow-node accent-lemon">NextAuth adapter maps tokens</div>
+                                        <div class="flow-node accent-pink">AstraDB stores users and sessions</div>
+                                        <div class="flow-node accent-lilac">Reusable open-source integration</div>
+                                    </div>
+                                </div>
+                                <p class="project-caption" data-editable>Open-source contribution connecting NextAuth.js with AstraDB for scalable, cloud-native authentication in Next.js apps.</p>
+                                <div class="project-stack"><span>NextAuth.js</span><span>AstraDB</span><span>Next.js</span><span>Auth</span><span>Open Source</span></div>
+                            </section>
+                            <button class="project-nav prev" type="button" aria-label="Previous project">‹</button>
+                            <button class="project-nav next" type="button" aria-label="Next project">›</button>
+                        </div>
+                        <div class="project-progress" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </article>
+                    <div class="evidence">
+                        <article class="card color-sage reveal delay-2">
+                            <h3 data-editable>Reliable systems</h3>
+                            <p data-editable>Own services from design to deployment, with logging, monitoring, testing, security fixes, and production support.</p>
+                        </article>
+                        <article class="card color-lilac reveal delay-3">
+                            <h3 data-editable>Data pipelines</h3>
+                            <p data-editable>Built APIs, background jobs, ETL flows, vector search, and cloud systems for large and changing data.</p>
+                        </article>
+                        <article class="card color-pink reveal delay-4">
+                            <h3 data-editable>Scale and speed</h3>
+                            <p data-editable>Worked with microservices, parallel jobs, queues, containers, databases, and cloud tools to improve speed and stability.</p>
+                        </article>
+                        <article class="card color-lemon reveal delay-5">
+                            <h3 data-editable>Teaching and mentoring</h3>
+                            <p data-editable>Mentored engineers, taught Python through Stanford Code in Place, and guided students on cloud projects.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="footer"><span>Engineering experience</span><span>data - scale - monitoring - deployment</span></div>
+            </section>
+
+            <!-- Slide 8: Hands-on evidence from the original PPT -->
+            <section class="slide" data-label="Selected Work">
+                <div class="eyebrow">Hands-on evidence</div>
+                <div class="pagedot">ix.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Selected work that can support <em>the HiDAM lab</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>Each example connects to domain LLMs, time series models, research platforms, or careful testing.</p>
+                <div class="five-grid">
+                    <article class="card color-pink reveal delay-1" data-project-url="https://link.springer.com/article/10.1007/s40747-026-02247-x" aria-label="Open the compact LLM paper">
+                        <h3 data-editable>Small models on devices</h3>
+                        <p data-editable>Published QLoRA work with compact LLMs, a synthetic 21-language dataset, and about 90% accuracy.</p>
+                    </article>
+                    <article class="card color-blush reveal delay-2">
+                        <h3 data-editable>Transformer from scratch</h3>
+                        <p data-editable>Built a 60-million-parameter GPT-style transformer in PyTorch with attention, layer norm, and mixed-precision training.</p>
+                    </article>
+                    <article class="card color-lemon reveal delay-3" data-project-url="https://www.hellogov.com/" aria-label="Open the HelloGov platform">
+                        <h3 data-editable>Production AI platforms</h3>
+                        <p data-editable>Built and scaled the HelloGov AI platform with React, FastAPI, AWS queues, and monitoring for 10,000+ users.</p>
+                    </article>
+                    <article class="card color-sage reveal delay-4">
+                        <h3 data-editable>Model evaluation</h3>
+                        <p data-editable>Compared models with clear metrics, studied errors class by class, and built monitoring for quality and safety.</p>
+                    </article>
+                    <article class="card color-lilac reveal delay-5" data-project-url="https://github.com/Hamza-Rauf-SE/re-agent/blob/main/README.md" aria-label="Open the Verified AI Agent project">
+                        <h3 data-editable>Verified AI agent</h3>
+                        <p data-editable>Built an agent whose claims are checked by a solver or real program before they are marked proven.</p>
+                    </article>
+                </div>
+                <div class="pipeline-strip reveal delay-5" data-editable>
+                    my fit: compact domain LLMs - time series models - research platforms - careful testing
+                </div>
+                <div class="footer"><span>Selected work</span><span>LLMs - transformers - platforms - evaluation</span></div>
+            </section>
+
+            <!-- Slide 9: Research-relevant skills from the original PPT -->
+            <section class="slide" data-label="Alignment">
+                <div class="eyebrow">Research-relevant skills</div>
+                <div class="pagedot">x.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Technical toolkit I can bring to <em>the lab</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>My strongest match is compact domain LLMs and time series deep learning, backed by solid platform skills.</p>
+                <div class="alignment-table reveal delay-3">
+                    <div class="cell head-row">Lab need</div>
+                    <div class="cell head-row">My evidence</div>
+                    <div class="cell head-row">How I can start</div>
+                    <div class="cell row-label">Domain LLMs</div>
+                    <div class="cell">First-author Q1 QLoRA paper, GRPO alignment of Qwen3, prompting study, and RAG systems in production.</div>
+                    <div class="cell">Build a compact version of SolarGPT-QA and compare answer quality, memory, and cost with the LLaMA-3 model.</div>
+                    <div class="cell row-label">Time series and generative models</div>
+                    <div class="cell">Transformer built from scratch, neural network surrogate models, and a GAN-based simulation paper.</div>
+                    <div class="cell">Reproduce a SWAN-SF flare baseline, report TSS and false alarms, then test one augmentation method.</div>
+                    <div class="cell row-label">Cyberinfrastructure</div>
+                    <div class="cell">Django, React, FastAPI, Redis, PostgreSQL, task queues, AWS, Docker, CI/CD, monitoring, and testing.</div>
+                    <div class="cell">Help extend FlaPLeT with tests, reproducible runs, monitoring, and a path to near real-time predictions.</div>
+                    <div class="cell row-label last">Research practice</div>
+                    <div class="cell last">Published papers, baselines, metrics, error analysis, literature reviews, and scientific writing.</div>
+                    <div class="cell last">Reproduce a lab baseline, report limits honestly, and help prepare a paper.</div>
+                </div>
+                <div class="footer"><span>Technical fit</span><span>domain LLMs - time series - cyberinfrastructure - research</span></div>
+            </section>
+
+            <!-- Slide 10: Direct alignment, adapted to this research agenda -->
+            <section class="slide" data-label="Research Idea 1">
+                <div class="eyebrow">Direct alignment</div>
+                <div class="pagedot">xi.</div>
+                <div class="idea-hero reveal delay-1">
+                    <p class="marker" data-editable>Why the HiDAM lab fits my goal</p>
+                    <h2 data-editable>Machine learning for <em>time series, graphs, and space weather</em></h2>
+                    <p class="body-copy" data-editable>The lab builds models for multivariate time series and graph data to predict extreme solar events, and the cyberinfrastructure that makes those forecasts reproducible.</p>
+                </div>
+                <div class="idea-panel">
+                    <article class="card color-lemon reveal delay-2">
+                        <h3 data-editable>Best match</h3>
+                        <p data-editable>Efficient and trustworthy models, from compact domain LLMs to flare prediction, plus the platform work that keeps experiments repeatable.</p>
+                    </article>
+                    <article class="card reveal delay-3">
+                        <h3 data-editable>What I already bring</h3>
+                        <ul data-editable>
+                            <li>Transformer and small-model training with LoRA, QLoRA, and 4-bit methods</li>
+                            <li>Synthetic data creation, model comparison, error analysis, and data pipelines</li>
+                            <li>Web platforms, APIs, task queues, monitoring, testing, and reliable deployment</li>
+                        </ul>
+                    </article>
+                    <article class="card color-sage reveal delay-4">
+                        <h3 data-editable>What I want to learn</h3>
+                        <p data-editable>Solar magnetic field data such as SWAN-SF, solar energetic particle events, graph and tensor methods, multimodal augmentation, and counterfactual explanations.</p>
+                    </article>
+                    <article class="card color-blush reveal delay-5">
+                        <h3 data-editable>Other lab direction</h3>
+                        <p data-editable>I am also drawn to the new NSF CAIG project on multimodal synthetic data for solar energetic particle events, and to the LLM safety work on backdoor defense.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Direct alignment</span><span>time series - graphs - space weather - cyberinfrastructure</span></div>
+            </section>
+
+            <!-- Slide 11: Four initial ideas to discuss -->
+            <section class="slide" data-label="Research Idea 2">
+                <div class="eyebrow">Initial ideas to discuss</div>
+                <div class="pagedot">xii.</div>
+                <div class="idea-hero reveal delay-1" style="background: var(--sage);">
+                    <p class="marker" data-editable>Proposed research directions</p>
+                    <h2 data-editable>Practical AI for <em>space weather research</em></h2>
+                    <p class="body-copy" data-editable>Four starting ideas that connect compact models, clear evidence, and tools the lab can reuse.</p>
+                </div>
+                <div class="idea-panel">
+                    <article class="card color-pink reveal delay-2">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="10" y="11" width="28" height="20" rx="6"></rect>
+                                <path d="M18 37h12"></path>
+                                <path d="M24 31v6"></path>
+                                <path d="m18 21 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 1 - a compact SolarGPT-QA</h3>
+                        <ul data-editable>
+                            <li>Fine-tune Gemma 3 or Qwen 3 with QLoRA on the lab's space weather Q&amp;A data.</li>
+                            <li>Compare answer quality, memory, and cost against the LLaMA-3 version.</li>
+                            <li>Aim for a model that runs on a laptop or in a classroom.</li>
+                        </ul>
+                    </article>
+                    <article class="card reveal delay-3">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M11 16h26"></path>
+                                <path d="M11 24h18"></path>
+                                <path d="M11 32h14"></path>
+                                <path d="m31 29 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 2 - a verified assistant for FlaPLeT</h3>
+                        <ul data-editable>
+                            <li>A user describes an experiment in plain language.</li>
+                            <li>The agent builds the FlaPLeT run and logs every setting.</li>
+                            <li>Results are marked verified only after the real run finishes.</li>
+                        </ul>
+                    </article>
+                    <article class="card color-lilac reveal delay-4">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <rect x="10" y="11" width="28" height="20" rx="6"></rect>
+                                <path d="M18 37h12"></path>
+                                <path d="M24 31v6"></path>
+                                <path d="m18 21 4 4 8-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 3 - synthetic data with quality checks</h3>
+                        <ul data-editable>
+                            <li>Build on AVATAR and TIMED to add rare flare or solar energetic particle samples.</li>
+                            <li>Check how realistic the new samples are before training on them.</li>
+                            <li>Measure the gain for each event class, not only the average.</li>
+                        </ul>
+                    </article>
+                    <article class="card color-lemon reveal delay-5">
+                        <div class="idea-card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M24 37c7-4 12-9.5 12-17V12l-12-4-12 4v8c0 7.5 5 13 12 17Z"></path>
+                                <path d="m19 24 4 4 7-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Idea 4 - safe and trustworthy science LLMs</h3>
+                        <ul data-editable>
+                            <li>Test whether compact tuned models stay robust to backdoor attacks after pruning.</li>
+                            <li>Pair LLM-as-judge scores with expert spot checks.</li>
+                            <li>Report accuracy, safety, and cost together.</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="footer"><span>Initial ideas</span><span>compact LLM - verified agent - synthetic data - safe LLMs</span></div>
+            </section>
+
+            <!-- Slide 12: Why me, adapted from the original contribution slide -->
+            <section class="slide" data-label="Execution Plan">
+                <div class="eyebrow">What I can contribute</div>
+                <div class="pagedot">xiii.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Why <em>me</em></h2>
+                <p class="slide-sub reveal delay-2" data-editable>I can connect careful experiments with the systems needed to run them well.</p>
+                <div class="chart-wrap">
+                    <article class="card color-blush reveal delay-1">
+                        <h3 data-editable>I bring a useful mix</h3>
+                        <p data-editable>I have published model work and more than six years of experience building software and AI systems.</p>
+                        <p class="soft-rule" data-editable>I also know my gap: I need direct training in solar physics data, graph and tensor methods, and multimodal space data. I am ready to learn these areas from the lab.</p>
+                    </article>
+                    <article class="roadmap reveal delay-2">
+                        <div class="roadmap-line"></div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-dot">i.</div>
+                            <div>
+                                <h3 data-editable>Research</h3>
+                                <p data-editable>Published papers, model comparison, baselines, metrics, error analysis, and scientific writing.</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-dot" style="background: var(--pink);">ii.</div>
+                            <div>
+                                <h3 data-editable>Systems</h3>
+                                <p data-editable>Data pipelines, AI platforms, cloud jobs, monitoring, CI/CD, and reliable deployment.</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-dot" style="background: var(--sage);">iii.</div>
+                            <div>
+                                <h3 data-editable>Working style</h3>
+                                <p data-editable>I test, document, ask questions early, and report both good results and limits clearly.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="footer"><span>Why me</span><span>research - systems - honesty - learning</span></div>
+            </section>
+
+            <!-- Slide 13: Research trajectory from the original PPT -->
+            <section class="slide question-slide" data-label="Discussion">
+                <div class="eyebrow">Research trajectory</div>
+                <div class="pagedot">xiv.</div>
+                <h2 class="slide-title reveal delay-1" data-editable>Short-term and long-term goals</h2>
+                <div class="questions">
+                    <article class="question-card reveal delay-1">
+                        <div class="question-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M12 36h24"></path>
+                                <path d="M16 30V15l8-5 8 5v15"></path>
+                                <path d="M20 22h8"></path>
+                                <path d="M24 18v8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>First 6-12 months</h3>
+                        <p data-editable>Learn the lab's data and tools, read the key papers, reproduce one flare prediction baseline or a compact SolarGPT-QA model, and document the full pipeline.</p>
+                    </article>
+                    <article class="question-card reveal delay-2">
+                        <div class="question-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M13 34h22"></path>
+                                <path d="M17 28l5-5 4 4 9-10"></path>
+                                <path d="M31 17h4v4"></path>
+                                <rect x="10" y="10" width="28" height="28" rx="6"></rect>
+                            </svg>
+                        </div>
+                        <h3 data-editable>During graduate study</h3>
+                        <p data-editable>Build efficient and trustworthy models for time series, graphs, and domain LLMs, publish useful results, and help the lab platform support near real-time use.</p>
+                    </article>
+                    <article class="question-card reveal delay-3">
+                        <div class="question-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48">
+                                <path d="M24 37c7-4 12-9.5 12-17V12l-12-4-12 4v8c0 7.5 5 13 12 17Z"></path>
+                                <path d="m19 24 4 4 7-8"></path>
+                            </svg>
+                        </div>
+                        <h3 data-editable>Long term</h3>
+                        <p data-editable>Lead research that joins efficient machine learning, scientific time series and network data, and tools that other researchers can use.</p>
+                    </article>
+                </div>
+                <div class="footer"><span>Trajectory</span><span>learn - reproduce - improve - publish</span></div>
+            </section>
+
+            <!-- Slide 14: Closing, adapted from the original thank-you slide -->
+            <section class="slide s-closer" data-label="Closing">
+                <div class="center">
+                    <p class="marker reveal delay-1" data-editable>Thank you</p>
+                    <h2 class="reveal delay-2" data-editable>I would be grateful for the chance to contribute to <em>machine learning for time series, graphs, and space weather</em>.</h2>
+                    <p class="thanks-note reveal delay-3" data-editable>Thank you for your time and consideration.</p>
+                    <p class="reveal delay-4" data-editable>I would value your advice on which lab project best fits my background in compact LLMs, time series models, research platforms, and evaluation.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="deck-controls" aria-label="Presentation controls">
+        <button id="prevSlide" title="Previous slide" aria-label="Previous slide">‹</button>
+        <span id="slideCounter">1 / 15</span>
+        <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+        <button id="nextSlide" title="Next slide" aria-label="Next slide">›</button>
+    </div>
+
+    <div class="edit-hotzone" title="Edit mode"></div>
+    <button class="edit-toggle" id="editToggle" title="Edit mode (E)" aria-label="Edit mode">E</button>
+    <div class="credential-lightbox" id="credentialLightbox" aria-hidden="true">
+        <div class="credential-lightbox-frame">
+            <div class="credential-lightbox-media">
+                <img id="credentialLightboxImage" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* === SLIDE PRESENTATION CONTROLLER === */
+        class SlidePresentation {
+            constructor() {
+                this.slides = Array.from(document.querySelectorAll(".slide"));
+                this.currentSlide = 0;
+                this.stage = document.getElementById("deckStage");
+                this.viewport = document.querySelector(".deck-viewport");
+                this.counter = document.getElementById("slideCounter");
+                this.progressFill = document.getElementById("progressFill");
+                this.setupStageScale();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupWheelNav();
+                this.setupButtons();
+                const requestedSlide = Number(new URLSearchParams(window.location.search).get("slide"));
+                this.showSlide(Number.isFinite(requestedSlide) && requestedSlide > 0 ? requestedSlide - 1 : 0);
+            }
+
+            setupStageScale() {
+                const scale = () => {
+                    const viewport = window.visualViewport || document.documentElement;
+                    const viewportWidth = viewport.width || window.innerWidth;
+                    const viewportHeight = viewport.height || window.innerHeight;
+                    const factor = Math.min(viewportWidth / 1920, viewportHeight / 1080);
+                    const x = (viewportWidth - 1920 * factor) / 2;
+                    const y = (viewportHeight - 1080 * factor) / 2;
+                    this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+                };
+                scale();
+                window.addEventListener("resize", scale);
+                window.visualViewport?.addEventListener("resize", scale);
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener("keydown", (event) => {
+                    if (event.target && event.target.getAttribute("contenteditable") === "true") return;
+                    if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+                        event.preventDefault();
+                        this.next();
+                    }
+                    if (["ArrowLeft", "PageUp"].includes(event.key)) {
+                        event.preventDefault();
+                        this.prev();
+                    }
+                    if (event.key === "Home") this.showSlide(0);
+                    if (event.key === "End") this.showSlide(this.slides.length - 1);
+                });
+            }
+
+            setupTouchNav() {
+                let startX = 0;
+                let startY = 0;
+                this.stage.addEventListener("touchstart", (event) => {
+                    startX = event.changedTouches[0].clientX;
+                    startY = event.changedTouches[0].clientY;
+                }, { passive: true });
+                this.stage.addEventListener("touchend", (event) => {
+                    const dx = event.changedTouches[0].clientX - startX;
+                    const dy = event.changedTouches[0].clientY - startY;
+                    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+                        dx < 0 ? this.next() : this.prev();
+                    }
+                }, { passive: true });
+            }
+
+            setupWheelNav() {
+                let wheelLock = false;
+                window.addEventListener("wheel", (event) => {
+                    if (event.target && event.target.closest(".credential-lightbox.is-open")) return;
+                    if (wheelLock || Math.abs(event.deltaY) < 35) return;
+                    wheelLock = true;
+                    event.deltaY > 0 ? this.next() : this.prev();
+                    setTimeout(() => { wheelLock = false; }, 520);
+                }, { passive: true });
+            }
+
+            setupButtons() {
+                document.getElementById("prevSlide").addEventListener("click", () => this.prev());
+                document.getElementById("nextSlide").addEventListener("click", () => this.next());
+            }
+
+            showSlide(index) {
+                this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+                this.slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle("active", slideIndex === this.currentSlide);
+                    slide.classList.toggle("visible", slideIndex === this.currentSlide);
+                });
+                this.counter.textContent = `${this.currentSlide + 1} / ${this.slides.length}`;
+                const pct = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressFill.style.width = `${pct}%`;
+                this.matchViewportToSlide();
+            }
+
+            matchViewportToSlide() {
+                // Letterbox bars take the active slide's color so wide screens show no dark strips.
+                const color = getComputedStyle(this.slides[this.currentSlide]).backgroundColor;
+                this.viewport.style.background = color;
+                document.body.style.background = color;
+            }
+
+            next() {
+                this.showSlide(this.currentSlide + 1);
+            }
+
+            prev() {
+                this.showSlide(this.currentSlide - 1);
+            }
+        }
+
+        /* === INLINE EDITING === */
+        class InlineEditor {
+            constructor() {
+                this.isActive = false;
+                this.storageKey = "shah-muhammad-hamdi-meeting-deck-edits-v2";
+                this.editables = Array.from(document.querySelectorAll("[data-editable]"));
+                this.load();
+            }
+
+            toggleEditMode() {
+                this.isActive = !this.isActive;
+                document.getElementById("editToggle").classList.toggle("active", this.isActive);
+                this.editables.forEach((element) => {
+                    element.setAttribute("contenteditable", this.isActive ? "true" : "false");
+                });
+                if (!this.isActive) this.save();
+            }
+
+            save() {
+                const values = this.editables.map((element) => element.innerHTML);
+                localStorage.setItem(this.storageKey, JSON.stringify(values));
+            }
+
+            load() {
+                const raw = localStorage.getItem(this.storageKey);
+                if (!raw) return;
+                try {
+                    const values = JSON.parse(raw);
+                    values.forEach((value, index) => {
+                        if (this.editables[index]) this.editables[index].innerHTML = value;
+                    });
+                } catch (error) {
+                    console.warn("Could not load saved edits", error);
+                }
+            }
+        }
+
+        /* === PROFILE CREDENTIAL PREVIEW === */
+        class CredentialPreview {
+            constructor() {
+                this.cards = Array.from(document.querySelectorAll("[data-preview-src]"));
+                this.overlay = document.getElementById("credentialLightbox");
+                this.image = document.getElementById("credentialLightboxImage");
+                this.hideTimer = null;
+                if (!this.cards.length || !this.overlay || !this.image) return;
+                this.bind();
+            }
+
+            bind() {
+                this.cards.forEach((trigger) => {
+                    const open = () => this.show(trigger);
+                    trigger.addEventListener("mouseenter", open);
+                    trigger.addEventListener("focusin", open);
+
+                    trigger.addEventListener("mouseleave", () => this.scheduleHide());
+                    trigger.addEventListener("focusout", (event) => {
+                        if (!trigger.contains(event.relatedTarget)) this.scheduleHide();
+                    });
+                });
+
+                this.overlay.addEventListener("mouseenter", () => this.cancelHide());
+                this.overlay.addEventListener("mouseleave", () => this.hide());
+                this.overlay.addEventListener("click", () => this.hide());
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") this.hide();
+                });
+            }
+
+            show(card) {
+                this.cancelHide();
+                const mode = card.dataset.previewMode || "portrait";
+                this.overlay.className = `credential-lightbox is-open is-${mode}`;
+                this.overlay.setAttribute("aria-hidden", "false");
+                this.image.src = card.dataset.previewSrc || "";
+                this.image.alt = card.dataset.previewAlt || "";
+            }
+
+            scheduleHide() {
+                this.cancelHide();
+                this.hideTimer = setTimeout(() => this.hide(), 320);
+            }
+
+            cancelHide() {
+                if (this.hideTimer) {
+                    clearTimeout(this.hideTimer);
+                    this.hideTimer = null;
+                }
+            }
+
+            hide() {
+                this.cancelHide();
+                this.overlay.className = "credential-lightbox";
+                this.overlay.setAttribute("aria-hidden", "true");
+                this.image.removeAttribute("src");
+                this.image.alt = "";
+            }
+        }
+
+        /* === PROJECT CAROUSEL === */
+        class ProjectCarousel {
+            constructor() {
+                this.instances = Array.from(document.querySelectorAll(".project-slider")).map((slider) => {
+                    const panels = Array.from(slider.querySelectorAll(".project-panel"));
+                    const progress = Array.from(slider.parentElement.querySelectorAll(".project-progress i"));
+                    const prevButton = slider.querySelector(".project-nav.prev");
+                    const nextButton = slider.querySelector(".project-nav.next");
+                    return { slider, panels, progress, prevButton, nextButton, index: 0, timer: null };
+                }).filter((instance) => instance.panels.length > 1);
+
+                this.instances.forEach((instance) => this.bind(instance));
+            }
+
+            bind(instance) {
+                const pause = () => this.stop(instance);
+                const resume = () => this.start(instance);
+
+                instance.slider.addEventListener("mouseenter", pause);
+                instance.slider.addEventListener("mouseleave", resume);
+                instance.slider.addEventListener("focusin", pause);
+                instance.slider.addEventListener("focusout", (event) => {
+                    if (!instance.slider.contains(event.relatedTarget)) resume();
+                });
+
+                instance.prevButton?.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    this.show(instance, instance.index - 1);
+                });
+
+                instance.nextButton?.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    this.show(instance, instance.index + 1);
+                });
+
+                this.show(instance, 0);
+                this.start(instance);
+            }
+
+            show(instance, index) {
+                const total = instance.panels.length;
+                instance.index = (index + total) % total;
+                instance.panels.forEach((panel, panelIndex) => {
+                    panel.classList.toggle("is-active", panelIndex === instance.index);
+                });
+                instance.progress.forEach((item, itemIndex) => {
+                    item.classList.toggle("is-active", itemIndex === instance.index);
+                });
+            }
+
+            start(instance) {
+                this.stop(instance);
+                instance.timer = window.setInterval(() => {
+                    this.show(instance, instance.index + 1);
+                }, 2000);
+            }
+
+            stop(instance) {
+                if (!instance.timer) return;
+                window.clearInterval(instance.timer);
+                instance.timer = null;
+            }
+        }
+
+        /* === CERTIFICATE CAROUSEL === */
+        class CertificateCarousel {
+            constructor() {
+                this.instances = Array.from(document.querySelectorAll(".certificate-slider")).map((slider) => {
+                    const slides = Array.from(slider.querySelectorAll(".certificate-slide"));
+                    const dots = Array.from(slider.querySelectorAll(".certificate-dots i"));
+                    const prevButton = slider.querySelector(".certificate-nav.prev");
+                    const nextButton = slider.querySelector(".certificate-nav.next");
+                    return { slider, slides, dots, prevButton, nextButton, index: 0, timer: null };
+                }).filter((instance) => instance.slides.length > 1);
+
+                this.instances.forEach((instance) => this.bind(instance));
+            }
+
+            bind(instance) {
+                const pause = () => this.stop(instance);
+                const resume = () => this.start(instance);
+
+                instance.slider.addEventListener("mouseenter", pause);
+                instance.slider.addEventListener("mouseleave", resume);
+                instance.slider.addEventListener("focusin", pause);
+                instance.slider.addEventListener("focusout", (event) => {
+                    if (!instance.slider.contains(event.relatedTarget)) resume();
+                });
+
+                instance.prevButton?.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    this.show(instance, instance.index - 1);
+                });
+
+                instance.nextButton?.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    this.show(instance, instance.index + 1);
+                });
+
+                this.show(instance, 0);
+                this.start(instance);
+            }
+
+            show(instance, index) {
+                const total = instance.slides.length;
+                instance.index = (index + total) % total;
+                instance.slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle("is-active", slideIndex === instance.index);
+                });
+                instance.dots.forEach((dot, dotIndex) => {
+                    dot.classList.toggle("is-active", dotIndex === instance.index);
+                });
+            }
+
+            start(instance) {
+                this.stop(instance);
+                instance.timer = window.setInterval(() => {
+                    this.show(instance, instance.index + 1);
+                }, 2400);
+            }
+
+            stop(instance) {
+                if (!instance.timer) return;
+                window.clearInterval(instance.timer);
+                instance.timer = null;
+            }
+        }
+
+        /* === EXTERNAL PROJECT LINKS === */
+        class ExternalProjectLinks {
+            constructor(editor) {
+                this.editor = editor;
+                this.items = Array.from(document.querySelectorAll("[data-project-url]"));
+                this.items.forEach((item) => this.bind(item));
+            }
+
+            bind(item) {
+                item.setAttribute("role", "link");
+                if (!item.hasAttribute("tabindex")) item.setAttribute("tabindex", "0");
+
+                item.addEventListener("click", (event) => this.open(item, event));
+                item.addEventListener("keydown", (event) => {
+                    if (event.key !== "Enter" && event.key !== " ") return;
+                    event.preventDefault();
+                    this.open(item, event);
+                });
+            }
+
+            open(item, event) {
+                if (this.editor?.isActive) return;
+                if (event.target?.closest("button, a, [contenteditable='true']")) return;
+                const url = item.dataset.projectUrl;
+                if (!url) return;
+                window.open(url, "_blank", "noopener,noreferrer");
+            }
+        }
+
+        const deck = new SlidePresentation();
+        const editor = new InlineEditor();
+        const credentialPreview = new CredentialPreview();
+        const projectCarousel = new ProjectCarousel();
+        const certificateCarousel = new CertificateCarousel();
+        const externalProjectLinks = new ExternalProjectLinks(editor);
+
+        /* === EDIT HOTZONE INTERACTIONS === */
+        const hotzone = document.querySelector(".edit-hotzone");
+        const editToggle = document.getElementById("editToggle");
+        let hideTimeout = null;
+
+        hotzone.addEventListener("mouseenter", () => {
+            clearTimeout(hideTimeout);
+            editToggle.classList.add("show");
+        });
+
+        hotzone.addEventListener("mouseleave", () => {
+            hideTimeout = setTimeout(() => {
+                if (!editor.isActive) editToggle.classList.remove("show");
+            }, 400);
+        });
+
+        editToggle.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+        editToggle.addEventListener("mouseleave", () => {
+            hideTimeout = setTimeout(() => {
+                if (!editor.isActive) editToggle.classList.remove("show");
+            }, 400);
+        });
+
+        hotzone.addEventListener("click", () => editor.toggleEditMode());
+        editToggle.addEventListener("click", () => editor.toggleEditMode());
+
+        document.addEventListener("keydown", (event) => {
+            if ((event.key === "e" || event.key === "E") && event.target.getAttribute("contenteditable") !== "true") {
+                editor.toggleEditMode();
+            }
+            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") {
+                event.preventDefault();
+                editor.save();
+            }
+        });
+
+        document.addEventListener("input", (event) => {
+            if (event.target && event.target.getAttribute("contenteditable") === "true") {
+                editor.save();
+            }
+        });
+
+        window.__deck = deck;
+    </script>
+</body>
+</html>
